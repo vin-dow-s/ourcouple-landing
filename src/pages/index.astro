@@ -1,0 +1,288 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="OurCouple - Manifest Your Love">
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center bg-gradient-radial overflow-hidden" id="waitlist">
+      <!-- Decorative elements -->
+      <div class="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 w-80 h-80 bg-partner/10 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+      
+      <div class="relative z-10 max-w-6xl mx-auto px-6 py-12 text-center">
+        <!-- Video Preview -->
+        <div class="mb-10 animate-fade-in">
+          <div class="inline-block rounded-3xl shadow-2xl shadow-black/20">
+            <video 
+              autoplay 
+              muted 
+              playsinline
+              class="mx-auto max-h-[65vh] rounded-3xl"
+            >
+              <source src="/IPhoneMockup2.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+        
+        <!-- Join Waitlist Form -->
+        <div class="animate-fade-in-delay-1 max-w-md mx-auto">
+          <form class="flex flex-col sm:flex-row gap-3" id="waitlist-form">
+            <input 
+              type="email" 
+              placeholder="Enter your email" 
+              required
+              class="flex-1 px-5 py-4 rounded-2xl border border-border bg-card text-text placeholder:text-text-light focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+            />
+            <button 
+              type="submit"
+              class="px-8 py-4 bg-primary text-white rounded-2xl font-semibold hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30 whitespace-nowrap"
+            >
+              Join the Waitlist
+            </button>
+          </form>
+          <p class="text-text-light text-sm mt-3">Be the first to know when we launch 💕</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-card">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-center text-text mb-4">
+          Everything You Need
+        </h2>
+        <p class="text-text-secondary text-center text-xl mb-16 max-w-2xl mx-auto">
+          Simple, powerful, easy to use
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Feature 1: Daily Manifestation -->
+          <div class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
+            <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-xl text-text mb-3">Daily Manifestation</h3>
+            <p class="text-text-secondary">
+              Start each day with intention. Set a message and a photo for the day — positive vibes for your relationship.
+            </p>
+          </div>
+          
+          <!-- Feature 2: Inspiration Vault -->
+          <div class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
+            <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+                <path d="m6.34 17.66-1.41 1.41"/>
+                <path d="m19.07 4.93-1.41 1.41"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-xl text-text mb-3">Inspiration Vault</h3>
+            <p class="text-text-secondary">
+              Save quotes, proverbs, and loving messages. Each day, one is randomly picked and displayed to your partner as a surprise.
+            </p>
+          </div>
+          
+          <!-- Feature 3: Shared Moments -->
+          <div class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
+            <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+                <circle cx="9" cy="9" r="2"/>
+                <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-xl text-text mb-3">Shared Moments</h3>
+            <p class="text-text-secondary">
+              Capture and save your favorite memories together. Photos, notes, and everything in between.
+            </p>
+          </div>
+          
+          <!-- Feature 4: Shared Notes -->
+          <div class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
+            <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+                <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+                <path d="M10 9H8"/>
+                <path d="M16 13H8"/>
+                <path d="M16 17H8"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-xl text-text mb-3">Shared Notes</h3>
+            <p class="text-text-secondary">
+              One place for all your notes together. Shopping lists, travel ideas, bucket lists, or anything you want to remember.
+            </p>
+          </div>
+          
+          <!-- Feature 5: Events & Dates -->
+          <div class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
+            <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 2v4"/>
+                <path d="M16 2v4"/>
+                <rect width="18" height="18" x="3" y="4" rx="2"/>
+                <path d="M3 10h18"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-xl text-text mb-3">Events & Dates</h3>
+            <p class="text-text-secondary">
+              Never forget an anniversary or special occasion. Get reminders for all your important events and dates.
+            </p>
+          </div>
+          
+          <!-- Feature 6: 100% Private -->
+          <div class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
+            <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-xl text-text mb-3">100% Private</h3>
+            <p class="text-text-secondary">
+              Your data stays between you two. No social features, no sharing — just your private space.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-gradient-radial">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-text mb-6">
+          Start Your Journey Today
+        </h2>
+        <p class="text-xl text-text-secondary mb-10">
+          Be among the first couples to experience OurCouple when we launch.
+        </p>
+        
+        <!-- Waitlist Form (duplicate for bottom CTA) -->
+        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" id="waitlist-form-bottom">
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            required
+            class="flex-1 px-5 py-4 rounded-2xl border border-border bg-card text-text placeholder:text-text-light focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+          />
+          <button 
+            type="submit"
+            class="px-8 py-4 bg-primary text-white rounded-2xl font-semibold hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30 whitespace-nowrap"
+          >
+            Join Waitlist
+          </button>
+        </form>
+        
+        <p class="text-text-secondary mt-8">
+          Questions? <a href="mailto:contact@vynse.dev" class="text-primary hover:text-primary-dark transition-colors font-medium">Contact us →</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-card border-t border-border py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="flex items-center gap-3">
+          <img src="/logo.png" alt="OurCouple" class="w-10 h-10 rounded-xl" />
+          <span class="font-sans font-bold text-xl text-text">OurCouple</span>
+        </div>
+        
+        <nav class="flex flex-wrap items-center justify-center gap-6 text-sm">
+          <a href="/privacy" class="text-text-secondary hover:text-primary transition-colors">Privacy Policy</a>
+          <a href="/terms" class="text-text-secondary hover:text-primary transition-colors">Terms of Service</a>
+          <a href="mailto:contact@vynse.dev" class="text-text-secondary hover:text-primary transition-colors">Contact</a>
+        </nav>
+        
+        <p class="text-text-light text-sm">
+          © 2026 OurCouple. Made with 💕
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Waitlist form handling with Supabase -->
+  <script define:vars={{ 
+    SUPABASE_URL: import.meta.env.PUBLIC_SUPABASE_URL,
+    SUPABASE_ANON_KEY: import.meta.env.PUBLIC_SUPABASE_ANON_KEY
+  }}>
+
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const emailInput = form.querySelector('input[type="email"]');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const email = emailInput.value.trim().toLowerCase();
+        
+        // Disable form while submitting
+        emailInput.disabled = true;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Joining...';
+        
+        try {
+          const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'apikey': SUPABASE_ANON_KEY,
+              'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+              'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify({ email, source: 'landing' })
+          });
+          
+          if (response.ok) {
+            // Success
+            emailInput.value = '';
+            submitBtn.textContent = '✓ You\'re in!';
+            submitBtn.classList.remove('bg-primary', 'hover:bg-primary-dark');
+            submitBtn.classList.add('bg-green-500');
+            
+            setTimeout(() => {
+              submitBtn.textContent = 'Join Waitlist';
+              submitBtn.classList.remove('bg-green-500');
+              submitBtn.classList.add('bg-primary', 'hover:bg-primary-dark');
+              emailInput.disabled = false;
+              submitBtn.disabled = false;
+            }, 3000);
+          } else if (response.status === 409) {
+            // Duplicate email
+            submitBtn.textContent = 'Already joined!';
+            setTimeout(() => {
+              submitBtn.textContent = 'Join Waitlist';
+              emailInput.disabled = false;
+              submitBtn.disabled = false;
+            }, 2000);
+          } else {
+            throw new Error('Failed to join');
+          }
+        } catch (error) {
+          console.error('Waitlist error:', error);
+          submitBtn.textContent = 'Error, retry';
+          submitBtn.classList.remove('bg-primary');
+          submitBtn.classList.add('bg-red-500');
+          
+          setTimeout(() => {
+            submitBtn.textContent = 'Join Waitlist';
+            submitBtn.classList.remove('bg-red-500');
+            submitBtn.classList.add('bg-primary');
+            emailInput.disabled = false;
+            submitBtn.disabled = false;
+          }, 2000);
+        }
+      });
+    });
+  </script>
+</Layout>

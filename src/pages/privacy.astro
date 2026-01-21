@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Privacy Policy - OurCouple" description="Privacy Policy for OurCouple app">
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/logo.png" alt="OurCouple" class="w-10 h-10 rounded-xl" />
+        <span class="font-display font-semibold text-xl text-text">OurCouple</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-1 pt-32 pb-20">
+    <div class="max-w-3xl mx-auto px-6">
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-text mb-8">Privacy Policy</h1>
+      <p class="text-text-secondary mb-8">Last updated: January 20, 2026</p>
+      
+      <div class="prose prose-lg max-w-none">
+        <section class="mb-10">
+          <h2 class="font-display text-2xl font-semibold text-text mb-4">Introduction</h2>
+          <p class="text-text-secondary mb-4">
+            OurCouple ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile application.
+          </p>
+        </section>
+
+        <section class="mb-10">
+          <h2 class="font-display text-2xl font-semibold text-text mb-4">Information We Collect</h2>
+          <p class="text-text-secondary mb-4">We collect information that you provide directly to us:</p>
+          <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
+            <li>Account information (email address, name)</li>
+            <li>Content you create (moments, notes, events, messages)</li>
+            <li>Photos and images you upload</li>
+            <li>Partner connection information</li>
+          </ul>
+        </section>
+
+        <section class="mb-10">
+          <h2 class="font-display text-2xl font-semibold text-text mb-4">How We Use Your Information</h2>
+          <p class="text-text-secondary mb-4">We use the information we collect to:</p>
+          <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
+            <li>Provide and maintain the app</li>
+            <li>Sync your data between devices</li>
+            <li>Send push notifications (with your permission)</li>
+            <li>Improve our services</li>
+            <li>Respond to your requests and support needs</li>
+          </ul>
+        </section>
+
+        <section class="mb-10">
+          <h2 class="font-display text-2xl font-semibold text-text mb-4">Data Storage & Security</h2>
+          <p class="text-text-secondary mb-4">
+            Your data is stored securely using Supabase, with encryption at rest and in transit. We implement industry-standard security measures to protect your personal information.
+          </p>
+          <p class="text-text-secondary mb-4">
+            Your content is private and only accessible to you and your connected partner. We do not share, sell, or use your personal content for any purpose other than providing our services.
+          </p>
+        </section>
+
+        <section class="mb-10">
+          <h2 class="font-display text-2xl font-semibold text-text mb-4">Third-Party Services</h2>
+          <p class="text-text-secondary mb-4">We use the following third-party services:</p>
+          <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
+            <li><strong>Supabase</strong> - Database and authentication</li>
+            <li><strong>RevenueCat</strong> - Subscription management</li>
+            <li><strong>Sentry</strong> - Error tracking (anonymized)</li>
+            <li><strong>Expo</strong> - Push notifications</li>
+          </ul>
+        </section>
+
+        <section class="mb-10">
+          <h2 class="font-display text-2xl font-semibold text-text mb-4">Your Rights</h2>
+          <p class="text-text-secondary mb-4">You have the right to:</p>
+          <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
+            <li>Access your personal data</li>
+            <li>Request deletion of your data</li>
+            <li>Export your data</li>
+            <li>Opt-out of analytics</li>
+          </ul>
+        </section>
+
+        <section class="mb-10">
+          <h2 class="font-display text-2xl font-semibold text-text mb-4">Data Retention</h2>
+          <p class="text-text-secondary mb-4">
+            We retain your data as long as your account is active. If you delete your account, all your data will be permanently deleted within 30 days.
+          </p>
+        </section>
+
+        <section class="mb-10">
+          <h2 class="font-display text-2xl font-semibold text-text mb-4">Children's Privacy</h2>
+          <p class="text-text-secondary mb-4">
+            Our app is not intended for children under 13. We do not knowingly collect personal information from children under 13.
+          </p>
+        </section>
+
+        <section class="mb-10">
+          <h2 class="font-display text-2xl font-semibold text-text mb-4">Changes to This Policy</h2>
+          <p class="text-text-secondary mb-4">
+            We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Last updated" date.
+          </p>
+        </section>
+
+        <section class="mb-10">
+          <h2 class="font-display text-2xl font-semibold text-text mb-4">Contact Us</h2>
+          <p class="text-text-secondary mb-4">
+            If you have any questions about this Privacy Policy, please contact us at:
+          </p>
+          <p class="text-primary font-medium">
+            <a href="mailto:contact@vynse.dev">contact@vynse.dev</a>
+          </p>
+        </section>
+      </div>
+      
+      <div class="mt-12 pt-8 border-t border-border">
+        <a href="/" class="text-primary hover:text-primary-dark transition-colors font-medium">
+          ← Back to Home
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-card border-t border-border py-8">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p class="text-text-light text-sm">
+        © 2026 OurCouple. Made with 💕
+      </p>
+    </div>
+  </footer>
+</Layout>
