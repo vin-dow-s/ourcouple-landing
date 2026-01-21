@@ -3,23 +3,43 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="OurCouple - Manifest Your Love">
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-gradient-radial">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/logo.png" alt="OurCouple" class="w-10 h-10 rounded-xl" />
+        <span class="font-sans font-bold text-xl text-text">OurCouple</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="#features" class="text-text-secondary hover:text-primary transition-colors font-medium">Features</a>
+      </div>
+    </div>
+  </nav>
+
   <main class="flex-1">
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center bg-gradient-radial overflow-hidden" id="waitlist">
+    <section class="relative min-h-screen flex items-center justify-center bg-gradient-radial overflow-hidden pt-20" id="waitlist">
       <!-- Decorative elements -->
       <div class="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
       <div class="absolute bottom-20 right-10 w-80 h-80 bg-partner/10 rounded-full blur-3xl"></div>
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
       
       <div class="relative z-10 max-w-6xl mx-auto px-6 py-12 text-center">
-        <!-- Video Preview -->
+        <!-- Video/Image Preview -->
         <div class="mb-10 animate-fade-in">
-          <div class="inline-block rounded-3xl shadow-2xl shadow-black/20">
+          <div class="inline-block rounded-3xl shadow-lg shadow-black/15">
+            <!-- Image on mobile -->
+            <img 
+              src="/mockup-screenshot.png" 
+              alt="OurCouple App Preview"
+              class="mx-auto max-h-[65vh] rounded-3xl md:hidden"
+            />
+            <!-- Video on desktop -->
             <video 
               autoplay 
               muted 
               playsinline
-              class="mx-auto max-h-[65vh] rounded-3xl"
+              class="mx-auto max-h-[65vh] rounded-3xl hidden md:block"
             >
               <source src="/IPhoneMockup2.mp4" type="video/mp4" />
             </video>
@@ -33,11 +53,11 @@ import Layout from '../layouts/Layout.astro';
               type="email" 
               placeholder="Enter your email" 
               required
-              class="flex-1 px-5 py-4 rounded-2xl border border-border bg-card text-text placeholder:text-text-light focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+              class="flex-1 px-5 py-4 rounded-2xl border border-border bg-card text-text placeholder:text-text-light focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all shadow-lg shadow-black/10"
             />
             <button 
               type="submit"
-              class="px-8 py-4 bg-primary text-white rounded-2xl font-semibold hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30 whitespace-nowrap"
+              class="px-8 py-4 bg-primary text-white rounded-2xl font-semibold hover:bg-primary-dark transition-colors shadow-lg shadow-black/15 whitespace-nowrap"
             >
               Join the Waitlist
             </button>
@@ -173,11 +193,11 @@ import Layout from '../layouts/Layout.astro';
             type="email" 
             placeholder="Enter your email" 
             required
-            class="flex-1 px-5 py-4 rounded-2xl border border-border bg-card text-text placeholder:text-text-light focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+            class="flex-1 px-5 py-4 rounded-2xl border border-border bg-card text-text placeholder:text-text-light focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all shadow-lg shadow-black/10"
           />
           <button 
             type="submit"
-            class="px-8 py-4 bg-primary text-white rounded-2xl font-semibold hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30 whitespace-nowrap"
+            class="px-8 py-4 bg-primary text-white rounded-2xl font-semibold hover:bg-primary-dark transition-colors shadow-lg shadow-black/15 whitespace-nowrap"
           >
             Join Waitlist
           </button>
