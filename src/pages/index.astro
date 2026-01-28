@@ -10,10 +10,10 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="/" class="flex items-center gap-3">
         <img src="/logo.png" alt="OurCouple Logo" class="w-10 h-10 rounded-xl" />
-        <span class="font-semibold text-xl text-text tracking-tighter">OurCouple</span>
+        <span class="font-semibold text-base sm:text-xl text-text tracking-tighter">OurCouple</span>
       </a>
       <div class="flex items-center gap-6">
-        <a href="#features" class="text-text-secondary hover:text-primary transition-colors font-medium">Features</a>
+        <a href="#features" class=" hidden sm:block text-text-secondary hover:text-primary transition-colors font-medium">Features</a>
         <a href="#faq" class="text-text-secondary hover:text-primary transition-colors font-medium hidden sm:block">FAQ</a>
         <a
           href={appStoreUrl}
@@ -42,7 +42,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             Notion for couples
           </h1>
           <p class="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
-            OurCouple is your shared space with your partner. <br/>Messages, memories, notes, events — all in one place.
+            OurCouple is your shared space with your partner. <br class="hidden sm:inline" />Messages, memories, notes, events — all in one place.
           </p>
         </div>
 
@@ -85,7 +85,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
               class="h-14 mx-auto"
             />
           </a>
-          <p class="text-neutral-500 text-sm mt-2">✓ Try for free</p>
+          <p class="text-neutral-500 text-sm mt-2">✓ Start for free</p>
         </div>
       </div>
     </section>
@@ -96,7 +96,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
         <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-center text-text mb-4">
           Simple, easy to use
         </h2>
-        <p class="text-text-secondary text-center text-xl mb-16 max-w-2xl mx-auto">
+        <p class="text-text-secondary text-center text-base  mb-16 max-w-2xl mx-auto">
           Features designed to help you day to day
         </p>
 
@@ -204,10 +204,10 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
     <section class="py-24 bg-background">
       <div class="max-w-4xl mx-auto px-6">
         <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-center text-text mb-4">
-          Get Started in Seconds
+          Get Started <span class="hidden sm:inline">in Seconds</span>
         </h2>
-        <p class="text-text-secondary text-center text-xl mb-16">
-          Connect with your partner in three simple steps
+        <p class="text-text-secondary text-center text-base mb-16">
+          Connect with your partner in 3 simple steps
         </p>
 
         <div class="grid md:grid-cols-3 gap-8 text-center">
@@ -242,7 +242,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
         <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-center text-text mb-4">
           Frequently Asked Questions
         </h2>
-        <p class="text-text-secondary text-center text-xl mb-12">
+        <p class="text-text-secondary text-center text-base mb-12">
           Everything you need to know about OurCouple
         </p>
 
@@ -321,7 +321,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
         <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-text mb-6">
           Create Your Couple Space Now
         </h2>
-        <p class="text-xl text-text-secondary mb-10">
+        <p class="text-base text-text-secondary mb-10">
           Download OurCouple and connect with your partner in seconds.
         </p>
 
