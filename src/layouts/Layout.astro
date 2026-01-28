@@ -4,11 +4,121 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  canonicalPath?: string;
 }
 
-const { title, description = "Your Shared Space to Manifest Your Love" } = Astro.props;
+const {
+  title,
+  description = "Like Notion, but just for the two of you. Daily messages, memories, notes, and dates — all in one private place. Free on iOS.",
+  canonicalPath = ""
+} = Astro.props;
+
 const siteUrl = "https://ourcouple.app";
+const canonicalUrl = `${siteUrl}${canonicalPath}`;
 const ogImage = `${siteUrl}/og-image.png`;
+const appStoreId = "6758024356";
+const appStoreUrl = `https://apps.apple.com/app/id${appStoreId}`;
+
+// Structured Data - Organization
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "OurCouple",
+  "url": siteUrl,
+  "logo": `${siteUrl}/logo.png`,
+  "description": "OurCouple creates a private shared space for couples to manifest their love and keep track of all their notes, events, memories together.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "contact@vynse.dev",
+    "contactType": "customer support"
+  },
+  "sameAs": []
+};
+
+// Structured Data - Mobile Application
+const appSchema = {
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "OurCouple - Your Shared Space",
+  "operatingSystem": "iOS",
+  "applicationCategory": "LifestyleApplication",
+  "description": "Your private shared space for couples. Like Notion, but just for the two of you. Daily messages, memories, notes, and important dates — all in one place.",
+  "url": siteUrl,
+  "image": ogImage,
+  "screenshot": `${siteUrl}/mockup-screenshot.png`,
+  "author": organizationSchema,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free with optional premium subscription"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": "1",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "featureList": [
+    "Daily messages and photos between partners",
+    "Private photo memories",
+    "Shared notes and lists",
+    "Event and anniversary tracking",
+    "Daily inspirational messages",
+    "Private and secure"
+  ],
+  "downloadUrl": appStoreUrl,
+  "installUrl": appStoreUrl
+};
+
+// Structured Data - FAQ
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is OurCouple free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! OurCouple is free to download and use. The free plan includes unlimited daily messages, photos of the day, and inspirations, plus 5 memory photos, 10 notes, and 5 events. Premium unlocks unlimited storage for all features."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Your data is encrypted and only accessible by you and your partner. We don't show ads, don't sell your data, and don't share it with anyone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I connect with my partner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After signing up, you'll receive a unique 6-character invite code. Share this code with your partner, and they can join your private couple space when they sign up. It only takes seconds!"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is OurCouple available on Android?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OurCouple is currently available on iOS. Android version is coming soon! Join our waitlist to be notified when it launches."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes OurCouple different from other couple apps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's not a chat app. OurCouple is a shared workspace for couples — like Notion, but private and made for two. Daily messages, memories, notes, events, all in one place."
+      }
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -16,33 +126,66 @@ const ogImage = `${siteUrl}/og-image.png`;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <meta name="keywords" content="couple app, relationship app, couples app, private messaging, shared photos, anniversary tracker, date tracker, couples journal, relationship goals, love app, encrypted messaging, private couple space, daily affirmations couples" />
+    <meta name="author" content="OurCouple" />
+    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#D4A5A9" />
-    
-    <!-- Open Graph -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="OurCouple" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Apple Smart App Banner -->
+    <meta name="apple-itunes-app" content={`app-id=${appStoreId}, app-argument=${siteUrl}`} />
+
+    <!-- iOS App Links -->
+    <meta property="al:ios:app_store_id" content={appStoreId} />
+    <meta property="al:ios:app_name" content="OurCouple" />
+    <meta property="al:ios:url" content="ourcouple://" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image:alt" content="OurCouple - Your Shared Space for Couples" />
     <meta property="og:site_name" content="OurCouple" />
-    
+    <meta property="og:locale" content="en_US" />
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    
+    <meta name="twitter:image:alt" content="OurCouple - Your Shared Space for Couples" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <title>{title}</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+
+    <!-- Analytics -->
     <script
       defer
       data-website-id="dfid_qI4dBMANAwmiNsJvVpicO"

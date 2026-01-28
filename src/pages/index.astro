@@ -1,68 +1,91 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const appStoreUrl = "https://apps.apple.com/app/id6758024356";
 ---
 
-<Layout title="OurCouple - Your Shared Space">
+<Layout title="OurCouple - Your Shared Space | Couple App for iOS">
   <!-- Navbar -->
   <nav class="fixed top-0 left-0 right-0 z-50 bg-gradient-radial">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="/" class="flex items-center gap-3">
-        <img src="/logo.png" alt="OurCouple" class="w-10 h-10 rounded-xl" />
-        <span class="font-sans font-bold text-xl text-text">OurCouple</span>
+        <img src="/logo.png" alt="OurCouple Logo" class="w-10 h-10 rounded-xl" />
+        <span class="font-semibold text-xl text-text tracking-tighter">OurCouple</span>
       </a>
       <div class="flex items-center gap-6">
         <a href="#features" class="text-text-secondary hover:text-primary transition-colors font-medium">Features</a>
+        <a href="#faq" class="text-text-secondary hover:text-primary transition-colors font-medium hidden sm:block">FAQ</a>
+        <a
+          href={appStoreUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-4 py-2 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark transition-colors text-sm"
+        >
+          Download
+        </a>
       </div>
     </div>
   </nav>
 
   <main class="flex-1">
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center bg-gradient-radial overflow-hidden pt-20" id="waitlist">
+    <section class="relative min-h-screen flex items-center justify-center bg-gradient-radial overflow-hidden pt-20" id="hero">
       <!-- Decorative elements -->
       <div class="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
       <div class="absolute bottom-20 right-10 w-80 h-80 bg-partner/10 rounded-full blur-3xl"></div>
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
-      
+
       <div class="relative z-10 max-w-6xl mx-auto px-6 py-12 text-center">
+        <!-- Hero Text -->
+        <div class="mb-8 animate-fade-in">
+          <h1 class=" text-4xl md:text-6xl font-bold text-text mb-4 tracking-tighter">
+            Notion for couples
+          </h1>
+          <p class="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
+            OurCouple is your shared space with your partner. <br/>Messages, memories, notes, events — all in one place.
+          </p>
+        </div>
+
         <!-- Video/Image Preview -->
-        <div class="mb-10 animate-fade-in">
+        <div class="mb-10 animate-fade-in-delay-1">
           <div class="inline-block rounded-3xl shadow-lg shadow-black/15">
             <!-- Image on mobile -->
-            <img 
-              src="/mockup-screenshot.png" 
-              alt="OurCouple App Preview"
-              class="mx-auto max-h-[65vh] rounded-3xl md:hidden"
+            <img
+              src="/mockup-screenshot.png"
+              alt="OurCouple App - Daily messages and shared memories for couples"
+              class="mx-auto max-h-[50vh] rounded-3xl md:hidden"
             />
             <!-- Video on desktop -->
-            <video 
-              autoplay 
-              muted 
+            <video
+              autoplay
+              muted
+              loop
               playsinline
-              class="mx-auto max-h-[65vh] rounded-3xl hidden md:block"
+              class="mx-auto max-h-[50vh] rounded-3xl hidden md:block"
+              aria-label="OurCouple app demonstration showing daily messages and photo sharing between partners"
             >
               <source src="/IPhoneMockup2.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
             </video>
           </div>
         </div>
-        
-        <!-- Join Waitlist Form -->
-        <div class="animate-fade-in-delay-1 max-w-md mx-auto">
-          <form class="flex flex-col sm:flex-row gap-3" id="waitlist-form">
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
-              required
-              class="flex-1 px-5 py-4 rounded-2xl border border-border bg-card text-text placeholder:text-text-light focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all shadow-lg shadow-black/10"
+
+        <!-- App Store Download -->
+        <div class="animate-fade-in-delay-2 max-w-md mx-auto">
+          <a
+            href={appStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block transition-transform hover:scale-105"
+            aria-label="Download OurCouple on the App Store"
+          >
+            <img
+              src="/app-store-badge.svg"
+              alt="Download on the App Store"
+              class="h-14 mx-auto"
             />
-            <button 
-              type="submit"
-              class="px-8 py-4 bg-primary text-white rounded-2xl font-semibold hover:bg-primary-dark transition-colors shadow-lg shadow-black/15 whitespace-nowrap"
-            >
-              Join the Waitlist
-            </button>
-          </form>
-          <p class="text-text-light text-sm mt-3">Be the first to know when we launch 💕</p>
+          </a>
+          <p class="text-neutral-500 text-sm mt-2">✓ Try for free</p>
         </div>
       </div>
     </section>
@@ -70,29 +93,29 @@ import Layout from '../layouts/Layout.astro';
     <!-- Features Section -->
     <section id="features" class="py-24 bg-card">
       <div class="max-w-6xl mx-auto px-6">
-        <h2 class="font-display text-4xl md:text-5xl font-bold text-center text-text mb-4">
-          Everything You Need
+        <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-center text-text mb-4">
+          Simple, easy to use
         </h2>
         <p class="text-text-secondary text-center text-xl mb-16 max-w-2xl mx-auto">
-          Simple, powerful, easy to use
+          Features designed to help you day to day
         </p>
-        
+
         <div class="grid md:grid-cols-3 gap-8">
-          <!-- Feature 1: Daily Manifestation -->
-          <div class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
+          <!-- Feature 1: Message of the Day -->
+          <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
             <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
               <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-xl text-text mb-3">Daily Manifestation</h3>
+            <h3 class="font-semibold text-xl text-text mb-3">Message & Photo of the Day</h3>
             <p class="text-text-secondary">
-              Start each day with intention. Set a message and a photo for the day — positive vibes for your relationship.
+              Start each day with intention. Send a loving message and photo to your partner — a daily ritual to manifest your connection.
             </p>
-          </div>
-          
-          <!-- Feature 2: Inspiration Vault -->
-          <div class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
+          </article>
+
+          <!-- Feature 2: Daily Inspirations -->
+          <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
             <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
               <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="4"/>
@@ -106,14 +129,14 @@ import Layout from '../layouts/Layout.astro';
                 <path d="m19.07 4.93-1.41 1.41"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-xl text-text mb-3">Inspiration Vault</h3>
+            <h3 class="font-semibold text-xl text-text mb-3">Daily Inspirations</h3>
             <p class="text-text-secondary">
-              Save quotes, proverbs, and loving messages. Each day, one is randomly picked and displayed to your partner as a surprise.
+              Save quotes, affirmations, and loving messages. Each day, one is randomly picked and displayed as a surprise for your partner.
             </p>
-          </div>
-          
-          <!-- Feature 3: Shared Moments -->
-          <div class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
+          </article>
+
+          <!-- Feature 3: Private Memories -->
+          <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
             <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
               <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
@@ -121,14 +144,14 @@ import Layout from '../layouts/Layout.astro';
                 <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-xl text-text mb-3">Shared Moments</h3>
+            <h3 class="font-semibold text-xl text-text mb-3">Private Memories</h3>
             <p class="text-text-secondary">
-              Capture and save your favorite memories together. Photos, notes, and everything in between.
+              Capture and save your favorite moments together. Every photo is encrypted and stored securely in your private couple space.
             </p>
-          </div>
-          
+          </article>
+
           <!-- Feature 4: Shared Notes -->
-          <div class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
+          <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
             <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
               <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
@@ -140,12 +163,12 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <h3 class="font-semibold text-xl text-text mb-3">Shared Notes</h3>
             <p class="text-text-secondary">
-              One place for all your notes together. Shopping lists, travel ideas, bucket lists, or anything you want to remember.
+              One place for all your notes together. Shopping lists, travel ideas, bucket lists, or anything you want to remember as a couple.
             </p>
-          </div>
-          
+          </article>
+
           <!-- Feature 5: Events & Dates -->
-          <div class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
+          <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
             <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
               <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M8 2v4"/>
@@ -154,25 +177,140 @@ import Layout from '../layouts/Layout.astro';
                 <path d="M3 10h18"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-xl text-text mb-3">Events & Dates</h3>
+            <h3 class="font-semibold text-xl text-text mb-3">Events & Anniversaries</h3>
             <p class="text-text-secondary">
-              Never forget an anniversary or special occasion. Get reminders for all your important events and dates.
+              Never forget an anniversary or special date. Track all your important events and get reminded of what matters most.
             </p>
-          </div>
-          
-          <!-- Feature 6: 100% Private -->
-          <div class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
+          </article>
+
+          <!-- Feature 6: Private & Secure -->
+          <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
             <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
               <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-xl text-text mb-3">100% Private</h3>
+            <h3 class="font-semibold text-xl text-text mb-3">Private & Secure</h3>
             <p class="text-text-secondary">
-              End-to-end encrypted. Your messages and photos are encrypted on your device — even we can't read them. Just your private space.
+              Your data is encrypted and stays between you two. No ads, no tracking, no sharing with third parties.
             </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-24 bg-background">
+      <div class="max-w-4xl mx-auto px-6">
+        <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-center text-text mb-4">
+          Get Started in Seconds
+        </h2>
+        <p class="text-text-secondary text-center text-xl mb-16">
+          Connect with your partner in three simple steps
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div>
+            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-primary">1</span>
+            </div>
+            <h3 class="font-semibold text-lg text-text mb-2">Download & Sign Up</h3>
+            <p class="text-text-secondary">Create your account with just your email and name</p>
           </div>
+          <div>
+            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-primary">2</span>
+            </div>
+            <h3 class="font-semibold text-lg text-text mb-2">Share Your Code</h3>
+            <p class="text-text-secondary">Get a unique invite code and share it with your partner</p>
+          </div>
+          <div>
+            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-primary">3</span>
+            </div>
+            <h3 class="font-semibold text-lg text-text mb-2">Start Connecting</h3>
+            <p class="text-text-secondary">Your private couple space is ready. Start sharing!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-card">
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-center text-text mb-4">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-text-secondary text-center text-xl mb-12">
+          Everything you need to know about OurCouple
+        </p>
+
+        <div class="space-y-4">
+          <!-- FAQ 1 -->
+          <details class="group bg-background border border-border rounded-2xl">
+            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+              <h3 class="font-semibold text-lg text-text">Is OurCouple free to use?</h3>
+              <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-text-secondary">
+              <p>Yes! OurCouple is free to download and use. The free plan includes unlimited daily messages, photos of the day, and inspirations, plus 5 memory photos, 10 notes, and 5 events. Premium unlocks unlimited storage for all features.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 2 -->
+          <details class="group bg-background border border-border rounded-2xl">
+            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+              <h3 class="font-semibold text-lg text-text">Is my data private?</h3>
+              <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-text-secondary">
+              <p>Yes. Your data is encrypted and only accessible by you and your partner. We don't show ads, don't sell your data, and don't share it with anyone.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 3 -->
+          <details class="group bg-background border border-border rounded-2xl">
+            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+              <h3 class="font-semibold text-lg text-text">How do I connect with my partner?</h3>
+              <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-text-secondary">
+              <p>After signing up, you'll receive a unique 6-character invite code. Share this code with your partner, and they can join your private couple space when they sign up. It only takes seconds to connect!</p>
+            </div>
+          </details>
+
+          <!-- FAQ 4 -->
+          <details class="group bg-background border border-border rounded-2xl">
+            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+              <h3 class="font-semibold text-lg text-text">Is OurCouple available on Android?</h3>
+              <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-text-secondary">
+              <p>OurCouple is currently available on iOS. Android version is coming soon! Enter your email below to be notified when it launches.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 5 -->
+          <details class="group bg-background border border-border rounded-2xl">
+            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+              <h3 class="font-semibold text-lg text-text">What makes OurCouple different?</h3>
+              <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-text-secondary">
+              <p>It's not a chat app. OurCouple is a shared workspace for couples — like Notion, but private and made for two. Daily messages, memories, notes, events, all in one place.</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -180,31 +318,49 @@ import Layout from '../layouts/Layout.astro';
     <!-- CTA Section -->
     <section class="py-24 bg-gradient-radial">
       <div class="max-w-4xl mx-auto px-6 text-center">
-        <h2 class="font-display text-4xl md:text-5xl font-bold text-text mb-6">
-          Start Your Journey Today
+        <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-text mb-6">
+          Create Your Couple Space Now
         </h2>
         <p class="text-xl text-text-secondary mb-10">
-          Be among the first couples to experience OurCouple when we launch.
+          Download OurCouple and connect with your partner in seconds.
         </p>
-        
-        <!-- Waitlist Form (duplicate for bottom CTA) -->
-        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" id="waitlist-form-bottom">
-          <input 
-            type="email" 
-            placeholder="Enter your email" 
-            required
-            class="flex-1 px-5 py-4 rounded-2xl border border-border bg-card text-text placeholder:text-text-light focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all shadow-lg shadow-black/10"
+
+        <!-- App Store Download -->
+        <a
+          href={appStoreUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block transition-transform hover:scale-105 mb-8"
+          aria-label="Download OurCouple on the App Store"
+        >
+          <img
+            src="/app-store-badge.svg"
+            alt="Download on the App Store"
+            class="h-16 mx-auto"
           />
-          <button 
-            type="submit"
-            class="px-8 py-4 bg-primary text-white rounded-2xl font-semibold hover:bg-primary-dark transition-colors shadow-lg shadow-black/15 whitespace-nowrap"
-          >
-            Join Waitlist
-          </button>
-        </form>
-        
+        </a>
+
+        <!-- Android Waitlist -->
+        <div class="max-w-md mx-auto mt-8 p-6 bg-card/50 rounded-2xl border border-border">
+          <p class="text-text-secondary mb-4">Android coming soon! Get notified:</p>
+          <form class="flex flex-col sm:flex-row gap-3" id="android-waitlist-form">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              required
+              class="flex-1 px-5 py-3 rounded-xl border border-border bg-card text-text placeholder:text-text-light focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+            />
+            <button
+              type="submit"
+              class="px-6 py-3 bg-partner text-white rounded-xl font-semibold hover:bg-partner/90 transition-colors whitespace-nowrap"
+            >
+              Notify Me
+            </button>
+          </form>
+        </div>
+
         <p class="text-text-secondary mt-8">
-          Questions? <a href="mailto:contact@vynse.dev" class="text-primary hover:text-primary-dark transition-colors font-medium">Contact us →</a>
+          Questions? <a href="mailto:contact@vynse.dev" class="text-primary hover:text-primary-dark transition-colors font-medium">Contact us</a>
         </p>
       </div>
     </section>
@@ -216,7 +372,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="flex flex-col md:flex-row items-center justify-between gap-8">
         <div class="flex items-center gap-3">
           <img src="/logo.png" alt="OurCouple" class="w-10 h-10 rounded-xl" />
-          <span class="font-sans font-bold text-xl text-text">OurCouple</span>
+          <span class="font-semibold text-xl text-text tracking-tighter">OurCouple</span>
         </div>
         
         <nav class="flex flex-wrap items-center justify-center gap-6 text-sm">
@@ -232,25 +388,24 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </footer>
 
-  <!-- Waitlist form handling with Supabase -->
-  <script define:vars={{ 
+  <!-- Android waitlist form handling -->
+  <script define:vars={{
     SUPABASE_URL: import.meta.env.PUBLIC_SUPABASE_URL,
     SUPABASE_ANON_KEY: import.meta.env.PUBLIC_SUPABASE_ANON_KEY
   }}>
-
-    document.querySelectorAll('form').forEach(form => {
-      form.addEventListener('submit', async (e) => {
+    const androidForm = document.getElementById('android-waitlist-form');
+    if (androidForm) {
+      androidForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        const emailInput = form.querySelector('input[type="email"]');
-        const submitBtn = form.querySelector('button[type="submit"]');
+
+        const emailInput = androidForm.querySelector('input[type="email"]');
+        const submitBtn = androidForm.querySelector('button[type="submit"]');
         const email = emailInput.value.trim().toLowerCase();
-        
-        // Disable form while submitting
+
         emailInput.disabled = true;
         submitBtn.disabled = true;
         submitBtn.textContent = 'Joining...';
-        
+
         try {
           const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
             method: 'POST',
@@ -260,28 +415,26 @@ import Layout from '../layouts/Layout.astro';
               'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
               'Prefer': 'return=minimal'
             },
-            body: JSON.stringify({ email, source: 'landing' })
+            body: JSON.stringify({ email, source: 'android-waitlist' })
           });
-          
+
           if (response.ok) {
-            // Success
             emailInput.value = '';
-            submitBtn.textContent = '✓ You\'re in!';
-            submitBtn.classList.remove('bg-primary', 'hover:bg-primary-dark');
+            submitBtn.textContent = "You're in!";
+            submitBtn.classList.remove('bg-partner', 'hover:bg-partner/90');
             submitBtn.classList.add('bg-green-500');
-            
+
             setTimeout(() => {
-              submitBtn.textContent = 'Join Waitlist';
+              submitBtn.textContent = 'Notify Me';
               submitBtn.classList.remove('bg-green-500');
-              submitBtn.classList.add('bg-primary', 'hover:bg-primary-dark');
+              submitBtn.classList.add('bg-partner', 'hover:bg-partner/90');
               emailInput.disabled = false;
               submitBtn.disabled = false;
             }, 3000);
           } else if (response.status === 409) {
-            // Duplicate email
             submitBtn.textContent = 'Already joined!';
             setTimeout(() => {
-              submitBtn.textContent = 'Join Waitlist';
+              submitBtn.textContent = 'Notify Me';
               emailInput.disabled = false;
               submitBtn.disabled = false;
             }, 2000);
@@ -291,18 +444,18 @@ import Layout from '../layouts/Layout.astro';
         } catch (error) {
           console.error('Waitlist error:', error);
           submitBtn.textContent = 'Error, retry';
-          submitBtn.classList.remove('bg-primary');
+          submitBtn.classList.remove('bg-partner');
           submitBtn.classList.add('bg-red-500');
-          
+
           setTimeout(() => {
-            submitBtn.textContent = 'Join Waitlist';
+            submitBtn.textContent = 'Notify Me';
             submitBtn.classList.remove('bg-red-500');
-            submitBtn.classList.add('bg-primary');
+            submitBtn.classList.add('bg-partner');
             emailInput.disabled = false;
             submitBtn.disabled = false;
           }, 2000);
         }
       });
-    });
+    }
   </script>
 </Layout>
