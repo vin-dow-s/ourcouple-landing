@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "question": "After a long day, you would feel most loved if your partner...",
+    "options": [
+      { "text": "Told you how much they appreciate you and why", "language": "words" },
+      { "text": "Gave you a long, warm hug", "language": "touch" }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "You feel most connected to your partner when they...",
+    "options": [
+      { "text": "Surprise you with a thoughtful gift", "language": "gifts" },
+      { "text": "Put their phone away and give you their full attention", "language": "time" }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "When you're stressed, you'd prefer your partner to...",
+    "options": [
+      { "text": "Take care of something on your to-do list", "language": "service" },
+      { "text": "Tell you everything will be okay and that they believe in you", "language": "words" }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "On your birthday, you'd most appreciate...",
+    "options": [
+      { "text": "A carefully chosen present they put thought into", "language": "gifts" },
+      { "text": "A full day spent together doing your favorite things", "language": "time" }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "You feel most secure in your relationship when your partner...",
+    "options": [
+      { "text": "Holds your hand or touches you affectionately", "language": "touch" },
+      { "text": "Does things to make your life easier without being asked", "language": "service" }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "When reuniting after time apart, you most look forward to...",
+    "options": [
+      { "text": "A warm embrace and physical closeness", "language": "touch" },
+      { "text": "Hearing them say how much they missed you", "language": "words" }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "You feel most appreciated when your partner...",
+    "options": [
+      { "text": "Plans a special date or activity for just the two of you", "language": "time" },
+      { "text": "Handles a chore or task you've been putting off", "language": "service" }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "A meaningful gesture from your partner would be...",
+    "options": [
+      { "text": "Writing you a heartfelt note or message", "language": "words" },
+      { "text": "Bringing you something that reminded them of you", "language": "gifts" }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "When watching a movie together, you prefer...",
+    "options": [
+      { "text": "Cuddling close and being physically connected", "language": "touch" },
+      { "text": "Their undivided attention with no distractions", "language": "time" }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "You feel most cared for when your partner...",
+    "options": [
+      { "text": "Makes you breakfast in bed or does something helpful", "language": "service" },
+      { "text": "Surprises you with your favorite treat or small gift", "language": "gifts" }
+    ]
+  }
+]

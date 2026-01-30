@@ -1,0 +1,343 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import LeadCaptureForm from '../../components/tools/LeadCaptureForm.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+import questions from '../../data/love-language-questions.json';
+
+const loveLanguages = {
+  words: {
+    name: "Words of Affirmation",
+    emoji: "💬",
+    description: "You feel most loved when your partner expresses their love through words — compliments, encouragement, 'I love you's, and appreciation. Verbal acknowledgment of affection means the world to you.",
+    tips: [
+      "Leave love notes for your partner to find",
+      "Express appreciation daily, even for small things",
+      "Send sweet text messages throughout the day",
+      "Verbally acknowledge their efforts and achievements"
+    ]
+  },
+  touch: {
+    name: "Physical Touch",
+    emoji: "🤗",
+    description: "Physical connection is how you feel most loved. Hugs, holding hands, cuddling, and physical intimacy make you feel secure and connected in your relationship.",
+    tips: [
+      "Hold hands when walking together",
+      "Give random hugs throughout the day",
+      "Sit close when watching TV or movies",
+      "Physical affection doesn't always have to lead somewhere — sometimes a hug is just a hug"
+    ]
+  },
+  gifts: {
+    name: "Receiving Gifts",
+    emoji: "🎁",
+    description: "Thoughtful gifts speak volumes to you. It's not about the price tag — it's about the thought, effort, and symbolism behind the gift that makes you feel loved and remembered.",
+    tips: [
+      "Keep a list of things your partner mentions wanting",
+      "Bring home small surprises 'just because'",
+      "Put thought into special occasion gifts",
+      "Remember that presence can also be a gift"
+    ]
+  },
+  time: {
+    name: "Quality Time",
+    emoji: "⏰",
+    description: "You feel most loved when you have your partner's undivided attention. It's not just about being together — it's about being fully present, engaged, and focused on each other.",
+    tips: [
+      "Schedule regular date nights without distractions",
+      "Put phones away during conversations",
+      "Plan activities you can do together",
+      "Make eye contact and actively listen"
+    ]
+  },
+  service: {
+    name: "Acts of Service",
+    emoji: "💪",
+    description: "Actions speak louder than words for you. When your partner does things to make your life easier — cooking, cleaning, running errands — you feel deeply loved and cared for.",
+    tips: [
+      "Do chores without being asked",
+      "Take things off your partner's plate when they're stressed",
+      "Anticipate needs before they're expressed",
+      "Remember: it's not about doing it 'right,' it's about doing it"
+    ]
+  }
+};
+---
+
+<ToolLayout
+  title="Love Language Quiz - Discover Your Love Language | OurCouple"
+  description="Take our free love language quiz to discover how you give and receive love. Compare results with your partner to understand each other better."
+  canonicalPath="/tools/love-language"
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <!-- Hero -->
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+        Love Language Quiz
+      </h1>
+      <p class="text-text-secondary">
+        Discover how you prefer to give and receive love. Answer 10 quick questions to find your love language.
+      </p>
+    </div>
+
+    <!-- Intro (shown initially) -->
+    <div id="intro" class="bg-card rounded-2xl border border-border p-6 mb-6">
+      <h2 class="font-semibold text-lg text-text mb-4">The 5 Love Languages</h2>
+
+      <div class="space-y-3 mb-6">
+        {Object.entries(loveLanguages).map(([key, lang]) => (
+          <div class="flex items-start gap-3">
+            <span class="text-xl">{lang.emoji}</span>
+            <div>
+              <p class="font-medium text-text">{lang.name}</p>
+              <p class="text-text-secondary text-sm">How you feel loved through {key === 'words' ? 'verbal expression' : key === 'touch' ? 'physical connection' : key === 'gifts' ? 'thoughtful presents' : key === 'time' ? 'focused attention' : 'helpful actions'}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <button
+        id="start-quiz"
+        class="w-full px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors"
+      >
+        Start the Quiz
+      </button>
+    </div>
+
+    <!-- Questions -->
+    <div id="questions-container" class="hidden">
+      <!-- Progress -->
+      <div class="mb-6">
+        <div class="flex justify-between text-sm text-text-secondary mb-2">
+          <span>Question <span id="current-q">1</span> of {questions.length}</span>
+          <span id="progress-percent">0%</span>
+        </div>
+        <div class="h-2 bg-border rounded-full overflow-hidden">
+          <div id="progress-bar" class="h-full bg-primary rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div id="question-card" class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <p id="question-text" class="font-medium text-lg text-text mb-6 text-center"></p>
+
+        <div id="options-container" class="space-y-3">
+          <!-- Options populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="results" class="hidden">
+      <!-- Primary Language -->
+      <div id="primary-result" class="bg-primary/5 rounded-2xl border border-primary/20 p-6 mb-6 text-center">
+        <p class="text-text-secondary text-sm mb-1">Your primary love language is</p>
+        <div id="primary-emoji" class="text-5xl mb-2"></div>
+        <h2 id="primary-name" class="text-2xl font-bold text-text mb-3"></h2>
+        <p id="primary-description" class="text-text-secondary text-sm leading-relaxed"></p>
+      </div>
+
+      <!-- Secondary Language -->
+      <div id="secondary-result" class="bg-card rounded-2xl border border-border p-6 mb-6 text-center">
+        <p class="text-text-secondary text-sm mb-1">Your secondary love language is</p>
+        <div id="secondary-emoji" class="text-3xl mb-2"></div>
+        <h3 id="secondary-name" class="font-semibold text-lg text-text"></h3>
+      </div>
+
+      <!-- All Scores -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <h3 class="font-semibold text-text mb-4">Your Love Language Profile</h3>
+        <div id="scores-chart" class="space-y-3">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Tips -->
+      <div class="bg-accent/5 rounded-2xl border border-accent/20 p-6 mb-6">
+        <h3 class="font-semibold text-text mb-4 flex items-center gap-2">
+          <span>💡</span>
+          Tips for Your Partner
+        </h3>
+        <ul id="tips-list" class="space-y-2 text-text-secondary text-sm">
+          <!-- Populated by JS -->
+        </ul>
+      </div>
+
+      <!-- Share with Partner -->
+      <div class="bg-partner/5 rounded-2xl border border-partner/20 p-6 mb-6 text-center">
+        <h3 class="font-semibold text-text mb-2">Compare with your partner</h3>
+        <p class="text-text-secondary text-sm mb-4">Share this quiz and see how your love languages match!</p>
+        <ShareButtons
+          title=""
+          text="I just discovered my love language! Take the quiz and let's compare:"
+          compact={true}
+        />
+      </div>
+
+      <!-- Retake -->
+      <div class="text-center">
+        <button id="retake" class="text-text-secondary hover:text-primary transition-colors text-sm">
+          Retake the quiz
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script define:vars={{ questions, loveLanguages }}>
+    // State
+    let currentQuestion = 0;
+    let scores = {
+      words: 0,
+      touch: 0,
+      gifts: 0,
+      time: 0,
+      service: 0
+    };
+
+    // Elements
+    const intro = document.getElementById('intro');
+    const questionsContainer = document.getElementById('questions-container');
+    const results = document.getElementById('results');
+    const startBtn = document.getElementById('start-quiz');
+    const retakeBtn = document.getElementById('retake');
+
+    const currentQSpan = document.getElementById('current-q');
+    const progressPercent = document.getElementById('progress-percent');
+    const progressBar = document.getElementById('progress-bar');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+
+    function showIntro() {
+      intro.classList.remove('hidden');
+      questionsContainer.classList.add('hidden');
+      results.classList.add('hidden');
+    }
+
+    function showQuestions() {
+      intro.classList.add('hidden');
+      questionsContainer.classList.remove('hidden');
+      results.classList.add('hidden');
+      renderQuestion();
+    }
+
+    function showResults() {
+      intro.classList.add('hidden');
+      questionsContainer.classList.add('hidden');
+      results.classList.remove('hidden');
+      renderResults();
+    }
+
+    function renderQuestion() {
+      const q = questions[currentQuestion];
+      const progress = ((currentQuestion) / questions.length) * 100;
+
+      currentQSpan.textContent = currentQuestion + 1;
+      progressPercent.textContent = `${Math.round(progress)}%`;
+      progressBar.style.width = `${progress}%`;
+
+      questionText.textContent = q.question;
+
+      // Shuffle options
+      const shuffledOptions = [...q.options].sort(() => Math.random() - 0.5);
+
+      optionsContainer.innerHTML = shuffledOptions.map((option, index) => `
+        <button
+          class="option-btn w-full p-4 rounded-xl border border-border text-left hover:border-primary/30 hover:bg-primary/5 transition-all"
+          data-language="${option.language}"
+        >
+          <span class="text-text">${option.text}</span>
+        </button>
+      `).join('');
+
+      // Add click handlers
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', () => selectOption(btn.dataset.language));
+      });
+    }
+
+    function selectOption(language) {
+      scores[language]++;
+
+      currentQuestion++;
+
+      if (currentQuestion < questions.length) {
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    function renderResults() {
+      // Sort languages by score
+      const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+      const primary = sorted[0][0];
+      const secondary = sorted[1][0];
+      const maxScore = sorted[0][1];
+
+      // Primary result
+      document.getElementById('primary-emoji').textContent = loveLanguages[primary].emoji;
+      document.getElementById('primary-name').textContent = loveLanguages[primary].name;
+      document.getElementById('primary-description').textContent = loveLanguages[primary].description;
+
+      // Secondary result
+      document.getElementById('secondary-emoji').textContent = loveLanguages[secondary].emoji;
+      document.getElementById('secondary-name').textContent = loveLanguages[secondary].name;
+
+      // Scores chart
+      const scoresChart = document.getElementById('scores-chart');
+      scoresChart.innerHTML = sorted.map(([lang, score]) => {
+        const percentage = maxScore > 0 ? (score / maxScore) * 100 : 0;
+        const isPrimary = lang === primary;
+
+        return `
+          <div class="flex items-center gap-3">
+            <span class="text-xl w-8">${loveLanguages[lang].emoji}</span>
+            <div class="flex-1">
+              <div class="flex justify-between text-sm mb-1">
+                <span class="${isPrimary ? 'font-medium text-text' : 'text-text-secondary'}">${loveLanguages[lang].name}</span>
+                <span class="text-text-secondary">${score}</span>
+              </div>
+              <div class="h-2 bg-border rounded-full overflow-hidden">
+                <div
+                  class="h-full rounded-full transition-all duration-500 ${isPrimary ? 'bg-primary' : 'bg-primary/40'}"
+                  style="width: ${percentage}%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Tips
+      const tipsList = document.getElementById('tips-list');
+      tipsList.innerHTML = loveLanguages[primary].tips.map(tip => `
+        <li class="flex items-start gap-2">
+          <span class="text-primary">•</span>
+          <span>${tip}</span>
+        </li>
+      `).join('');
+
+      // Update progress bar to 100%
+      progressBar.style.width = '100%';
+      progressPercent.textContent = '100%';
+    }
+
+    // Event listeners
+    startBtn.addEventListener('click', showQuestions);
+
+    retakeBtn.addEventListener('click', () => {
+      currentQuestion = 0;
+      scores = { words: 0, touch: 0, gifts: 0, time: 0, service: 0 };
+      showIntro();
+    });
+
+    // Check for partner comparison (URL hash)
+    if (window.location.hash.startsWith('#compare=')) {
+      // Future feature: decode partner's results and show comparison
+    }
+  </script>
+</ToolLayout>

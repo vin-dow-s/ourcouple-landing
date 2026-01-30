@@ -1,0 +1,122 @@
+---
+interface Props {
+  source: string;
+  ctaText?: string;
+  placeholder?: string;
+  successMessage?: string;
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  source,
+  ctaText = "Get Results",
+  placeholder = "Enter your email",
+  successMessage = "You're in!",
+  title,
+  subtitle
+} = Astro.props;
+
+const formId = `lead-form-${source}`;
+---
+
+<div class="lead-capture-container">
+  {title && (
+    <div class="text-center mb-4">
+      <h3 class="text-xl font-semibold text-text">{title}</h3>
+      {subtitle && <p class="text-text-secondary text-sm mt-1">{subtitle}</p>}
+    </div>
+  )}
+
+  <form id={formId} class="flex flex-col sm:flex-row gap-3" data-source={source} data-success={successMessage}>
+    <input
+      type="email"
+      name="email"
+      placeholder={placeholder}
+      required
+      class="flex-1 px-5 py-3 rounded-xl border border-border bg-card text-text placeholder:text-text-light focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all"
+    />
+    <button
+      type="submit"
+      class="px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors whitespace-nowrap"
+    >
+      {ctaText}
+    </button>
+  </form>
+
+  <p class="text-text-light text-xs text-center mt-3">
+    No spam, ever. We respect your privacy.
+  </p>
+</div>
+
+<script define:vars={{
+  SUPABASE_URL: import.meta.env.PUBLIC_SUPABASE_URL,
+  SUPABASE_ANON_KEY: import.meta.env.PUBLIC_SUPABASE_ANON_KEY
+}}>
+  document.querySelectorAll('form[id^="lead-form-"]').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const emailInput = form.querySelector('input[type="email"]');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const source = form.dataset.source;
+      const successMessage = form.dataset.success;
+      const originalText = submitBtn.textContent;
+      const email = emailInput.value.trim().toLowerCase();
+
+      emailInput.disabled = true;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Saving...';
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({ email, source })
+        });
+
+        if (response.ok) {
+          emailInput.value = '';
+          submitBtn.textContent = successMessage;
+          submitBtn.classList.remove('bg-primary', 'hover:bg-primary-dark');
+          submitBtn.classList.add('bg-green-500');
+
+          setTimeout(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.classList.remove('bg-green-500');
+            submitBtn.classList.add('bg-primary', 'hover:bg-primary-dark');
+            emailInput.disabled = false;
+            submitBtn.disabled = false;
+          }, 3000);
+        } else if (response.status === 409) {
+          submitBtn.textContent = 'Already subscribed!';
+          setTimeout(() => {
+            submitBtn.textContent = originalText;
+            emailInput.disabled = false;
+            submitBtn.disabled = false;
+          }, 2000);
+        } else {
+          throw new Error('Failed to save');
+        }
+      } catch (error) {
+        console.error('Lead capture error:', error);
+        submitBtn.textContent = 'Error, retry';
+        submitBtn.classList.remove('bg-primary');
+        submitBtn.classList.add('bg-red-500');
+
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.classList.remove('bg-red-500');
+          submitBtn.classList.add('bg-primary');
+          emailInput.disabled = false;
+          submitBtn.disabled = false;
+        }, 2000);
+      }
+    });
+  });
+</script>

@@ -1,0 +1,472 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import LeadCaptureForm from '../../components/tools/LeadCaptureForm.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+import ProgressBar from '../../components/tools/ProgressBar.astro';
+import dateIdeas from '../../data/bucket-list-ideas.json';
+
+const steps = ["Interests", "Budget", "Location", "Results"];
+---
+
+<ToolLayout
+  title="Couple Bucket List Generator - Personalized Date Ideas | OurCouple"
+  description="Get personalized date ideas based on your interests, budget, and preferences. Never run out of things to do together!"
+  canonicalPath="/tools/bucket-list"
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <!-- Hero -->
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+        Bucket List Generator
+      </h1>
+      <p class="text-text-secondary">
+        Answer a few questions and get personalized date ideas tailored just for you two.
+      </p>
+    </div>
+
+    <!-- Progress Bar -->
+    <div id="progress-container">
+      <ProgressBar steps={steps} currentStep={0} />
+    </div>
+
+    <!-- Step 1: Interests -->
+    <div id="step-1" class="step-content bg-card rounded-2xl border border-border p-6 mb-6">
+      <h2 class="font-semibold text-lg text-text mb-2">What do you enjoy together?</h2>
+      <p class="text-text-secondary text-sm mb-4">Select all that apply</p>
+
+      <div class="grid grid-cols-2 gap-3">
+        <label class="interest-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="checkbox" name="interest" value="outdoor" class="sr-only" />
+          <span class="text-xl">🌲</span>
+          <span class="font-medium text-text">Outdoor</span>
+        </label>
+
+        <label class="interest-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="checkbox" name="interest" value="food" class="sr-only" />
+          <span class="text-xl">🍕</span>
+          <span class="font-medium text-text">Food & Drinks</span>
+        </label>
+
+        <label class="interest-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="checkbox" name="interest" value="adventure" class="sr-only" />
+          <span class="text-xl">🎢</span>
+          <span class="font-medium text-text">Adventure</span>
+        </label>
+
+        <label class="interest-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="checkbox" name="interest" value="creative" class="sr-only" />
+          <span class="text-xl">🎨</span>
+          <span class="font-medium text-text">Creative</span>
+        </label>
+
+        <label class="interest-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="checkbox" name="interest" value="relaxation" class="sr-only" />
+          <span class="text-xl">🧘</span>
+          <span class="font-medium text-text">Relaxation</span>
+        </label>
+
+        <label class="interest-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="checkbox" name="interest" value="active" class="sr-only" />
+          <span class="text-xl">🏃</span>
+          <span class="font-medium text-text">Active</span>
+        </label>
+      </div>
+
+      <button
+        id="next-1"
+        class="w-full mt-6 px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        disabled
+      >
+        Continue
+      </button>
+    </div>
+
+    <!-- Step 2: Budget -->
+    <div id="step-2" class="step-content hidden bg-card rounded-2xl border border-border p-6 mb-6">
+      <h2 class="font-semibold text-lg text-text mb-2">What's your budget?</h2>
+      <p class="text-text-secondary text-sm mb-4">Select your typical date budget</p>
+
+      <div class="space-y-3">
+        <label class="budget-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="radio" name="budget" value="free" class="sr-only" />
+          <span class="text-xl">💚</span>
+          <div>
+            <span class="font-medium text-text">Free</span>
+            <p class="text-text-secondary text-sm">No-cost date ideas</p>
+          </div>
+        </label>
+
+        <label class="budget-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="radio" name="budget" value="low" class="sr-only" />
+          <span class="text-xl">💵</span>
+          <div>
+            <span class="font-medium text-text">Low Budget</span>
+            <p class="text-text-secondary text-sm">Under $30</p>
+          </div>
+        </label>
+
+        <label class="budget-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="radio" name="budget" value="medium" class="sr-only" />
+          <span class="text-xl">💰</span>
+          <div>
+            <span class="font-medium text-text">Medium Budget</span>
+            <p class="text-text-secondary text-sm">$30 - $100</p>
+          </div>
+        </label>
+
+        <label class="budget-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="radio" name="budget" value="high" class="sr-only" />
+          <span class="text-xl">💎</span>
+          <div>
+            <span class="font-medium text-text">Splurge</span>
+            <p class="text-text-secondary text-sm">$100+</p>
+          </div>
+        </label>
+
+        <label class="budget-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="radio" name="budget" value="any" class="sr-only" />
+          <span class="text-xl">🎲</span>
+          <div>
+            <span class="font-medium text-text">Any Budget</span>
+            <p class="text-text-secondary text-sm">Show me everything</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="flex gap-3 mt-6">
+        <button id="back-2" class="flex-1 px-6 py-3 border border-border rounded-xl font-medium hover:border-primary/30 transition-colors">
+          Back
+        </button>
+        <button
+          id="next-2"
+          class="flex-1 px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled
+        >
+          Continue
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 3: Location -->
+    <div id="step-3" class="step-content hidden bg-card rounded-2xl border border-border p-6 mb-6">
+      <h2 class="font-semibold text-lg text-text mb-2">Where do you want to go?</h2>
+      <p class="text-text-secondary text-sm mb-4">Select your preferred location type</p>
+
+      <div class="space-y-3">
+        <label class="location-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="radio" name="location" value="home" class="sr-only" />
+          <span class="text-xl">🏠</span>
+          <div>
+            <span class="font-medium text-text">At Home</span>
+            <p class="text-text-secondary text-sm">Cozy dates without leaving the house</p>
+          </div>
+        </label>
+
+        <label class="location-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="radio" name="location" value="local" class="sr-only" />
+          <span class="text-xl">🏙️</span>
+          <div>
+            <span class="font-medium text-text">Local</span>
+            <p class="text-text-secondary text-sm">Explore your city or nearby areas</p>
+          </div>
+        </label>
+
+        <label class="location-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="radio" name="location" value="travel" class="sr-only" />
+          <span class="text-xl">✈️</span>
+          <div>
+            <span class="font-medium text-text">Travel</span>
+            <p class="text-text-secondary text-sm">Day trips or weekend getaways</p>
+          </div>
+        </label>
+
+        <label class="location-option flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:border-primary/30 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+          <input type="radio" name="location" value="any" class="sr-only" />
+          <span class="text-xl">🌍</span>
+          <div>
+            <span class="font-medium text-text">Anywhere</span>
+            <p class="text-text-secondary text-sm">Show me all options</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="flex gap-3 mt-6">
+        <button id="back-3" class="flex-1 px-6 py-3 border border-border rounded-xl font-medium hover:border-primary/30 transition-colors">
+          Back
+        </button>
+        <button
+          id="generate"
+          class="flex-1 px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled
+        >
+          Generate Ideas
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 4: Results -->
+    <div id="step-4" class="step-content hidden">
+      <!-- Preview Ideas -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-semibold text-lg text-text">Your Personalized Ideas</h2>
+          <button id="regenerate" class="text-sm text-primary hover:text-primary-dark transition-colors flex items-center gap-1">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            Shuffle
+          </button>
+        </div>
+
+        <div id="ideas-list" class="space-y-4">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Lead Capture -->
+      <div class="bg-accent/5 rounded-2xl border border-accent/20 p-6 mb-6">
+        <div class="text-center mb-4">
+          <span class="text-2xl">🎁</span>
+        </div>
+        <LeadCaptureForm
+          source="bucket-list"
+          title="Want 25+ more ideas?"
+          subtitle="Get the full personalized list sent to your inbox"
+          ctaText="Send My Ideas"
+          placeholder="Enter your email"
+          successMessage="Check your inbox!"
+        />
+      </div>
+
+      <!-- Share & Start Over -->
+      <div class="text-center space-y-4">
+        <ShareButtons
+          title="Share with your partner"
+          text="Check out these date ideas for us!"
+        />
+
+        <button id="start-over" class="text-text-secondary hover:text-primary transition-colors text-sm">
+          Start over with new preferences
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script define:vars={{ dateIdeas }}>
+    // State
+    let currentStep = 1;
+    let selections = {
+      interests: [],
+      budget: null,
+      location: null
+    };
+
+    // Elements
+    const steps = [1, 2, 3, 4];
+    const stepContents = steps.map(s => document.getElementById(`step-${s}`));
+    const progressIndicators = document.querySelectorAll('.step-indicator');
+    const progressLines = document.querySelectorAll('.step-line');
+    const stepLabels = document.querySelectorAll('[data-step-label]');
+
+    // Interest checkboxes
+    const interestCheckboxes = document.querySelectorAll('input[name="interest"]');
+    const next1Btn = document.getElementById('next-1');
+
+    // Budget radios
+    const budgetRadios = document.querySelectorAll('input[name="budget"]');
+    const next2Btn = document.getElementById('next-2');
+    const back2Btn = document.getElementById('back-2');
+
+    // Location radios
+    const locationRadios = document.querySelectorAll('input[name="location"]');
+    const generateBtn = document.getElementById('generate');
+    const back3Btn = document.getElementById('back-3');
+
+    // Results
+    const ideasList = document.getElementById('ideas-list');
+    const regenerateBtn = document.getElementById('regenerate');
+    const startOverBtn = document.getElementById('start-over');
+
+    function updateProgress() {
+      progressIndicators.forEach((indicator, index) => {
+        const stepNum = index;
+        indicator.classList.remove('bg-green-500', 'bg-primary', 'bg-border', 'text-white', 'text-text-light');
+
+        if (stepNum < currentStep - 1) {
+          indicator.classList.add('bg-green-500', 'text-white');
+          indicator.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>`;
+        } else if (stepNum === currentStep - 1) {
+          indicator.classList.add('bg-primary', 'text-white');
+          indicator.innerHTML = `<span>${stepNum + 1}</span>`;
+        } else {
+          indicator.classList.add('bg-border', 'text-text-light');
+          indicator.innerHTML = `<span>${stepNum + 1}</span>`;
+        }
+      });
+
+      progressLines.forEach((line, index) => {
+        line.classList.remove('bg-green-500', 'bg-border');
+        if (index < currentStep - 1) {
+          line.classList.add('bg-green-500');
+        } else {
+          line.classList.add('bg-border');
+        }
+      });
+
+      stepLabels.forEach((label, index) => {
+        label.classList.remove('text-primary', 'font-medium');
+        if (index === currentStep - 1) {
+          label.classList.add('text-primary', 'font-medium');
+        }
+      });
+    }
+
+    function showStep(step) {
+      currentStep = step;
+      stepContents.forEach((content, index) => {
+        if (index + 1 === step) {
+          content.classList.remove('hidden');
+        } else {
+          content.classList.add('hidden');
+        }
+      });
+      updateProgress();
+    }
+
+    // Step 1: Interests
+    interestCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        selections.interests = Array.from(interestCheckboxes)
+          .filter(cb => cb.checked)
+          .map(cb => cb.value);
+        next1Btn.disabled = selections.interests.length === 0;
+      });
+    });
+
+    next1Btn.addEventListener('click', () => showStep(2));
+
+    // Step 2: Budget
+    budgetRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        selections.budget = radio.value;
+        next2Btn.disabled = false;
+      });
+    });
+
+    next2Btn.addEventListener('click', () => showStep(3));
+    back2Btn.addEventListener('click', () => showStep(1));
+
+    // Step 3: Location
+    locationRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        selections.location = radio.value;
+        generateBtn.disabled = false;
+      });
+    });
+
+    back3Btn.addEventListener('click', () => showStep(2));
+
+    // Generate ideas
+    function generateIdeas() {
+      const { interests, budget, location } = selections;
+
+      // Filter ideas based on selections
+      let filtered = dateIdeas.filter(idea => {
+        // Check interests (at least one match)
+        const interestMatch = interests.some(i => idea.interests.includes(i));
+        if (!interestMatch) return false;
+
+        // Check budget
+        if (budget !== 'any') {
+          const budgetOrder = ['free', 'low', 'medium', 'high'];
+          const ideaBudgetIndex = budgetOrder.indexOf(idea.budget);
+          const selectedBudgetIndex = budgetOrder.indexOf(budget);
+          if (ideaBudgetIndex > selectedBudgetIndex) return false;
+        }
+
+        // Check location
+        if (location !== 'any' && idea.location !== location) return false;
+
+        return true;
+      });
+
+      // Shuffle and take top 5
+      filtered = filtered.sort(() => Math.random() - 0.5).slice(0, 5);
+
+      // If not enough results, add some from related categories
+      if (filtered.length < 3) {
+        const additional = dateIdeas
+          .filter(idea => !filtered.includes(idea))
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 5 - filtered.length);
+        filtered = [...filtered, ...additional];
+      }
+
+      return filtered;
+    }
+
+    function renderIdeas(ideas) {
+      const budgetEmoji = {
+        free: '💚 Free',
+        low: '💵 Low cost',
+        medium: '💰 Medium',
+        high: '💎 Splurge'
+      };
+
+      const locationEmoji = {
+        home: '🏠 At home',
+        local: '🏙️ Local',
+        travel: '✈️ Travel'
+      };
+
+      ideasList.innerHTML = ideas.map((idea, index) => `
+        <div class="idea-card p-4 rounded-xl bg-background border border-border hover:border-primary/30 transition-colors" style="animation: fadeIn 0.3s ease-out ${index * 0.1}s forwards; opacity: 0;">
+          <h3 class="font-semibold text-text mb-2">${idea.title}</h3>
+          <p class="text-text-secondary text-sm mb-3">${idea.description}</p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-2 py-1 rounded-full bg-primary/10 text-primary">${budgetEmoji[idea.budget]}</span>
+            <span class="px-2 py-1 rounded-full bg-partner/10 text-partner">${locationEmoji[idea.location]}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    generateBtn.addEventListener('click', () => {
+      const ideas = generateIdeas();
+      renderIdeas(ideas);
+      showStep(4);
+    });
+
+    regenerateBtn.addEventListener('click', () => {
+      const ideas = generateIdeas();
+      renderIdeas(ideas);
+    });
+
+    startOverBtn.addEventListener('click', () => {
+      // Reset selections
+      selections = { interests: [], budget: null, location: null };
+      interestCheckboxes.forEach(cb => cb.checked = false);
+      budgetRadios.forEach(r => r.checked = false);
+      locationRadios.forEach(r => r.checked = false);
+      next1Btn.disabled = true;
+      next2Btn.disabled = true;
+      generateBtn.disabled = true;
+      showStep(1);
+    });
+
+    // Add fadeIn animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</ToolLayout>

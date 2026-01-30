@@ -1,0 +1,574 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import LeadCaptureForm from '../../components/tools/LeadCaptureForm.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+import questions from '../../data/quiz-questions.json';
+---
+
+<ToolLayout
+  title="How Well Do You Know Your Partner? Quiz | OurCouple"
+  description="Take the couple quiz about your partner, then share it with them to see how well you really know each other. Fun, free, and reveals surprising insights!"
+  canonicalPath="/tools/couple-quiz"
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <!-- Hero -->
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-partner/10 flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-partner" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+        How Well Do You Know Your Partner?
+      </h1>
+      <p id="hero-subtitle" class="text-text-secondary">
+        Answer questions about your partner, then share the quiz to see if they know you just as well!
+      </p>
+    </div>
+
+    <!-- Mode: Start (default) -->
+    <div id="mode-start" class="mode-container">
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <h2 class="font-semibold text-lg text-text mb-2">How it works</h2>
+        <div class="space-y-4 mb-6">
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm font-semibold text-primary shrink-0">1</div>
+            <div>
+              <p class="font-medium text-text">You answer about your partner</p>
+              <p class="text-text-secondary text-sm">Answer 12 questions about what you think your partner would say</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-full bg-partner/10 flex items-center justify-center text-sm font-semibold text-partner shrink-0">2</div>
+            <div>
+              <p class="font-medium text-text">Share the quiz with them</p>
+              <p class="text-text-secondary text-sm">Send them a special link to answer the same questions about themselves</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-sm font-semibold text-accent shrink-0">3</div>
+            <div>
+              <p class="font-medium text-text">See how you match!</p>
+              <p class="text-text-secondary text-sm">Compare answers and see how well you really know each other</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-text mb-2">Your name</label>
+          <input
+            type="text"
+            id="user-name"
+            placeholder="Enter your name"
+            class="w-full px-4 py-3 rounded-xl border border-border bg-background text-text placeholder:text-text-light focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all"
+          />
+        </div>
+
+        <button
+          id="start-quiz"
+          class="w-full px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled
+        >
+          Start the Quiz
+        </button>
+      </div>
+    </div>
+
+    <!-- Mode: Questions (answering about partner) -->
+    <div id="mode-questions" class="mode-container hidden">
+      <!-- Progress -->
+      <div class="mb-6">
+        <div class="flex justify-between text-sm text-text-secondary mb-2">
+          <span>Question <span id="current-q">1</span> of {questions.length}</span>
+          <span id="progress-percent">0%</span>
+        </div>
+        <div class="h-2 bg-border rounded-full overflow-hidden">
+          <div id="progress-bar" class="h-full bg-primary rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <p id="question-text" class="font-medium text-lg text-text mb-6"></p>
+
+        <div id="answer-container">
+          <!-- Text input or choices populated by JS -->
+        </div>
+
+        <div class="flex gap-3 mt-6">
+          <button
+            id="prev-btn"
+            class="flex-1 px-6 py-3 border border-border rounded-xl font-medium hover:border-primary/30 transition-colors disabled:opacity-50"
+            disabled
+          >
+            Back
+          </button>
+          <button
+            id="next-btn"
+            class="flex-1 px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mode: Share (after completing quiz) -->
+    <div id="mode-share" class="mode-container hidden">
+      <div class="bg-primary/5 rounded-2xl border border-primary/20 p-6 mb-6 text-center">
+        <div class="text-4xl mb-3">🎉</div>
+        <h2 class="text-2xl font-bold text-text mb-2">Quiz complete!</h2>
+        <p class="text-text-secondary">Now share this with your partner so they can answer and you can compare results.</p>
+      </div>
+
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <h3 class="font-semibold text-text mb-4">Share this link with your partner</h3>
+
+        <div class="flex gap-2 mb-4">
+          <input
+            type="text"
+            id="share-link"
+            readonly
+            class="flex-1 px-4 py-3 rounded-xl border border-border bg-background text-text text-sm font-mono"
+          />
+          <button
+            id="copy-link"
+            class="px-4 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark transition-colors"
+          >
+            Copy
+          </button>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3">
+          <a
+            id="whatsapp-share"
+            href="#"
+            class="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#25D366] text-white hover:bg-[#20BD5A] transition-colors"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            WhatsApp
+          </a>
+          <a
+            id="sms-share"
+            href="#"
+            class="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#34C759] text-white hover:bg-[#2DB84D] transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            SMS
+          </a>
+        </div>
+      </div>
+
+      <p class="text-text-secondary text-sm text-center">
+        Once your partner completes the quiz, you'll both see the comparison results!
+      </p>
+    </div>
+
+    <!-- Mode: Partner (answering about self) -->
+    <div id="mode-partner" class="mode-container hidden">
+      <div class="bg-partner/5 rounded-2xl border border-partner/20 p-4 mb-6 text-center">
+        <p class="text-text-secondary text-sm">
+          <span id="partner-name" class="font-medium text-text"></span> answered these questions about you. Now it's your turn!
+        </p>
+      </div>
+
+      <!-- Progress -->
+      <div class="mb-6">
+        <div class="flex justify-between text-sm text-text-secondary mb-2">
+          <span>Question <span id="partner-current-q">1</span> of {questions.length}</span>
+          <span id="partner-progress-percent">0%</span>
+        </div>
+        <div class="h-2 bg-border rounded-full overflow-hidden">
+          <div id="partner-progress-bar" class="h-full bg-partner rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <p id="partner-question-text" class="font-medium text-lg text-text mb-6"></p>
+
+        <div id="partner-answer-container">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="flex gap-3 mt-6">
+          <button
+            id="partner-prev-btn"
+            class="flex-1 px-6 py-3 border border-border rounded-xl font-medium hover:border-primary/30 transition-colors disabled:opacity-50"
+            disabled
+          >
+            Back
+          </button>
+          <button
+            id="partner-next-btn"
+            class="flex-1 px-6 py-3 bg-partner text-white rounded-xl font-semibold hover:bg-partner/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mode: Results (comparison) -->
+    <div id="mode-results" class="mode-container hidden">
+      <!-- Score -->
+      <div class="bg-primary/5 rounded-2xl border border-primary/20 p-6 mb-6 text-center">
+        <p class="text-text-secondary text-sm mb-2">Compatibility Score</p>
+        <div id="score-display" class="text-5xl font-bold text-primary mb-2"></div>
+        <p id="score-message" class="text-text-secondary"></p>
+      </div>
+
+      <!-- Answers Comparison -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <h3 class="font-semibold text-text mb-4">Your Answers Compared</h3>
+        <div id="comparison-list" class="space-y-4">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Share Results -->
+      <div class="text-center mb-6">
+        <ShareButtons
+          title="Share your results"
+          text="We got this score on the couple quiz! How well do you know your partner?"
+        />
+      </div>
+
+      <!-- Try Again -->
+      <div class="text-center">
+        <button id="try-again" class="text-text-secondary hover:text-primary transition-colors text-sm">
+          Take the quiz again
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script define:vars={{ questions }}>
+    // State
+    let mode = 'start'; // start, questions, share, partner, results
+    let userName = '';
+    let currentQuestion = 0;
+    let userAnswers = [];
+    let partnerData = null; // Decoded from URL
+    let partnerAnswers = [];
+
+    // Elements
+    const modeContainers = document.querySelectorAll('.mode-container');
+    const userNameInput = document.getElementById('user-name');
+    const startBtn = document.getElementById('start-quiz');
+    const heroSubtitle = document.getElementById('hero-subtitle');
+
+    // Question mode elements
+    const currentQSpan = document.getElementById('current-q');
+    const progressPercent = document.getElementById('progress-percent');
+    const progressBar = document.getElementById('progress-bar');
+    const questionText = document.getElementById('question-text');
+    const answerContainer = document.getElementById('answer-container');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    // Share mode elements
+    const shareLinkInput = document.getElementById('share-link');
+    const copyLinkBtn = document.getElementById('copy-link');
+    const whatsappShare = document.getElementById('whatsapp-share');
+    const smsShare = document.getElementById('sms-share');
+
+    // Partner mode elements
+    const partnerNameSpan = document.getElementById('partner-name');
+    const partnerCurrentQSpan = document.getElementById('partner-current-q');
+    const partnerProgressPercent = document.getElementById('partner-progress-percent');
+    const partnerProgressBar = document.getElementById('partner-progress-bar');
+    const partnerQuestionText = document.getElementById('partner-question-text');
+    const partnerAnswerContainer = document.getElementById('partner-answer-container');
+    const partnerPrevBtn = document.getElementById('partner-prev-btn');
+    const partnerNextBtn = document.getElementById('partner-next-btn');
+
+    // Results mode elements
+    const scoreDisplay = document.getElementById('score-display');
+    const scoreMessage = document.getElementById('score-message');
+    const comparisonList = document.getElementById('comparison-list');
+    const tryAgainBtn = document.getElementById('try-again');
+
+    // Utility functions
+    function encodeData(data) {
+      return btoa(encodeURIComponent(JSON.stringify(data)));
+    }
+
+    function decodeData(encoded) {
+      try {
+        return JSON.parse(decodeURIComponent(atob(encoded)));
+      } catch {
+        return null;
+      }
+    }
+
+    function showMode(newMode) {
+      mode = newMode;
+      modeContainers.forEach(container => {
+        const containerId = container.id.replace('mode-', '');
+        if (containerId === newMode) {
+          container.classList.remove('hidden');
+        } else {
+          container.classList.add('hidden');
+        }
+      });
+    }
+
+    function updateProgress(current, total, barEl, percentEl, currentEl) {
+      const progress = (current / total) * 100;
+      barEl.style.width = `${progress}%`;
+      percentEl.textContent = `${Math.round(progress)}%`;
+      currentEl.textContent = current + 1;
+    }
+
+    function renderQuestion(questionIndex, isPartner = false) {
+      const q = questions[questionIndex];
+      const text = isPartner ? q.forSelf : q.forPartner;
+      const container = isPartner ? partnerAnswerContainer : answerContainer;
+      const textEl = isPartner ? partnerQuestionText : questionText;
+      const answers = isPartner ? partnerAnswers : userAnswers;
+
+      textEl.textContent = text;
+
+      if (q.type === 'text') {
+        container.innerHTML = `
+          <input
+            type="text"
+            class="answer-input w-full px-4 py-3 rounded-xl border border-border bg-background text-text placeholder:text-text-light focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all"
+            placeholder="${q.placeholder || 'Type your answer...'}"
+            value="${answers[questionIndex] || ''}"
+          />
+        `;
+      } else {
+        container.innerHTML = q.options.map((option, i) => `
+          <button
+            class="answer-choice w-full p-4 rounded-xl border ${answers[questionIndex] === option ? (isPartner ? 'border-partner bg-partner/10' : 'border-primary bg-primary/10') : 'border-border'} text-left hover:border-${isPartner ? 'partner' : 'primary'}/30 transition-all mb-2"
+            data-value="${option}"
+          >
+            ${option}
+          </button>
+        `).join('');
+      }
+
+      // Add event listeners
+      const input = container.querySelector('.answer-input');
+      if (input) {
+        input.addEventListener('input', (e) => {
+          answers[questionIndex] = e.target.value;
+          updateNextButton(isPartner);
+        });
+        input.focus();
+      }
+
+      container.querySelectorAll('.answer-choice').forEach(btn => {
+        btn.addEventListener('click', () => {
+          answers[questionIndex] = btn.dataset.value;
+          container.querySelectorAll('.answer-choice').forEach(b => {
+            b.classList.remove('border-primary', 'border-partner', 'bg-primary/10', 'bg-partner/10');
+            b.classList.add('border-border');
+          });
+          btn.classList.remove('border-border');
+          btn.classList.add(isPartner ? 'border-partner' : 'border-primary', isPartner ? 'bg-partner/10' : 'bg-primary/10');
+          updateNextButton(isPartner);
+        });
+      });
+
+      updateNextButton(isPartner);
+    }
+
+    function updateNextButton(isPartner) {
+      const answers = isPartner ? partnerAnswers : userAnswers;
+      const btn = isPartner ? partnerNextBtn : nextBtn;
+      const hasAnswer = answers[currentQuestion] && answers[currentQuestion].trim() !== '';
+      btn.disabled = !hasAnswer;
+    }
+
+    // User quiz flow
+    userNameInput.addEventListener('input', (e) => {
+      userName = e.target.value.trim();
+      startBtn.disabled = userName.length === 0;
+    });
+
+    startBtn.addEventListener('click', () => {
+      userAnswers = new Array(questions.length).fill('');
+      currentQuestion = 0;
+      showMode('questions');
+      renderQuestion(0);
+      updateProgress(0, questions.length, progressBar, progressPercent, currentQSpan);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        renderQuestion(currentQuestion);
+        updateProgress(currentQuestion, questions.length, progressBar, progressPercent, currentQSpan);
+        prevBtn.disabled = currentQuestion === 0;
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion(currentQuestion);
+        updateProgress(currentQuestion, questions.length, progressBar, progressPercent, currentQSpan);
+        prevBtn.disabled = false;
+      } else {
+        // Quiz complete - show share
+        completeUserQuiz();
+      }
+    });
+
+    function completeUserQuiz() {
+      const data = {
+        name: userName,
+        answers: userAnswers
+      };
+      const encoded = encodeData(data);
+      const shareUrl = `${window.location.origin}/tools/couple-quiz#q=${encoded}`;
+
+      shareLinkInput.value = shareUrl;
+      whatsappShare.href = `https://wa.me/?text=${encodeURIComponent(`${userName} wants to know how well you know them! Take this quiz: ${shareUrl}`)}`;
+      smsShare.href = `sms:?body=${encodeURIComponent(`${userName} wants to know how well you know them! Take this quiz: ${shareUrl}`)}`;
+
+      showMode('share');
+    }
+
+    copyLinkBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(shareLinkInput.value);
+        copyLinkBtn.textContent = 'Copied!';
+        setTimeout(() => {
+          copyLinkBtn.textContent = 'Copy';
+        }, 2000);
+      } catch (err) {
+        console.error('Copy failed:', err);
+      }
+    });
+
+    // Partner quiz flow
+    partnerPrevBtn.addEventListener('click', () => {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        renderQuestion(currentQuestion, true);
+        updateProgress(currentQuestion, questions.length, partnerProgressBar, partnerProgressPercent, partnerCurrentQSpan);
+        partnerPrevBtn.disabled = currentQuestion === 0;
+      }
+    });
+
+    partnerNextBtn.addEventListener('click', () => {
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion(currentQuestion, true);
+        updateProgress(currentQuestion, questions.length, partnerProgressBar, partnerProgressPercent, partnerCurrentQSpan);
+        partnerPrevBtn.disabled = false;
+      } else {
+        // Partner complete - show results
+        showResults();
+      }
+    });
+
+    function showResults() {
+      // Calculate matches
+      let matches = 0;
+      const comparisons = questions.map((q, i) => {
+        const partnerGuess = partnerData.answers[i] || '';
+        const actualAnswer = partnerAnswers[i] || '';
+
+        // For text questions, do fuzzy matching
+        let isMatch = false;
+        if (q.type === 'text') {
+          const guess = partnerGuess.toLowerCase().trim();
+          const actual = actualAnswer.toLowerCase().trim();
+          isMatch = guess === actual ||
+                   guess.includes(actual) ||
+                   actual.includes(guess) ||
+                   (guess.length > 3 && actual.length > 3 && (
+                     guess.split(' ').some(w => actual.includes(w)) ||
+                     actual.split(' ').some(w => guess.includes(w))
+                   ));
+        } else {
+          isMatch = partnerGuess === actualAnswer;
+        }
+
+        if (isMatch) matches++;
+
+        return {
+          question: q.forSelf,
+          partnerGuess,
+          actualAnswer,
+          isMatch
+        };
+      });
+
+      const score = Math.round((matches / questions.length) * 100);
+
+      // Display score
+      scoreDisplay.textContent = `${score}%`;
+
+      if (score >= 80) {
+        scoreMessage.textContent = `Amazing! ${partnerData.name} really knows you well! 💕`;
+      } else if (score >= 60) {
+        scoreMessage.textContent = `Pretty good! ${partnerData.name} knows you better than most! 😊`;
+      } else if (score >= 40) {
+        scoreMessage.textContent = `Not bad! There's always more to learn about each other. 💫`;
+      } else {
+        scoreMessage.textContent = `Looks like you two have some fun conversations ahead! 🌟`;
+      }
+
+      // Display comparisons
+      comparisonList.innerHTML = comparisons.map((c, i) => `
+        <div class="p-4 rounded-xl ${c.isMatch ? 'bg-green-50 border border-green-200' : 'bg-background border border-border'}">
+          <p class="text-sm text-text-secondary mb-2">Q${i + 1}: ${c.question}</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <p class="text-xs text-text-light mb-1">${partnerData.name} guessed:</p>
+              <p class="font-medium text-text">${c.partnerGuess || '(no answer)'}</p>
+            </div>
+            <div>
+              <p class="text-xs text-text-light mb-1">You said:</p>
+              <p class="font-medium text-text">${c.actualAnswer || '(no answer)'}</p>
+            </div>
+          </div>
+          ${c.isMatch ? '<p class="text-green-600 text-sm mt-2 font-medium">✓ Match!</p>' : ''}
+        </div>
+      `).join('');
+
+      showMode('results');
+    }
+
+    tryAgainBtn.addEventListener('click', () => {
+      window.location.href = '/tools/couple-quiz';
+    });
+
+    // Check URL on load for partner mode
+    function checkUrlForPartnerMode() {
+      const hash = window.location.hash;
+      if (hash.startsWith('#q=')) {
+        const encoded = hash.substring(3);
+        const decoded = decodeData(encoded);
+
+        if (decoded && decoded.name && decoded.answers) {
+          partnerData = decoded;
+          partnerAnswers = new Array(questions.length).fill('');
+          currentQuestion = 0;
+
+          partnerNameSpan.textContent = decoded.name;
+          heroSubtitle.textContent = `${decoded.name} answered questions about you. Now answer them yourself to see how well they know you!`;
+
+          showMode('partner');
+          renderQuestion(0, true);
+          updateProgress(0, questions.length, partnerProgressBar, partnerProgressPercent, partnerCurrentQSpan);
+        }
+      }
+    }
+
+    // Run on load
+    checkUrlForPartnerMode();
+  </script>
+</ToolLayout>

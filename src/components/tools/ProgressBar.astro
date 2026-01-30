@@ -1,0 +1,45 @@
+---
+interface Props {
+  steps: string[];
+  currentStep?: number;
+}
+
+const { steps, currentStep = 0 } = Astro.props;
+---
+
+<div class="progress-bar-container flex items-center justify-center gap-2 mb-8">
+  {steps.map((step, index) => (
+    <div class="flex items-center">
+      <div
+        class={`step-indicator flex items-center justify-center w-8 h-8 rounded-full text-sm font-medium transition-all
+          ${index < currentStep ? 'bg-green-500 text-white' : ''}
+          ${index === currentStep ? 'bg-primary text-white' : ''}
+          ${index > currentStep ? 'bg-border text-text-light' : ''}
+        `}
+        data-step={index}
+      >
+        {index < currentStep ? (
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        ) : (
+          <span>{index + 1}</span>
+        )}
+      </div>
+      {index < steps.length - 1 && (
+        <div
+          class={`step-line w-8 sm:w-12 h-0.5 mx-1 transition-all ${index < currentStep ? 'bg-green-500' : 'bg-border'}`}
+          data-line={index}
+        ></div>
+      )}
+    </div>
+  ))}
+</div>
+
+<div class="step-labels hidden sm:flex justify-between text-xs text-text-secondary mb-4" style={`max-width: ${steps.length * 100}px; margin: 0 auto;`}>
+  {steps.map((step, index) => (
+    <span class={`text-center ${index === currentStep ? 'text-primary font-medium' : ''}`} data-step-label={index}>
+      {step}
+    </span>
+  ))}
+</div>

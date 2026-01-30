@@ -1,0 +1,168 @@
+[
+  {
+    "id": 1,
+    "forPartner": "What's their comfort food when they're feeling down?",
+    "forSelf": "What's your comfort food when you're feeling down?",
+    "type": "choice",
+    "options": [
+      "Pizza or fast food",
+      "Ice cream or sweets",
+      "Chocolate or snacks",
+      "Healthy comfort food",
+      "Don't really eat when stressed"
+    ]
+  },
+  {
+    "id": 2,
+    "forPartner": "What stresses them most at work or in daily life?",
+    "forSelf": "What stresses you most at work or in daily life?",
+    "type": "choice",
+    "options": [
+      "Deadlines & time pressure",
+      "Difficult people",
+      "Too much workload",
+      "Lack of recognition",
+      "Financial worries",
+      "Uncertainty about the future"
+    ]
+  },
+  {
+    "id": 3,
+    "forPartner": "Their ideal vacation would be...",
+    "forSelf": "Your ideal vacation would be...",
+    "type": "choice",
+    "options": [
+      "Beach relaxation",
+      "City exploration",
+      "Mountain or nature adventure",
+      "Road trip",
+      "Cultural immersion",
+      "Staying at home and resting"
+    ]
+  },
+  {
+    "id": 4,
+    "forPartner": "What's their biggest pet peeve?",
+    "forSelf": "What's your biggest pet peeve?",
+    "type": "choice",
+    "options": [
+      "People being late",
+      "Mess or lack of organization",
+      "Loud noises or chewing",
+      "Interruptions or distractions",
+      "Negativity or complaining",
+      "Disrespect or rudeness"
+    ]
+  },
+  {
+    "id": 5,
+    "forPartner": "How do they prefer to spend a lazy Sunday?",
+    "forSelf": "How do you prefer to spend a lazy Sunday?",
+    "type": "choice",
+    "options": [
+      "Sleeping in and resting",
+      "Watching movies or shows",
+      "Going out for brunch or coffee",
+      "Being active outdoors",
+      "Reading or personal hobbies",
+      "Spending time with friends or family"
+    ]
+  },
+  {
+    "id": 6,
+    "forPartner": "What's their hidden talent or party trick?",
+    "forSelf": "What's your hidden talent or party trick?",
+    "type": "choice",
+    "options": [
+      "Cooking or baking",
+      "Singing or playing music",
+      "Impressions or storytelling",
+      "Sports or physical skills",
+      "Creative skills (drawing, writing, etc.)",
+      "Don't really have one"
+    ]
+  },
+  {
+    "id": 7,
+    "forPartner": "What makes them laugh the hardest?",
+    "forSelf": "What makes you laugh the hardest?",
+    "type": "choice",
+    "options": [
+      "Silly jokes and puns",
+      "Sarcastic humor",
+      "Physical comedy",
+      "Dark or dry humor",
+      "Inside jokes with you",
+      "Funny videos or memes"
+    ]
+  },
+  {
+    "id": 8,
+    "forPartner": "Their dream career if money wasn't an issue would be...",
+    "forSelf": "Your dream career if money wasn't an issue would be...",
+    "type": "choice",
+    "options": [
+      "Creative artist or writer",
+      "Travel-related job",
+      "Helping others (teaching, charity, care)",
+      "Entrepreneur or business owner",
+      "Research or intellectual work",
+      "Still do the same job"
+    ]
+  },
+  {
+    "id": 9,
+    "forPartner": "What's their go-to way to unwind after a hard day?",
+    "forSelf": "What's your go-to way to unwind after a hard day?",
+    "type": "choice",
+    "options": [
+      "Exercise or physical activity",
+      "Hot shower or bath",
+      "Watching TV, gaming, or scrolling",
+      "Talking with someone",
+      "Being alone and quiet",
+      "Eating or drinking something comforting"
+    ]
+  },
+  {
+    "id": 10,
+    "forPartner": "What's their biggest fear?",
+    "forSelf": "What's your biggest fear?",
+    "type": "choice",
+    "options": [
+      "Failing or disappointing others",
+      "Ending up alone",
+      "Physical fears (heights, spiders, etc.)",
+      "Public speaking or social judgment",
+      "Not knowing what the future holds"
+    ]
+  },
+  {
+    "id": 11,
+    "forPartner": "What's their favorite thing about your relationship?",
+    "forSelf": "What's your favorite thing about your relationship?",
+    "type": "choice",
+    "options": [
+      "Feeling safe and supported",
+      "The laughter and fun",
+      "Emotional connection",
+      "Trust and honesty",
+      "Shared values and goals",
+      "Growing together over time"
+    ]
+  },
+  {
+    "id": 12,
+    "forPartner": "If they could have dinner with anyone, who would it be?",
+    "forSelf": "If you could have dinner with anyone, who would it be?",
+    "type": "choice",
+    "options": [
+      "A famous celebrity",
+      "A historical figure",
+      "A successful entrepreneur",
+      "A creative artist",
+      "A family member from the past",
+      "Partner :)"
+    ]
+  }
+]

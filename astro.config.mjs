@@ -16,6 +16,11 @@ export default defineConfig({
           item.priority = 1.0;
           item.changefreq = 'daily';
         }
+        // Tools pages get high priority (lead generation)
+        else if (item.url.includes('/tools')) {
+          item.priority = 0.8;
+          item.changefreq = 'weekly';
+        }
         // Legal pages get lower priority
         else if (item.url.includes('/privacy') || item.url.includes('/terms')) {
           item.priority = 0.3;

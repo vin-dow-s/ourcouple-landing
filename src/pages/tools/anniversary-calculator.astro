@@ -1,0 +1,279 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import LeadCaptureForm from '../../components/tools/LeadCaptureForm.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+
+const milestones = [
+  { days: 30, name: "30 Days", emoji: "📆", description: "One month together" },
+  { days: 90, name: "90 Days", emoji: "💫", description: "Three months - the relation is definitely real" },
+  { days: 100, name: "100 Days", emoji: "💯", description: "The big 100! A popular milestone in many cultures" },
+  { days: 200, name: "200 Days", emoji: "✨", description: "Double century of love" },
+  { days: 300, name: "300 Days", emoji: "🌟", description: "Almost a year together" },
+  { days: 365, years: 1, name: "1 Year", emoji: "🎂", description: "Your first anniversary!" },
+  { days: 500, name: "500 Days", emoji: "🏅", description: "500 days of loving each other" },
+  { days: 520, name: "520 Days", emoji: "❤️", description: "520 sounds like 'I love you' in Chinese culture" },
+  { days: 730, years: 2, name: "2 Years", emoji: "💕", description: "Two wonderful years" },
+  { days: 777, name: "777 Days", emoji: "🍀", description: "Lucky number milestone" },
+  { days: 1000, name: "1000 Days", emoji: "🏆", description: "A thousand days milestone!" },
+  { days: 1095, years: 3, name: "3 Years", emoji: "💖", description: "Three years strong" },
+  { days: 1460, years: 4, name: "4 Years", emoji: "💝", description: "Four beautiful years" },
+  { days: 1825, years: 5, name: "5 Years", emoji: "🎊", description: "Half a decade together!" },
+  { days: 2555, years: 7, name: "7 Years", emoji: "💘", description: "A famous relationship milestone" },
+  { days: 3650, years: 10, name: "10 Years", emoji: "🔟", description: "A full decade together" },
+  { days: 5475, years: 15, name: "15 Years", emoji: "💞", description: "15 years of shared life" },
+  { days: 7300, years: 20, name: "20 Years", emoji: "💎", description: "Two decades together" },
+  { days: 9125, years: 25, name: "25 Years", emoji: "🥈", description: "25 years — the Silver milestone" },
+  { days: 10950, years: 30, name: "30 Years", emoji: "❤️‍🔥", description: "30 years together" },
+  { days: 14600, years: 40, name: "40 Years", emoji: "💠", description: "40 years — the Ruby milestone" },
+  { days: 18250, years: 50, name: "50 Years", emoji: "🥇", description: "50 years — the Gold milestone" }
+];
+---
+
+<ToolLayout
+  title="Anniversary Calculator - How Long Have You Been Together? | OurCouple"
+  description="Calculate how many days, weeks, and months you've been together. Discover upcoming relationship milestones like 100 days, 1000 days, and more."
+  canonicalPath="/tools/anniversary-calculator"
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <!-- Hero -->
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tighter mb-3">
+        Anniversary Calculator
+      </h1>
+      <p class="text-text-secondary">
+        Enter your anniversary date to see how long you've been together and discover upcoming milestones.
+      </p>
+    </div>
+
+    <!-- Date Input -->
+    <div class="bg-card rounded-2xl border border-border p-6 mb-6 animate-fade-in-delay-1">
+      <label class="block text-sm font-medium text-text mb-2">
+        When did you become a couple?
+      </label>
+      <input
+        type="date"
+        id="anniversary-date"
+        class="w-full px-4 py-3 rounded-xl border border-border bg-background text-text focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all text-lg"
+      />
+      <button
+        id="calculate-btn"
+        class="w-full mt-4 px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors"
+      >
+        Calculate Milestones
+      </button>
+    </div>
+
+    <!-- Results (hidden initially) -->
+    <div id="results" class="hidden">
+      <!-- Summary -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6 text-center">
+        <p class="text-text-secondary text-sm mb-2">You've been together for</p>
+        <div class="flex items-center justify-center gap-4 flex-wrap">
+          <div class="text-center">
+            <p id="days-count" class="text-4xl font-bold text-primary">0</p>
+            <p class="text-text-secondary text-sm">days</p>
+          </div>
+          <div class="text-text-light text-2xl">=</div>
+          <div class="text-center">
+            <p id="weeks-count" class="text-2xl font-semibold text-text">0</p>
+            <p class="text-text-secondary text-sm">weeks</p>
+          </div>
+          <div class="text-text-light text-2xl">=</div>
+          <div class="text-center">
+            <p id="months-count" class="text-2xl font-semibold text-text">0</p>
+            <p class="text-text-secondary text-sm">months</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Milestone -->
+      <div id="next-milestone" class="bg-primary/5 rounded-2xl border border-primary/20 p-6 mb-6 text-center">
+        <p class="text-text-secondary text-sm mb-1">Your next milestone</p>
+        <p id="next-milestone-name" class="text-2xl font-bold text-text mb-1"></p>
+        <p id="next-milestone-date" class="text-primary font-medium"></p>
+        <p id="next-milestone-countdown" class="text-text-secondary text-sm mt-2"></p>
+      </div>
+
+      <!-- Milestones Timeline -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <h2 class="font-semibold text-lg text-text mb-4">Your Milestones</h2>
+        <div id="milestones-list" class="space-y-3">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Lead Capture -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <LeadCaptureForm
+          source="anniversary-calculator"
+          title="Never miss a milestone"
+          subtitle="Get email reminders before each special date"
+          ctaText="Remind Me"
+          placeholder="Enter your email"
+          successMessage="You're all set!"
+        />
+      </div>
+
+      <!-- Share -->
+      <div class="text-center mb-8">
+        <ShareButtons
+          title="Share with your partner"
+          text="Check out our relationship milestones!"
+        />
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-12">
+      <h2 class="text-xl font-semibold text-text text-center mb-6">Common Questions</h2>
+      <div class="space-y-3">
+        <details class="group bg-card rounded-xl border border-border">
+          <summary class="flex items-center justify-between p-4 cursor-pointer">
+            <span class="font-medium text-text">What date should I use?</span>
+            <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-4 pb-4 text-text-secondary text-sm">
+            Use whatever date feels meaningful to you! Common choices include: the day you started dating, your first date, the day you met, or when you became "official." The best date is the one you both agree on.
+          </div>
+        </details>
+
+        <details class="group bg-card rounded-xl border border-border">
+          <summary class="flex items-center justify-between p-4 cursor-pointer">
+            <span class="font-medium text-text">What is the 100 days anniversary?</span>
+            <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-4 pb-4 text-text-secondary text-sm">
+            The 100 days anniversary is a popular milestone in Korean dating culture (called "백일" or baegil). Couples celebrate reaching 100 days together with gifts and special dates. It's become popular worldwide as a way to celebrate early relationship milestones.
+          </div>
+        </details>
+
+        <details class="group bg-card rounded-xl border border-border">
+          <summary class="flex items-center justify-between p-4 cursor-pointer">
+            <span class="font-medium text-text">Why 1000 days?</span>
+            <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-4 pb-4 text-text-secondary text-sm">
+            1000 days (about 2 years and 9 months) is a significant milestone that represents sustained commitment. It's roughly 1/30th of the average human lifespan spent loving someone — a beautiful achievement worth celebrating.
+          </div>
+        </details>
+
+
+      </div>
+    </div>
+  </div>
+
+  <script define:vars={{ milestones }}>
+    const dateInput = document.getElementById('anniversary-date');
+    const calculateBtn = document.getElementById('calculate-btn');
+    const resultsDiv = document.getElementById('results');
+    const daysCount = document.getElementById('days-count');
+    const weeksCount = document.getElementById('weeks-count');
+    const monthsCount = document.getElementById('months-count');
+    const nextMilestoneName = document.getElementById('next-milestone-name');
+    const nextMilestoneDate = document.getElementById('next-milestone-date');
+    const nextMilestoneCountdown = document.getElementById('next-milestone-countdown');
+    const milestonesList = document.getElementById('milestones-list');
+
+    // Set max date to today
+    const today = new Date();
+    dateInput.max = today.toISOString().split('T')[0];
+
+    // Helper function to calculate milestone date
+    function getMilestoneDate(startDate, milestone) {
+      const milestoneDate = new Date(startDate);
+      if (milestone.years) {
+        // For year-based milestones, use setFullYear to preserve the exact day
+        milestoneDate.setFullYear(startDate.getFullYear() + milestone.years);
+      } else {
+        // For day-based milestones, add days
+        milestoneDate.setDate(milestoneDate.getDate() + milestone.days);
+      }
+      return milestoneDate;
+    }
+
+    function calculateMilestones() {
+      const dateValue = dateInput.value;
+      if (!dateValue) return;
+
+      // Parse date as local time to avoid timezone issues
+      const [year, month, day] = dateValue.split('-').map(Number);
+      const startDate = new Date(year, month - 1, day);
+      const now = new Date();
+      // Reset time to midnight for accurate day calculation
+      now.setHours(0, 0, 0, 0);
+
+      // Calculate time difference
+      const diffTime = now.getTime() - startDate.getTime();
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+      if (diffDays < 0) {
+        alert("Please select a date in the past");
+        return;
+      }
+
+      // Update summary
+      daysCount.textContent = diffDays.toLocaleString();
+      weeksCount.textContent = Math.floor(diffDays / 7).toLocaleString();
+      monthsCount.textContent = Math.floor(diffDays / 30.44).toLocaleString();
+
+      // Find next milestone (compare actual dates for accuracy with leap years)
+      const nextMilestone = milestones.find(m => getMilestoneDate(startDate, m).getTime() > now.getTime());
+      if (nextMilestone) {
+        const nextDate = getMilestoneDate(startDate, nextMilestone);
+        const daysUntil = Math.ceil((nextDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+
+        nextMilestoneName.textContent = `${nextMilestone.emoji} ${nextMilestone.name}`;
+        nextMilestoneDate.textContent = nextDate.toLocaleDateString('en-US', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+        nextMilestoneCountdown.textContent = `${daysUntil} days away`;
+      }
+
+      // Build milestones list
+      milestonesList.innerHTML = milestones.map(m => {
+        const milestoneDate = getMilestoneDate(startDate, m);
+        const isPast = milestoneDate.getTime() <= now.getTime();
+        const isNext = m === nextMilestone;
+        const formattedDate = milestoneDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+        return `
+          <div class="flex items-center gap-4 p-3 rounded-xl ${isNext ? 'bg-primary/10 border border-primary/20' : isPast ? 'opacity-60' : ''}">
+            <div class="text-2xl">${m.emoji}</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <p class="font-medium text-text ${isPast ? 'line-through' : ''}">${m.name}</p>
+                <span class="text-text-secondary text-sm">· ${formattedDate}</span>
+              </div>
+              <p class="text-text-secondary text-sm mt-0.5">${m.description}</p>
+            </div>
+            ${isPast ? '<span class="text-green-500 text-sm font-medium whitespace-nowrap">Reached!</span>' : ''}
+            ${isNext ? '<span class="text-primary text-sm font-medium whitespace-nowrap">Next up</span>' : ''}
+          </div>
+        `;
+      }).join('');
+
+      // Show results
+      resultsDiv.classList.remove('hidden');
+      resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    calculateBtn.addEventListener('click', calculateMilestones);
+    dateInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') calculateMilestones();
+    });
+  </script>
+</ToolLayout>

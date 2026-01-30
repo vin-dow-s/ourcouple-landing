@@ -1,0 +1,54 @@
+---
+interface Props {
+  emoji?: string;
+  title: string;
+  subtitle?: string;
+  value?: string;
+  description?: string;
+  variant?: 'primary' | 'partner' | 'accent' | 'default';
+}
+
+const {
+  emoji,
+  title,
+  subtitle,
+  value,
+  description,
+  variant = 'default'
+} = Astro.props;
+
+const variantStyles = {
+  primary: 'bg-primary/5 border-primary/20',
+  partner: 'bg-partner/5 border-partner/20',
+  accent: 'bg-accent/5 border-accent/20',
+  default: 'bg-card border-border'
+};
+---
+
+<div class={`result-card p-6 rounded-2xl border ${variantStyles[variant]}`}>
+  {emoji && (
+    <div class="text-4xl mb-3 text-center">{emoji}</div>
+  )}
+
+  {subtitle && (
+    <p class="text-text-secondary text-sm text-center mb-1">{subtitle}</p>
+  )}
+
+  <h3 class="text-2xl font-bold text-text text-center mb-2">
+    {title}
+  </h3>
+
+  {value && (
+    <p class={`text-center text-lg font-semibold ${variant === 'primary' ? 'text-primary' : variant === 'partner' ? 'text-partner' : variant === 'accent' ? 'text-accent' : 'text-text'}`}>
+      {value}
+    </p>
+  )}
+
+  {description && (
+    <p class="text-text-secondary text-sm text-center mt-3 leading-relaxed">
+      {description}
+    </p>
+  )}
+
+  <slot />
+</div>

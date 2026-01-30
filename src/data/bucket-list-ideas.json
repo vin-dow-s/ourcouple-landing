@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "title": "Sunset Picnic",
+    "description": "Pack your favorite foods, grab a blanket, and find a scenic spot to watch the sunset together.",
+    "interests": ["relaxation", "food", "outdoor"],
+    "budget": "free",
+    "location": "local"
+  },
+  {
+    "id": 2,
+    "title": "Cook a New Cuisine Together",
+    "description": "Pick a cuisine neither of you has tried and cook a full meal from scratch. Make it an adventure!",
+    "interests": ["food", "creative"],
+    "budget": "low",
+    "location": "home"
+  },
+  {
+    "id": 3,
+    "title": "Stargazing Night",
+    "description": "Find a dark spot away from city lights, bring blankets, and spend the evening spotting constellations.",
+    "interests": ["relaxation", "outdoor", "adventure"],
+    "budget": "free",
+    "location": "local"
+  },
+  {
+    "id": 4,
+    "title": "Take a Dance Class",
+    "description": "Sign up for a dance class together — salsa, swing, or ballroom. It's romantic and fun!",
+    "interests": ["active", "creative"],
+    "budget": "medium",
+    "location": "local"
+  },
+  {
+    "id": 5,
+    "title": "Build a Blanket Fort",
+    "description": "Channel your inner child! Build an epic blanket fort and spend the evening watching movies inside.",
+    "interests": ["relaxation", "creative"],
+    "budget": "free",
+    "location": "home"
+  },
+  {
+    "id": 6,
+    "title": "Sunrise Hike",
+    "description": "Wake up early and hike to a viewpoint to catch the sunrise together. Pack hot coffee!",
+    "interests": ["outdoor", "adventure", "active"],
+    "budget": "free",
+    "location": "local"
+  },
+  {
+    "id": 7,
+    "title": "Pottery or Art Class",
+    "description": "Take a pottery, painting, or crafts class together. Create something to remember the day.",
+    "interests": ["creative"],
+    "budget": "medium",
+    "location": "local"
+  },
+  {
+    "id": 8,
+    "title": "Food Tour of Your City",
+    "description": "Be tourists in your own city! Visit 3-4 restaurants or food spots you've never tried.",
+    "interests": ["food", "adventure"],
+    "budget": "medium",
+    "location": "local"
+  },
+  {
+    "id": 9,
+    "title": "Weekend Road Trip",
+    "description": "Pick a destination 2-3 hours away and take a spontaneous road trip. Explore somewhere new!",
+    "interests": ["adventure", "outdoor"],
+    "budget": "medium",
+    "location": "travel"
+  },
+  {
+    "id": 10,
+    "title": "Game Night Tournament",
+    "description": "Have a competitive (but fun!) game night with board games, card games, or video games.",
+    "interests": ["relaxation", "creative"],
+    "budget": "free",
+    "location": "home"
+  },
+  {
+    "id": 11,
+    "title": "Spa Day at Home",
+    "description": "Create a spa experience at home with face masks, bath bombs, massage oils, and relaxing music.",
+    "interests": ["relaxation"],
+    "budget": "low",
+    "location": "home"
+  },
+  {
+    "id": 12,
+    "title": "Visit a Farmers Market",
+    "description": "Explore a local farmers market together. Pick up fresh ingredients and cook something new.",
+    "interests": ["food", "outdoor"],
+    "budget": "low",
+    "location": "local"
+  },
+  {
+    "id": 13,
+    "title": "Learn Something New Together",
+    "description": "Take an online class together — photography, language, cocktail making, or coding!",
+    "interests": ["creative"],
+    "budget": "low",
+    "location": "home"
+  },
+  {
+    "id": 14,
+    "title": "Volunteer Together",
+    "description": "Give back together by volunteering at a local shelter, food bank, or community garden.",
+    "interests": ["outdoor", "active"],
+    "budget": "free",
+    "location": "local"
+  },
+  {
+    "id": 15,
+    "title": "Beach or Lake Day",
+    "description": "Spend a full day at the beach or a lake. Swim, sunbathe, and enjoy a packed lunch.",
+    "interests": ["outdoor", "relaxation", "active"],
+    "budget": "free",
+    "location": "local"
+  },
+  {
+    "id": 16,
+    "title": "Concert or Live Music",
+    "description": "See a band or artist you both love, or discover someone new at a local venue.",
+    "interests": ["adventure", "creative"],
+    "budget": "medium",
+    "location": "local"
+  },
+  {
+    "id": 17,
+    "title": "Themed Movie Marathon",
+    "description": "Pick a theme (80s movies, rom-coms, sci-fi) and have a marathon with themed snacks.",
+    "interests": ["relaxation"],
+    "budget": "free",
+    "location": "home"
+  },
+  {
+    "id": 18,
+    "title": "Wine or Beer Tasting",
+    "description": "Visit a local winery, brewery, or organize a tasting at home with various bottles.",
+    "interests": ["food", "relaxation"],
+    "budget": "medium",
+    "location": "local"
+  },
+  {
+    "id": 19,
+    "title": "Kayaking or Paddle Boarding",
+    "description": "Rent kayaks or paddle boards and explore a local lake, river, or coastline together.",
+    "interests": ["outdoor", "adventure", "active"],
+    "budget": "medium",
+    "location": "local"
+  },
+  {
+    "id": 20,
+    "title": "Create a Photo Album",
+    "description": "Go through your photos together and create a physical or digital album of your best memories.",
+    "interests": ["creative", "relaxation"],
+    "budget": "low",
+    "location": "home"
+  },
+  {
+    "id": 21,
+    "title": "Escape Room Challenge",
+    "description": "Test your teamwork skills at an escape room. Work together to solve puzzles and escape!",
+    "interests": ["adventure", "creative"],
+    "budget": "medium",
+    "location": "local"
+  },
+  {
+    "id": 22,
+    "title": "Backyard Camping",
+    "description": "Set up a tent in your backyard (or living room!) for a cozy camping experience at home.",
+    "interests": ["outdoor", "adventure", "relaxation"],
+    "budget": "free",
+    "location": "home"
+  },
+  {
+    "id": 23,
+    "title": "Fancy Dinner at Home",
+    "description": "Dress up, set a nice table, and cook an elaborate multi-course dinner at home.",
+    "interests": ["food", "creative"],
+    "budget": "medium",
+    "location": "home"
+  },
+  {
+    "id": 24,
+    "title": "Botanical Garden Visit",
+    "description": "Wander through a botanical garden or arboretum. Bring a camera and enjoy the beauty.",
+    "interests": ["outdoor", "relaxation"],
+    "budget": "low",
+    "location": "local"
+  },
+  {
+    "id": 25,
+    "title": "Ice Cream Tour",
+    "description": "Visit 3-4 different ice cream shops in one day and rate them all. Sweet competition!",
+    "interests": ["food", "adventure"],
+    "budget": "low",
+    "location": "local"
+  },
+  {
+    "id": 26,
+    "title": "Write Love Letters",
+    "description": "Spend an evening writing heartfelt letters to each other. Read them aloud or save for later.",
+    "interests": ["creative", "relaxation"],
+    "budget": "free",
+    "location": "home"
+  },
+  {
+    "id": 27,
+    "title": "Breakfast in Bed",
+    "description": "Surprise your partner with a homemade breakfast in bed. Pancakes, fresh fruit, the works!",
+    "interests": ["food", "relaxation"],
+    "budget": "low",
+    "location": "home"
+  },
+  {
+    "id": 28,
+    "title": "Bike Ride Adventure",
+    "description": "Go on a bike ride together through scenic trails or explore new neighborhoods.",
+    "interests": ["outdoor", "active", "adventure"],
+    "budget": "free",
+    "location": "local"
+  },
+  {
+    "id": 29,
+    "title": "Museum or Gallery Date",
+    "description": "Visit a museum or art gallery. Discuss what you see and learn something new together.",
+    "interests": ["creative", "adventure"],
+    "budget": "low",
+    "location": "local"
+  },
+  {
+    "id": 30,
+    "title": "Plant a Garden Together",
+    "description": "Start a small garden — flowers, herbs, or vegetables. Watch it grow over time together.",
+    "interests": ["outdoor", "creative"],
+    "budget": "low",
+    "location": "home"
+  },
+  {
+    "id": 31,
+    "title": "Bookstore Date",
+    "description": "Explore a bookstore together. Pick books for each other to read and discuss later.",
+    "interests": ["relaxation", "creative"],
+    "budget": "low",
+    "location": "local"
+  },
+  {
+    "id": 32,
+    "title": "Mini Golf or Bowling",
+    "description": "Have a friendly competition at mini golf, bowling, or an arcade.",
+    "interests": ["active", "adventure"],
+    "budget": "low",
+    "location": "local"
+  },
+  {
+    "id": 33,
+    "title": "Bake Something Together",
+    "description": "Bake cookies, a cake, or homemade bread together. The messy part is the fun part!",
+    "interests": ["food", "creative"],
+    "budget": "low",
+    "location": "home"
+  },
+  {
+    "id": 34,
+    "title": "Watch the Sunrise",
+    "description": "Stay up or wake up early to watch the sunrise together. Bring coffee and snuggle.",
+    "interests": ["relaxation", "outdoor"],
+    "budget": "free",
+    "location": "local"
+  },
+  {
+    "id": 35,
+    "title": "Comedy Show",
+    "description": "Go to a stand-up comedy show together. Laughter is the best medicine for any relationship!",
+    "interests": ["adventure"],
+    "budget": "medium",
+    "location": "local"
+  },
+  {
+    "id": 36,
+    "title": "Recreate Your First Date",
+    "description": "Go back to where you had your first date and recreate the experience.",
+    "interests": ["adventure", "relaxation"],
+    "budget": "low",
+    "location": "local"
+  },
+  {
+    "id": 37,
+    "title": "Take a Weekend Trip",
+    "description": "Book a spontaneous weekend getaway to a nearby city or countryside retreat.",
+    "interests": ["adventure", "travel"],
+    "budget": "high",
+    "location": "travel"
+  },
+  {
+    "id": 38,
+    "title": "DIY Cocktail Night",
+    "description": "Learn to make 3-4 cocktails together. Rate them and find your signature couple's drink!",
+    "interests": ["food", "creative"],
+    "budget": "low",
+    "location": "home"
+  },
+  {
+    "id": 39,
+    "title": "Yoga or Stretching Session",
+    "description": "Do partner yoga or follow a stretching routine together. Great for bonding and flexibility!",
+    "interests": ["active", "relaxation"],
+    "budget": "free",
+    "location": "home"
+  },
+  {
+    "id": 40,
+    "title": "Thrift Store Challenge",
+    "description": "Set a budget ($10-20 each) and pick outfits for each other at a thrift store.",
+    "interests": ["creative", "adventure"],
+    "budget": "low",
+    "location": "local"
+  },
+  {
+    "id": 41,
+    "title": "Hot Springs or Thermal Baths",
+    "description": "Visit natural hot springs or thermal baths for a relaxing and romantic day.",
+    "interests": ["relaxation", "outdoor", "adventure"],
+    "budget": "medium",
+    "location": "travel"
+  },
+  {
+    "id": 42,
+    "title": "Puzzle Night",
+    "description": "Start a big jigsaw puzzle together. Put on music and snacks and work on it over several nights.",
+    "interests": ["relaxation"],
+    "budget": "low",
+    "location": "home"
+  },
+  {
+    "id": 43,
+    "title": "Drive-In Movie",
+    "description": "Find a drive-in movie theater and watch a film the old-fashioned way with popcorn in the car.",
+    "interests": ["relaxation", "adventure"],
+    "budget": "low",
+    "location": "local"
+  },
+  {
+    "id": 44,
+    "title": "Rock Climbing",
+    "description": "Try indoor rock climbing together. Cheer each other on and celebrate the climbs!",
+    "interests": ["active", "adventure"],
+    "budget": "medium",
+    "location": "local"
+  },
+  {
+    "id": 45,
+    "title": "Karaoke Night",
+    "description": "Belt out your favorite songs at karaoke — whether at a bar or a home setup!",
+    "interests": ["creative", "adventure"],
+    "budget": "low",
+    "location": "local"
+  },
+  {
+    "id": 46,
+    "title": "Couples Massage",
+    "description": "Book a couples massage at a spa. Or learn massage techniques and do it at home!",
+    "interests": ["relaxation"],
+    "budget": "high",
+    "location": "local"
+  },
+  {
+    "id": 47,
+    "title": "Bird Watching Morning",
+    "description": "Grab binoculars and go bird watching in a park. See how many species you can spot together.",
+    "interests": ["outdoor", "relaxation"],
+    "budget": "free",
+    "location": "local"
+  },
+  {
+    "id": 48,
+    "title": "Try a New Sport",
+    "description": "Try something neither of you has done: tennis, badminton, frisbee golf, or pickleball!",
+    "interests": ["active", "outdoor", "adventure"],
+    "budget": "low",
+    "location": "local"
+  },
+  {
+    "id": 49,
+    "title": "Sunset Boat Ride",
+    "description": "Rent a small boat, canoe, or book a sunset cruise and enjoy the water at golden hour.",
+    "interests": ["outdoor", "adventure", "relaxation"],
+    "budget": "medium",
+    "location": "local"
+  },
+  {
+    "id": 50,
+    "title": "Create a Time Capsule",
+    "description": "Fill a box with mementos, letters, and photos. Seal it and set a date to open it together.",
+    "interests": ["creative", "relaxation"],
+    "budget": "free",
+    "location": "home"
+  }
+]
