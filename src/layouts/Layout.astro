@@ -35,6 +35,19 @@ const organizationSchema = {
   "sameAs": []
 };
 
+// Structured Data - WebSite (for sitelinks search box)
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "OurCouple",
+  "url": siteUrl,
+  "description": "Your private shared space for couples. Daily messages, memories, notes, and dates — all in one place.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "OurCouple"
+  }
+};
+
 // Structured Data - Mobile Application
 const appSchema = {
   "@context": "https://schema.org",
@@ -52,13 +65,6 @@ const appSchema = {
     "price": "0",
     "priceCurrency": "USD",
     "description": "Free with optional premium subscription"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "ratingCount": "1",
-    "bestRating": "5",
-    "worstRating": "1"
   },
   "featureList": [
     "Daily messages and photos between partners",
@@ -173,12 +179,14 @@ const faqSchema = {
 
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
-    <!-- Fonts -->
+    <!-- Fonts - preconnect for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
