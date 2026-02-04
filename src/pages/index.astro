@@ -45,9 +45,26 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             OurCouple is your shared space with your partner. <br class="hidden sm:inline" />Messages, memories, notes, events — all in one place.
           </p>
         </div>
+                <!-- App Store Download -->
+                <div class="animate-fade-in-delay-2 max-w-md mx-auto">
+                  <a
+                    href={appStoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block transition-transform hover:scale-105"
+                    aria-label="Download OurCouple on the App Store"
+                  >
+                    <img
+                      src="/app-store-badge.svg"
+                      alt="Download on the App Store"
+                      class="h-14 mx-auto"
+                    />
+                  </a>
+                  <p class="text-neutral-500 text-sm mt-0">Start free • No credit card</p>
+                </div>
 
         <!-- Video/Image Preview -->
-        <div class="mb-10 animate-fade-in-delay-1">
+        <div class="mt-10 animate-fade-in-delay-1">
           <div class="inline-block rounded-3xl shadow-lg shadow-black/15">
             <!-- Image on mobile -->
             <img
@@ -70,23 +87,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
           </div>
         </div>
 
-        <!-- App Store Download -->
-        <div class="animate-fade-in-delay-2 max-w-md mx-auto">
-          <a
-            href={appStoreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block transition-transform hover:scale-105"
-            aria-label="Download OurCouple on the App Store"
-          >
-            <img
-              src="/app-store-badge.svg"
-              alt="Download on the App Store"
-              class="h-14 mx-auto"
-            />
-          </a>
-          <p class="text-neutral-500 text-sm mt-2">✓ Start for free</p>
-        </div>
+
       </div>
     </section>
 
@@ -109,9 +110,10 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
               </svg>
             </div>
             <h3 class="font-semibold text-xl text-text mb-3">Message & Photo of the Day</h3>
-            <p class="text-text-secondary">
-              Start each day with intention. Send a loving message and photo to your partner — a daily ritual to manifest your connection.
+            <p class="text-text-secondary mb-3">
+              A simple daily check-in that keeps you connected with your partner and saves your streak
             </p>
+            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Set intentions for the day</span>
           </article>
 
           <!-- Feature 2: Daily Inspirations -->
@@ -130,9 +132,10 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
               </svg>
             </div>
             <h3 class="font-semibold text-xl text-text mb-3">Love Notes</h3>
-            <p class="text-text-secondary">
-              Save quotes, affirmations, and loving messages. Each day, one is randomly picked and displayed as a surprise for your partner.
+            <p class="text-text-secondary mb-3">
+               Inspirations, supportive messages... Each day, one is randomly displayed your partner's home screen.
             </p>
+            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Surprise each other daily</span>
           </article>
 
           <!-- Feature 3: Private Memories -->
@@ -144,10 +147,11 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
                 <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-xl text-text mb-3">Private Memories</h3>
-            <p class="text-text-secondary">
-              Capture and save your favorite moments together. Every photo is encrypted and stored securely in your private couple space.
+            <h3 class="font-semibold text-xl text-text mb-3">Memories Album</h3>
+            <p class="text-text-secondary mb-3">
+              Your favorite moments together, photos & captions. Keep your memories alive.
             </p>
+            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Never lost in chat history</span>
           </article>
 
           <!-- Feature 4: Shared Notes -->
@@ -162,9 +166,10 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
               </svg>
             </div>
             <h3 class="font-semibold text-xl text-text mb-3">Shared Notes</h3>
-            <p class="text-text-secondary">
-              One place for all your notes together. Shopping lists, travel ideas, bucket lists, or anything you want to remember as a couple.
+            <p class="text-text-secondary mb-3">
+              One place for everything you want to write and remember, from love notes to more practical ones.
             </p>
+            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Both can edit in real-time</span>
           </article>
 
           <!-- Feature 5: Events & Dates -->
@@ -177,10 +182,11 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
                 <path d="M3 10h18"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-xl text-text mb-3">Events & Anniversaries</h3>
-            <p class="text-text-secondary">
-              Never forget an anniversary or special date. Track all your important events and get reminded of what matters most.
+            <h3 class="font-semibold text-xl text-text mb-3">Events & Ideas</h3>
+            <p class="text-text-secondary mb-3">
+              Dates, bucket lists, save what you want to do together and see what is coming up - booked or not.
             </p>
+            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Never forget an idea</span>
           </article>
 
           <!-- Feature 6: Private & Secure -->
@@ -192,9 +198,10 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
               </svg>
             </div>
             <h3 class="font-semibold text-xl text-text mb-3">Private & Secure</h3>
-            <p class="text-text-secondary">
+            <p class="text-text-secondary mb-3">
               Your data is encrypted and stays between you two. No ads, no tracking, no sharing with third parties.
             </p>
+            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Just you two, always</span>
           </article>
         </div>
       </div>
@@ -229,7 +236,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
               <span class="text-2xl font-bold text-primary">3</span>
             </div>
-            <h3 class="font-semibold text-lg text-text mb-2">Start Connecting</h3>
+            <h3 class="font-semibold text-lg text-text mb-2">Connect Together</h3>
             <p class="text-text-secondary">Your private couple space is ready. Start sharing!</p>
           </div>
         </div>
@@ -308,7 +315,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
               </svg>
             </summary>
             <div class="px-6 pb-6 text-text-secondary">
-              <p>It's not a chat app. OurCouple is a shared workspace for couples — like Notion, but private and made for two. Daily messages, memories, notes, events, all in one place.</p>
+              <p>Unlike messaging apps, OurCouple isn't for constant back-and-forth. It's a calm, organized space where you save what matters: your best photos (with captions), important notes, special dates... No pressure, no noise. Each day, you set one message and/or photo of the day for each other, and that keeps your streak alive.</p>
             </div>
           </details>
         </div>
@@ -330,7 +337,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
           href={appStoreUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-block transition-transform hover:scale-105 mb-8"
+          class="inline-block transition-transform hover:scale-105"
           aria-label="Download OurCouple on the App Store"
         >
           <img
@@ -339,6 +346,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             class="h-16 mx-auto"
           />
         </a>
+        <p class="text-text-secondary text-sm mt-2 mb-8">Free to start • No credit card</p>
 
         <!-- Android Waitlist -->
         <div class="max-w-md mx-auto mt-8 p-6 bg-card/50 rounded-2xl border border-border">
@@ -402,6 +410,16 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
               <a href="#features" class="text-text-secondary hover:text-primary transition-colors">Features</a>
               <a href="#faq" class="text-text-secondary hover:text-primary transition-colors">FAQ</a>
               <a href="mailto:contact@vynse.dev" class="text-text-secondary hover:text-primary transition-colors">Contact</a>
+            </nav>
+          </div>
+
+          <!-- OurCouple For Column -->
+          <div class="flex flex-col gap-3">
+            <h3 class="font-semibold text-text text-sm mb-1">OurCouple For</h3>
+            <nav class="flex flex-col gap-2 text-sm">
+              <a href="/for/long-distance-couples" class="text-text-secondary hover:text-primary transition-colors">Long-Distance Couples</a>
+              <a href="/for/busy-couples" class="text-text-secondary hover:text-primary transition-colors">Busy Couples</a>
+              <a href="/for/newlyweds" class="text-text-secondary hover:text-primary transition-colors">Newlyweds</a>
             </nav>
           </div>
 

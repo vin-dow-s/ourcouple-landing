@@ -5,6 +5,7 @@ interface Props {
   title: string;
   description: string;
   canonicalPath: string;
+  persona: string;
   ogImage?: string;
 }
 
@@ -12,6 +13,7 @@ const {
   title,
   description,
   canonicalPath,
+  persona,
   ogImage
 } = Astro.props;
 
@@ -21,21 +23,29 @@ const socialImage = ogImage ? `${siteUrl}${ogImage}` : `${siteUrl}/og-image.png`
 const appStoreId = "6758024356";
 const appStoreUrl = `https://apps.apple.com/app/id${appStoreId}`;
 
-// Structured Data - WebApplication for the tool
-const toolSchema = {
+// Structured Data - WebPage for persona landing page
+const pageSchema = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
+  "@type": "WebPage",
   "name": title,
   "url": canonicalUrl,
   "description": description,
-  "applicationCategory": "LifestyleApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
+  "mainEntity": {
+    "@type": "MobileApplication",
+    "name": "OurCouple",
+    "operatingSystem": "iOS",
+    "applicationCategory": "LifestyleApplication",
+    "audience": {
+      "@type": "Audience",
+      "audienceType": persona
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
   },
-  "author": {
+  "publisher": {
     "@type": "Organization",
     "name": "OurCouple",
     "url": siteUrl
@@ -78,7 +88,7 @@ const toolSchema = {
     <meta name="twitter:image" content={socialImage} />
 
     <!-- Structured Data -->
-    <script type="application/ld+json" set:html={JSON.stringify(toolSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,12 +110,10 @@ const toolSchema = {
   <body class="min-h-screen flex flex-col bg-background">
     <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-gradient-radial">
-      <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2 text-text hover:text-primary transition-colors">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          <span class="font-medium">OurCouple</span>
+      <nav class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2">
+          <img src="/logo.png" alt="OurCouple" class="w-8 h-8 rounded-lg" />
+          <span class="font-semibold text-text tracking-tighter">OurCouple</span>
         </a>
         <a
           href={appStoreUrl}
@@ -113,13 +121,13 @@ const toolSchema = {
           rel="noopener noreferrer"
           class="px-4 py-2 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark transition-colors text-sm"
         >
-          Get the App
+          Download Free
         </a>
       </nav>
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 pt-20 pb-12">
+    <main class="flex-1 pt-16">
       <slot />
     </main>
 
@@ -151,17 +159,6 @@ const toolSchema = {
           </div>
 
           <div class="flex flex-col sm:flex-row gap-8 sm:gap-12">
-            <!-- Landing Sections Column -->
-            <div class="flex flex-col gap-3">
-              <h3 class="font-semibold text-text text-sm mb-1">Sections</h3>
-              <nav class="flex flex-col gap-2 text-sm">
-                <a href="/#hero" class="text-text-secondary hover:text-primary transition-colors">Home</a>
-                <a href="/#features" class="text-text-secondary hover:text-primary transition-colors">Features</a>
-                <a href="/#faq" class="text-text-secondary hover:text-primary transition-colors">FAQ</a>
-                <a href="mailto:contact@vynse.dev" class="text-text-secondary hover:text-primary transition-colors">Contact</a>
-              </nav>
-            </div>
-
             <!-- OurCouple For Column -->
             <div class="flex flex-col gap-3">
               <h3 class="font-semibold text-text text-sm mb-1">OurCouple For</h3>
@@ -179,7 +176,6 @@ const toolSchema = {
                 <a href="/tools/anniversary-calculator" class="text-text-secondary hover:text-primary transition-colors">Anniversary Calculator</a>
                 <a href="/tools/couple-quiz" class="text-text-secondary hover:text-primary transition-colors">Couple Quiz</a>
                 <a href="/tools/bucket-list" class="text-text-secondary hover:text-primary transition-colors">Bucket List</a>
-                <a href="/tools/love-language" class="text-text-secondary hover:text-primary transition-colors">Love Language</a>
               </nav>
             </div>
 
