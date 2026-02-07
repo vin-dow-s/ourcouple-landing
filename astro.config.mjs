@@ -16,6 +16,11 @@ export default defineConfig({
           item.priority = 1.0;
           item.changefreq = 'daily';
         }
+        // Blog pages get high priority (SEO content)
+        else if (item.url.includes('/blog')) {
+          item.priority = 0.8;
+          item.changefreq = 'weekly';
+        }
         // Tools pages get high priority (lead generation)
         else if (item.url.includes('/tools')) {
           item.priority = 0.8;

@@ -13,6 +13,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
         <span class="font-semibold text-base sm:text-xl text-text tracking-tighter">OurCouple</span>
       </a>
       <div class="flex items-center gap-6">
+        <a href="/blog" class=" hidden sm:block text-text-secondary hover:text-primary transition-colors font-medium">Blog</a>
         <a href="#features" class=" hidden sm:block text-text-secondary hover:text-primary transition-colors font-medium">Features</a>
         <a href="#faq" class="text-text-secondary hover:text-primary transition-colors font-medium hidden sm:block">FAQ</a>
         <a
@@ -97,6 +98,19 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
         <p class="text-text-secondary text-center text-base mb-8 sm:mb-12 max-w-2xl mx-auto">
           Everything you need, no unnecessary clutter
         </p>
+
+        <div class="max-w-3xl mx-auto mb-12 sm:mb-16">
+          <video
+            class="w-full rounded-2xl shadow-lg"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
+            <source src="/product-demo.mp4" type="video/mp4" />
+          </video>
+        </div>
 
         <div class="grid md:grid-cols-3 gap-8">
           <!-- Feature 1: Message of the Day -->
@@ -415,13 +429,23 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             </nav>
           </div>
 
+          <!-- Blog Column -->
+          <div class="flex flex-col gap-3">
+            <h3 class="font-semibold text-text text-sm mb-1">Blog</h3>
+            <nav class="flex flex-col gap-2 text-sm">
+              <a href="/blog" class="text-text-secondary hover:text-primary transition-colors">All Posts</a>
+              <a href="/blog/best-couples-journal-apps" class="text-text-secondary hover:text-primary transition-colors">Best Couples Apps</a>
+              <a href="/blog/questions-to-ask-your-partner" class="text-text-secondary hover:text-primary transition-colors">Questions for Couples</a>
+              <a href="/blog/free-date-night-ideas" class="text-text-secondary hover:text-primary transition-colors">Date Night Ideas</a>
+            </nav>
+          </div>
+
           <!-- OurCouple For Column -->
           <div class="flex flex-col gap-3">
             <h3 class="font-semibold text-text text-sm mb-1">OurCouple For</h3>
             <nav class="flex flex-col gap-2 text-sm">
               <a href="/for/long-distance-couples" class="text-text-secondary hover:text-primary transition-colors">Long-Distance Couples</a>
-              <a href="/for/busy-couples" class="text-text-secondary hover:text-primary transition-colors">Busy Couples</a>
-              <a href="/for/newlyweds" class="text-text-secondary hover:text-primary transition-colors">Newlyweds</a>
+        
             </nav>
           </div>
 

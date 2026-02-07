@@ -1,0 +1,234 @@
+---
+import '../../styles/global.css';
+
+const siteUrl = "https://ourcouple.app";
+const appStoreId = "6758024356";
+const appStoreUrl = `https://apps.apple.com/app/id${appStoreId}`;
+
+const posts = [
+  {
+    title: "Best Couples Journal Apps in 2026",
+    description: "An honest comparison of the top couples journal and relationship apps — features, pricing, privacy, and which one is right for you.",
+    slug: "best-couples-journal-apps",
+    category: "App Guides",
+    date: "2026-02-06",
+    readingTime: "10 min read"
+  },
+  {
+    title: "150+ Deep Questions to Ask Your Partner",
+    description: "Conversation starters for every stage of your relationship — from fun and flirty to deep and meaningful.",
+    slug: "questions-to-ask-your-partner",
+    category: "Connection",
+    date: "2026-02-06",
+    readingTime: "12 min read"
+  },
+  {
+    title: "Why Your Relationship Data Deserves Encryption",
+    description: "Most couples apps fail privacy audits. Here's why it matters and what to look for.",
+    slug: "relationship-data-encryption",
+    category: "Privacy",
+    date: "2026-02-06",
+    readingTime: "7 min read"
+  },
+  {
+    title: "50 Free Date Night Ideas at Home",
+    description: "Creative, budget-friendly date night ideas that bring you closer without spending a dime.",
+    slug: "free-date-night-ideas",
+    category: "Date Ideas",
+    date: "2026-02-06",
+    readingTime: "8 min read"
+  }
+];
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "OurCouple Blog",
+  "url": `${siteUrl}/blog`,
+  "description": "Relationship tips, date ideas, and honest app reviews for couples who want to stay connected.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "OurCouple",
+    "url": siteUrl
+  }
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>OurCouple Blog — Relationship Tips, Date Ideas & App Reviews</title>
+    <meta name="title" content="OurCouple Blog — Relationship Tips, Date Ideas & App Reviews" />
+    <meta name="description" content="Relationship tips, date ideas, and honest app reviews for couples who want to stay connected." />
+    <meta name="author" content="OurCouple" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#D4A5A9" />
+
+    <link rel="canonical" href={`${siteUrl}/blog`} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`${siteUrl}/blog`} />
+    <meta property="og:title" content="OurCouple Blog — Relationship Tips, Date Ideas & App Reviews" />
+    <meta property="og:description" content="Relationship tips, date ideas, and honest app reviews for couples who want to stay connected." />
+    <meta property="og:image" content={`${siteUrl}/og-image.png`} />
+    <meta property="og:site_name" content="OurCouple" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="OurCouple Blog — Relationship Tips, Date Ideas & App Reviews" />
+    <meta name="twitter:description" content="Relationship tips, date ideas, and honest app reviews for couples who want to stay connected." />
+
+    <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+
+    <script
+      defer
+      data-website-id="dfid_qI4dBMANAwmiNsJvVpicO"
+      data-domain="ourcouple.app"
+      src="https://datafa.st/js/script.js">
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col bg-background">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2">
+          <img src="/logo.png" alt="OurCouple" class="w-8 h-8 rounded-lg" />
+          <span class="font-semibold text-text tracking-tighter">OurCouple</span>
+        </a>
+        <div class="flex items-center gap-4">
+          <a href="/blog" class="text-primary font-medium text-sm">Blog</a>
+          <a
+            href={appStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark transition-colors text-sm"
+          >
+            Download Free
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-1 pt-20">
+      <!-- Hero -->
+      <section class="bg-gradient-radial pt-12 pb-16">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+          <h1 class="text-4xl md:text-5xl font-bold text-text tracking-tighter mb-4">
+            The OurCouple Blog
+          </h1>
+          <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+            Relationship tips, date ideas, and honest app reviews for couples who want to stay connected.
+          </p>
+        </div>
+      </section>
+
+      <!-- Posts Grid -->
+      <section class="py-16">
+        <div class="max-w-4xl mx-auto px-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            {posts.map((post) => (
+              <a
+                href={`/blog/${post.slug}`}
+                class="group block bg-card border border-border rounded-2xl p-6 hover:border-primary/40 transition-all hover:shadow-lg hover:shadow-primary/5"
+              >
+                <span class="inline-block px-3 py-1 bg-primary/10 text-primary-dark text-xs font-medium rounded-full mb-4">
+                  {post.category}
+                </span>
+                <h2 class="text-xl font-bold text-text tracking-tight mb-2 group-hover:text-primary-dark transition-colors">
+                  {post.title}
+                </h2>
+                <p class="text-text-secondary text-sm mb-4 line-clamp-2">
+                  {post.description}
+                </p>
+                <div class="flex items-center gap-3 text-xs text-text-light">
+                  <time datetime={post.date}>
+                    {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  </time>
+                  <span>·</span>
+                  <span>{post.readingTime}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="py-16 bg-gradient-radial">
+        <div class="max-w-2xl mx-auto px-6 text-center">
+          <h2 class="text-2xl md:text-3xl font-bold text-text tracking-tighter mb-4">
+            Try OurCouple Free
+          </h2>
+          <p class="text-text-secondary mb-8">
+            Daily messages, shared memories, notes, and events — all in one private space for you and your partner.
+          </p>
+          <a
+            href={appStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block transition-transform hover:scale-105"
+          >
+            <img src="/app-store-badge.svg" alt="Download on the App Store" class="h-14 mx-auto" />
+          </a>
+          <p class="text-text-secondary text-sm mt-2">Free to start · No credit card</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-card border-t border-border py-12">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-start justify-between gap-8 mb-8">
+          <div class="flex flex-col gap-2">
+            <div class="flex items-center gap-3">
+              <img src="/logo.png" alt="OurCouple" class="w-10 h-10 rounded-xl" />
+              <span class="font-semibold text-xl text-text tracking-tighter">OurCouple</span>
+            </div>
+            <p class="text-text-secondary text-sm max-w-xs">Your Shared Space</p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-8 sm:gap-12">
+            <div class="flex flex-col gap-3">
+              <h3 class="font-semibold text-text text-sm mb-1">Blog</h3>
+              <nav class="flex flex-col gap-2 text-sm">
+                <a href="/blog/best-couples-journal-apps" class="text-text-secondary hover:text-primary transition-colors">Best Couples Apps</a>
+                <a href="/blog/questions-to-ask-your-partner" class="text-text-secondary hover:text-primary transition-colors">Questions for Couples</a>
+                <a href="/blog/free-date-night-ideas" class="text-text-secondary hover:text-primary transition-colors">Date Night Ideas</a>
+              </nav>
+            </div>
+
+            <div class="flex flex-col gap-3">
+              <h3 class="font-semibold text-text text-sm mb-1">Free Tools</h3>
+              <nav class="flex flex-col gap-2 text-sm">
+                <a href="/tools/anniversary-calculator" class="text-text-secondary hover:text-primary transition-colors">Anniversary Calculator</a>
+                <a href="/tools/couple-quiz" class="text-text-secondary hover:text-primary transition-colors">Couple Quiz</a>
+                <a href="/tools/love-language" class="text-text-secondary hover:text-primary transition-colors">Love Language Quiz</a>
+              </nav>
+            </div>
+
+            <div class="flex flex-col gap-3">
+              <h3 class="font-semibold text-text text-sm mb-1">Legal</h3>
+              <nav class="flex flex-col gap-2 text-sm">
+                <a href="/privacy" class="text-text-secondary hover:text-primary transition-colors">Privacy</a>
+                <a href="/terms" class="text-text-secondary hover:text-primary transition-colors">Terms</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-text-light text-sm text-center pt-6 border-t border-border">
+          &copy; 2026 OurCouple. Made with love
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
