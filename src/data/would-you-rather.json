@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "category": "fun",
+    "optionA": "Only communicate through love letters",
+    "optionB": "Only communicate through voice notes"
+  },
+  {
+    "id": 2,
+    "category": "fun",
+    "optionA": "Have your partner cook every meal for a year",
+    "optionB": "Eat at a different restaurant every night for a year"
+  },
+  {
+    "id": 3,
+    "category": "fun",
+    "optionA": "Live in a tiny house with an amazing view",
+    "optionB": "Live in a mansion with no windows"
+  },
+  {
+    "id": 4,
+    "category": "fun",
+    "optionA": "Always have to share one blanket",
+    "optionB": "Always have to sleep in separate beds"
+  },
+  {
+    "id": 5,
+    "category": "fun",
+    "optionA": "Relive your first date every week",
+    "optionB": "Go on a completely new date every week"
+  },
+  {
+    "id": 6,
+    "category": "fun",
+    "optionA": "Have a partner who is always 30 minutes early",
+    "optionB": "Have a partner who is always 30 minutes late"
+  },
+  {
+    "id": 7,
+    "category": "fun",
+    "optionA": "Only watch rom-coms together forever",
+    "optionB": "Only watch horror movies together forever"
+  },
+  {
+    "id": 8,
+    "category": "fun",
+    "optionA": "Have a partner who snores loudly",
+    "optionB": "Have a partner who steals all the covers"
+  },
+  {
+    "id": 9,
+    "category": "fun",
+    "optionA": "Have matching tattoos",
+    "optionB": "Have matching outfits every day"
+  },
+  {
+    "id": 10,
+    "category": "fun",
+    "optionA": "Know exactly what your partner is thinking at all times",
+    "optionB": "Have your partner always surprise you"
+  },
+  {
+    "id": 11,
+    "category": "romantic",
+    "optionA": "Get a surprise trip once a year",
+    "optionB": "Get a heartfelt handwritten letter every month"
+  },
+  {
+    "id": 12,
+    "category": "romantic",
+    "optionA": "Slow dance in the kitchen every night",
+    "optionB": "Watch the sunrise together every morning"
+  },
+  {
+    "id": 13,
+    "category": "romantic",
+    "optionA": "Have a love song written about you",
+    "optionB": "Have a portrait painted of you as a couple"
+  },
+  {
+    "id": 14,
+    "category": "romantic",
+    "optionA": "Renew your vows every 5 years somewhere new",
+    "optionB": "Celebrate your anniversary at the same special place every year"
+  },
+  {
+    "id": 15,
+    "category": "romantic",
+    "optionA": "Have a partner who gives amazing gifts",
+    "optionB": "Have a partner who plans amazing experiences"
+  },
+  {
+    "id": 16,
+    "category": "romantic",
+    "optionA": "Fall asleep cuddling every night",
+    "optionB": "Wake up to breakfast in bed every morning"
+  },
+  {
+    "id": 17,
+    "category": "romantic",
+    "optionA": "Have a partner who remembers every little detail about you",
+    "optionB": "Have a partner who constantly plans new adventures for you"
+  },
+  {
+    "id": 18,
+    "category": "romantic",
+    "optionA": "Receive one big romantic gesture a year",
+    "optionB": "Receive small daily acts of love"
+  },
+  {
+    "id": 19,
+    "category": "romantic",
+    "optionA": "Have a picnic date under the stars",
+    "optionB": "Have a cozy movie marathon at home"
+  },
+  {
+    "id": 20,
+    "category": "romantic",
+    "optionA": "Travel the world together for a year",
+    "optionB": "Build your dream home together"
+  },
+  {
+    "id": 21,
+    "category": "deep",
+    "optionA": "Always know when your partner is lying",
+    "optionB": "Have your partner always know when you are lying"
+  },
+  {
+    "id": 22,
+    "category": "deep",
+    "optionA": "Be with someone who challenges you to grow",
+    "optionB": "Be with someone who accepts you exactly as you are"
+  },
+  {
+    "id": 23,
+    "category": "deep",
+    "optionA": "Have one deep conversation a day",
+    "optionB": "Have one full day of quality time a week"
+  },
+  {
+    "id": 24,
+    "category": "deep",
+    "optionA": "Always agree on everything",
+    "optionB": "Have passionate debates but always make up"
+  },
+  {
+    "id": 25,
+    "category": "deep",
+    "optionA": "Know the exact date you'll meet your soulmate",
+    "optionB": "Know that you've already met them but not who it is"
+  },
+  {
+    "id": 26,
+    "category": "deep",
+    "optionA": "Have a partner who is your best friend",
+    "optionB": "Have a partner who is your greatest passion"
+  },
+  {
+    "id": 27,
+    "category": "deep",
+    "optionA": "Give up social media to spend more time together",
+    "optionB": "Give up TV to spend more time together"
+  },
+  {
+    "id": 28,
+    "category": "deep",
+    "optionA": "Be able to read your partner's mind for a day",
+    "optionB": "Have your partner fully understand your feelings for a day"
+  },
+  {
+    "id": 29,
+    "category": "deep",
+    "optionA": "Love someone who lives far away",
+    "optionB": "Be with someone nearby who you like but don't love deeply"
+  },
+  {
+    "id": 30,
+    "category": "deep",
+    "optionA": "Have a relationship where you never argue",
+    "optionB": "Have a relationship where you always resolve arguments quickly"
+  },
+  {
+    "id": 31,
+    "category": "spicy",
+    "optionA": "Have your partner plan a mystery date night",
+    "optionB": "Plan the ultimate surprise date for your partner"
+  },
+  {
+    "id": 32,
+    "category": "spicy",
+    "optionA": "Recreate your favorite movie scene together",
+    "optionB": "Write your own love story together"
+  },
+  {
+    "id": 33,
+    "category": "spicy",
+    "optionA": "Give your partner a full massage after a long day",
+    "optionB": "Receive a full massage after a long day"
+  },
+  {
+    "id": 34,
+    "category": "spicy",
+    "optionA": "Go skinny dipping under the moonlight",
+    "optionB": "Have a couples spa day"
+  },
+  {
+    "id": 35,
+    "category": "spicy",
+    "optionA": "Have a spontaneous weekend getaway right now",
+    "optionB": "Plan an elaborate vacation for months"
+  },
+  {
+    "id": 36,
+    "category": "spicy",
+    "optionA": "Whisper sweet nothings all day",
+    "optionB": "Show affection only through actions all day"
+  },
+  {
+    "id": 37,
+    "category": "spicy",
+    "optionA": "Have a candlelit dinner at home",
+    "optionB": "Have a rooftop dinner with a city view"
+  },
+  {
+    "id": 38,
+    "category": "spicy",
+    "optionA": "Dress up for each other for no reason",
+    "optionB": "Spend the whole day in pajamas together"
+  },
+  {
+    "id": 39,
+    "category": "spicy",
+    "optionA": "Take a dance class together",
+    "optionB": "Take a cooking class together"
+  },
+  {
+    "id": 40,
+    "category": "spicy",
+    "optionA": "Send flirty texts all day while apart",
+    "optionB": "Save it all up for when you see each other"
+  }
+]

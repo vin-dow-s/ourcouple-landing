@@ -1,11 +1,29 @@
 ---
 import '../../styles/global.css';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
 
 const siteUrl = "https://ourcouple.app";
 const appStoreId = "6758024356";
 const appStoreUrl = `https://apps.apple.com/app/id${appStoreId}`;
 
 const posts = [
+  {
+    title: "How Well Do You Know Your Partner? 100+ Questions to Find Out",
+    description: "Test your relationship knowledge with 100+ fun questions for couples. From silly to deep — plus a free interactive quiz to compare answers with your partner.",
+    slug: "how-well-do-you-know-your-partner",
+    category: "Connection",
+    date: "2026-02-10",
+    readingTime: "10 min read"
+  },
+  {
+    title: "How Long Have We Been Dating? How to Calculate & Celebrate Every Milestone",
+    description: "Find out exactly how long you've been together — in days, weeks, and months. Plus every relationship milestone worth celebrating, from 100 days to 50 years.",
+    slug: "how-long-have-we-been-dating",
+    category: "Connection",
+    date: "2026-02-10",
+    readingTime: "8 min read"
+  },
   {
     title: "Best Couples Journal Apps in 2026",
     description: "An honest comparison of the top couples journal and relationship apps — features, pricing, privacy, and which one is right for you.",
@@ -97,30 +115,11 @@ const pageSchema = {
     </script>
   </head>
   <body class="min-h-screen flex flex-col bg-background">
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2">
-          <img src="/logo.png" alt="OurCouple" class="w-8 h-8 rounded-lg" />
-          <span class="font-semibold text-text tracking-tighter">OurCouple</span>
-        </a>
-        <div class="flex items-center gap-4">
-          <a href="/blog" class="text-primary font-medium text-sm">Blog</a>
-          <a
-            href={appStoreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-4 py-2 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark transition-colors text-sm"
-          >
-            Download Free
-          </a>
-        </div>
-      </nav>
-    </header>
+    <Header />
 
-    <main class="flex-1 pt-20">
+    <main class="flex-1">
       <!-- Hero -->
-      <section class="bg-gradient-radial pt-12 pb-16">
+      <section class="bg-gradient-radial pt-28 pb-8">
         <div class="max-w-4xl mx-auto px-6 text-center">
           <h1 class="text-4xl md:text-5xl font-bold text-text tracking-tighter mb-4">
             The OurCouple Blog
@@ -132,7 +131,7 @@ const pageSchema = {
       </section>
 
       <!-- Posts Grid -->
-      <section class="py-16">
+      <section class="py-8">
         <div class="max-w-4xl mx-auto px-6">
           <div class="grid md:grid-cols-2 gap-6">
             {posts.map((post) => (
@@ -163,12 +162,12 @@ const pageSchema = {
       </section>
 
       <!-- CTA -->
-      <section class="py-16 bg-gradient-radial">
-        <div class="max-w-2xl mx-auto px-6 text-center">
-          <h2 class="text-2xl md:text-3xl font-bold text-text tracking-tighter mb-4">
+      <section class="py-24 bg-gradient-radial">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+          <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-text mb-6">
             Try OurCouple Free
           </h2>
-          <p class="text-text-secondary mb-8">
+          <p class="text-base text-text-secondary mb-10">
             Daily messages, shared memories, notes, and events — all in one private space for you and your partner.
           </p>
           <a
@@ -177,58 +176,13 @@ const pageSchema = {
             rel="noopener noreferrer"
             class="inline-block transition-transform hover:scale-105"
           >
-            <img src="/app-store-badge.svg" alt="Download on the App Store" class="h-14 mx-auto" />
+            <img src="/app-store-badge.svg" alt="Download on the App Store" class="h-16 mx-auto" />
           </a>
           <p class="text-text-secondary text-sm mt-2">Free to start · No credit card</p>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-card border-t border-border py-12">
-      <div class="max-w-5xl mx-auto px-6">
-        <div class="flex flex-col md:flex-row items-start justify-between gap-8 mb-8">
-          <div class="flex flex-col gap-2">
-            <div class="flex items-center gap-3">
-              <img src="/logo.png" alt="OurCouple" class="w-10 h-10 rounded-xl" />
-              <span class="font-semibold text-xl text-text tracking-tighter">OurCouple</span>
-            </div>
-            <p class="text-text-secondary text-sm max-w-xs">Your Shared Space</p>
-          </div>
-
-          <div class="flex flex-col sm:flex-row gap-8 sm:gap-12">
-            <div class="flex flex-col gap-3">
-              <h3 class="font-semibold text-text text-sm mb-1">Blog</h3>
-              <nav class="flex flex-col gap-2 text-sm">
-                <a href="/blog/best-couples-journal-apps" class="text-text-secondary hover:text-primary transition-colors">Best Couples Apps</a>
-                <a href="/blog/questions-to-ask-your-partner" class="text-text-secondary hover:text-primary transition-colors">Questions for Couples</a>
-                <a href="/blog/free-date-night-ideas" class="text-text-secondary hover:text-primary transition-colors">Date Night Ideas</a>
-              </nav>
-            </div>
-
-            <div class="flex flex-col gap-3">
-              <h3 class="font-semibold text-text text-sm mb-1">Free Tools</h3>
-              <nav class="flex flex-col gap-2 text-sm">
-                <a href="/tools/anniversary-calculator" class="text-text-secondary hover:text-primary transition-colors">Anniversary Calculator</a>
-                <a href="/tools/couple-quiz" class="text-text-secondary hover:text-primary transition-colors">Couple Quiz</a>
-                <a href="/tools/love-language" class="text-text-secondary hover:text-primary transition-colors">Love Language Quiz</a>
-              </nav>
-            </div>
-
-            <div class="flex flex-col gap-3">
-              <h3 class="font-semibold text-text text-sm mb-1">Legal</h3>
-              <nav class="flex flex-col gap-2 text-sm">
-                <a href="/privacy" class="text-text-secondary hover:text-primary transition-colors">Privacy</a>
-                <a href="/terms" class="text-text-secondary hover:text-primary transition-colors">Terms</a>
-              </nav>
-            </div>
-          </div>
-        </div>
-
-        <p class="text-text-light text-sm text-center pt-6 border-t border-border">
-          &copy; 2026 OurCouple. Made with love
-        </p>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>

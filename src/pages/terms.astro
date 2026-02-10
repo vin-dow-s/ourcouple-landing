@@ -1,17 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Terms of Service - OurCouple" description="OurCouple Terms of Service: Rules for using our private couple app. Free to use, premium features available. Must be 16+ to use." canonicalPath="/terms">
-  <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-gradient-radial">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3">
-        <img src="/logo.png" alt="OurCouple" class="w-10 h-10 rounded-xl" />
-        <span class="font-sans font-bold text-xl text-text">OurCouple</span>
-      </a>
-    </div>
-  </header>
+  <Header />
 
   <main class="flex-1 pt-32 pb-20">
     <div class="max-w-3xl mx-auto px-6">
@@ -242,12 +236,5 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-card border-t border-border py-8">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <p class="text-text-light text-sm">
-        © 2026 OurCouple. Made with 💕
-      </p>
-    </div>
-  </footer>
+  <Footer />
 </Layout>

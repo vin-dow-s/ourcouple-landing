@@ -69,6 +69,11 @@
   opacity: 0;
 }
 
+.animate-fade-in-delay-video {
+  animation: fade-in 0.8s ease-out 1s forwards;
+  opacity: 0;
+}
+
 /* Gradient backgrounds */
 .bg-gradient-radial {
   background: radial-gradient(ellipse at top, var(--color-primary-light) 0%, var(--color-background) 70%);

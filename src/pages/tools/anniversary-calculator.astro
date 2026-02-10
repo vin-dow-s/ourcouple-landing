@@ -30,8 +30,8 @@ const milestones = [
 ---
 
 <ToolLayout
-  title="Anniversary Calculator - How Long Have You Been Together? | OurCouple"
-  description="Calculate how many days, weeks, and months you've been together. Discover upcoming relationship milestones like 100 days, 1000 days, and more."
+  title="How Long Have We Been Dating? Free Anniversary Calculator"
+  description="Calculate how many days, weeks, and months you've been together. Discover upcoming relationship milestones like 100 days, 520 days, 1000 days, and more — free, instant results."
   canonicalPath="/tools/anniversary-calculator"
 >
   <div class="max-w-2xl mx-auto px-4">
@@ -130,11 +130,35 @@ const milestones = [
 
     <!-- FAQ -->
     <div class="mt-12">
-      <h2 class="text-xl font-semibold text-text text-center mb-6">Common Questions</h2>
+      <h2 class="text-xl font-semibold text-text text-center mb-6">Frequently Asked Questions</h2>
       <div class="space-y-3">
         <details class="group bg-card rounded-xl border border-border">
           <summary class="flex items-center justify-between p-4 cursor-pointer">
-            <span class="font-medium text-text">What date should I use?</span>
+            <span class="font-medium text-text">How do I calculate how long we've been dating?</span>
+            <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-4 pb-4 text-text-secondary text-sm">
+            Enter the date you became a couple (your first date, the day you became official, or any date meaningful to you) and our calculator instantly shows you the exact number of days, weeks, and months you've been together — plus all your upcoming milestones.
+          </div>
+        </details>
+
+        <details class="group bg-card rounded-xl border border-border">
+          <summary class="flex items-center justify-between p-4 cursor-pointer">
+            <span class="font-medium text-text">What are the most important relationship milestones?</span>
+            <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-4 pb-4 text-text-secondary text-sm">
+            Popular milestones include 100 days (a tradition in Korean dating culture), 520 days ("I love you" in Chinese culture), 1000 days, and yearly anniversaries. Our calculator tracks 22 milestones from 30 days to 50 years, so you never miss a special date.
+          </div>
+        </details>
+
+        <details class="group bg-card rounded-xl border border-border">
+          <summary class="flex items-center justify-between p-4 cursor-pointer">
+            <span class="font-medium text-text">What date should I use for my anniversary?</span>
             <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
@@ -152,25 +176,53 @@ const milestones = [
             </svg>
           </summary>
           <div class="px-4 pb-4 text-text-secondary text-sm">
-            The 100 days anniversary is a popular milestone in Korean dating culture (called "백일" or baegil). Couples celebrate reaching 100 days together with gifts and special dates. It's become popular worldwide as a way to celebrate early relationship milestones.
+            The 100 days anniversary is a popular milestone in Korean dating culture (called "baegil"). Couples celebrate reaching 100 days together with gifts and special dates. It's become popular worldwide as a way to celebrate early relationship milestones.
           </div>
         </details>
-
-        <details class="group bg-card rounded-xl border border-border">
-          <summary class="flex items-center justify-between p-4 cursor-pointer">
-            <span class="font-medium text-text">Why 1000 days?</span>
-            <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </summary>
-          <div class="px-4 pb-4 text-text-secondary text-sm">
-            1000 days (about 2 years and 9 months) is a significant milestone that represents sustained commitment. It's roughly 1/30th of the average human lifespan spent loving someone — a beautiful achievement worth celebrating.
-          </div>
-        </details>
-
-
       </div>
     </div>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate how long we've been dating?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter the date you became a couple (your first date, the day you became official, or any date meaningful to you) and our calculator instantly shows you the exact number of days, weeks, and months you've been together — plus all your upcoming milestones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the most important relationship milestones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Popular milestones include 100 days (a tradition in Korean dating culture), 520 days ('I love you' in Chinese culture), 1000 days, and yearly anniversaries. Our calculator tracks 22 milestones from 30 days to 50 years, so you never miss a special date."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What date should I use for my anniversary?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use whatever date feels meaningful to you! Common choices include: the day you started dating, your first date, the day you met, or when you became 'official.' The best date is the one you both agree on."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the 100 days anniversary?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 100 days anniversary is a popular milestone in Korean dating culture (called 'baegil'). Couples celebrate reaching 100 days together with gifts and special dates. It's become popular worldwide as a way to celebrate early relationship milestones."
+          }
+        }
+      ]
+    }
+    </script>
   </div>
 
   <script define:vars={{ milestones }}>

@@ -1,33 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 const appStoreUrl = "https://apps.apple.com/app/id6758024356";
 ---
 
 <Layout title="OurCouple - Your Shared Space | Couple App for iOS" canonicalPath="/">
-  <!-- Navbar -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-gradient-radial">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3">
-        <img src="/logo.png" alt="OurCouple Logo" class="w-10 h-10 rounded-xl" />
-        <span class="font-semibold text-base sm:text-xl text-text tracking-tighter">OurCouple</span>
-      </a>
-      <div class="flex items-center gap-6">
-        <a href="/blog" class=" hidden sm:block text-text-secondary hover:text-primary transition-colors font-medium">Blog</a>
-        <a href="#features" class=" hidden sm:block text-text-secondary hover:text-primary transition-colors font-medium">Features</a>
-        <a href="#faq" class="text-text-secondary hover:text-primary transition-colors font-medium hidden sm:block">FAQ</a>
-        <a
-          href={appStoreUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="px-4 py-2 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark transition-colors text-sm"
-          data-fast-goal="cta_navbar_download"
-        >
-          Download
-        </a>
-      </div>
-    </div>
-  </nav>
+  <Header />
 
   <main class="flex-1">
     <!-- Hero Section -->
@@ -39,38 +19,35 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
 
       <div class="relative z-10 max-w-6xl mx-auto px-6 py-12 text-center">
         <!-- Hero Text -->
-        <div class="mb-8 animate-fade-in">
-          <h1 class=" text-4xl md:text-6xl font-bold text-text mb-4 tracking-tighter">
-            Your Relationship Noticeboard
-          </h1>
-          <p class="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
-            OurCouple is the shared space for you and your partner. <br class="hidden sm:inline" />Messages, memories, notes & events — all in one place.
-          </p>
+        <h1 class="animate-fade-in text-4xl md:text-6xl font-bold text-text mb-4 tracking-tighter">
+          Your Relationship Noticeboard
+        </h1>
+        <p class="animate-fade-in-delay-1 text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-8">
+          OurCouple is the shared space for you and your partner. <br class="hidden sm:inline" />Messages, memories, notes & events — all in one place.
+        </p>
+
+        <!-- App Store Download -->
+        <div class="animate-fade-in-delay-2 max-w-md mx-auto">
+          <a
+            href={appStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block transition-transform hover:scale-105"
+            aria-label="Download OurCouple on the App Store"
+            data-fast-goal="cta_hero_download"
+          >
+            <img
+              src="/app-store-badge.svg"
+              alt="Download on the App Store"
+              class="h-14 mx-auto"
+            />
+          </a>
+          <p class="text-neutral-500 text-sm mt-0">Start free • No credit card</p>
         </div>
-                <!-- App Store Download -->
-                <div class="animate-fade-in-delay-2 max-w-md mx-auto">
-                  <a
-                    href={appStoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-block transition-transform hover:scale-105"
-                    aria-label="Download OurCouple on the App Store"
-                    data-fast-goal="cta_hero_download"
-                  >
-                    <img
-                      src="/app-store-badge.svg"
-                      alt="Download on the App Store"
-                      class="h-14 mx-auto"
-                    />
-                  </a>
-                  <p class="text-neutral-500 text-sm mt-0">Start free • No credit card</p>
-                </div>
 
         <!-- Video/Image Preview -->
-        <div class="mt-10 animate-fade-in-delay-1">
+        <div class="mt-10 min-h-[50vh] flex items-center justify-center animate-fade-in-delay-video">
           <div class="inline-block rounded-3xl shadow-lg shadow-black/15">
-
-            <!-- Video on desktop -->
             <video
               autoplay
               muted
@@ -363,7 +340,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
         <p class="text-text-secondary text-sm mt-2 mb-8">Free to start • Upgrade anytime</p>
 
         <!-- Android Waitlist -->
-        <div class="max-w-md mx-auto mt-8 p-6 bg-card/50 rounded-2xl border border-border">
+        <div class="max-w-md mx-auto mt-16 p-6 bg-card/50 rounded-2xl border border-border">
           <p class="text-text-secondary mb-4">Android coming soon! Get notified:</p>
           <form class="flex flex-col sm:flex-row gap-3" id="android-waitlist-form">
             <input
@@ -389,93 +366,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-card border-t border-border py-12">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row items-start justify-between gap-8 mb-8">
-        <div class="flex flex-col gap-2">
-          <div class="flex items-center gap-3">
-            <img src="/logo.png" alt="OurCouple" class="w-10 h-10 rounded-xl" />
-            <span class="font-semibold text-xl text-text tracking-tighter">OurCouple</span>
-          </div>
-          <p class="text-text-secondary text-sm max-w-xs">
-            Your Shared Space - <span class="italic">Your Relationship Noticeboard</span>
-          </p>
-          <a
-            href={appStoreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-4 inline-block transition-transform hover:scale-105 w-fit"
-            aria-label="Download OurCouple on the App Store"
-            data-fast-goal="cta_footer_download"
-          >
-          <img
-          src="/app-store-badge.svg"
-          alt="Download on the App Store"
-          class="h-12 mx-auto"
-        />
-          </a>
-        </div>
-
-        <div class="flex flex-col sm:flex-row gap-8 sm:gap-12">
-          <!-- Landing Sections Column -->
-          <div class="flex flex-col gap-3">
-            <h3 class="font-semibold text-text text-sm mb-1">Sections</h3>
-            <nav class="flex flex-col gap-2 text-sm">
-              <a href="#hero" class="text-text-secondary hover:text-primary transition-colors">Home</a>
-              <a href="#features" class="text-text-secondary hover:text-primary transition-colors">Features</a>
-              <a href="#faq" class="text-text-secondary hover:text-primary transition-colors">FAQ</a>
-              <a href="mailto:contact@vynse.dev" class="text-text-secondary hover:text-primary transition-colors">Contact</a>
-            </nav>
-          </div>
-
-          <!-- Blog Column -->
-          <div class="flex flex-col gap-3">
-            <h3 class="font-semibold text-text text-sm mb-1">Blog</h3>
-            <nav class="flex flex-col gap-2 text-sm">
-              <a href="/blog" class="text-text-secondary hover:text-primary transition-colors">All Posts</a>
-              <a href="/blog/best-couples-journal-apps" class="text-text-secondary hover:text-primary transition-colors">Best Couples Apps</a>
-              <a href="/blog/questions-to-ask-your-partner" class="text-text-secondary hover:text-primary transition-colors">Questions for Couples</a>
-              <a href="/blog/free-date-night-ideas" class="text-text-secondary hover:text-primary transition-colors">Date Night Ideas</a>
-            </nav>
-          </div>
-
-          <!-- OurCouple For Column -->
-          <div class="flex flex-col gap-3">
-            <h3 class="font-semibold text-text text-sm mb-1">OurCouple For</h3>
-            <nav class="flex flex-col gap-2 text-sm">
-              <a href="/for/long-distance-couples" class="text-text-secondary hover:text-primary transition-colors">Long-Distance Couples</a>
-        
-            </nav>
-          </div>
-
-          <!-- Free Tools Column -->
-          <div class="flex flex-col gap-3">
-            <h3 class="font-semibold text-text text-sm mb-1">Free Tools</h3>
-            <nav class="flex flex-col gap-2 text-sm">
-              <a href="/tools/anniversary-calculator" class="text-text-secondary hover:text-primary transition-colors">Anniversary Calculator</a>
-              <a href="/tools/couple-quiz" class="text-text-secondary hover:text-primary transition-colors">Couple Quiz</a>
-              <a href="/tools/bucket-list" class="text-text-secondary hover:text-primary transition-colors">Bucket List</a>
-              <a href="/tools/love-language" class="text-text-secondary hover:text-primary transition-colors">Love Language Quiz</a>
-            </nav>
-          </div>
-
-          <!-- Legal Column -->
-          <div class="flex flex-col gap-3">
-            <h3 class="font-semibold text-text text-sm mb-1">Legal</h3>
-            <nav class="flex flex-col gap-2 text-sm">
-              <a href="/privacy" class="text-text-secondary hover:text-primary transition-colors">Privacy</a>
-              <a href="/terms" class="text-text-secondary hover:text-primary transition-colors">Terms</a>
-            </nav>
-          </div>
-        </div>
-      </div>
-      
-      <p class="text-text-light text-sm text-center pt-6 border-t border-border">
-        © 2026 OurCouple. Made with 💕
-      </p>
-    </div>
-  </footer>
+  <Footer />
 
   <!-- Android waitlist form handling -->
   <script define:vars={{

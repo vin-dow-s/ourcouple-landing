@@ -1,0 +1,446 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+import questions from '../../data/36-questions.json';
+---
+
+<ToolLayout
+  title="36 Questions to Fall in Love — Free Interactive Quiz"
+  description="Try the famous 36 questions that lead to love, based on Arthur Aron's study. Play together with your partner — one question at a time, no signup needed."
+  canonicalPath="/tools/36-questions"
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <!-- Hero -->
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+        36 Questions to Fall in Love
+      </h1>
+      <p class="text-text-secondary">
+        Based on the famous study by psychologist Arthur Aron. These questions are designed to create closeness between two people — one question at a time.
+      </p>
+    </div>
+
+    <!-- Intro Screen -->
+    <div id="intro">
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <h2 class="font-semibold text-lg text-text mb-3">About the Study</h2>
+        <p class="text-text-secondary text-sm mb-4">
+          In 1997, psychologist Arthur Aron developed 36 questions designed to accelerate intimacy between two strangers. The questions gradually escalate in depth and personal disclosure. Years later, a New York Times essay by Mandy Len Catron — "To Fall in Love With Anyone, Do This" — brought the study into the spotlight.
+        </p>
+
+        <h3 class="font-semibold text-text mb-2">How it works</h3>
+        <p class="text-text-secondary text-sm mb-6">
+          Sit with your partner. Take turns answering each question out loud. There are 3 sets — each one goes deeper. Take your time.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+          <div class="bg-primary/5 rounded-xl border border-primary/15 p-4 text-center">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2">
+              <span class="text-sm font-bold text-primary">1</span>
+            </div>
+            <p class="font-medium text-text text-sm">Getting to Know</p>
+            <p class="text-text-light text-xs mt-1">12 questions</p>
+          </div>
+          <div class="bg-accent/5 rounded-xl border border-accent/15 p-4 text-center">
+            <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-2">
+              <span class="text-sm font-bold text-accent">2</span>
+            </div>
+            <p class="font-medium text-text text-sm">Getting Personal</p>
+            <p class="text-text-light text-xs mt-1">12 questions</p>
+          </div>
+          <div class="bg-partner/5 rounded-xl border border-partner/15 p-4 text-center">
+            <div class="w-10 h-10 rounded-full bg-partner/10 flex items-center justify-center mx-auto mb-2">
+              <span class="text-sm font-bold text-partner">3</span>
+            </div>
+            <p class="font-medium text-text text-sm">Getting Close</p>
+            <p class="text-text-light text-xs mt-1">12 questions</p>
+          </div>
+        </div>
+
+        <button
+          id="start-btn"
+          class="w-full px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors"
+        >
+          Start Together
+        </button>
+      </div>
+    </div>
+
+    <!-- Questions Screen -->
+    <div id="questions-container" class="hidden">
+      <!-- Set Indicator Badge -->
+      <div class="flex items-center justify-center mb-4">
+        <span id="set-badge" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+          Set 1 of 3 — Getting to Know
+        </span>
+      </div>
+
+      <!-- Progress -->
+      <div class="mb-6">
+        <div class="flex justify-between text-sm text-text-secondary mb-2">
+          <span>Question <span id="current-q">1</span> of 36</span>
+          <span id="progress-percent">0%</span>
+        </div>
+        <div class="h-2 bg-border rounded-full overflow-hidden">
+          <div id="progress-bar" class="h-full bg-primary rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+        <!-- Set progress -->
+        <div class="flex justify-between text-xs text-text-light mt-1">
+          <span id="set-progress-text">Question 1 of 12 in this set</span>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <p id="question-number" class="text-text-light text-sm mb-2 text-center"></p>
+        <p id="question-text" class="font-medium text-lg text-text text-center leading-relaxed"></p>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="flex gap-3">
+        <button
+          id="prev-btn"
+          class="flex-1 px-6 py-3 border border-border rounded-xl font-medium hover:border-primary/30 transition-colors disabled:opacity-50"
+          disabled
+        >
+          Previous
+        </button>
+        <button
+          id="next-btn"
+          class="flex-1 px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors"
+        >
+          Next Question
+        </button>
+      </div>
+    </div>
+
+    <!-- Set Transition Screen -->
+    <div id="set-transition" class="hidden">
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6 text-center">
+        <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h2 id="transition-title" class="text-2xl font-bold text-text mb-2">Set 1 Complete!</h2>
+        <p id="transition-description" class="text-text-secondary mb-6"></p>
+        <button
+          id="continue-btn"
+          class="w-full px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors"
+        >
+          Continue to Set 2
+        </button>
+      </div>
+    </div>
+
+    <!-- Completion Screen -->
+    <div id="completion" class="hidden">
+      <div class="bg-primary/5 rounded-2xl border border-primary/20 p-6 mb-6 text-center">
+        <div class="text-5xl mb-3">&#10024;</div>
+        <h2 class="text-2xl font-bold text-text mb-2">You made it through all 36 questions!</h2>
+        <p class="text-text-secondary text-sm leading-relaxed">
+          In the original study, after finishing the 36 questions, participants were asked to look into each other's eyes for 4 minutes without speaking. It may feel awkward at first — but many couples say it's the most powerful part of the exercise.
+        </p>
+      </div>
+
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6 text-center">
+        <h3 class="font-semibold text-text mb-2">The Final Step: 4 Minutes of Eye Contact</h3>
+        <p class="text-text-secondary text-sm mb-4">
+          Set a timer for 4 minutes and look into each other's eyes. No talking, no phones. Just be present with each other.
+        </p>
+      </div>
+
+      <!-- Share -->
+      <div class="bg-partner/5 rounded-2xl border border-partner/20 p-6 mb-6 text-center">
+        <h3 class="font-semibold text-text mb-2">Share with friends</h3>
+        <p class="text-text-secondary text-sm mb-4">Let others try this experience too!</p>
+        <ShareButtons
+          title=""
+          text="We just did the 36 questions to fall in love!"
+          compact={true}
+        />
+      </div>
+
+      <!-- CTA to OurCouple app -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6 text-center">
+        <h3 class="font-semibold text-text mb-2">Keep the connection going</h3>
+        <p class="text-text-secondary text-sm mb-4">
+          OurCouple helps you and your partner stay close every day — with shared journals, date ideas, and more.
+        </p>
+        <a
+          href="https://apps.apple.com/app/id6758024356"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors"
+        >
+          Get OurCouple Free
+        </a>
+      </div>
+
+      <!-- Start Over -->
+      <div class="text-center">
+        <button id="restart-btn" class="text-text-secondary hover:text-primary transition-colors text-sm">
+          Start over
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="max-w-2xl mx-auto px-4 mt-12">
+    <h2 class="text-xl font-semibold text-text text-center mb-6">Frequently Asked Questions</h2>
+    <div class="space-y-3">
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">What are the 36 questions to fall in love?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          The 36 questions come from a 1997 study by psychologist Arthur Aron and his colleagues, published in the journal Personality and Social Psychology Bulletin. The study found that mutual vulnerability fosters closeness. In 2015, a New York Times essay by Mandy Len Catron — "To Fall in Love With Anyone, Do This" — brought the study into the mainstream. The questions are divided into three sets that gradually increase in intimacy and personal disclosure.
+        </div>
+      </details>
+
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">Do the 36 questions actually work?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          The original study showed that pairs who went through the 36 questions felt significantly closer afterward compared to control groups who engaged in small talk. While the questions won't guarantee romantic love, they are scientifically shown to accelerate feelings of closeness, trust, and vulnerability between two people — which are the building blocks of deep connection.
+        </div>
+      </details>
+
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">How long do the 36 questions take?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          Most couples take between 45 and 90 minutes to go through all 36 questions. The original study allotted 45 minutes, but there's no strict time limit. Some questions naturally lead to longer conversations — that's a good sign. Take your time and let the conversation flow.
+        </div>
+      </details>
+
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">Can established couples do the 36 questions?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          Yes, absolutely. While the study was originally designed for strangers, many established couples find the questions just as powerful — sometimes even more so. Long-term partners often discover things they never knew about each other, or find new ways to express feelings they've never put into words. It's a wonderful way to reconnect and deepen your bond.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are the 36 questions to fall in love?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 36 questions come from a 1997 study by psychologist Arthur Aron and his colleagues, published in the journal Personality and Social Psychology Bulletin. The study found that mutual vulnerability fosters closeness. In 2015, a New York Times essay by Mandy Len Catron brought the study into the mainstream. The questions are divided into three sets that gradually increase in intimacy and personal disclosure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do the 36 questions actually work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The original study showed that pairs who went through the 36 questions felt significantly closer afterward compared to control groups who engaged in small talk. While the questions won't guarantee romantic love, they are scientifically shown to accelerate feelings of closeness, trust, and vulnerability between two people."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long do the 36 questions take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most couples take between 45 and 90 minutes to go through all 36 questions. The original study allotted 45 minutes, but there's no strict time limit. Some questions naturally lead to longer conversations. Take your time and let the conversation flow."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can established couples do the 36 questions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, absolutely. While the study was originally designed for strangers, many established couples find the questions just as powerful. Long-term partners often discover things they never knew about each other, or find new ways to express feelings they've never put into words."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script define:vars={{ questions }}>
+    // Constants
+    const SET_NAMES = ["Getting to Know", "Getting Personal", "Getting Close"];
+    const SET_DESCRIPTIONS = [
+      "These opening questions help you start sharing and learning about each other in a comfortable way.",
+      "Now the questions go a bit deeper — into your values, dreams, and memories.",
+      "The final set asks for real vulnerability and honesty. Take your time with these."
+    ];
+    const QUESTIONS_PER_SET = 12;
+
+    // State
+    let currentIndex = 0; // 0-35
+
+    // Elements
+    const intro = document.getElementById('intro');
+    const questionsContainer = document.getElementById('questions-container');
+    const setTransition = document.getElementById('set-transition');
+    const completion = document.getElementById('completion');
+
+    const startBtn = document.getElementById('start-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const continueBtn = document.getElementById('continue-btn');
+    const restartBtn = document.getElementById('restart-btn');
+
+    const setBadge = document.getElementById('set-badge');
+    const currentQSpan = document.getElementById('current-q');
+    const progressPercent = document.getElementById('progress-percent');
+    const progressBar = document.getElementById('progress-bar');
+    const setProgressText = document.getElementById('set-progress-text');
+    const questionNumber = document.getElementById('question-number');
+    const questionText = document.getElementById('question-text');
+
+    const transitionTitle = document.getElementById('transition-title');
+    const transitionDescription = document.getElementById('transition-description');
+
+    // Helper: get current set (0-indexed)
+    function getCurrentSet() {
+      return Math.floor(currentIndex / QUESTIONS_PER_SET);
+    }
+
+    // Helper: get position within current set (0-indexed)
+    function getSetPosition() {
+      return currentIndex % QUESTIONS_PER_SET;
+    }
+
+    // Show/hide screens
+    function showScreen(screenId) {
+      [intro, questionsContainer, setTransition, completion].forEach(el => {
+        el.classList.add('hidden');
+      });
+      document.getElementById(screenId).classList.remove('hidden');
+    }
+
+    // Render the current question
+    function renderQuestion() {
+      const q = questions[currentIndex];
+      const set = getCurrentSet();
+      const setPos = getSetPosition();
+      const overallProgress = (currentIndex / 36) * 100;
+
+      // Set badge
+      const badgeColors = [
+        'bg-primary/10 text-primary',
+        'bg-accent/10 text-accent',
+        'bg-partner/10 text-partner'
+      ];
+      setBadge.className = `inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${badgeColors[set]}`;
+      setBadge.textContent = `Set ${set + 1} of 3 — ${SET_NAMES[set]}`;
+
+      // Overall progress
+      currentQSpan.textContent = currentIndex + 1;
+      progressPercent.textContent = `${Math.round(overallProgress)}%`;
+      progressBar.style.width = `${overallProgress}%`;
+
+      // Progress bar color per set
+      const barColors = ['bg-primary', 'bg-accent', 'bg-partner'];
+      progressBar.className = `h-full ${barColors[set]} rounded-full transition-all duration-300`;
+
+      // Set progress text
+      setProgressText.textContent = `Question ${setPos + 1} of ${QUESTIONS_PER_SET} in this set`;
+
+      // Question content
+      questionNumber.textContent = `#${q.id}`;
+      questionText.textContent = q.question;
+
+      // Button states
+      prevBtn.disabled = currentIndex === 0;
+
+      // Update next button text for last question
+      if (currentIndex === 35) {
+        nextBtn.textContent = 'Finish';
+      } else if (setPos === QUESTIONS_PER_SET - 1) {
+        nextBtn.textContent = 'Complete Set';
+      } else {
+        nextBtn.textContent = 'Next Question';
+      }
+    }
+
+    // Show set transition
+    function showSetTransition(completedSet) {
+      const nextSet = completedSet + 1;
+      transitionTitle.textContent = `Set ${completedSet + 1} Complete!`;
+      transitionDescription.textContent = SET_DESCRIPTIONS[nextSet];
+      continueBtn.textContent = `Continue to Set ${nextSet + 1} — ${SET_NAMES[nextSet]}`;
+      showScreen('set-transition');
+    }
+
+    // Event: Start
+    startBtn.addEventListener('click', () => {
+      currentIndex = 0;
+      showScreen('questions-container');
+      renderQuestion();
+    });
+
+    // Event: Previous
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderQuestion();
+      }
+    });
+
+    // Event: Next
+    nextBtn.addEventListener('click', () => {
+      const setBeforeAdvance = getCurrentSet();
+
+      if (currentIndex === 35) {
+        // Last question — show completion
+        showScreen('completion');
+        return;
+      }
+
+      currentIndex++;
+      const setAfterAdvance = getCurrentSet();
+
+      if (setAfterAdvance !== setBeforeAdvance) {
+        // Crossed into a new set — show transition
+        showSetTransition(setBeforeAdvance);
+      } else {
+        renderQuestion();
+      }
+    });
+
+    // Event: Continue from set transition
+    continueBtn.addEventListener('click', () => {
+      showScreen('questions-container');
+      renderQuestion();
+    });
+
+    // Event: Restart
+    restartBtn.addEventListener('click', () => {
+      currentIndex = 0;
+      showScreen('intro');
+    });
+  </script>
+</ToolLayout>

@@ -64,8 +64,8 @@ const loveLanguages = {
 ---
 
 <ToolLayout
-  title="Love Language Quiz - Discover Your Love Language | OurCouple"
-  description="Take our free love language quiz to discover how you give and receive love. Compare results with your partner to understand each other better."
+  title="What Is My Love Language? Free Quiz — Discover It in 2 Minutes"
+  description="Take this free love language quiz to discover how you give and receive love. 10 quick questions, instant results, no signup. A simple alternative to find your love language."
   canonicalPath="/tools/love-language"
 >
   <div class="max-w-2xl mx-auto px-4">
@@ -186,6 +186,102 @@ const loveLanguages = {
       </div>
     </div>
   </div>
+
+  <!-- FAQ Section -->
+  <div class="max-w-2xl mx-auto px-4 mt-12">
+    <h2 class="text-xl font-semibold text-text text-center mb-6">Frequently Asked Questions</h2>
+    <div class="space-y-3">
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">What are the 5 love languages?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          The 5 love languages are Words of Affirmation, Physical Touch, Receiving Gifts, Quality Time, and Acts of Service. Each person has a primary love language — the way they most naturally give and receive love. Understanding your love language (and your partner's) helps you communicate affection more effectively.
+        </div>
+      </details>
+
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">Is this love language quiz free?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          Yes, completely free. No account needed, no email required. You get your full results instantly — including your primary and secondary love language, a score breakdown for all 5 languages, and personalized tips for your partner.
+        </div>
+      </details>
+
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">How is this different from the official 5 Love Languages quiz?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          This quiz is a quick, free alternative that gives you instant results in about 2 minutes. No account creation required, no email signup, and no paywall. You get your primary love language, secondary love language, a visual score chart, and practical tips — all without leaving the page.
+        </div>
+      </details>
+
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">What is the most common love language?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          Quality Time and Words of Affirmation tend to be the most common primary love languages. However, most people have a mix of all five — your secondary love language matters too. That's why this quiz shows you a breakdown of all 5 languages, not just your top one.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are the 5 love languages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 5 love languages are Words of Affirmation, Physical Touch, Receiving Gifts, Quality Time, and Acts of Service. Each person has a primary love language — the way they most naturally give and receive love. Understanding your love language (and your partner's) helps you communicate affection more effectively."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this love language quiz free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, completely free. No account needed, no email required. You get your full results instantly — including your primary and secondary love language, a score breakdown for all 5 languages, and personalized tips for your partner."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from the official 5 Love Languages quiz?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This quiz is a quick, free alternative that gives you instant results in about 2 minutes. No account creation required, no email signup, and no paywall. You get your primary love language, secondary love language, a visual score chart, and practical tips — all without leaving the page."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the most common love language?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Quality Time and Words of Affirmation tend to be the most common primary love languages. However, most people have a mix of all five — your secondary love language matters too. That's why this quiz shows you a breakdown of all 5 languages, not just your top one."
+        }
+      }
+    ]
+  }
+  </script>
 
   <script define:vars={{ questions, loveLanguages }}>
     // State

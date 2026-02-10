@@ -6,8 +6,8 @@ import questions from '../../data/quiz-questions.json';
 ---
 
 <ToolLayout
-  title="How Well Do You Know Your Partner? Quiz | OurCouple"
-  description="Take the couple quiz about your partner, then share it with them to see how well you really know each other. Fun, free, and reveals surprising insights!"
+  title="How Well Do You Know Your Partner? Free Quiz (12 Questions)"
+  description="Take this free couple quiz about your partner, then share it with them to compare answers. 12 fun questions, no signup required — see how well you really know each other!"
   canonicalPath="/tools/couple-quiz"
 >
   <div class="max-w-2xl mx-auto px-4">
@@ -219,7 +219,7 @@ import questions from '../../data/quiz-questions.json';
     <div id="mode-results" class="mode-container hidden">
       <!-- Score -->
       <div class="bg-primary/5 rounded-2xl border border-primary/20 p-6 mb-6 text-center">
-        <p class="text-text-secondary text-sm mb-2">Compatibility Score</p>
+        <p class="text-text text-sm mb-2">Compatibility Score</p>
         <div id="score-display" class="text-5xl font-bold text-primary mb-2"></div>
         <p id="score-message" class="text-text-secondary"></p>
       </div>
@@ -248,6 +248,102 @@ import questions from '../../data/quiz-questions.json';
       </div>
     </div>
   </div>
+
+  <!-- FAQ Section -->
+  <div class="max-w-2xl mx-auto px-4 mt-12">
+    <h2 class="text-xl font-semibold text-text text-center mb-6">Frequently Asked Questions</h2>
+    <div class="space-y-3">
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">How does the couple quiz work?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          You answer 12 questions about what you think your partner would say. Then you share a special link with your partner, and they answer the same questions about themselves. At the end, you see a comparison of your answers and a compatibility score.
+        </div>
+      </details>
+
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">Is this couple quiz really free?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          Yes, 100% free. No signup required, no email needed, no hidden paywalls. Just take the quiz, share the link with your partner, and see your results instantly.
+        </div>
+      </details>
+
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">How many questions are in the partner quiz?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          The quiz has 12 carefully chosen questions covering topics like comfort food, stress habits, vacation preferences, pet peeves, and relationship values. It takes about 3-5 minutes to complete.
+        </div>
+      </details>
+
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">Can I share the quiz with my partner?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          Absolutely! After you complete your answers, you get a special link to share via WhatsApp, SMS, or just by copying the link. Your partner answers the same questions about themselves, and then you both see how well you matched.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does the couple quiz work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You answer 12 questions about what you think your partner would say. Then you share a special link with your partner, and they answer the same questions about themselves. At the end, you see a comparison of your answers and a compatibility score."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this couple quiz really free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, 100% free. No signup required, no email needed, no hidden paywalls. Just take the quiz, share the link with your partner, and see your results instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many questions are in the partner quiz?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The quiz has 12 carefully chosen questions covering topics like comfort food, stress habits, vacation preferences, pet peeves, and relationship values. It takes about 3-5 minutes to complete."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I share the quiz with my partner?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "After you complete your answers, you get a special link to share via WhatsApp, SMS, or just by copying the link. Your partner answers the same questions about themselves, and then you both see how well you matched."
+        }
+      }
+    ]
+  }
+  </script>
 
   <script define:vars={{ questions }}>
     // State

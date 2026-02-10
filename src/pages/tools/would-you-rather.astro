@@ -1,0 +1,863 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+import questions from '../../data/would-you-rather.json';
+---
+
+<ToolLayout
+  title="Would You Rather for Couples — Free Game (40+ Questions)"
+  description="Play Would You Rather with your partner! 40+ fun couple questions — from silly to deep. Play together, compare answers, and see how well you match."
+  canonicalPath="/tools/would-you-rather"
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <!-- Hero -->
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+        </svg>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+        Would You Rather — Couples Edition
+      </h1>
+      <p class="text-text-secondary">
+        40+ fun questions for couples. Pick your answer, compare with your partner, and see how well you match!
+      </p>
+    </div>
+
+    <!-- Mode: Select -->
+    <div id="mode-select">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <!-- Solo Card -->
+        <div class="bg-card rounded-2xl border border-border p-6 flex flex-col">
+          <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </div>
+          <h2 class="font-semibold text-lg text-text mb-1">Play Solo</h2>
+          <p class="text-text-secondary text-sm mb-4 flex-1">Browse through questions at your own pace. Great for sparking conversation!</p>
+          <button
+            id="solo-btn"
+            class="w-full px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors"
+          >
+            Play Solo
+          </button>
+        </div>
+
+        <!-- Together Card -->
+        <div class="bg-card rounded-2xl border border-border p-6 flex flex-col">
+          <div class="w-10 h-10 rounded-xl bg-partner/10 flex items-center justify-center mb-3">
+            <svg class="w-5 h-5 text-partner" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h2 class="font-semibold text-lg text-text mb-1">Play Together</h2>
+          <p class="text-text-secondary text-sm mb-4 flex-1">Both answer separately, then compare results and see your compatibility score!</p>
+          <button
+            id="together-btn"
+            class="w-full px-6 py-3 bg-partner text-white rounded-xl font-semibold hover:bg-partner/90 transition-colors"
+          >
+            Play Together
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Filter -->
+    <div id="category-filter" class="hidden mb-6">
+      <div class="flex flex-wrap gap-2 justify-center">
+        <button class="cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-primary text-white" data-category="all">All</button>
+        <button class="cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30" data-category="fun">Fun</button>
+        <button class="cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30" data-category="romantic">Romantic</button>
+        <button class="cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30" data-category="deep">Deep</button>
+        <button class="cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30" data-category="spicy">Spicy</button>
+      </div>
+    </div>
+
+    <!-- Mode: Solo -->
+    <div id="mode-solo" class="hidden">
+      <!-- Category badge + Progress -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-2">
+          <span id="solo-category-badge" class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary capitalize"></span>
+          <span class="text-sm text-text-secondary">Question <span id="solo-current-q">1</span> of <span id="solo-total-q">40</span></span>
+        </div>
+        <div class="h-2 bg-border rounded-full overflow-hidden">
+          <div id="solo-progress-bar" class="h-full bg-primary rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <p class="text-text-secondary text-sm mb-2">Would you rather...</p>
+        <div id="solo-options" class="space-y-3">
+          <button id="solo-option-a" class="solo-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all">
+            <span class="block font-medium text-text" id="solo-option-a-text"></span>
+          </button>
+          <div class="text-center text-text-light text-sm font-medium">OR</div>
+          <button id="solo-option-b" class="solo-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all">
+            <span class="block font-medium text-text" id="solo-option-b-text"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="flex gap-3">
+        <button
+          id="solo-back-btn"
+          class="flex-1 px-6 py-3 border border-border rounded-xl font-medium hover:border-primary/30 transition-colors disabled:opacity-50"
+          disabled
+        >
+          Back
+        </button>
+        <button
+          id="solo-home-btn"
+          class="flex-1 px-6 py-3 border border-border rounded-xl font-medium hover:border-primary/30 transition-colors"
+        >
+          Back to Menu
+        </button>
+      </div>
+    </div>
+
+    <!-- Mode: Together - Player 1 -->
+    <div id="mode-together-p1" class="hidden">
+      <div class="bg-primary/5 rounded-2xl border border-primary/20 p-4 mb-6 text-center">
+        <p class="text-text font-medium">Player 1</p>
+        <p class="text-text-secondary text-sm">Answer all questions first, then pass the phone to your partner.</p>
+      </div>
+
+      <!-- Progress -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-2">
+          <span id="p1-category-badge" class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary capitalize"></span>
+          <span class="text-sm text-text-secondary">Question <span id="p1-current-q">1</span> of <span id="p1-total-q">40</span></span>
+        </div>
+        <div class="h-2 bg-border rounded-full overflow-hidden">
+          <div id="p1-progress-bar" class="h-full bg-primary rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <p class="text-text-secondary text-sm mb-2">Would you rather...</p>
+        <div id="p1-options" class="space-y-3">
+          <button id="p1-option-a" class="p1-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all">
+            <span class="block font-medium text-text" id="p1-option-a-text"></span>
+          </button>
+          <div class="text-center text-text-light text-sm font-medium">OR</div>
+          <button id="p1-option-b" class="p1-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all">
+            <span class="block font-medium text-text" id="p1-option-b-text"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mode: Together - Pass Phone -->
+    <div id="mode-pass-phone" class="hidden">
+      <div class="bg-card rounded-2xl border border-border p-8 mb-6 text-center">
+        <div class="w-16 h-16 rounded-2xl bg-partner/10 flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-partner" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <h2 class="text-2xl font-bold text-text mb-2">Pass the phone to your partner!</h2>
+        <p class="text-text-secondary mb-6">Player 1 has finished. Now it's Player 2's turn to answer the same questions.</p>
+        <button
+          id="p2-ready-btn"
+          class="w-full px-6 py-3 bg-partner text-white rounded-xl font-semibold hover:bg-partner/90 transition-colors"
+        >
+          Ready for Player 2
+        </button>
+      </div>
+    </div>
+
+    <!-- Mode: Together - Player 2 -->
+    <div id="mode-together-p2" class="hidden">
+      <div class="bg-partner/5 rounded-2xl border border-partner/20 p-4 mb-6 text-center">
+        <p class="text-text font-medium">Player 2</p>
+        <p class="text-text-secondary text-sm">Now it's your turn! Answer the same questions.</p>
+      </div>
+
+      <!-- Progress -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-2">
+          <span id="p2-category-badge" class="px-3 py-1 rounded-full text-xs font-medium bg-partner/10 text-partner capitalize"></span>
+          <span class="text-sm text-text-secondary">Question <span id="p2-current-q">1</span> of <span id="p2-total-q">40</span></span>
+        </div>
+        <div class="h-2 bg-border rounded-full overflow-hidden">
+          <div id="p2-progress-bar" class="h-full bg-partner rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <p class="text-text-secondary text-sm mb-2">Would you rather...</p>
+        <div id="p2-options" class="space-y-3">
+          <button id="p2-option-a" class="p2-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all">
+            <span class="block font-medium text-text" id="p2-option-a-text"></span>
+          </button>
+          <div class="text-center text-text-light text-sm font-medium">OR</div>
+          <button id="p2-option-b" class="p2-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all">
+            <span class="block font-medium text-text" id="p2-option-b-text"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mode: Solo Complete -->
+    <div id="mode-solo-complete" class="hidden">
+      <div class="bg-primary/5 rounded-2xl border border-primary/20 p-6 mb-6 text-center">
+        <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h2 class="text-2xl font-bold text-text mb-2">All done!</h2>
+        <p class="text-text-secondary mb-6">You went through all the questions. Want to compare answers with your partner?</p>
+        <div class="flex flex-col gap-3">
+          <button
+            id="solo-play-together-btn"
+            class="w-full px-6 py-3 bg-partner text-white rounded-xl font-semibold hover:bg-partner/90 transition-colors"
+          >
+            Play Together & Compare
+          </button>
+          <button
+            id="solo-replay-btn"
+            class="w-full px-6 py-3 border border-border rounded-xl font-medium hover:border-primary/30 transition-colors"
+          >
+            Play Again
+          </button>
+        </div>
+      </div>
+
+      <div class="text-center mb-6">
+        <ShareButtons
+          title="Share this game"
+          text="I just played Would You Rather — Couples Edition! Try it with your partner:"
+        />
+      </div>
+    </div>
+
+    <!-- Mode: Results -->
+    <div id="mode-results" class="hidden">
+      <!-- Compatibility Score -->
+      <div class="bg-primary/5 rounded-2xl border border-primary/20 p-6 mb-6 text-center">
+        <p class="text-text-secondary text-sm mb-2">Compatibility Score</p>
+        <div id="results-score" class="text-5xl font-bold text-primary mb-2"></div>
+        <p id="results-message" class="text-text-secondary"></p>
+      </div>
+
+      <!-- Disagreements -->
+      <div id="results-disagreements" class="bg-card rounded-2xl border border-border p-6 mb-6 hidden">
+        <h3 class="font-semibold text-text mb-4">Where you disagreed</h3>
+        <div id="results-disagreement-list" class="space-y-4">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Share -->
+      <div class="text-center mb-6">
+        <ShareButtons
+          title="Share your results"
+          text="We played Would You Rather for Couples! See how well you and your partner match:"
+        />
+      </div>
+
+      <!-- Play Again -->
+      <div class="text-center">
+        <button id="play-again-btn" class="w-full px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors">
+          Play Again
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="max-w-2xl mx-auto px-4 mt-12">
+    <h2 class="text-xl font-semibold text-text text-center mb-6">Frequently Asked Questions</h2>
+    <div class="space-y-3">
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">How do you play Would You Rather as a couple?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          There are two ways to play! In Solo mode, you browse through questions at your own pace and discuss each one with your partner. In Together mode, Player 1 answers all the questions first, then passes the phone to Player 2. After both have answered, you see a compatibility score and can compare where you agreed and disagreed.
+        </div>
+      </details>
+
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">Is this game free?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          Yes, 100% free. No signup required, no email needed, no hidden paywalls. Just pick a mode and start playing instantly.
+        </div>
+      </details>
+
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">How many questions are there?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          There are 40+ questions across 4 categories: Fun, Romantic, Deep, and Spicy. You can filter by category to focus on the type of questions you enjoy most, or play through all of them for the full experience.
+        </div>
+      </details>
+
+      <details class="group bg-card rounded-xl border border-border">
+        <summary class="flex items-center justify-between p-4 cursor-pointer">
+          <span class="font-medium text-text">Can we play this long distance?</span>
+          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 text-text-secondary text-sm">
+          Yes! You can use the Solo mode while on a video call and discuss each question together. Or use the Together mode on one device and compare your answers afterward. It's a great way to stay connected and have fun together even when you're apart.
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do you play Would You Rather as a couple?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There are two ways to play! In Solo mode, you browse through questions at your own pace and discuss each one with your partner. In Together mode, Player 1 answers all the questions first, then passes the phone to Player 2. After both have answered, you see a compatibility score and can compare where you agreed and disagreed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this game free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, 100% free. No signup required, no email needed, no hidden paywalls. Just pick a mode and start playing instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many questions are there?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There are 40+ questions across 4 categories: Fun, Romantic, Deep, and Spicy. You can filter by category to focus on the type of questions you enjoy most, or play through all of them for the full experience."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can we play this long distance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! You can use the Solo mode while on a video call and discuss each question together. Or use the Together mode on one device and compare your answers afterward. It's a great way to stay connected and have fun together even when you're apart."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script define:vars={{ questions }}>
+    // ─── State ───────────────────────────────────────────────────────
+    let mode = 'select'; // select, solo, together-p1, pass-phone, together-p2, results
+    let currentIndex = 0;
+    let filteredQuestions = [...questions];
+    let activeCategory = 'all';
+    let p1Answers = [];
+    let p2Answers = [];
+    let soloAnswers = [];
+    let isTransitioning = false;
+
+    // ─── Elements ────────────────────────────────────────────────────
+    const modeSelect = document.getElementById('mode-select');
+    const categoryFilter = document.getElementById('category-filter');
+    const modeSolo = document.getElementById('mode-solo');
+    const modeSoloComplete = document.getElementById('mode-solo-complete');
+    const modeTogetherP1 = document.getElementById('mode-together-p1');
+    const modePassPhone = document.getElementById('mode-pass-phone');
+    const modeTogetherP2 = document.getElementById('mode-together-p2');
+    const modeResults = document.getElementById('mode-results');
+
+    const soloBtn = document.getElementById('solo-btn');
+    const togetherBtn = document.getElementById('together-btn');
+    const p2ReadyBtn = document.getElementById('p2-ready-btn');
+    const playAgainBtn = document.getElementById('play-again-btn');
+    const soloBackBtn = document.getElementById('solo-back-btn');
+    const soloHomeBtn = document.getElementById('solo-home-btn');
+    const soloPlayTogetherBtn = document.getElementById('solo-play-together-btn');
+    const soloReplayBtn = document.getElementById('solo-replay-btn');
+
+    const catBtns = document.querySelectorAll('.cat-btn');
+
+    // Solo elements
+    const soloCategoryBadge = document.getElementById('solo-category-badge');
+    const soloCurrentQ = document.getElementById('solo-current-q');
+    const soloTotalQ = document.getElementById('solo-total-q');
+    const soloProgressBar = document.getElementById('solo-progress-bar');
+    const soloOptionA = document.getElementById('solo-option-a');
+    const soloOptionB = document.getElementById('solo-option-b');
+    const soloOptionAText = document.getElementById('solo-option-a-text');
+    const soloOptionBText = document.getElementById('solo-option-b-text');
+
+    // P1 elements
+    const p1CategoryBadge = document.getElementById('p1-category-badge');
+    const p1CurrentQ = document.getElementById('p1-current-q');
+    const p1TotalQ = document.getElementById('p1-total-q');
+    const p1ProgressBar = document.getElementById('p1-progress-bar');
+    const p1OptionA = document.getElementById('p1-option-a');
+    const p1OptionB = document.getElementById('p1-option-b');
+    const p1OptionAText = document.getElementById('p1-option-a-text');
+    const p1OptionBText = document.getElementById('p1-option-b-text');
+
+    // P2 elements
+    const p2CategoryBadge = document.getElementById('p2-category-badge');
+    const p2CurrentQ = document.getElementById('p2-current-q');
+    const p2TotalQ = document.getElementById('p2-total-q');
+    const p2ProgressBar = document.getElementById('p2-progress-bar');
+    const p2OptionA = document.getElementById('p2-option-a');
+    const p2OptionB = document.getElementById('p2-option-b');
+    const p2OptionAText = document.getElementById('p2-option-a-text');
+    const p2OptionBText = document.getElementById('p2-option-b-text');
+
+    // Results elements
+    const resultsScore = document.getElementById('results-score');
+    const resultsMessage = document.getElementById('results-message');
+    const resultsDisagreements = document.getElementById('results-disagreements');
+    const resultsDisagreementList = document.getElementById('results-disagreement-list');
+
+    // ─── Helpers ─────────────────────────────────────────────────────
+    function hideAll() {
+      modeSelect.classList.add('hidden');
+      categoryFilter.classList.add('hidden');
+      modeSolo.classList.add('hidden');
+      modeSoloComplete.classList.add('hidden');
+      modeTogetherP1.classList.add('hidden');
+      modePassPhone.classList.add('hidden');
+      modeTogetherP2.classList.add('hidden');
+      modeResults.classList.add('hidden');
+    }
+
+    function showSection(section) {
+      hideAll();
+      section.classList.remove('hidden');
+    }
+
+    function showMode(newMode) {
+      mode = newMode;
+      hideAll();
+
+      switch (newMode) {
+        case 'select':
+          modeSelect.classList.remove('hidden');
+          break;
+        case 'solo':
+          categoryFilter.classList.remove('hidden');
+          modeSolo.classList.remove('hidden');
+          break;
+        case 'solo-complete':
+          modeSoloComplete.classList.remove('hidden');
+          break;
+        case 'together-p1':
+          categoryFilter.classList.remove('hidden');
+          modeTogetherP1.classList.remove('hidden');
+          break;
+        case 'pass-phone':
+          modePassPhone.classList.remove('hidden');
+          break;
+        case 'together-p2':
+          categoryFilter.classList.remove('hidden');
+          modeTogetherP2.classList.remove('hidden');
+          break;
+        case 'results':
+          modeResults.classList.remove('hidden');
+          break;
+      }
+    }
+
+    function filterQuestions(category) {
+      activeCategory = category;
+      if (category === 'all') {
+        filteredQuestions = [...questions];
+      } else {
+        filteredQuestions = questions.filter(q => q.category === category);
+      }
+      currentIndex = 0;
+
+      // Update category button styles
+      catBtns.forEach(btn => {
+        if (btn.dataset.category === category) {
+          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-primary text-white';
+        } else {
+          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30';
+        }
+      });
+
+      // Reset answers for the new filtered set
+      if (mode === 'solo') {
+        soloAnswers = new Array(filteredQuestions.length).fill(null);
+        renderSoloQuestion();
+      } else if (mode === 'together-p1') {
+        p1Answers = new Array(filteredQuestions.length).fill(null);
+        renderP1Question();
+      } else if (mode === 'together-p2') {
+        p2Answers = new Array(filteredQuestions.length).fill(null);
+        renderP2Question();
+      }
+    }
+
+    // ─── Solo Mode ───────────────────────────────────────────────────
+    function renderSoloQuestion() {
+      if (filteredQuestions.length === 0) return;
+      const q = filteredQuestions[currentIndex];
+      const total = filteredQuestions.length;
+      const progress = ((currentIndex) / total) * 100;
+
+      soloCategoryBadge.textContent = q.category;
+      soloCurrentQ.textContent = currentIndex + 1;
+      soloTotalQ.textContent = total;
+      soloProgressBar.style.width = `${progress}%`;
+
+      soloOptionAText.textContent = q.optionA;
+      soloOptionBText.textContent = q.optionB;
+
+      // Reset option styles
+      soloOptionA.className = 'solo-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all';
+      soloOptionB.className = 'solo-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all';
+
+      // Restore selection if already answered
+      if (soloAnswers[currentIndex] === 'A') {
+        soloOptionA.className = 'solo-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+      } else if (soloAnswers[currentIndex] === 'B') {
+        soloOptionB.className = 'solo-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+      }
+
+      soloBackBtn.disabled = currentIndex === 0;
+    }
+
+    function handleSoloChoice(choice) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      soloAnswers[currentIndex] = choice;
+
+      // Highlight selection
+      if (choice === 'A') {
+        soloOptionA.className = 'solo-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+        soloOptionB.className = 'solo-option w-full p-5 rounded-xl border border-border text-left transition-all opacity-50';
+      } else {
+        soloOptionB.className = 'solo-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+        soloOptionA.className = 'solo-option w-full p-5 rounded-xl border border-border text-left transition-all opacity-50';
+      }
+
+      // Auto-advance after 500ms
+      setTimeout(() => {
+        if (currentIndex < filteredQuestions.length - 1) {
+          currentIndex++;
+          renderSoloQuestion();
+        } else {
+          // Update progress to 100% then show completion
+          soloProgressBar.style.width = '100%';
+          setTimeout(() => showMode('solo-complete'), 300);
+        }
+        isTransitioning = false;
+      }, 500);
+    }
+
+    soloOptionA.addEventListener('click', () => handleSoloChoice('A'));
+    soloOptionB.addEventListener('click', () => handleSoloChoice('B'));
+
+    soloBackBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderSoloQuestion();
+      }
+    });
+
+    soloHomeBtn.addEventListener('click', () => {
+      currentIndex = 0;
+      activeCategory = 'all';
+      filteredQuestions = [...questions];
+      catBtns.forEach(btn => {
+        if (btn.dataset.category === 'all') {
+          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-primary text-white';
+        } else {
+          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30';
+        }
+      });
+      showMode('select');
+    });
+
+    // ─── Together Mode - Player 1 ───────────────────────────────────
+    function renderP1Question() {
+      if (filteredQuestions.length === 0) return;
+      const q = filteredQuestions[currentIndex];
+      const total = filteredQuestions.length;
+      const progress = ((currentIndex) / total) * 100;
+
+      p1CategoryBadge.textContent = q.category;
+      p1CurrentQ.textContent = currentIndex + 1;
+      p1TotalQ.textContent = total;
+      p1ProgressBar.style.width = `${progress}%`;
+
+      p1OptionAText.textContent = q.optionA;
+      p1OptionBText.textContent = q.optionB;
+
+      // Reset option styles
+      p1OptionA.className = 'p1-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all';
+      p1OptionB.className = 'p1-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all';
+
+      // Restore selection if already answered
+      if (p1Answers[currentIndex] === 'A') {
+        p1OptionA.className = 'p1-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+      } else if (p1Answers[currentIndex] === 'B') {
+        p1OptionB.className = 'p1-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+      }
+    }
+
+    function handleP1Choice(choice) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      p1Answers[currentIndex] = choice;
+
+      // Highlight selection
+      if (choice === 'A') {
+        p1OptionA.className = 'p1-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+        p1OptionB.className = 'p1-option w-full p-5 rounded-xl border border-border text-left transition-all opacity-50';
+      } else {
+        p1OptionB.className = 'p1-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+        p1OptionA.className = 'p1-option w-full p-5 rounded-xl border border-border text-left transition-all opacity-50';
+      }
+
+      // Auto-advance after 500ms
+      setTimeout(() => {
+        if (currentIndex < filteredQuestions.length - 1) {
+          currentIndex++;
+          renderP1Question();
+        } else {
+          // P1 done - show pass phone screen
+          p1ProgressBar.style.width = '100%';
+          showMode('pass-phone');
+        }
+        isTransitioning = false;
+      }, 500);
+    }
+
+    p1OptionA.addEventListener('click', () => handleP1Choice('A'));
+    p1OptionB.addEventListener('click', () => handleP1Choice('B'));
+
+    // ─── Together Mode - Player 2 ───────────────────────────────────
+    function renderP2Question() {
+      if (filteredQuestions.length === 0) return;
+      const q = filteredQuestions[currentIndex];
+      const total = filteredQuestions.length;
+      const progress = ((currentIndex) / total) * 100;
+
+      p2CategoryBadge.textContent = q.category;
+      p2CurrentQ.textContent = currentIndex + 1;
+      p2TotalQ.textContent = total;
+      p2ProgressBar.style.width = `${progress}%`;
+
+      p2OptionAText.textContent = q.optionA;
+      p2OptionBText.textContent = q.optionB;
+
+      // Reset option styles
+      p2OptionA.className = 'p2-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all';
+      p2OptionB.className = 'p2-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all';
+
+      // Restore selection if already answered
+      if (p2Answers[currentIndex] === 'A') {
+        p2OptionA.className = 'p2-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+      } else if (p2Answers[currentIndex] === 'B') {
+        p2OptionB.className = 'p2-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+      }
+    }
+
+    function handleP2Choice(choice) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      p2Answers[currentIndex] = choice;
+
+      // Highlight selection
+      if (choice === 'A') {
+        p2OptionA.className = 'p2-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+        p2OptionB.className = 'p2-option w-full p-5 rounded-xl border border-border text-left transition-all opacity-50';
+      } else {
+        p2OptionB.className = 'p2-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+        p2OptionA.className = 'p2-option w-full p-5 rounded-xl border border-border text-left transition-all opacity-50';
+      }
+
+      // Auto-advance after 500ms
+      setTimeout(() => {
+        if (currentIndex < filteredQuestions.length - 1) {
+          currentIndex++;
+          renderP2Question();
+        } else {
+          // P2 done - calculate and show results
+          p2ProgressBar.style.width = '100%';
+          calculateResults();
+        }
+        isTransitioning = false;
+      }, 500);
+    }
+
+    p2OptionA.addEventListener('click', () => handleP2Choice('A'));
+    p2OptionB.addEventListener('click', () => handleP2Choice('B'));
+
+    // ─── Results ─────────────────────────────────────────────────────
+    function calculateResults() {
+      const total = filteredQuestions.length;
+      let matches = 0;
+      const disagreements = [];
+
+      for (let i = 0; i < total; i++) {
+        if (p1Answers[i] === p2Answers[i]) {
+          matches++;
+        } else {
+          const q = filteredQuestions[i];
+          disagreements.push({
+            question: q,
+            p1Choice: p1Answers[i] === 'A' ? q.optionA : q.optionB,
+            p2Choice: p2Answers[i] === 'A' ? q.optionA : q.optionB
+          });
+        }
+      }
+
+      const score = total > 0 ? Math.round((matches / total) * 100) : 0;
+
+      // Display score
+      resultsScore.textContent = `${score}%`;
+
+      if (score >= 80) {
+        resultsMessage.textContent = 'Amazing! You two are incredibly in sync! You think alike on almost everything.';
+      } else if (score >= 60) {
+        resultsMessage.textContent = 'Great match! You agree on most things but have enough differences to keep it interesting.';
+      } else if (score >= 40) {
+        resultsMessage.textContent = 'A balanced mix! You share some preferences but also bring unique perspectives to the relationship.';
+      } else {
+        resultsMessage.textContent = 'Opposites attract! You have very different preferences — that means lots of fun debates ahead!';
+      }
+
+      // Display disagreements
+      if (disagreements.length > 0) {
+        resultsDisagreements.classList.remove('hidden');
+        resultsDisagreementList.innerHTML = disagreements.map(d => `
+          <div class="p-4 rounded-xl bg-background border border-border">
+            <p class="text-sm text-text-secondary mb-3">Would you rather...</p>
+            <p class="font-medium text-text text-sm mb-3">${d.question.optionA} <span class="text-text-light">vs</span> ${d.question.optionB}</p>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="px-3 py-2 rounded-lg bg-primary/5 border border-primary/20">
+                <p class="text-xs text-text-light mb-1">Player 1</p>
+                <p class="text-sm font-medium text-text">${d.p1Choice}</p>
+              </div>
+              <div class="px-3 py-2 rounded-lg bg-partner/5 border border-partner/20">
+                <p class="text-xs text-text-light mb-1">Player 2</p>
+                <p class="text-sm font-medium text-text">${d.p2Choice}</p>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        resultsDisagreements.classList.add('hidden');
+      }
+
+      showMode('results');
+    }
+
+    // ─── Event Listeners ─────────────────────────────────────────────
+
+    // Mode selection
+    soloBtn.addEventListener('click', () => {
+      filteredQuestions = [...questions];
+      activeCategory = 'all';
+      currentIndex = 0;
+      soloAnswers = new Array(filteredQuestions.length).fill(null);
+      showMode('solo');
+      renderSoloQuestion();
+    });
+
+    togetherBtn.addEventListener('click', () => {
+      filteredQuestions = [...questions];
+      activeCategory = 'all';
+      currentIndex = 0;
+      p1Answers = new Array(filteredQuestions.length).fill(null);
+      p2Answers = new Array(filteredQuestions.length).fill(null);
+      showMode('together-p1');
+      renderP1Question();
+    });
+
+    // Pass phone -> P2
+    p2ReadyBtn.addEventListener('click', () => {
+      currentIndex = 0;
+      p2Answers = new Array(filteredQuestions.length).fill(null);
+      // Hide category filter during P2 to keep same question set as P1
+      showMode('together-p2');
+      renderP2Question();
+    });
+
+    // Play again
+    playAgainBtn.addEventListener('click', () => {
+      currentIndex = 0;
+      activeCategory = 'all';
+      filteredQuestions = [...questions];
+      p1Answers = [];
+      p2Answers = [];
+      soloAnswers = [];
+      catBtns.forEach(btn => {
+        if (btn.dataset.category === 'all') {
+          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-primary text-white';
+        } else {
+          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30';
+        }
+      });
+      showMode('select');
+    });
+
+    // Solo complete -> play together
+    soloPlayTogetherBtn.addEventListener('click', () => {
+      currentIndex = 0;
+      p1Answers = new Array(filteredQuestions.length).fill(null);
+      p2Answers = new Array(filteredQuestions.length).fill(null);
+      showMode('together-p1');
+      renderP1Question();
+    });
+
+    // Solo complete -> replay
+    soloReplayBtn.addEventListener('click', () => {
+      currentIndex = 0;
+      activeCategory = 'all';
+      filteredQuestions = [...questions];
+      soloAnswers = [];
+      catBtns.forEach(btn => {
+        if (btn.dataset.category === 'all') {
+          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-primary text-white';
+        } else {
+          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30';
+        }
+      });
+      showMode('select');
+    });
+
+    // Category filter
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Only allow category change during solo or at start of P1 (not during P2)
+        if (mode === 'together-p2') return;
+        filterQuestions(btn.dataset.category);
+      });
+    });
+  </script>
+</ToolLayout>
