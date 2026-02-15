@@ -1,7 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Privacy Policy - OurCouple" description="OurCouple Privacy Policy: Your data is encrypted. We can't read your messages, photos, or notes. No ads, no data selling, no third-party sharing." canonicalPath="/privacy">
@@ -10,13 +10,13 @@ import Footer from '../components/Footer.astro';
   <main class="flex-1 pt-32 pb-20">
     <div class="max-w-3xl mx-auto px-6">
       <h1 class="text-4xl md:text-5xl font-bold text-text mb-8">Privacy Policy</h1>
-      <p class="text-text-secondary mb-8">Last updated: January 21, 2026</p>
-      
+      <p class="text-text-secondary mb-8">Last updated: February 15, 2026</p>
+
       <div class="prose prose-lg max-w-none">
         <section class="mb-10">
           <h2 class="text-2xl font-semibold text-text mb-4">Your Privacy Matters</h2>
           <p class="text-text-secondary mb-4">
-            OurCouple is built with privacy at its core. Your content is encrypted, which means <strong>only you and your partner can see it</strong>. Not even we can read your messages, photos, or notes.
+            OurCouple is built with privacy at its core. Your content is encrypted by default, which means <strong>only you and your partner can see it</strong>. Not even we can read your messages, photos, or notes.
           </p>
           <p class="text-text-secondary mb-4">
             This policy applies to our website, waitlist, and mobile application.
@@ -25,22 +25,41 @@ import Footer from '../components/Footer.astro';
 
         <section class="mb-10">
           <h2 class="text-2xl font-semibold text-text mb-4">What We Collect</h2>
-          
+
           <h3 class="font-semibold text-lg text-text mb-3 mt-6">Account Information</h3>
           <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
             <li>Email address</li>
             <li>Display name</li>
+            <li>Authentication data (via email, Google, or Apple Sign-In)</li>
           </ul>
-          
+
           <h3 class="font-semibold text-lg text-text mb-3 mt-6">Your Content (Encrypted)</h3>
+          <p class="text-text-secondary mb-2">All content below is encrypted on your device before being stored on our servers:</p>
           <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
-            <li>Daily manifestations (messages and photos)</li>
-            <li>Inspiration vault quotes</li>
+            <li>Daily messages and photos of the day</li>
             <li>Shared moments and memories</li>
             <li>Shared notes</li>
             <li>Events and dates</li>
+            <li>Daily question answers</li>
           </ul>
-          
+
+          <h3 class="font-semibold text-lg text-text mb-3 mt-6">App Usage Data</h3>
+          <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
+            <li>Virtual pet progress (name, level, experience)</li>
+            <li>Couple streak data</li>
+            <li>Push notification tokens</li>
+            <li>App preferences and settings</li>
+            <li>Crash reports and performance data (anonymized)</li>
+            <li>Purchase and subscription status</li>
+          </ul>
+
+          <h3 class="font-semibold text-lg text-text mb-3 mt-6">Device Permissions</h3>
+          <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
+            <li>Camera and photo library (to share photos with your partner)</li>
+            <li>Notifications (to receive messages from your partner)</li>
+            <li>Calendar (to sync couple events to your device calendar — Premium only)</li>
+          </ul>
+
           <h3 class="font-semibold text-lg text-text mb-3 mt-6">Waitlist</h3>
           <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
             <li>Email address only</li>
@@ -50,22 +69,34 @@ import Footer from '../components/Footer.astro';
         <section class="mb-10">
           <h2 class="text-2xl font-semibold text-text mb-4">Encryption</h2>
           <p class="text-text-secondary mb-4">
-            All your personal content is encrypted on your device before being sent to our servers. Only you and your partner have the keys to decrypt it.
+            All your personal content is automatically encrypted on your device before being sent to our servers. Only you and your partner have the keys to decrypt it.
           </p>
           <p class="text-text-secondary mb-4">
             This means:
           </p>
           <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
-            <li>Your messages, photos, notes are encrypted locally</li>
+            <li>Your messages, photos, and notes are encrypted by default</li>
             <li>Only encrypted data is stored on our servers</li>
             <li>Only you and your partner can decrypt your content</li>
-            <li><strong>We cannot read your content</strong> — even if we wanted to</li>
+            <li><strong>We cannot read your content</strong></li>
           </ul>
-          <div class="bg-primary/10 border border-primary/20 rounded-xl p-4 mt-4">
-            <p class="text-text-secondary text-sm">
-              <strong class="text-text">Important:</strong> Because we can't decrypt your data, if you lose your password and can't recover your account, your content cannot be recovered.
-            </p>
-          </div>
+        </section>
+
+        <section class="mb-10">
+          <h2 class="text-2xl font-semibold text-text mb-4">Third-Party Services</h2>
+          <p class="text-text-secondary mb-4">
+            We use the following trusted services to operate the app. Each service only receives the minimum data necessary:
+          </p>
+          <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
+            <li><strong>Supabase</strong> — Database hosting and authentication. Stores your encrypted content and account data.</li>
+            <li><strong>RevenueCat</strong> — Subscription management. Receives your user ID and purchase information to manage premium access.</li>
+            <li><strong>Sentry</strong> — Crash reporting. Receives anonymized error reports and performance data to help us fix bugs.</li>
+            <li><strong>Expo</strong> — Push notification delivery. Receives your device push token to deliver notifications.</li>
+            <li><strong>Apple / Google</strong> — Authentication (Sign in with Apple or Google). Receives only the data necessary to verify your identity.</li>
+          </ul>
+          <p class="text-text-secondary mt-4">
+            None of these services can access your encrypted content.
+          </p>
         </section>
 
         <section class="mb-10">
@@ -75,6 +106,9 @@ import Footer from '../components/Footer.astro';
             <li>Sync your data between your devices</li>
             <li>Share your content with your connected partner</li>
             <li>Send push notifications (with your permission)</li>
+            <li>Sync events to your device calendar (with your permission)</li>
+            <li>Monitor app stability and fix crashes</li>
+            <li>Process premium subscriptions</li>
             <li>Notify you about product updates (waitlist)</li>
             <li>Respond to support requests</li>
           </ul>
@@ -88,6 +122,7 @@ import Footer from '../components/Footer.astro';
             <li>We don't show you ads</li>
             <li>We don't share your data with third parties for marketing</li>
             <li>We don't use your content for AI training or analytics</li>
+            <li>We don't track your location</li>
           </ul>
         </section>
 
@@ -97,10 +132,11 @@ import Footer from '../components/Footer.astro';
             OurCouple is designed for couples. When you connect with a partner, your shared content becomes visible to them:
           </p>
           <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
-            <li>Daily manifestations</li>
-            <li>Inspiration vault quotes</li>
-            <li>Shared moments and notes</li>
-            <li>Events and dates</li>
+            <li>Daily messages and photos of the day</li>
+            <li>Shared moments, notes, and events</li>
+            <li>Daily question answers</li>
+            <li>Virtual pet progress</li>
+            <li>Couple streak</li>
           </ul>
           <p class="text-text-secondary mt-4">
             By inviting or accepting a partner, you consent to sharing this content with them. You can disconnect at any time in the app settings.
@@ -154,7 +190,7 @@ import Footer from '../components/Footer.astro';
           </p>
         </section>
       </div>
-      
+
       <div class="mt-12 pt-8 border-t border-border">
         <a href="/" class="text-primary hover:text-primary-dark transition-colors font-medium">
           ← Back to Home
