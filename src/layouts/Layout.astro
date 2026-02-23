@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
 
 interface Props {
   title: string;
@@ -193,13 +194,7 @@ const faqSchema = {
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/logo.png" />
 
-    <!-- Analytics -->
-    <script
-      defer
-      data-website-id="dfid_qI4dBMANAwmiNsJvVpicO"
-      data-domain="ourcouple.app"
-      src="https://datafa.st/js/script.js">
-    </script>
+    <Analytics />
   </head>
   <body class="min-h-screen flex flex-col">
     <slot />

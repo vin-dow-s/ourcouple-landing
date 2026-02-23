@@ -1,0 +1,17 @@
+---
+// Shared analytics scripts: DataFast + PostHog
+// Include this in every layout's <head> to avoid duplicating inline snippets.
+---
+
+<!-- Analytics - DataFast -->
+<script is:inline defer data-website-id="dfid_qI4dBMANAwmiNsJvVpicO" data-domain="ourcouple.app" src="https://datafa.st/js/script.js"></script>
+
+<!-- Analytics - PostHog -->
+<script>
+  import posthog from 'posthog-js';
+  posthog.init('phc_2ZAsUSvL9xkYDQjpB430ApXZ0HLkW7rbRf5PLFdBYGp', {
+    api_host: 'https://eu.i.posthog.com',
+    person_profiles: 'identified_only',
+  });
+  window.posthog = posthog;
+</script>

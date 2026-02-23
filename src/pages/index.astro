@@ -357,6 +357,21 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
 
   <Footer />
 
+  <!-- PostHog CTA tracking -->
+  <script>
+    document.querySelectorAll('a[href*="apps.apple.com"]').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (window.posthog) {
+          window.posthog.capture('website_cta_clicked', {
+            cta: 'app_store',
+            page: window.location.pathname,
+            section: link.closest('section')?.id || 'unknown',
+          });
+        }
+      });
+    });
+  </script>
+
   <!-- Android waitlist form handling -->
   <script define:vars={{
     SUPABASE_URL: import.meta.env.PUBLIC_SUPABASE_URL,
@@ -388,6 +403,9 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
           });
 
           if (response.ok) {
+            if (window.posthog) {
+              window.posthog.capture('website_android_waitlist', { email });
+            }
             emailInput.value = '';
             submitBtn.textContent = "You're in!";
             submitBtn.classList.remove('bg-partner', 'hover:bg-partner/90');
