@@ -191,6 +191,41 @@ import questions from '../../data/36-questions.json';
     </div>
   </div>
 
+  <!-- Full Question List (static HTML for SEO) -->
+  <div class="max-w-2xl mx-auto px-4 mt-12">
+    <h2 class="text-xl font-semibold text-text mb-6">All 36 Questions</h2>
+
+    <div class="mb-8">
+      <h3 class="font-semibold text-text mb-3">Set 1 — Getting to Know Each Other</h3>
+      <p class="text-text-secondary text-sm mb-4">These opening questions help you start sharing and learning about each other in a comfortable way.</p>
+      <ol class="space-y-3 list-decimal list-inside text-text-secondary text-sm">
+        {questions.filter(q => q.set === 1).map(q => (
+          <li class="leading-relaxed">{q.question}</li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="mb-8">
+      <h3 class="font-semibold text-text mb-3">Set 2 — Getting Personal</h3>
+      <p class="text-text-secondary text-sm mb-4">Now the questions go deeper — into your values, dreams, and memories.</p>
+      <ol start="13" class="space-y-3 list-decimal list-inside text-text-secondary text-sm">
+        {questions.filter(q => q.set === 2).map(q => (
+          <li class="leading-relaxed">{q.question}</li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="mb-8">
+      <h3 class="font-semibold text-text mb-3">Set 3 — Getting Close</h3>
+      <p class="text-text-secondary text-sm mb-4">The final set asks for real vulnerability and honesty. Take your time with these.</p>
+      <ol start="25" class="space-y-3 list-decimal list-inside text-text-secondary text-sm">
+        {questions.filter(q => q.set === 3).map(q => (
+          <li class="leading-relaxed">{q.question}</li>
+        ))}
+      </ol>
+    </div>
+  </div>
+
   <!-- FAQ Section -->
   <div class="max-w-2xl mx-auto px-4 mt-12">
     <h2 class="text-xl font-semibold text-text text-center mb-6">Frequently Asked Questions</h2>

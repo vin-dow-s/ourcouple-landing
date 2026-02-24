@@ -1,0 +1,98 @@
+---
+interface Props {
+  /** Current blog post path to exclude */
+  exclude?: string;
+}
+
+const { exclude } = Astro.props;
+
+const blogPosts = [
+  {
+    title: "50 Free Date Night Ideas at Home",
+    description: "Creative, budget-friendly date night ideas that bring you closer.",
+    href: "/blog/free-date-night-ideas",
+    category: "Date Ideas"
+  },
+  {
+    title: "How Long Have We Been Dating?",
+    description: "Calculate your relationship length and discover every milestone worth celebrating.",
+    href: "/blog/how-long-have-we-been-dating",
+    category: "Connection"
+  },
+  {
+    title: "Questions to Ask Your Partner",
+    description: "Meaningful questions to deepen your connection and understanding.",
+    href: "/blog/questions-to-ask-your-partner",
+    category: "Connection"
+  },
+  {
+    title: "How Well Do You Know Your Partner?",
+    description: "Put your knowledge to the test and find out how well you really know each other.",
+    href: "/blog/how-well-do-you-know-your-partner",
+    category: "Connection"
+  },
+  {
+    title: "Best Couples Journal Apps",
+    description: "A comparison of the best apps for shared journaling and couple memories.",
+    href: "/blog/best-couples-journal-apps",
+    category: "Apps"
+  },
+  {
+    title: "Relationship Data Encryption",
+    description: "How OurCouple keeps your relationship data private and secure.",
+    href: "/blog/relationship-data-encryption",
+    category: "Privacy"
+  }
+];
+
+const relatedTools = [
+  {
+    title: "Anniversary Calculator",
+    description: "Find out how many days you've been together.",
+    href: "/tools/anniversary-calculator",
+    emoji: "📅"
+  },
+  {
+    title: "36 Questions to Fall in Love",
+    description: "The famous questions that bring couples closer.",
+    href: "/tools/36-questions",
+    emoji: "❤️"
+  },
+  {
+    title: "Love Language Quiz",
+    description: "Discover your love language in 2 minutes.",
+    href: "/tools/love-language",
+    emoji: "💬"
+  }
+];
+
+const posts = blogPosts.filter(p => p.href !== exclude).slice(0, 3);
+---
+
+<section class="py-12 border-t border-border">
+  <div class="max-w-3xl mx-auto px-6">
+    <!-- Related articles -->
+    <h2 class="text-xl font-semibold text-text mb-6">Related Articles</h2>
+    <div class="grid sm:grid-cols-3 gap-4 mb-10">
+      {posts.map(post => (
+        <a href={post.href} class="group p-4 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors">
+          <span class="text-xs font-medium text-primary">{post.category}</span>
+          <h3 class="font-medium text-text group-hover:text-primary transition-colors text-sm mt-1 mb-1">{post.title}</h3>
+          <p class="text-text-secondary text-xs leading-relaxed">{post.description}</p>
+        </a>
+      ))}
+    </div>
+
+    <!-- Related tools -->
+    <h2 class="text-xl font-semibold text-text mb-6">Free Tools for Couples</h2>
+    <div class="grid sm:grid-cols-3 gap-4">
+      {relatedTools.map(tool => (
+        <a href={tool.href} class="group p-4 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors">
+          <span class="text-2xl mb-2 block">{tool.emoji}</span>
+          <h3 class="font-medium text-text group-hover:text-primary transition-colors text-sm mb-1">{tool.title}</h3>
+          <p class="text-text-secondary text-xs leading-relaxed">{tool.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

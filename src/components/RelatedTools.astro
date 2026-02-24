@@ -1,0 +1,67 @@
+---
+interface Props {
+  /** Current page path to exclude from the list (e.g. "/tools/36-questions") */
+  exclude?: string;
+}
+
+const { exclude } = Astro.props;
+
+const allTools = [
+  {
+    title: "Anniversary Calculator",
+    description: "How many days have you been together? Find out and discover upcoming milestones.",
+    href: "/tools/anniversary-calculator",
+    emoji: "📅"
+  },
+  {
+    title: "How Well Do You Know Your Partner?",
+    description: "Take the quiz, share it with your partner, and compare answers.",
+    href: "/tools/couple-quiz",
+    emoji: "💕"
+  },
+  {
+    title: "Love Language Quiz",
+    description: "Discover your love language in 2 minutes. Compare with your partner.",
+    href: "/tools/love-language",
+    emoji: "💬"
+  },
+  {
+    title: "36 Questions to Fall in Love",
+    description: "The famous study-backed questions designed to bring couples closer.",
+    href: "/tools/36-questions",
+    emoji: "❤️"
+  },
+  {
+    title: "Would You Rather — Couples Edition",
+    description: "40+ fun questions. Play together and see how well you match.",
+    href: "/tools/would-you-rather",
+    emoji: "🔀"
+  },
+  {
+    title: "Bucket List Generator",
+    description: "Get personalized date ideas based on your interests and budget.",
+    href: "/tools/bucket-list",
+    emoji: "✨"
+  }
+];
+
+const tools = allTools.filter(t => t.href !== exclude);
+---
+
+<section class="py-12">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-xl font-semibold text-text text-center mb-6">Try More Free Tools for Couples</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {tools.map(tool => (
+        <a
+          href={tool.href}
+          class="group p-4 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors"
+        >
+          <span class="text-2xl mb-2 block">{tool.emoji}</span>
+          <h3 class="font-medium text-text group-hover:text-primary transition-colors text-sm mb-1">{tool.title}</h3>
+          <p class="text-text-secondary text-xs leading-relaxed">{tool.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

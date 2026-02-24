@@ -273,6 +273,22 @@ import questions from '../../data/would-you-rather.json';
     </div>
   </div>
 
+  <!-- Full Question List (static HTML for SEO) -->
+  <div class="max-w-2xl mx-auto px-4 mt-12">
+    <h2 class="text-xl font-semibold text-text mb-6">All Would You Rather Questions for Couples</h2>
+
+    {["fun", "romantic", "deep", "spicy"].map(category => (
+      <div class="mb-8">
+        <h3 class="font-semibold text-text mb-3 capitalize">{category} Questions</h3>
+        <ol class="space-y-3 text-text-secondary text-sm">
+          {questions.filter(q => q.category === category).map(q => (
+            <li class="leading-relaxed">Would you rather <strong>{q.optionA.toLowerCase()}</strong> or <strong>{q.optionB.toLowerCase()}</strong>?</li>
+          ))}
+        </ol>
+      </div>
+    ))}
+  </div>
+
   <!-- FAQ Section -->
   <div class="max-w-2xl mx-auto px-4 mt-12">
     <h2 class="text-xl font-semibold text-text text-center mb-6">Frequently Asked Questions</h2>
