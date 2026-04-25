@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["7R63B7WZ54.com.vynse.ourcouple"],
+        "paths": ["/join/*"]
+      }
+    ]
+  }
+}

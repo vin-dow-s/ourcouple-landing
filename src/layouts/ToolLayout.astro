@@ -10,13 +10,19 @@ interface Props {
   description: string;
   canonicalPath: string;
   ogImage?: string;
+  ctaHeading?: string;
+  ctaCopy?: string;
+  hideCta?: boolean;
 }
 
 const {
   title,
   description,
   canonicalPath,
-  ogImage
+  ogImage,
+  ctaHeading = "Keep this with you",
+  ctaCopy = "OurCouple is the private app where couples save their messages, memories, notes, and rituals — all in one little space, just for two.",
+  hideCta = false,
 } = Astro.props;
 
 const siteUrl = "https://ourcouple.app";
@@ -64,6 +70,19 @@ const toolSchema = {
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalUrl} />
 
+    <!-- Apple Smart App Banner -->
+    <meta name="apple-itunes-app" content={`app-id=${appStoreId}, app-argument=${siteUrl}`} />
+
+    <!-- iOS App Links -->
+    <meta property="al:ios:app_store_id" content={appStoreId} />
+    <meta property="al:ios:app_name" content="OurCouple" />
+    <meta property="al:ios:url" content="ourcouple://" />
+
+    <!-- Android App Links -->
+    <meta property="al:android:package" content="com.vynse.ourcouple" />
+    <meta property="al:android:app_name" content="OurCouple" />
+    <meta property="al:android:url" content="ourcouple://" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
@@ -101,6 +120,34 @@ const toolSchema = {
     <!-- Main Content -->
     <main class="flex-1 pt-28 pb-12 bg-gradient-radial">
       <slot />
+
+      {!hideCta && (
+        <section class="max-w-3xl mx-auto px-6 mt-16">
+          <div class="rounded-3xl bg-card border border-border p-8 md:p-10 text-center">
+            <h2 class="tracking-tighter text-2xl md:text-3xl font-bold text-text mb-3">
+              {ctaHeading}
+            </h2>
+            <p class="text-text-secondary text-base mb-6 max-w-xl mx-auto">
+              {ctaCopy}
+            </p>
+            <a
+              href={appStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block transition-transform hover:scale-105"
+              aria-label="Download OurCouple on the App Store"
+              data-fast-goal="cta_tool_download"
+            >
+              <img
+                src="/app-store-badge.svg"
+                alt="Download on the App Store"
+                class="h-14 mx-auto"
+              />
+            </a>
+            <p class="text-text-light text-xs mt-3">Free forever — Premium from $3.99/mo</p>
+          </div>
+        </section>
+      )}
 
       <RelatedTools exclude={canonicalPath} />
     </main>

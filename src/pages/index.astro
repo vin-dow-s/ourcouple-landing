@@ -6,7 +6,11 @@ import Footer from '../components/Footer.astro';
 const appStoreUrl = "https://apps.apple.com/app/id6758024356";
 ---
 
-<Layout title="OurCouple - Your Shared Space | Couple App for iOS" canonicalPath="/">
+<Layout
+  title="OurCouple — Stay close. Stay in love. | Couple Journal App"
+  description="A daily ritual for couples. Messages, memories, notes & little surprises — built so you never miss a day with the one. Free to start."
+  canonicalPath="/"
+>
   <Header />
 
   <main class="flex-1">
@@ -20,10 +24,10 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
       <div class="relative z-10 max-w-6xl mx-auto px-6 py-12 text-center">
         <!-- Hero Text -->
         <h1 class="animate-fade-in text-4xl md:text-6xl font-bold text-text mb-4 tracking-tighter">
-          Your Relationship Noticeboard
+          Stay close. Stay in love.
         </h1>
         <p class="animate-fade-in-delay-1 text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-8">
-          OurCouple is the shared space for you and your partner. <br class="hidden sm:inline" />Messages, memories, notes & events — all in one place.
+          One app for you and your partner: daily rituals, questions, <br class="hidden sm:inline" />photo album, notes… never miss a day together.
         </p>
 
         <!-- App Store Download -->
@@ -42,7 +46,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
               class="h-14 mx-auto"
             />
           </a>
-          <p class="text-neutral-500 text-sm mt-0">Start free • No credit card</p>
+          <p class="text-neutral-500 text-sm mt-1">Start free — no credit card</p>
         </div>
 
         <!-- Video/Image Preview -->
@@ -70,29 +74,29 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
     <section id="features" class="py-24 bg-card" data-fast-scroll="scroll_features">
       <div class="max-w-6xl mx-auto px-6">
         <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-center text-text mb-4">
-          Built for connection
+          The little things, kept close
         </h2>
         <p class="text-text-secondary text-center text-base mb-8 sm:mb-12 max-w-2xl mx-auto">
-          Everything you need, no unnecessary clutter
+          Six small habits that make every day count, together.
         </p>
 
 
         <div class="grid md:grid-cols-3 gap-8">
-          <!-- Feature 1: Message of the Day -->
+          <!-- Feature 1: Daily Check-ins -->
           <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
             <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
               <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-xl text-text mb-3">Daily check-ins</h3>
+            <h3 class="font-semibold text-xl text-text mb-3">Show up, every day</h3>
             <p class="text-text-secondary mb-3">
-              Message/photo/question of the day ; keeps you connected with your partner and grows your love streak
+              A message, a photo, or a question of the day — your tiny ritual together. Builds a streak that's actually worth keeping.
             </p>
-            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Show that you care</span>
+            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Daily check-ins</span>
           </article>
 
-          <!-- Feature 2: Daily Inspirations -->
+          <!-- Feature 2: Love Notes -->
           <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
             <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
               <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -107,14 +111,14 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
                 <path d="m19.07 4.93-1.41 1.41"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-xl text-text mb-3">Love Notes</h3>
+            <h3 class="font-semibold text-xl text-text mb-3">Surprise them with love notes</h3>
             <p class="text-text-secondary mb-3">
-               Your words of inspiration, support, or simply something sweet. Each day, one is shown to your partner.
+              Drop sweet notes into a shared pool. Each day, one shows up to your partner — unexpected, theirs alone.
             </p>
-            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Surprise each other daily</span>
+            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Love notes</span>
           </article>
 
-          <!-- Feature 3: Private Memories -->
+          <!-- Feature 3: Memory Album -->
           <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
             <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
               <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -123,11 +127,11 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
                 <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-xl text-text mb-3">Memory Album</h3>
+            <h3 class="font-semibold text-xl text-text mb-3">The moments of your love story</h3>
             <p class="text-text-secondary mb-3">
-              Your favorite moments together, photos & captions. Keep your memories alive.
+              Save your favorite photos and the story behind each one. Not lost in a camera roll, not buried in a chat.
             </p>
-            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Never lost in chat history</span>
+            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Memory album</span>
           </article>
 
           <!-- Feature 4: Shared Notes -->
@@ -141,11 +145,11 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
                 <path d="M16 17H8"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-xl text-text mb-3">Shared Notes</h3>
+            <h3 class="font-semibold text-xl text-text mb-3">Build something together, even from afar</h3>
             <p class="text-text-secondary mb-3">
-              One place for everything you want to write and remember, from love notes to more practical ones.
+              Plan a trip, list movies to watch, write your thoughts. You both edit live, and only the two of you see it.
             </p>
-            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Both can edit in real-time</span>
+            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Shared notes</span>
           </article>
 
           <!-- Feature 5: Events & Dates -->
@@ -158,11 +162,11 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
                 <path d="M3 10h18"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-xl text-text mb-3">Events & Ideas</h3>
+            <h3 class="font-semibold text-xl text-text mb-3">Never forget the trip you promised each other</h3>
             <p class="text-text-secondary mb-3">
-             Save what you want to do together and see what is coming up. Syncs with Apple & Google Calendars.
+              Anniversaries, dates, the concert in 4 months — kept in one place. Syncs with your Apple and Google calendars.
             </p>
-            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Never forget ideas</span>
+            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Events & ideas</span>
           </article>
 
           <!-- Feature 6: Private & Secure -->
@@ -173,13 +177,86 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-xl text-text mb-3">Private & Secure</h3>
+            <h3 class="font-semibold text-xl text-text mb-3">What you write here, stays here</h3>
             <p class="text-text-secondary mb-3">
-              Your data is encrypted and stays between you two. No ads, no tracking, no sharing with third parties.
+              End-to-end encrypted. No ads, no tracking, nothing shared with anyone. Just the two of you, for real.
             </p>
-            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Just you two, always</span>
+            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Private & secure</span>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section id="why" class="py-24 bg-background" data-fast-scroll="scroll_comparison">
+      <div class="max-w-4xl mx-auto px-6">
+        <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-center text-text mb-4">
+          Why couples love it
+        </h2>
+        <p class="text-text-secondary text-center text-base mb-12 max-w-xl mx-auto">
+          OurCouple is calm and focused, not cluttered.
+        </p>
+
+        <div class="overflow-x-auto rounded-2xl border border-border bg-card">
+          <table class="w-full text-sm md:text-base">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="text-left p-4 md:p-5 font-semibold text-text-secondary"></th>
+                <th class="p-4 md:p-5 font-semibold text-primary-dark bg-primary/5">OurCouple</th>
+                <th class="p-4 md:p-5 font-semibold text-text-secondary">Paired</th>
+                <th class="p-4 md:p-5 font-semibold text-text-secondary">Between</th>
+              </tr>
+            </thead>
+            <tbody class="text-text">
+              <tr class="border-b border-border">
+                <td class="p-4 md:p-5 font-medium">Yearly price</td>
+                <td class="p-4 md:p-5 text-center bg-primary/5 font-semibold">$39.99</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">$69.99</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">Limited free</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="p-4 md:p-5 font-medium">Daily ritual (message of the day)</td>
+                <td class="p-4 md:p-5 text-center bg-primary/5">✓</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">✓</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">—</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="p-4 md:p-5 font-medium">Memory album</td>
+                <td class="p-4 md:p-5 text-center bg-primary/5">✓</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">—</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">✓</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="p-4 md:p-5 font-medium">Shared notes & events</td>
+                <td class="p-4 md:p-5 text-center bg-primary/5">✓</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">—</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">Calendar only</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="p-4 md:p-5 font-medium">Couple pet & rituals</td>
+                <td class="p-4 md:p-5 text-center bg-primary/5">✓</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">—</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">—</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="p-4 md:p-5 font-medium">End-to-end encrypted</td>
+                <td class="p-4 md:p-5 text-center bg-primary/5">✓</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">—</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">—</td>
+              </tr>
+              <tr>
+                <td class="p-4 md:p-5 font-medium">Therapy framing</td>
+                <td class="p-4 md:p-5 text-center bg-primary/5 text-text-secondary">No — calm, not clinical</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">Yes</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">No</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="text-text-light text-xs text-center mt-4">
+          Pricing & features as of April 2026 from publicly listed information.
+        </p>
       </div>
     </section>
 
@@ -213,7 +290,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
               <span class="text-2xl font-bold text-primary">3</span>
             </div>
             <h3 class="font-semibold text-lg text-text mb-2">Connect Together</h3>
-            <p class="text-text-secondary">Your private couple space is ready. Start sharing!</p>
+            <p class="text-text-secondary">Your private couple space is ready. Start growing your love streak!</p>
           </div>
         </div>
       </div>
@@ -241,7 +318,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             <div class="px-6 pb-6 text-text-secondary">
               <p>Yes! OurCouple is free to download and use. The free plan includes unlimited daily messages, photos of the day, and love notes.
                 
-                Plus 5 memory photos, 10 notes, and 5 events. <br/><br/>Premium unlocks unlimited storage — one subscription covers both partners.</p>
+                Plus 5 memory photos, 10 notes, and 5 events. <br/><br/>Premium unlocks unlimited storage, calendar sync, more customisation — one subscription covers both partners.</p>
             </div>
           </details>
 
@@ -349,7 +426,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
         </div>
 
         <p class="text-text-secondary mt-8">
-          Questions? <a href="mailto:contact@vynse.dev" class="text-primary hover:text-primary-dark transition-colors font-medium">Contact us</a>
+          Questions? <a href="mailto:vincent@ourcouple.app" class="text-primary hover:text-primary-dark transition-colors font-medium">Contact us</a>
         </p>
       </div>
     </section>

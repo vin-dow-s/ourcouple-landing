@@ -2,16 +2,27 @@
 import Analytics from '../components/Analytics.astro';
 import '../styles/global.css';
 
+interface ArticleSchemaInput {
+  headline: string;
+  description: string;
+  image?: string;
+  datePublished: string;
+  dateModified?: string;
+  author?: string;
+}
+
 interface Props {
   title: string;
   description?: string;
   canonicalPath?: string;
+  article?: ArticleSchemaInput;
 }
 
 const {
   title,
-  description = "Like Notion, but just for the two of you. Daily messages, memories, notes, and dates — all in one private place. Start for free.",
-  canonicalPath = ""
+  description = "A private app for two. Daily messages, memories, notes & rituals — kept between you and your partner. Free to start, end-to-end encrypted.",
+  canonicalPath = "",
+  article
 } = Astro.props;
 
 const discordWebhook = import.meta.env.PUBLIC_DISCORD_WEBHOOK;
@@ -31,7 +42,7 @@ const organizationSchema = {
   "description": "OurCouple creates a private shared space for couples to manifest their love and keep track of all their notes, events, memories together.",
   "contactPoint": {
     "@type": "ContactPoint",
-    "email": "contact@vynse.dev",
+    "email": "vincent@ourcouple.app",
     "contactType": "customer support"
   },
   "sameAs": []
@@ -79,6 +90,33 @@ const appSchema = {
   "downloadUrl": appStoreUrl,
   "installUrl": appStoreUrl
 };
+
+// Structured Data - Article (optional, for blog posts)
+const articleSchema = article ? {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": article.headline,
+  "description": article.description,
+  "image": article.image ? `${siteUrl}${article.image.startsWith('/') ? '' : '/'}${article.image}` : ogImage,
+  "datePublished": article.datePublished,
+  "dateModified": article.dateModified ?? article.datePublished,
+  "author": {
+    "@type": article.author ? "Person" : "Organization",
+    "name": article.author ?? "OurCouple"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "OurCouple",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/logo.png`
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalUrl
+  }
+} : null;
 
 // Structured Data - FAQ
 const faqSchema = {
@@ -159,6 +197,11 @@ const faqSchema = {
     <meta property="al:ios:app_name" content="OurCouple" />
     <meta property="al:ios:url" content="ourcouple://" />
 
+    <!-- Android App Links (Universal/App Links flow) -->
+    <meta property="al:android:package" content="com.vynse.ourcouple" />
+    <meta property="al:android:app_name" content="OurCouple" />
+    <meta property="al:android:url" content="ourcouple://" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
@@ -184,8 +227,9 @@ const faqSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-
-    <script is:inline src="https://floorsjs.com/embed.js" data-owner-name="Vincent" data-key="flr_37621a915684474491dca45f" data-pinned-message="A question? Need help? Leave a message!" data-pages="/"></script>
+    {articleSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    )}
 
     <!-- Fonts - preconnect for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

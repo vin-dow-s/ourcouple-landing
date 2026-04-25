@@ -85,6 +85,19 @@ const articleSchema = {
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalUrl} />
 
+    <!-- Apple Smart App Banner -->
+    <meta name="apple-itunes-app" content={`app-id=${appStoreId}, app-argument=${siteUrl}`} />
+
+    <!-- iOS App Links -->
+    <meta property="al:ios:app_store_id" content={appStoreId} />
+    <meta property="al:ios:app_name" content="OurCouple" />
+    <meta property="al:ios:url" content="ourcouple://" />
+
+    <!-- Android App Links -->
+    <meta property="al:android:package" content="com.vynse.ourcouple" />
+    <meta property="al:android:app_name" content="OurCouple" />
+    <meta property="al:android:url" content="ourcouple://" />
+
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content={canonicalUrl} />
