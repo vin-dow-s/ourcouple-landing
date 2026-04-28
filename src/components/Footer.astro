@@ -7,7 +7,10 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
     <div class="flex flex-col md:flex-row items-start justify-between gap-8 mb-8">
       <div class="flex flex-col gap-2">
         <div class="flex items-center gap-3">
-          <img src="/logo.png" alt="OurCouple" class="w-12 h-12 rounded-xl" />
+          <picture>
+            <source srcset="/logo-96.webp" type="image/webp" />
+            <img src="/logo-96.png" alt="OurCouple" width="48" height="48" class="w-12 h-12 rounded-xl" loading="lazy" decoding="async" />
+          </picture>
           <div class="flex flex-col">
             <span class="font-semibold text-xl text-text tracking-tighter">OurCouple</span>
             <span class="text-text-secondary text-sm italic">Your Shared Space</span>
@@ -25,7 +28,10 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
           <img
             src="/app-store-badge.svg"
             alt="Download on the App Store"
-            class="h-12"
+            width="144"
+            height="48"
+            class="h-12 w-auto"
+            loading="lazy"
           />
         </a>
       </div>

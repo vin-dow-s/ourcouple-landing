@@ -1,17 +1,49 @@
 ---
 // Shared analytics scripts: DataFast + PostHog
-// Include this in every layout's <head> to avoid duplicating inline snippets.
+// Loaded lazily after the page is idle (or on first user interaction)
+// to keep them off the critical path and protect Core Web Vitals.
 ---
 
-<!-- Analytics - DataFast -->
-<script is:inline defer data-website-id="dfid_qI4dBMANAwmiNsJvVpicO" data-domain="ourcouple.app" src="https://datafa.st/js/script.js"></script>
-
-<!-- Analytics - PostHog -->
 <script>
-  import posthog from 'posthog-js';
-  posthog.init('phc_2ZAsUSvL9xkYDQjpB430ApXZ0HLkW7rbRf5PLFdBYGp', {
-    api_host: 'https://eu.i.posthog.com',
-    person_profiles: 'identified_only',
-  });
-  window.posthog = posthog;
+  // @ts-nocheck
+  let loaded = false;
+
+  const loadDataFast = () => {
+    const s = document.createElement('script');
+    s.defer = true;
+    s.dataset.websiteId = 'dfid_qI4dBMANAwmiNsJvVpicO';
+    s.dataset.domain = 'ourcouple.app';
+    s.src = 'https://datafa.st/js/script.js';
+    document.head.appendChild(s);
+  };
+
+  const loadPostHog = async () => {
+    const { default: posthog } = await import('posthog-js');
+    posthog.init('phc_2ZAsUSvL9xkYDQjpB430ApXZ0HLkW7rbRf5PLFdBYGp', {
+      api_host: 'https://eu.i.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+    });
+    window.posthog = posthog;
+  };
+
+  const loadAll = () => {
+    if (loaded) return;
+    loaded = true;
+    loadDataFast();
+    loadPostHog();
+  };
+
+  const events = ['pointerdown', 'keydown', 'scroll', 'touchstart'];
+  const onInteract = () => {
+    events.forEach((e) => window.removeEventListener(e, onInteract));
+    loadAll();
+  };
+  events.forEach((e) => window.addEventListener(e, onInteract, { once: true, passive: true }));
+
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadAll, { timeout: 4000 });
+  } else {
+    setTimeout(loadAll, 3000);
+  }
 </script>

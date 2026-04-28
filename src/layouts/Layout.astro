@@ -38,7 +38,7 @@ const organizationSchema = {
   "@type": "Organization",
   "name": "OurCouple",
   "url": siteUrl,
-  "logo": `${siteUrl}/logo.png`,
+  "logo": `${siteUrl}/logo-512.png`,
   "description": "OurCouple creates a private shared space for couples to manifest their love and keep track of all their notes, events, memories together.",
   "contactPoint": {
     "@type": "ContactPoint",
@@ -231,15 +231,22 @@ const faqSchema = {
       <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
     )}
 
-    <!-- Fonts - preconnect for faster loading -->
+    <!-- Fonts - non-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" as="style">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" />
+    </noscript>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <Analytics />
   </head>
