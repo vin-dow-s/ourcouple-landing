@@ -8,6 +8,36 @@ const { exclude } = Astro.props;
 
 const blogPosts = [
   {
+    title: "Best Shared Notes App for Couples",
+    description: "Real-time sync, shared lists, private notes — tested.",
+    href: "/blog/best-shared-notes-app-for-couples",
+    category: "App Guides"
+  },
+  {
+    title: "Best Couples Apps in 2026",
+    description: "Free, iPhone picks, and honest reviews.",
+    href: "/blog/best-couples-apps-2026",
+    category: "App Guides"
+  },
+  {
+    title: "Relationship Rules Explained",
+    description: "5-5-5, 7-7-7, 2-2-2, 3-3-3 — what they actually mean.",
+    href: "/blog/relationship-rules-explained",
+    category: "Connection"
+  },
+  {
+    title: "How to Count Months in a Relationship",
+    description: "The simple way couples count months and anniversaries.",
+    href: "/blog/how-to-count-months-in-a-relationship",
+    category: "Connection"
+  },
+  {
+    title: "OurCouple vs Paired",
+    description: "Side-by-side comparison of features, pricing, and privacy.",
+    href: "/blog/ourcouple-vs-paired",
+    category: "App Guides"
+  },
+  {
     title: "50 Free Date Night Ideas at Home",
     description: "Creative, budget-friendly date night ideas that bring you closer.",
     href: "/blog/free-date-night-ideas",
@@ -45,7 +75,7 @@ const blogPosts = [
   }
 ];
 
-const relatedTools = [
+const allTools = [
   {
     title: "Anniversary Calculator",
     description: "Find out how many days you've been together.",
@@ -63,8 +93,54 @@ const relatedTools = [
     description: "Discover your love language in 2 minutes.",
     href: "/tools/love-language",
     emoji: "💬"
+  },
+  {
+    title: "Would You Rather — Couples Edition",
+    description: "40+ fun questions to play with your partner.",
+    href: "/tools/would-you-rather",
+    emoji: "🎲"
+  },
+  {
+    title: "How Well Do You Know Your Partner Quiz",
+    description: "12 questions to compare with your partner.",
+    href: "/tools/couple-quiz",
+    emoji: "🧠"
+  },
+  {
+    title: "Couple Bucket List",
+    description: "Build your shared list of dreams and dates.",
+    href: "/tools/bucket-list",
+    emoji: "✨"
+  },
+  {
+    title: "Date Night Generator",
+    description: "Tap and get a random free date idea for tonight.",
+    href: "/tools/date-night-generator",
+    emoji: "🎯"
   }
 ];
+
+// Pick tools that contextually match the current article
+const toolPriorityByPath: Record<string, string[]> = {
+  '/blog/how-long-have-we-been-dating': ['/tools/anniversary-calculator', '/tools/couple-quiz', '/tools/36-questions'],
+  '/blog/how-well-do-you-know-your-partner': ['/tools/couple-quiz', '/tools/would-you-rather', '/tools/36-questions'],
+  '/blog/questions-to-ask-your-partner': ['/tools/36-questions', '/tools/couple-quiz', '/tools/would-you-rather'],
+  '/blog/free-date-night-ideas': ['/tools/date-night-generator', '/tools/bucket-list', '/tools/would-you-rather'],
+  '/blog/best-couples-journal-apps': ['/tools/anniversary-calculator', '/tools/couple-quiz', '/tools/love-language'],
+  '/blog/relationship-data-encryption': ['/tools/love-language', '/tools/anniversary-calculator', '/tools/36-questions'],
+  '/blog/ourcouple-vs-paired': ['/tools/couple-quiz', '/tools/anniversary-calculator', '/tools/36-questions'],
+  '/blog/best-couples-apps-2026': ['/tools/anniversary-calculator', '/tools/couple-quiz', '/tools/date-night-generator'],
+  '/blog/relationship-rules-explained': ['/tools/36-questions', '/tools/couple-quiz', '/tools/date-night-generator'],
+  '/blog/how-to-count-months-in-a-relationship': ['/tools/anniversary-calculator', '/tools/couple-quiz', '/tools/36-questions'],
+  '/blog/best-shared-notes-app-for-couples': ['/tools/bucket-list', '/tools/anniversary-calculator', '/tools/couple-quiz']
+};
+
+const priorityHrefs = (exclude && toolPriorityByPath[exclude]) ?? [];
+const sortedTools = [
+  ...priorityHrefs.map(href => allTools.find(t => t.href === href)).filter((t): t is typeof allTools[number] => Boolean(t)),
+  ...allTools.filter(t => !priorityHrefs.includes(t.href))
+];
+const relatedTools = sortedTools.slice(0, 3);
 
 const posts = blogPosts.filter(p => p.href !== exclude).slice(0, 3);
 ---

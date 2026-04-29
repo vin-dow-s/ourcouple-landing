@@ -7,8 +7,39 @@ import questions from '../../data/quiz-questions.json';
 
 <ToolLayout
   title="How Well Do You Know Your Partner? Free Quiz (12 Questions)"
-  description="Take this free couple quiz about your partner, then share it with them to compare answers. 12 fun questions, no signup required — see how well you really know each other!"
+  description="Free couple quiz about your partner — share it and compare answers. 12 fun questions, no signup. See how well you really know each other."
   canonicalPath="/tools/couple-quiz"
+  howTo={{
+    name: "How to take the couple quiz",
+    description: "Free 12-question quiz to find out how well you know your partner.",
+    steps: [
+      { name: "Answer 12 questions about your partner", text: "Pick the answer you think is right for each question — from favorites to deep preferences." },
+      { name: "Share your quiz link with your partner", text: "Send the unique link so your partner can answer the same questions about you." },
+      { name: "Compare your answers", text: "See your match score and which questions revealed surprises about each other." }
+    ]
+  }}
+  faqs={[
+    {
+      question: "Is the couple quiz free?",
+      answer: "Yes. The full 12-question quiz is free with no signup or app download required."
+    },
+    {
+      question: "How long does the quiz take?",
+      answer: "Around 3-5 minutes per partner. Both of you answer separately, then compare results."
+    },
+    {
+      question: "Can we play if we're long-distance?",
+      answer: "Yes. The quiz is built around sharing a link — you can play across any distance and compare answers when you're both done."
+    },
+    {
+      question: "What kind of questions are in the couple quiz?",
+      answer: "A mix of fun preferences, deeper values, and 'how well do you remember' questions — designed to spark conversation."
+    },
+    {
+      question: "Do you store our answers?",
+      answer: "No. Answers are stored briefly so you can compare with your partner, then discarded. There is no signup and no permanent profile."
+    }
+  ]}
 >
   <div class="max-w-2xl mx-auto px-4">
     <!-- Hero -->
