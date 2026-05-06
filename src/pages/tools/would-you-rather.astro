@@ -10,29 +10,33 @@ import questions from '../../data/would-you-rather.json';
   canonicalPath="/tools/would-you-rather"
   howTo={{
     name: "How to play Would You Rather with your partner",
-    description: "Free online Would You Rather game for couples — answer, share, compare.",
+    description: "Free online Would You Rather game for couples — answer, hand the phone over, compare.",
     steps: [
-      { name: "Pick your answer", text: "Read each Would You Rather question and tap the option that fits you best." },
-      { name: "Share with your partner", text: "Send your partner the link so they can play the same questions." },
-      { name: "Compare answers", text: "See where you match and where you surprise each other — and laugh about it together." }
+      { name: "Player 1 answers", text: "Read each Would You Rather question and tap your favorite of the two options." },
+      { name: "Hand the phone — or send a link", text: "Hand your phone to your partner, or send them a link if you're long-distance." },
+      { name: "Compare answers", text: "See your compatibility score and exactly where you agreed and disagreed — and laugh about it together." }
     ]
   }}
   faqs={[
     {
-      question: "Is Would You Rather free to play?",
-      answer: "Yes. The game is completely free, no signup or download required. Just open the page and start playing with your partner."
+      question: "How do you play Would You Rather as a couple?",
+      answer: "Player 1 answers all the questions on their device. When done, they either hand the phone to Player 2 — who answers the same questions — or send a link to Player 2 so they can play remotely. After both players have answered, the game shows a compatibility score and highlights exactly where you agreed and disagreed."
     },
     {
-      question: "How many Would You Rather questions are there?",
-      answer: "40+ questions ranging from silly and lighthearted to deep and reflective — designed specifically for couples."
+      question: "Is this game free?",
+      answer: "Yes, 100% free. No signup required, no email needed, no hidden paywalls. Just open the page and start playing."
     },
     {
-      question: "Can we play Would You Rather long-distance?",
-      answer: "Yes. Share the page link with your partner over text or call. You both answer the same questions and compare your picks."
+      question: "How many questions are there?",
+      answer: "40+ questions across 4 categories: Fun, Romantic, Deep, and Spicy. You can filter by category before starting, or play all of them."
     },
     {
-      question: "Are the questions spicy or family-friendly?",
-      answer: "Most questions are family-friendly with a mix of fun and reflective. Some lean a little spicy, but nothing explicit."
+      question: "Can we play this long distance?",
+      answer: "Yes. After Player 1 finishes, tap 'Send to your partner' to generate a shareable link. Your partner opens the link, answers the same questions, and the game compares your answers automatically."
+    },
+    {
+      question: "Just want to read the questions without playing?",
+      answer: "All questions are listed below the game by category. No login or play required — just scroll down."
     }
   ]}
 >
@@ -47,52 +51,13 @@ import questions from '../../data/would-you-rather.json';
       <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
         Would You Rather — Couples Edition
       </h1>
-      <p class="text-text-secondary">
-        40+ fun questions for couples. Pick your answer, compare with your partner, and see how well you match!
+      <p id="hero-subtitle" class="text-text-secondary">
+        40+ fun questions for couples. You answer, hand to your partner, compare results.
       </p>
     </div>
 
-    <!-- Mode: Select -->
-    <div id="mode-select">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-        <!-- Solo Card -->
-        <div class="bg-card rounded-2xl border border-border p-6 flex flex-col">
-          <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
-            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-          </div>
-          <h2 class="font-semibold text-lg text-text mb-1">Play Solo</h2>
-          <p class="text-text-secondary text-sm mb-4 flex-1">Browse through questions at your own pace. Great for sparking conversation!</p>
-          <button
-            id="solo-btn"
-            class="w-full px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors"
-          >
-            Play Solo
-          </button>
-        </div>
-
-        <!-- Together Card -->
-        <div class="bg-card rounded-2xl border border-border p-6 flex flex-col">
-          <div class="w-10 h-10 rounded-xl bg-partner/10 flex items-center justify-center mb-3">
-            <svg class="w-5 h-5 text-partner" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-          </div>
-          <h2 class="font-semibold text-lg text-text mb-1">Play Together</h2>
-          <p class="text-text-secondary text-sm mb-4 flex-1">Both answer separately, then compare results and see your compatibility score!</p>
-          <button
-            id="together-btn"
-            class="w-full px-6 py-3 bg-partner text-white rounded-xl font-semibold hover:bg-partner/90 transition-colors"
-          >
-            Play Together
-          </button>
-        </div>
-      </div>
-    </div>
-
     <!-- Category Filter -->
-    <div id="category-filter" class="hidden mb-6">
+    <div id="category-filter" class="mb-6">
       <div class="flex flex-wrap gap-2 justify-center">
         <button class="cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-primary text-white" data-category="all">All</button>
         <button class="cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30" data-category="fun">Fun</button>
@@ -102,62 +67,17 @@ import questions from '../../data/would-you-rather.json';
       </div>
     </div>
 
-    <!-- Mode: Solo -->
-    <div id="mode-solo" class="hidden">
-      <!-- Category badge + Progress -->
-      <div class="mb-6">
-        <div class="flex items-center justify-between mb-2">
-          <span id="solo-category-badge" class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary capitalize"></span>
-          <span class="text-sm text-text-secondary">Question <span id="solo-current-q">1</span> of <span id="solo-total-q">40</span></span>
-        </div>
-        <div class="h-2 bg-border rounded-full overflow-hidden">
-          <div id="solo-progress-bar" class="h-full bg-primary rounded-full transition-all duration-300" style="width: 0%"></div>
-        </div>
-      </div>
-
-      <!-- Question Card -->
-      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
-        <p class="text-text-secondary text-sm mb-2">Would you rather...</p>
-        <div id="solo-options" class="space-y-3">
-          <button id="solo-option-a" class="solo-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all">
-            <span class="block font-medium text-text" id="solo-option-a-text"></span>
-          </button>
-          <div class="text-center text-text-light text-sm font-medium">OR</div>
-          <button id="solo-option-b" class="solo-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all">
-            <span class="block font-medium text-text" id="solo-option-b-text"></span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Navigation -->
-      <div class="flex gap-3">
-        <button
-          id="solo-back-btn"
-          class="flex-1 px-6 py-3 border border-border rounded-xl font-medium hover:border-primary/30 transition-colors disabled:opacity-50"
-          disabled
-        >
-          Back
-        </button>
-        <button
-          id="solo-home-btn"
-          class="flex-1 px-6 py-3 border border-border rounded-xl font-medium hover:border-primary/30 transition-colors"
-        >
-          Back to Menu
-        </button>
-      </div>
-    </div>
-
-    <!-- Mode: Together - Player 1 -->
-    <div id="mode-together-p1" class="hidden">
+    <!-- Mode: Player 1 -->
+    <div id="mode-together-p1">
       <div class="bg-primary/5 rounded-2xl border border-primary/20 p-4 mb-6 text-center">
         <p class="text-text font-medium">Player 1</p>
-        <p class="text-text-secondary text-sm">Answer all questions first, then pass the phone to your partner.</p>
+        <p class="text-text-secondary text-sm">Answer all questions, then pass the phone to your partner — or send them a link.</p>
       </div>
 
       <!-- Progress -->
       <div class="mb-6">
         <div class="flex items-center justify-between mb-2">
-          <span id="p1-category-badge" class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary capitalize"></span>
+          <span id="p1-category-badge" class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary-dark capitalize"></span>
           <span class="text-sm text-text-secondary">Question <span id="p1-current-q">1</span> of <span id="p1-total-q">40</span></span>
         </div>
         <div class="h-2 bg-border rounded-full overflow-hidden">
@@ -180,7 +100,7 @@ import questions from '../../data/would-you-rather.json';
       </div>
     </div>
 
-    <!-- Mode: Together - Pass Phone -->
+    <!-- Mode: Pass Phone or Send Link -->
     <div id="mode-pass-phone" class="hidden">
       <div class="bg-card rounded-2xl border border-border p-8 mb-6 text-center">
         <div class="w-16 h-16 rounded-2xl bg-partner/10 flex items-center justify-center mx-auto mb-4">
@@ -188,22 +108,86 @@ import questions from '../../data/would-you-rather.json';
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
           </svg>
         </div>
-        <h2 class="text-2xl font-bold text-text mb-2">Pass the phone to your partner!</h2>
-        <p class="text-text-secondary mb-6">Player 1 has finished. Now it's Player 2's turn to answer the same questions.</p>
-        <button
-          id="p2-ready-btn"
-          class="w-full px-6 py-3 bg-partner text-white rounded-xl font-semibold hover:bg-partner/90 transition-colors"
-        >
-          Ready for Player 2
-        </button>
+        <h2 class="text-2xl font-bold text-text mb-2">Now it's your partner's turn</h2>
+        <p class="text-text-secondary mb-6">
+          Hand the phone to them — or send them a link if you're apart.
+        </p>
+
+        <div class="flex flex-col gap-3">
+          <button
+            id="hand-phone-btn"
+            class="w-full px-6 py-3 bg-partner text-white rounded-xl font-semibold hover:bg-partner/90 transition-colors"
+          >
+            🤝 Hand to your partner
+          </button>
+          <button
+            id="send-link-btn"
+            class="w-full px-6 py-3 bg-primary-dark text-white rounded-xl font-semibold hover:bg-primary transition-colors"
+          >
+            📨 Send a link to your partner
+          </button>
+        </div>
       </div>
     </div>
 
-    <!-- Mode: Together - Player 2 -->
+    <!-- Mode: Send Link (share) -->
+    <div id="mode-send-link" class="hidden">
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <h2 class="text-lg font-semibold text-text mb-2 text-center">Send this link to your partner</h2>
+        <p class="text-text-secondary text-sm mb-5 text-center">
+          They'll answer the same questions, and you'll both see the comparison once they're done.
+        </p>
+
+        <div class="flex gap-2 mb-4">
+          <input
+            type="text"
+            id="share-link-input"
+            readonly
+            class="flex-1 px-4 py-3 rounded-xl border border-border bg-background text-text text-sm font-mono"
+          />
+          <button
+            id="copy-share-link"
+            class="px-4 py-3 bg-primary-dark text-white rounded-xl font-medium hover:bg-primary transition-colors whitespace-nowrap"
+          >
+            Copy
+          </button>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-2 mb-5">
+          <a
+            id="share-whatsapp"
+            href="#"
+            class="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#25D366] text-white hover:bg-[#20BD5A] transition-colors text-sm"
+          >
+            WhatsApp
+          </a>
+          <a
+            id="share-sms"
+            href="#"
+            class="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#34C759] text-white hover:bg-[#2DB84D] transition-colors text-sm"
+          >
+            SMS
+          </a>
+        </div>
+
+        <p class="text-text-secondary text-xs text-center">
+          Once your partner finishes, the comparison appears automatically when they open the link again — or when you reload this page after them.
+        </p>
+      </div>
+
+      <button
+        id="back-to-pass-btn"
+        class="w-full px-6 py-3 border border-border rounded-xl font-medium hover:border-primary/30 transition-colors"
+      >
+        ← Back
+      </button>
+    </div>
+
+    <!-- Mode: Player 2 -->
     <div id="mode-together-p2" class="hidden">
       <div class="bg-partner/5 rounded-2xl border border-partner/20 p-4 mb-6 text-center">
         <p class="text-text font-medium">Player 2</p>
-        <p class="text-text-secondary text-sm">Now it's your turn! Answer the same questions.</p>
+        <p class="text-text-secondary text-sm">Now it's your turn — answer the same questions.</p>
       </div>
 
       <!-- Progress -->
@@ -232,46 +216,12 @@ import questions from '../../data/would-you-rather.json';
       </div>
     </div>
 
-    <!-- Mode: Solo Complete -->
-    <div id="mode-solo-complete" class="hidden">
-      <div class="bg-primary/5 rounded-2xl border border-primary/20 p-6 mb-6 text-center">
-        <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </div>
-        <h2 class="text-2xl font-bold text-text mb-2">All done!</h2>
-        <p class="text-text-secondary mb-6">You went through all the questions. Want to compare answers with your partner?</p>
-        <div class="flex flex-col gap-3">
-          <button
-            id="solo-play-together-btn"
-            class="w-full px-6 py-3 bg-partner text-white rounded-xl font-semibold hover:bg-partner/90 transition-colors"
-          >
-            Play Together & Compare
-          </button>
-          <button
-            id="solo-replay-btn"
-            class="w-full px-6 py-3 border border-border rounded-xl font-medium hover:border-primary/30 transition-colors"
-          >
-            Play Again
-          </button>
-        </div>
-      </div>
-
-      <div class="text-center mb-6">
-        <ShareButtons
-          title="Share this game"
-          text="I just played Would You Rather — Couples Edition! Try it with your partner:"
-        />
-      </div>
-    </div>
-
     <!-- Mode: Results -->
     <div id="mode-results" class="hidden">
       <!-- Compatibility Score -->
       <div class="bg-primary/5 rounded-2xl border border-primary/20 p-6 mb-6 text-center">
         <p class="text-text-secondary text-sm mb-2">Compatibility Score</p>
-        <div id="results-score" class="text-5xl font-bold text-primary mb-2"></div>
+        <div id="results-score" class="text-5xl font-bold text-primary-dark mb-2"></div>
         <p id="results-message" class="text-text-secondary"></p>
       </div>
 
@@ -293,16 +243,17 @@ import questions from '../../data/would-you-rather.json';
 
       <!-- Play Again -->
       <div class="text-center">
-        <button id="play-again-btn" class="w-full px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors">
+        <button id="play-again-btn" class="w-full px-6 py-3 bg-primary-dark text-white rounded-xl font-semibold hover:bg-primary transition-colors">
           Play Again
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Full Question List (static HTML for SEO) -->
+  <!-- Full Question List (static HTML for SEO + escape hatch for browsers) -->
   <div class="max-w-2xl mx-auto px-4 mt-12">
-    <h2 class="text-xl font-semibold text-text mb-6">All Would You Rather Questions for Couples</h2>
+    <h2 class="text-xl font-semibold text-text mb-2">All Would You Rather Questions for Couples</h2>
+    <p class="text-text-secondary text-sm mb-6">Just want to read the questions? They're all here, organized by category.</p>
 
     {["fun", "romantic", "deep", "spicy"].map(category => (
       <div class="mb-8">
@@ -320,7 +271,7 @@ import questions from '../../data/would-you-rather.json';
   <div class="max-w-2xl mx-auto px-4 mt-16 prose prose-sm">
     <h2>Would You Rather for Couples — A Better Game Than 20 Questions</h2>
     <p>
-      Would You Rather for couples is the simplest game two people can play to learn something new about each other. You read a question with two options, you pick yours, and your partner picks theirs. You compare. Sometimes you laugh, sometimes you raise an eyebrow, and once in a while you discover something you never knew about the person you've been with for years.
+      Would You Rather for couples is the simplest game two people can play to learn something new about each other. You read a question with two options, you pick yours, your partner picks theirs, and you compare. Sometimes you laugh, sometimes you raise an eyebrow, and once in a while you discover something you never knew about the person you've been with for years.
     </p>
     <p>
       This is the couples edition: 40+ Would You Rather questions written specifically for two people in a relationship. Some are silly ("Would you rather always have to whisper or always have to shout?"), some are romantic, some are surprisingly deep, and a handful lean spicy. Pick a category, or play them all.
@@ -328,7 +279,7 @@ import questions from '../../data/would-you-rather.json';
 
     <h2>How to Play Would You Rather as a Couple</h2>
     <p>
-      Two ways: <strong>Solo</strong>, where you read and discuss each question together, perfect for date nights or long car rides. Or <strong>Together</strong>, where each person answers separately on the same device and the game shows you a compatibility score plus where you matched and where you didn't. The "didn't match" answers usually start the most interesting conversations.
+      Player 1 answers all the questions, then either hands the phone to Player 2 (same room) or sends a shareable link (long distance). Player 2 answers the same questions, and the game shows you a compatibility score plus every question where you didn't match. The disagreements are usually where the most interesting conversations start.
     </p>
 
     <h2>Why Would You Rather Works for Couples</h2>
@@ -338,147 +289,41 @@ import questions from '../../data/would-you-rather.json';
 
     <h2>Long Distance? It Still Works</h2>
     <p>
-      Open the page on a video call together and play Solo mode while you both watch. Or each play Together mode separately and screenshot your results to compare. The game travels.
+      After you finish your answers, tap "Send a link to your partner." They open the link, play through the same questions, and the comparison shows up automatically. No app, no signup, no waiting on a server.
     </p>
   </div>
 
-  <!-- FAQ Section -->
-  <div class="max-w-2xl mx-auto px-4 mt-12">
-    <h2 class="text-xl font-semibold text-text text-center mb-6">Frequently Asked Questions</h2>
-    <div class="space-y-3">
-      <details class="group bg-card rounded-xl border border-border">
-        <summary class="flex items-center justify-between p-4 cursor-pointer">
-          <span class="font-medium text-text">How do you play Would You Rather as a couple?</span>
-          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </summary>
-        <div class="px-4 pb-4 text-text-secondary text-sm">
-          There are two ways to play! In Solo mode, you browse through questions at your own pace and discuss each one with your partner. In Together mode, Player 1 answers all the questions first, then passes the phone to Player 2. After both have answered, you see a compatibility score and can compare where you agreed and disagreed.
-        </div>
-      </details>
-
-      <details class="group bg-card rounded-xl border border-border">
-        <summary class="flex items-center justify-between p-4 cursor-pointer">
-          <span class="font-medium text-text">Is this game free?</span>
-          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </summary>
-        <div class="px-4 pb-4 text-text-secondary text-sm">
-          Yes, 100% free. No signup required, no email needed, no hidden paywalls. Just pick a mode and start playing instantly.
-        </div>
-      </details>
-
-      <details class="group bg-card rounded-xl border border-border">
-        <summary class="flex items-center justify-between p-4 cursor-pointer">
-          <span class="font-medium text-text">How many questions are there?</span>
-          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </summary>
-        <div class="px-4 pb-4 text-text-secondary text-sm">
-          There are 40+ questions across 4 categories: Fun, Romantic, Deep, and Spicy. You can filter by category to focus on the type of questions you enjoy most, or play through all of them for the full experience.
-        </div>
-      </details>
-
-      <details class="group bg-card rounded-xl border border-border">
-        <summary class="flex items-center justify-between p-4 cursor-pointer">
-          <span class="font-medium text-text">Can we play this long distance?</span>
-          <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </summary>
-        <div class="px-4 pb-4 text-text-secondary text-sm">
-          Yes! You can use the Solo mode while on a video call and discuss each question together. Or use the Together mode on one device and compare your answers afterward. It's a great way to stay connected and have fun together even when you're apart.
-        </div>
-      </details>
-    </div>
-  </div>
-
-  <!-- FAQ Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How do you play Would You Rather as a couple?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "There are two ways to play! In Solo mode, you browse through questions at your own pace and discuss each one with your partner. In Together mode, Player 1 answers all the questions first, then passes the phone to Player 2. After both have answered, you see a compatibility score and can compare where you agreed and disagreed."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is this game free?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, 100% free. No signup required, no email needed, no hidden paywalls. Just pick a mode and start playing instantly."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How many questions are there?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "There are 40+ questions across 4 categories: Fun, Romantic, Deep, and Spicy. You can filter by category to focus on the type of questions you enjoy most, or play through all of them for the full experience."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can we play this long distance?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes! You can use the Solo mode while on a video call and discuss each question together. Or use the Together mode on one device and compare your answers afterward. It's a great way to stay connected and have fun together even when you're apart."
-        }
-      }
-    ]
-  }
-  </script>
-
   <script define:vars={{ questions }}>
     // ─── State ───────────────────────────────────────────────────────
-    let mode = 'select'; // select, solo, together-p1, pass-phone, together-p2, results
+    let mode = 'together-p1'; // together-p1, pass-phone, send-link, together-p2, results
     let currentIndex = 0;
     let filteredQuestions = [...questions];
     let activeCategory = 'all';
     let p1Answers = [];
     let p2Answers = [];
-    let soloAnswers = [];
     let isTransitioning = false;
+    let asyncMode = false; // true if P2 opened a shared link
 
     // ─── Elements ────────────────────────────────────────────────────
-    const modeSelect = document.getElementById('mode-select');
+    const heroSubtitle = document.getElementById('hero-subtitle');
     const categoryFilter = document.getElementById('category-filter');
-    const modeSolo = document.getElementById('mode-solo');
-    const modeSoloComplete = document.getElementById('mode-solo-complete');
     const modeTogetherP1 = document.getElementById('mode-together-p1');
     const modePassPhone = document.getElementById('mode-pass-phone');
+    const modeSendLink = document.getElementById('mode-send-link');
     const modeTogetherP2 = document.getElementById('mode-together-p2');
     const modeResults = document.getElementById('mode-results');
 
-    const soloBtn = document.getElementById('solo-btn');
-    const togetherBtn = document.getElementById('together-btn');
-    const p2ReadyBtn = document.getElementById('p2-ready-btn');
+    const handPhoneBtn = document.getElementById('hand-phone-btn');
+    const sendLinkBtn = document.getElementById('send-link-btn');
+    const backToPassBtn = document.getElementById('back-to-pass-btn');
     const playAgainBtn = document.getElementById('play-again-btn');
-    const soloBackBtn = document.getElementById('solo-back-btn');
-    const soloHomeBtn = document.getElementById('solo-home-btn');
-    const soloPlayTogetherBtn = document.getElementById('solo-play-together-btn');
-    const soloReplayBtn = document.getElementById('solo-replay-btn');
+
+    const shareLinkInput = document.getElementById('share-link-input');
+    const copyShareLink = document.getElementById('copy-share-link');
+    const shareWhatsapp = document.getElementById('share-whatsapp');
+    const shareSms = document.getElementById('share-sms');
 
     const catBtns = document.querySelectorAll('.cat-btn');
-
-    // Solo elements
-    const soloCategoryBadge = document.getElementById('solo-category-badge');
-    const soloCurrentQ = document.getElementById('solo-current-q');
-    const soloTotalQ = document.getElementById('solo-total-q');
-    const soloProgressBar = document.getElementById('solo-progress-bar');
-    const soloOptionA = document.getElementById('solo-option-a');
-    const soloOptionB = document.getElementById('solo-option-b');
-    const soloOptionAText = document.getElementById('solo-option-a-text');
-    const soloOptionBText = document.getElementById('solo-option-b-text');
 
     // P1 elements
     const p1CategoryBadge = document.getElementById('p1-category-badge');
@@ -508,19 +353,12 @@ import questions from '../../data/would-you-rather.json';
 
     // ─── Helpers ─────────────────────────────────────────────────────
     function hideAll() {
-      modeSelect.classList.add('hidden');
-      categoryFilter.classList.add('hidden');
-      modeSolo.classList.add('hidden');
-      modeSoloComplete.classList.add('hidden');
       modeTogetherP1.classList.add('hidden');
       modePassPhone.classList.add('hidden');
+      modeSendLink.classList.add('hidden');
       modeTogetherP2.classList.add('hidden');
       modeResults.classList.add('hidden');
-    }
-
-    function showSection(section) {
-      hideAll();
-      section.classList.remove('hidden');
+      categoryFilter.classList.add('hidden');
     }
 
     function showMode(newMode) {
@@ -528,25 +366,17 @@ import questions from '../../data/would-you-rather.json';
       hideAll();
 
       switch (newMode) {
-        case 'select':
-          modeSelect.classList.remove('hidden');
-          break;
-        case 'solo':
-          categoryFilter.classList.remove('hidden');
-          modeSolo.classList.remove('hidden');
-          break;
-        case 'solo-complete':
-          modeSoloComplete.classList.remove('hidden');
-          break;
         case 'together-p1':
-          categoryFilter.classList.remove('hidden');
+          if (!asyncMode) categoryFilter.classList.remove('hidden');
           modeTogetherP1.classList.remove('hidden');
           break;
         case 'pass-phone':
           modePassPhone.classList.remove('hidden');
           break;
+        case 'send-link':
+          modeSendLink.classList.remove('hidden');
+          break;
         case 'together-p2':
-          categoryFilter.classList.remove('hidden');
           modeTogetherP2.classList.remove('hidden');
           break;
         case 'results':
@@ -555,125 +385,45 @@ import questions from '../../data/would-you-rather.json';
       }
     }
 
+    function encodeData(data) {
+      return btoa(encodeURIComponent(JSON.stringify(data)));
+    }
+
+    function decodeData(encoded) {
+      try {
+        return JSON.parse(decodeURIComponent(atob(encoded)));
+      } catch {
+        return null;
+      }
+    }
+
     function filterQuestions(category) {
+      if (asyncMode) return; // P2 must answer the same set as P1
       activeCategory = category;
-      if (category === 'all') {
-        filteredQuestions = [...questions];
-      } else {
-        filteredQuestions = questions.filter(q => q.category === category);
-      }
+      filteredQuestions = category === 'all' ? [...questions] : questions.filter(q => q.category === category);
       currentIndex = 0;
+      p1Answers = new Array(filteredQuestions.length).fill(null);
 
-      // Update category button styles
       catBtns.forEach(btn => {
-        if (btn.dataset.category === category) {
-          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-primary text-white';
-        } else {
-          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30';
-        }
+        const active = btn.dataset.category === category;
+        btn.className = active
+          ? 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-primary text-white'
+          : 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30';
       });
 
-      // Reset answers for the new filtered set
-      if (mode === 'solo') {
-        soloAnswers = new Array(filteredQuestions.length).fill(null);
-        renderSoloQuestion();
-      } else if (mode === 'together-p1') {
-        p1Answers = new Array(filteredQuestions.length).fill(null);
-        renderP1Question();
-      } else if (mode === 'together-p2') {
-        p2Answers = new Array(filteredQuestions.length).fill(null);
-        renderP2Question();
-      }
+      if (mode === 'together-p1') renderP1Question();
     }
 
-    // ─── Solo Mode ───────────────────────────────────────────────────
-    function renderSoloQuestion() {
-      if (filteredQuestions.length === 0) return;
-      const q = filteredQuestions[currentIndex];
-      const total = filteredQuestions.length;
-      const progress = ((currentIndex) / total) * 100;
-
-      soloCategoryBadge.textContent = q.category;
-      soloCurrentQ.textContent = currentIndex + 1;
-      soloTotalQ.textContent = total;
-      soloProgressBar.style.width = `${progress}%`;
-
-      soloOptionAText.textContent = q.optionA;
-      soloOptionBText.textContent = q.optionB;
-
-      // Reset option styles
-      soloOptionA.className = 'solo-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all';
-      soloOptionB.className = 'solo-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all';
-
-      // Restore selection if already answered
-      if (soloAnswers[currentIndex] === 'A') {
-        soloOptionA.className = 'solo-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
-      } else if (soloAnswers[currentIndex] === 'B') {
-        soloOptionB.className = 'solo-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
-      }
-
-      soloBackBtn.disabled = currentIndex === 0;
-    }
-
-    function handleSoloChoice(choice) {
-      if (isTransitioning) return;
-      isTransitioning = true;
-
-      soloAnswers[currentIndex] = choice;
-
-      // Highlight selection
-      if (choice === 'A') {
-        soloOptionA.className = 'solo-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
-        soloOptionB.className = 'solo-option w-full p-5 rounded-xl border border-border text-left transition-all opacity-50';
-      } else {
-        soloOptionB.className = 'solo-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
-        soloOptionA.className = 'solo-option w-full p-5 rounded-xl border border-border text-left transition-all opacity-50';
-      }
-
-      // Auto-advance after 500ms
-      setTimeout(() => {
-        if (currentIndex < filteredQuestions.length - 1) {
-          currentIndex++;
-          renderSoloQuestion();
-        } else {
-          // Update progress to 100% then show completion
-          soloProgressBar.style.width = '100%';
-          setTimeout(() => showMode('solo-complete'), 300);
-        }
-        isTransitioning = false;
-      }, 500);
-    }
-
-    soloOptionA.addEventListener('click', () => handleSoloChoice('A'));
-    soloOptionB.addEventListener('click', () => handleSoloChoice('B'));
-
-    soloBackBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        renderSoloQuestion();
-      }
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', () => filterQuestions(btn.dataset.category));
     });
 
-    soloHomeBtn.addEventListener('click', () => {
-      currentIndex = 0;
-      activeCategory = 'all';
-      filteredQuestions = [...questions];
-      catBtns.forEach(btn => {
-        if (btn.dataset.category === 'all') {
-          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-primary text-white';
-        } else {
-          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30';
-        }
-      });
-      showMode('select');
-    });
-
-    // ─── Together Mode - Player 1 ───────────────────────────────────
+    // ─── Player 1 ────────────────────────────────────────────────────
     function renderP1Question() {
       if (filteredQuestions.length === 0) return;
       const q = filteredQuestions[currentIndex];
       const total = filteredQuestions.length;
-      const progress = ((currentIndex) / total) * 100;
+      const progress = (currentIndex / total) * 100;
 
       p1CategoryBadge.textContent = q.category;
       p1CurrentQ.textContent = currentIndex + 1;
@@ -683,11 +433,9 @@ import questions from '../../data/would-you-rather.json';
       p1OptionAText.textContent = q.optionA;
       p1OptionBText.textContent = q.optionB;
 
-      // Reset option styles
       p1OptionA.className = 'p1-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all';
       p1OptionB.className = 'p1-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all';
 
-      // Restore selection if already answered
       if (p1Answers[currentIndex] === 'A') {
         p1OptionA.className = 'p1-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
       } else if (p1Answers[currentIndex] === 'B') {
@@ -701,7 +449,6 @@ import questions from '../../data/would-you-rather.json';
 
       p1Answers[currentIndex] = choice;
 
-      // Highlight selection
       if (choice === 'A') {
         p1OptionA.className = 'p1-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
         p1OptionB.className = 'p1-option w-full p-5 rounded-xl border border-border text-left transition-all opacity-50';
@@ -710,13 +457,11 @@ import questions from '../../data/would-you-rather.json';
         p1OptionA.className = 'p1-option w-full p-5 rounded-xl border border-border text-left transition-all opacity-50';
       }
 
-      // Auto-advance after 500ms
       setTimeout(() => {
         if (currentIndex < filteredQuestions.length - 1) {
           currentIndex++;
           renderP1Question();
         } else {
-          // P1 done - show pass phone screen
           p1ProgressBar.style.width = '100%';
           showMode('pass-phone');
         }
@@ -727,12 +472,47 @@ import questions from '../../data/would-you-rather.json';
     p1OptionA.addEventListener('click', () => handleP1Choice('A'));
     p1OptionB.addEventListener('click', () => handleP1Choice('B'));
 
-    // ─── Together Mode - Player 2 ───────────────────────────────────
+    // ─── Pass-phone screen ───────────────────────────────────────────
+    handPhoneBtn.addEventListener('click', () => {
+      currentIndex = 0;
+      p2Answers = new Array(filteredQuestions.length).fill(null);
+      showMode('together-p2');
+      renderP2Question();
+    });
+
+    sendLinkBtn.addEventListener('click', () => {
+      const payload = encodeData({
+        c: activeCategory,
+        a: p1Answers
+      });
+      const url = `${window.location.origin}/tools/would-you-rather#p1=${payload}`;
+
+      shareLinkInput.value = url;
+      const text = "I just played Would You Rather — Couples Edition. Your turn:";
+      shareWhatsapp.href = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+      shareSms.href = `sms:?body=${encodeURIComponent(text + ' ' + url)}`;
+
+      showMode('send-link');
+    });
+
+    backToPassBtn.addEventListener('click', () => showMode('pass-phone'));
+
+    copyShareLink.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(shareLinkInput.value);
+        copyShareLink.textContent = 'Copied!';
+        setTimeout(() => { copyShareLink.textContent = 'Copy'; }, 2000);
+      } catch (err) {
+        console.error('Copy failed:', err);
+      }
+    });
+
+    // ─── Player 2 ────────────────────────────────────────────────────
     function renderP2Question() {
       if (filteredQuestions.length === 0) return;
       const q = filteredQuestions[currentIndex];
       const total = filteredQuestions.length;
-      const progress = ((currentIndex) / total) * 100;
+      const progress = (currentIndex / total) * 100;
 
       p2CategoryBadge.textContent = q.category;
       p2CurrentQ.textContent = currentIndex + 1;
@@ -742,15 +522,13 @@ import questions from '../../data/would-you-rather.json';
       p2OptionAText.textContent = q.optionA;
       p2OptionBText.textContent = q.optionB;
 
-      // Reset option styles
       p2OptionA.className = 'p2-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all';
       p2OptionB.className = 'p2-option w-full p-5 rounded-xl border border-border text-left hover:border-primary/30 transition-all';
 
-      // Restore selection if already answered
       if (p2Answers[currentIndex] === 'A') {
-        p2OptionA.className = 'p2-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+        p2OptionA.className = 'p2-option w-full p-5 rounded-xl border border-partner bg-partner/10 text-left transition-all';
       } else if (p2Answers[currentIndex] === 'B') {
-        p2OptionB.className = 'p2-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+        p2OptionB.className = 'p2-option w-full p-5 rounded-xl border border-partner bg-partner/10 text-left transition-all';
       }
     }
 
@@ -760,22 +538,19 @@ import questions from '../../data/would-you-rather.json';
 
       p2Answers[currentIndex] = choice;
 
-      // Highlight selection
       if (choice === 'A') {
-        p2OptionA.className = 'p2-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+        p2OptionA.className = 'p2-option w-full p-5 rounded-xl border border-partner bg-partner/10 text-left transition-all';
         p2OptionB.className = 'p2-option w-full p-5 rounded-xl border border-border text-left transition-all opacity-50';
       } else {
-        p2OptionB.className = 'p2-option w-full p-5 rounded-xl border border-primary bg-primary/10 text-left transition-all';
+        p2OptionB.className = 'p2-option w-full p-5 rounded-xl border border-partner bg-partner/10 text-left transition-all';
         p2OptionA.className = 'p2-option w-full p-5 rounded-xl border border-border text-left transition-all opacity-50';
       }
 
-      // Auto-advance after 500ms
       setTimeout(() => {
         if (currentIndex < filteredQuestions.length - 1) {
           currentIndex++;
           renderP2Question();
         } else {
-          // P2 done - calculate and show results
           p2ProgressBar.style.width = '100%';
           calculateResults();
         }
@@ -806,21 +581,18 @@ import questions from '../../data/would-you-rather.json';
       }
 
       const score = total > 0 ? Math.round((matches / total) * 100) : 0;
-
-      // Display score
       resultsScore.textContent = `${score}%`;
 
       if (score >= 80) {
-        resultsMessage.textContent = 'Amazing! You two are incredibly in sync! You think alike on almost everything.';
+        resultsMessage.textContent = 'Amazing! You two are incredibly in sync.';
       } else if (score >= 60) {
-        resultsMessage.textContent = 'Great match! You agree on most things but have enough differences to keep it interesting.';
+        resultsMessage.textContent = 'Great match! You agree on most things, with just enough difference to keep it interesting.';
       } else if (score >= 40) {
-        resultsMessage.textContent = 'A balanced mix! You share some preferences but also bring unique perspectives to the relationship.';
+        resultsMessage.textContent = 'A balanced mix. You share some preferences, but bring different perspectives too.';
       } else {
-        resultsMessage.textContent = 'Opposites attract! You have very different preferences — that means lots of fun debates ahead!';
+        resultsMessage.textContent = 'Opposites attract! You have very different preferences — lots of fun debates ahead.';
       }
 
-      // Display disagreements
       if (disagreements.length > 0) {
         resultsDisagreements.classList.remove('hidden');
         resultsDisagreementList.innerHTML = disagreements.map(d => `
@@ -846,87 +618,55 @@ import questions from '../../data/would-you-rather.json';
       showMode('results');
     }
 
-    // ─── Event Listeners ─────────────────────────────────────────────
-
-    // Mode selection
-    soloBtn.addEventListener('click', () => {
-      filteredQuestions = [...questions];
-      activeCategory = 'all';
-      currentIndex = 0;
-      soloAnswers = new Array(filteredQuestions.length).fill(null);
-      showMode('solo');
-      renderSoloQuestion();
-    });
-
-    togetherBtn.addEventListener('click', () => {
-      filteredQuestions = [...questions];
-      activeCategory = 'all';
-      currentIndex = 0;
-      p1Answers = new Array(filteredQuestions.length).fill(null);
-      p2Answers = new Array(filteredQuestions.length).fill(null);
-      showMode('together-p1');
-      renderP1Question();
-    });
-
-    // Pass phone -> P2
-    p2ReadyBtn.addEventListener('click', () => {
-      currentIndex = 0;
-      p2Answers = new Array(filteredQuestions.length).fill(null);
-      // Hide category filter during P2 to keep same question set as P1
-      showMode('together-p2');
-      renderP2Question();
-    });
-
-    // Play again
     playAgainBtn.addEventListener('click', () => {
+      // Reset everything, drop the hash, restart fresh
+      asyncMode = false;
       currentIndex = 0;
       activeCategory = 'all';
       filteredQuestions = [...questions];
-      p1Answers = [];
-      p2Answers = [];
-      soloAnswers = [];
-      catBtns.forEach(btn => {
-        if (btn.dataset.category === 'all') {
-          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-primary text-white';
-        } else {
-          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30';
-        }
-      });
-      showMode('select');
-    });
-
-    // Solo complete -> play together
-    soloPlayTogetherBtn.addEventListener('click', () => {
-      currentIndex = 0;
       p1Answers = new Array(filteredQuestions.length).fill(null);
-      p2Answers = new Array(filteredQuestions.length).fill(null);
+      p2Answers = [];
+      history.replaceState(null, '', window.location.pathname);
+
+      catBtns.forEach(btn => {
+        const active = btn.dataset.category === 'all';
+        btn.className = active
+          ? 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-primary text-white'
+          : 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30';
+      });
+
+      heroSubtitle.textContent = '40+ fun questions for couples. You answer, hand to your partner, compare results.';
       showMode('together-p1');
       renderP1Question();
     });
 
-    // Solo complete -> replay
-    soloReplayBtn.addEventListener('click', () => {
-      currentIndex = 0;
-      activeCategory = 'all';
-      filteredQuestions = [...questions];
-      soloAnswers = [];
-      catBtns.forEach(btn => {
-        if (btn.dataset.category === 'all') {
-          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-primary text-white';
-        } else {
-          btn.className = 'cat-btn px-3 py-1.5 rounded-full text-sm font-medium bg-card border border-border text-text-secondary hover:border-primary/30';
-        }
-      });
-      showMode('select');
-    });
+    // ─── Init: detect async P2 mode from hash ────────────────────────
+    function init() {
+      const hash = window.location.hash;
+      if (hash.startsWith('#p1=')) {
+        const decoded = decodeData(hash.substring(4));
+        if (decoded && Array.isArray(decoded.a) && decoded.c) {
+          // Hydrate P1 answers from link
+          asyncMode = true;
+          activeCategory = decoded.c;
+          filteredQuestions = activeCategory === 'all' ? [...questions] : questions.filter(q => q.category === activeCategory);
+          // Trim to length sent by P1 (in case categories changed)
+          p1Answers = decoded.a.slice(0, filteredQuestions.length);
+          p2Answers = new Array(filteredQuestions.length).fill(null);
+          currentIndex = 0;
 
-    // Category filter
-    catBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Only allow category change during solo or at start of P1 (not during P2)
-        if (mode === 'together-p2') return;
-        filterQuestions(btn.dataset.category);
-      });
-    });
+          heroSubtitle.textContent = "Your partner already played. Answer the same questions to see your compatibility.";
+          showMode('together-p2');
+          renderP2Question();
+          return;
+        }
+      }
+
+      // Default fresh game
+      p1Answers = new Array(filteredQuestions.length).fill(null);
+      renderP1Question();
+    }
+
+    init();
   </script>
 </ToolLayout>

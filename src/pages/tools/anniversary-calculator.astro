@@ -1,6 +1,5 @@
 ---
 import ToolLayout from '../../layouts/ToolLayout.astro';
-import LeadCaptureForm from '../../components/tools/LeadCaptureForm.astro';
 import ShareButtons from '../../components/tools/ShareButtons.astro';
 
 const milestones = [
@@ -106,7 +105,7 @@ const milestones = [
         <p class="text-text-secondary text-sm mb-2">You've been together for</p>
         <div class="flex items-center justify-center gap-4 flex-wrap">
           <div class="text-center">
-            <p id="days-count" class="text-4xl font-bold text-primary">0</p>
+            <p id="days-count" class="text-4xl font-bold text-primary-dark">0</p>
             <p class="text-text-secondary text-sm">days</p>
           </div>
           <div class="text-text-light text-2xl">=</div>
@@ -126,7 +125,7 @@ const milestones = [
       <div id="next-milestone" class="bg-primary/5 rounded-2xl border border-primary/20 p-6 mb-6 text-center">
         <p class="text-text-secondary text-sm mb-1">Your next milestone</p>
         <p id="next-milestone-name" class="text-2xl font-bold text-text mb-1"></p>
-        <p id="next-milestone-date" class="text-primary font-medium"></p>
+        <p id="next-milestone-date" class="text-primary-dark font-medium"></p>
         <p id="next-milestone-countdown" class="text-text-secondary text-sm mt-2"></p>
       </div>
 
@@ -136,18 +135,6 @@ const milestones = [
         <div id="milestones-list" class="space-y-3">
           <!-- Populated by JS -->
         </div>
-      </div>
-
-      <!-- Lead Capture -->
-      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
-        <LeadCaptureForm
-          source="anniversary-calculator"
-          title="Never miss a milestone"
-          subtitle="Get email reminders before each special date"
-          ctaText="Remind Me"
-          placeholder="Enter your email"
-          successMessage="You're all set!"
-        />
       </div>
 
       <!-- Share -->
@@ -344,7 +331,7 @@ const milestones = [
               <p class="text-text-secondary text-sm mt-0.5">${m.description}</p>
             </div>
             ${isPast ? '<span class="text-green-500 text-sm font-medium whitespace-nowrap">Reached!</span>' : ''}
-            ${isNext ? '<span class="text-primary text-sm font-medium whitespace-nowrap">Next up</span>' : ''}
+            ${isNext ? '<span class="text-primary-dark text-sm font-medium whitespace-nowrap">Next up</span>' : ''}
           </div>
         `;
       }).join('');

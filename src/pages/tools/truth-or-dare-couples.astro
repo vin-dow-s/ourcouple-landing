@@ -1,0 +1,295 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+import prompts from '../../data/truth-or-dare.json';
+
+// Counts for SEO copy
+const sweetCount = prompts.sweet.truths.length + prompts.sweet.dares.length;
+const playfulCount = prompts.playful.truths.length + prompts.playful.dares.length;
+const spicyCount = prompts.spicy.truths.length + prompts.spicy.dares.length;
+const totalCount = sweetCount + playfulCount + spicyCount;
+---
+
+<ToolLayout
+  title="Truth or Dare for Couples — Free Game (Sweet, Playful & Spicy)"
+  description={`Play Truth or Dare with your partner. ${totalCount}+ free questions and dares across three levels — Sweet, Playful, and Spicy. No signup, instant fun.`}
+  canonicalPath="/tools/truth-or-dare-couples"
+  ctaHeading="Save your favorite dares"
+  ctaCopy="OurCouple lets you bookmark the best truth-or-dare moments, save photos, and build your shared journal — just for the two of you."
+  howTo={{
+    name: "How to play Truth or Dare for couples",
+    description: "Free Truth or Dare game for couples — three levels from sweet to spicy.",
+    steps: [
+      { name: "Pick a level", text: "Choose Sweet, Playful, or Spicy depending on your mood." },
+      { name: "Tap Truth or Dare", text: "Get a random prompt instantly. No signup, no app to install." },
+      { name: "Take turns", text: "Pass the screen to your partner and keep going. Save your favorites for later." }
+    ]
+  }}
+  faqs={[
+    {
+      question: "How do you play Truth or Dare with your partner?",
+      answer: "Each player takes turns choosing 'Truth' or 'Dare'. If they pick Truth, they answer the question honestly. If they pick Dare, they complete the action. Our generator gives you a fresh prompt every tap — pick a level, take turns, no setup needed."
+    },
+    {
+      question: "Is this Truth or Dare game free?",
+      answer: "Yes, 100% free. No signup, no email, no in-app purchases. All three levels (Sweet, Playful, Spicy) are unlocked from the start."
+    },
+    {
+      question: "What's in the Spicy level?",
+      answer: "Spicy is for couples who want a flirtier, more romantic vibe — think kisses, slow dances, romantic confessions, and intimate questions. Nothing explicit, just playful and bold."
+    },
+    {
+      question: "Can we play long-distance?",
+      answer: "Yes. Open the page on a video call, take turns picking Truth or Dare, and read prompts to each other. Some dares (like sending a voice note or a selfie) are made for long-distance couples."
+    },
+    {
+      question: "How many questions and dares are there?",
+      answer: `Over ${totalCount} prompts across three levels — ${sweetCount} sweet, ${playfulCount} playful, and ${spicyCount} spicy. Prompts are picked at random so the game feels fresh every time.`
+    },
+    {
+      question: "Can we save our favorite truths and dares?",
+      answer: "On the web tool, you can take screenshots. To save and revisit your favorite moments, photos, and inside jokes, OurCouple's couple journal is built exactly for that — private, encrypted, and shared just between the two of you."
+    }
+  ]}
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <!-- Hero -->
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 text-3xl">
+        🔥
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tighter mb-3">
+        Truth or Dare for Couples
+      </h1>
+      <p class="text-text-secondary max-w-md mx-auto">
+        {totalCount}+ free prompts across three levels. Pick a vibe, take turns, no signup.
+      </p>
+    </div>
+
+    <!-- Level Selector -->
+    <div class="grid grid-cols-3 gap-2 mb-6" id="level-selector" role="tablist" aria-label="Choose intensity level">
+      <button
+        type="button"
+        class="level-btn px-3 py-3 rounded-xl border-2 border-primary bg-primary/10 text-text font-semibold text-sm transition-all"
+        data-level="sweet"
+        aria-pressed="true"
+      >
+        <span class="block text-xl mb-0.5">💖</span>
+        Sweet
+      </button>
+      <button
+        type="button"
+        class="level-btn px-3 py-3 rounded-xl border-2 border-border bg-card text-text font-semibold text-sm transition-all hover:border-primary/30"
+        data-level="playful"
+        aria-pressed="false"
+      >
+        <span class="block text-xl mb-0.5">😜</span>
+        Playful
+      </button>
+      <button
+        type="button"
+        class="level-btn px-3 py-3 rounded-xl border-2 border-border bg-card text-text font-semibold text-sm transition-all hover:border-primary/30"
+        data-level="spicy"
+        aria-pressed="false"
+      >
+        <span class="block text-xl mb-0.5">🔥</span>
+        Spicy
+      </button>
+    </div>
+
+    <!-- Card Display -->
+    <div class="relative mb-6">
+      <div
+        id="prompt-card"
+        class="bg-card rounded-3xl border border-border p-8 md:p-10 min-h-[260px] flex flex-col items-center justify-center text-center transition-all duration-300"
+      >
+        <p id="card-type" class="text-sm uppercase tracking-widest text-text-light mb-3 font-medium">
+          Tap a button below
+        </p>
+        <p id="card-text" class="text-xl md:text-2xl font-semibold text-text leading-snug">
+          Pick Truth or Dare to start
+        </p>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="grid grid-cols-2 gap-3 mb-6">
+      <button
+        type="button"
+        id="truth-btn"
+        class="px-6 py-4 bg-primary text-white rounded-2xl font-bold text-lg hover:bg-primary-dark transition-all hover:scale-[1.02] active:scale-95"
+      >
+        💭 Truth
+      </button>
+      <button
+        type="button"
+        id="dare-btn"
+        class="px-6 py-4 bg-partner text-white rounded-2xl font-bold text-lg hover:bg-partner/90 transition-all hover:scale-[1.02] active:scale-95"
+      >
+        🎲 Dare
+      </button>
+    </div>
+
+    <!-- Counter -->
+    <p id="counter" class="text-center text-text-secondary text-sm mb-8">
+      <span id="round-num">0</span> rounds played · Tap again for a new prompt
+    </p>
+
+    <!-- Share -->
+    <div class="text-center mb-12">
+      <ShareButtons
+        title="Send this game to your partner"
+        text="Play Truth or Dare with me — sweet, playful, or spicy. Free game for couples:"
+      />
+    </div>
+
+    <!-- Cross-sell -->
+    <div class="bg-card rounded-2xl border border-border p-6 mb-12">
+      <h2 class="text-lg font-semibold text-text mb-2">Loved this? Try our other couples games</h2>
+      <p class="text-text-secondary text-sm mb-4">More free games designed to bring you closer.</p>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <a href="/tools/would-you-rather" class="flex items-center gap-3 p-3 rounded-xl border border-border hover:border-primary/30 transition-colors">
+          <span class="text-2xl">🔀</span>
+          <div>
+            <p class="font-medium text-text text-sm">Would You Rather</p>
+            <p class="text-text-secondary text-xs">40+ fun questions</p>
+          </div>
+        </a>
+        <a href="/tools/couple-quiz" class="flex items-center gap-3 p-3 rounded-xl border border-border hover:border-primary/30 transition-colors">
+          <span class="text-2xl">💕</span>
+          <div>
+            <p class="font-medium text-text text-sm">Partner Quiz</p>
+            <p class="text-text-secondary text-xs">Compare answers with your partner</p>
+          </div>
+        </a>
+        <a href="/tools/36-questions" class="flex items-center gap-3 p-3 rounded-xl border border-border hover:border-primary/30 transition-colors">
+          <span class="text-2xl">❤️</span>
+          <div>
+            <p class="font-medium text-text text-sm">36 Questions</p>
+            <p class="text-text-secondary text-xs">Famous study-backed questions</p>
+          </div>
+        </a>
+        <a href="/tools/bucket-list" class="flex items-center gap-3 p-3 rounded-xl border border-border hover:border-primary/30 transition-colors">
+          <span class="text-2xl">✨</span>
+          <div>
+            <p class="font-medium text-text text-sm">Bucket List</p>
+            <p class="text-text-secondary text-xs">Build your couple bucket list</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- SEO Body Content -->
+    <article class="prose prose-sm max-w-none text-text-secondary mb-12 space-y-5 leading-relaxed">
+      <h2 class="text-xl font-semibold text-text tracking-tight">A free Truth or Dare game made for couples</h2>
+      <p>
+        Truth or Dare is one of the oldest games in the book, but most online versions are made for parties — not for two people who actually know each other.
+        Our version is built specifically for couples, with prompts that lean into intimacy, fun, and connection rather than awkward party challenges.
+        No signup, no app required, no ads in the way. Just tap and play.
+      </p>
+
+      <h2 class="text-xl font-semibold text-text tracking-tight">Three levels for every mood</h2>
+      <ul class="space-y-2 list-disc pl-5">
+        <li><strong class="text-text">💖 Sweet</strong> — gentle, romantic, perfect for new couples or a calm evening together. Think first-impression questions, favorite memories, little voice notes.</li>
+        <li><strong class="text-text">😜 Playful</strong> — silly and chaotic. Embarrassing photos, weird Google searches, terrible impressions. The version where you can't stop laughing.</li>
+        <li><strong class="text-text">🔥 Spicy</strong> — flirtier and bolder. Romantic confessions, slow dances, "what would you love to do tonight" type prompts. Still tasteful, just turned up.</li>
+      </ul>
+
+      <h2 class="text-xl font-semibold text-text tracking-tight">How to play</h2>
+      <p>
+        Sit next to your partner (or jump on a video call if you're long-distance). Pick a level. One person taps either Truth or Dare and the prompt appears — they answer or do it, then it's the other's turn.
+        That's the whole game. Some couples like to alternate Truth/Dare, others let the dared person choose. There's no scoring; the goal is to learn something new about each other or share a small moment together.
+      </p>
+
+      <h2 class="text-xl font-semibold text-text tracking-tight">Why couples love this format</h2>
+      <p>
+        Truth or Dare works because it lowers the barrier to vulnerability. It's much easier to answer "What's the most romantic thing I've ever done for you?" when a card asks the question than to bring it up out of nowhere.
+        The dare side keeps the energy light — slow dancing in the kitchen, sending a silly selfie, recreating your first date in 30 seconds.
+        Whether you've been dating six weeks or married fifteen years, the format always finds a new angle.
+      </p>
+
+      <h2 class="text-xl font-semibold text-text tracking-tight">Save the moments that matter</h2>
+      <p>
+        Some of the best dares end up being memories you want to keep — a surprise voice note, a goofy photo, an inside joke that came out of a Truth question.
+        Our app, OurCouple, is built to save those small moments together: a private journal, a shared photo album, daily questions, and your couple's events — all in one place,
+        encrypted, and just for the two of you. The Truth or Dare prompts you love most live nicely in there as recurring rituals.
+      </p>
+    </article>
+  </div>
+
+  <script define:vars={{ prompts }}>
+    let currentLevel = 'sweet';
+    let lastIndices = { sweet: { truth: -1, dare: -1 }, playful: { truth: -1, dare: -1 }, spicy: { truth: -1, dare: -1 } };
+    let rounds = 0;
+
+    const card = document.getElementById('prompt-card');
+    const cardType = document.getElementById('card-type');
+    const cardText = document.getElementById('card-text');
+    const truthBtn = document.getElementById('truth-btn');
+    const dareBtn = document.getElementById('dare-btn');
+    const roundNum = document.getElementById('round-num');
+    const levelButtons = document.querySelectorAll('.level-btn');
+
+    const levelStyle = {
+      sweet:   { card: 'bg-primary/5  border-primary/30',  type: 'text-primary',   classes: ['bg-primary/5', 'border-primary/30'] },
+      playful: { card: 'bg-accent/10  border-accent/30',   type: 'text-accent',    classes: ['bg-accent/10', 'border-accent/30'] },
+      spicy:   { card: 'bg-partner/10 border-partner/30',  type: 'text-partner',   classes: ['bg-partner/10', 'border-partner/30'] }
+    };
+
+    function pickPrompt(type) {
+      const pool = prompts[currentLevel][type === 'truth' ? 'truths' : 'dares'];
+      let idx;
+      // Avoid back-to-back repeat
+      do {
+        idx = Math.floor(Math.random() * pool.length);
+      } while (pool.length > 1 && idx === lastIndices[currentLevel][type]);
+      lastIndices[currentLevel][type] = idx;
+
+      // Reset previous styling
+      Object.values(levelStyle).forEach(s => s.classes.forEach(c => card.classList.remove(c)));
+      card.classList.add(...levelStyle[currentLevel].classes);
+
+      cardType.textContent = type === 'truth' ? '💭 Truth' : '🎲 Dare';
+      cardType.className = `text-sm uppercase tracking-widest mb-3 font-medium ${levelStyle[currentLevel].type}`;
+
+      // Slight pop animation
+      card.style.transform = 'scale(0.96)';
+      cardText.style.opacity = '0.4';
+      setTimeout(() => {
+        cardText.textContent = pool[idx];
+        card.style.transform = 'scale(1)';
+        cardText.style.opacity = '1';
+      }, 120);
+
+      rounds += 1;
+      roundNum.textContent = rounds;
+
+      // Track event for analytics
+      if (window.posthog) {
+        window.posthog.capture('truth_or_dare_played', { level: currentLevel, type });
+      }
+    }
+
+    truthBtn.addEventListener('click', () => pickPrompt('truth'));
+    dareBtn.addEventListener('click', () => pickPrompt('dare'));
+
+    levelButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const newLevel = btn.dataset.level;
+        if (newLevel === currentLevel) return;
+        currentLevel = newLevel;
+        levelButtons.forEach(b => {
+          const active = b.dataset.level === currentLevel;
+          b.classList.toggle('border-primary', active);
+          b.classList.toggle('bg-primary/10', active);
+          b.classList.toggle('border-border', !active);
+          b.classList.toggle('bg-card', !active);
+          b.setAttribute('aria-pressed', String(active));
+        });
+        if (window.posthog) {
+          window.posthog.capture('truth_or_dare_level_changed', { level: currentLevel });
+        }
+      });
+    });
+  </script>
+</ToolLayout>

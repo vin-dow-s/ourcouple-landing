@@ -11,10 +11,14 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
       </picture>
       <span class="font-semibold text-base sm:text-xl text-text tracking-tighter">OurCouple</span>
     </a>
+
     <div class="flex items-center gap-6">
+      <!-- Desktop nav -->
       <a href="/#features" class="hidden sm:block text-text-secondary hover:text-primary transition-colors font-medium">Features</a>
-      <a href="/tools" class="hidden sm:block text-text-secondary hover:text-primary transition-colors font-medium">Tools</a>
+      <a href="/tools" class="hidden sm:block text-text-secondary hover:text-primary transition-colors font-medium whitespace-nowrap">Free Games &amp; Tools</a>
       <a href="/blog" class="hidden sm:block text-text-secondary hover:text-primary transition-colors font-medium">Blog</a>
+
+      <!-- Download CTA (always visible) -->
       <a
         href={appStoreUrl}
         target="_blank"
@@ -23,6 +27,74 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
       >
         Download
       </a>
+
+      <!-- Mobile burger (hidden ≥ sm) -->
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        class="sm:hidden flex items-center justify-center w-10 h-10 rounded-xl text-text hover:bg-card transition-colors"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg id="burger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
     </div>
   </div>
+
+  <!-- Mobile menu drawer -->
+  <div
+    id="mobile-menu"
+    class="sm:hidden hidden border-t border-border bg-background/95 backdrop-blur-md"
+  >
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
+      <a href="/#features" class="px-3 py-3 rounded-lg text-text font-medium hover:bg-card transition-colors">Features</a>
+      <a href="/tools" class="px-3 py-3 rounded-lg text-text font-medium hover:bg-card transition-colors">Free Games &amp; Tools</a>
+      <a href="/blog" class="px-3 py-3 rounded-lg text-text font-medium hover:bg-card transition-colors">Blog</a>
+    </nav>
+  </div>
 </nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const burgerIcon = document.getElementById('burger-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  function setOpen(open: boolean) {
+    if (!btn || !menu || !burgerIcon || !closeIcon) return;
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.classList.toggle('hidden', !open);
+    burgerIcon.classList.toggle('hidden', open);
+    closeIcon.classList.toggle('hidden', !open);
+  }
+
+  btn?.addEventListener('click', () => {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    setOpen(!isOpen);
+  });
+
+  // Close on link click (smooth UX)
+  menu?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => setOpen(false));
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && btn?.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+    }
+  });
+
+  // Close on resize to desktop (avoid stuck-open state)
+  const mq = window.matchMedia('(min-width: 640px)');
+  mq.addEventListener('change', (e) => {
+    if (e.matches) setOpen(false);
+  });
+</script>
