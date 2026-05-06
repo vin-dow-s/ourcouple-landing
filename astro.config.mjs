@@ -6,36 +6,30 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ourcouple.app',
+  trailingSlash: 'never',
+  build: {
+    format: 'file',
+  },
   integrations: [
     sitemap({
       changefreq: 'weekly',
       lastmod: new Date(),
       serialize(item) {
-        // Homepage gets highest priority
-        if (item.url === 'https://ourcouple.app/') {
-          item.priority = 1.0;
-          item.changefreq = 'daily';
+        // Normalize: keep "/" on root, strip trailing slash everywhere else
+        // (must match canonical URLs and Vercel's trailingSlash:false)
+        if (item.url === 'https://ourcouple.app/' || item.url === 'https://ourcouple.app') {
+          return { ...item, url: 'https://ourcouple.app/', priority: 1.0, changefreq: 'daily' };
         }
-        // Blog pages get high priority (SEO content)
-        else if (item.url.includes('/blog')) {
-          item.priority = 0.8;
-          item.changefreq = 'weekly';
+        const url = item.url.endsWith('/') ? item.url.slice(0, -1) : item.url;
+        let priority = 0.7;
+        let changefreq = 'weekly';
+        if (url.includes('/blog') || url.includes('/tools')) {
+          priority = 0.8;
+        } else if (url.includes('/privacy') || url.includes('/terms')) {
+          priority = 0.3;
+          changefreq = 'monthly';
         }
-        // Tools pages get high priority (lead generation)
-        else if (item.url.includes('/tools')) {
-          item.priority = 0.8;
-          item.changefreq = 'weekly';
-        }
-        // Legal pages get lower priority
-        else if (item.url.includes('/privacy') || item.url.includes('/terms')) {
-          item.priority = 0.3;
-          item.changefreq = 'monthly';
-        }
-        // Default for other pages
-        else {
-          item.priority = 0.7;
-        }
-        return item;
+        return { ...item, url, priority, changefreq };
       },
     }),
   ],
