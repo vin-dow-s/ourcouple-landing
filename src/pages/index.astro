@@ -8,135 +8,72 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
 
 <Layout
   title="OurCouple — The Cozy Couple App for Daily Connection (Free)"
-  description="The couple app to stay close: a living couple card, daily rituals, and quizzes & games to learn more about each other. One private space for two — free and end-to-end encrypted."
+  description="The cozy couple app: daily messages, shared memories, love notes, anniversaries — one private space for you and your partner. Free, end-to-end encrypted."
   canonicalPath="/"
 >
   <Header />
 
   <main class="flex-1">
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center bg-gradient-radial overflow-hidden pt-20" id="hero">
+    <section class="relative min-h-screen flex items-center justify-center bg-gradient-radial overflow-hidden pt-20" id="hero">
       <!-- Decorative elements -->
       <div class="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
       <div class="absolute bottom-20 right-10 w-80 h-80 bg-partner/10 rounded-full blur-3xl"></div>
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
 
-      <div class="relative z-10 w-full max-w-6xl mx-auto px-6 py-12">
-        <div class="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-          <!-- Left: pitch + CTA -->
-          <div class="text-center lg:text-left">
-            <h1 class="animate-fade-in mb-4 tracking-tighter">
-              <span class="block text-2xl md:text-4xl font-medium text-[#A9A9A9]">Stay close,</span>
-              <span class="hero-love-line text-5xl md:text-[6rem] font-bold"><span class="hero-stayin">Stay in</span> L<span class="sr-only">o</span><img class="love-heart" src="/heart.svg" alt="" aria-hidden="true" />ve</span>
-            </h1>
-            <p class="animate-fade-in-delay-1 text-lg md:text-xl text-text-secondary max-w-xl mx-auto lg:mx-0 mb-8">
-              Your private space for two to build your love streak &amp; learn more about each other.
-            </p>
-            <div class="animate-fade-in-delay-2">
-              <a
-                href={appStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block transition-transform hover:scale-105"
-                aria-label="Download OurCouple on the App Store"
-                data-fast-goal="cta_hero_download"
-              >
-                <img
-                  src="/app-store-badge.svg"
-                  alt="Download on the App Store"
-                  width="168"
-                  height="56"
-                  class="h-14 w-auto mx-auto lg:mx-0"
-                />
-              </a>
-            </div>
-          </div>
+      <div class="relative z-10 max-w-6xl mx-auto px-6 py-12 text-center">
+        <!-- Hero Text -->
+        <h1 class="animate-fade-in text-4xl md:text-6xl font-bold text-text mb-4 tracking-tighter">
+          Stay close. Stay in love.
+        </h1>
+        <p class="animate-fade-in-delay-1 text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-8">
+          Your shared space for two — daily rituals, questions, <br class="hidden sm:inline" />photo album, notes… Never miss a day together.
+        </p>
 
-          <!-- Right: app screenshots -->
-          <div class="animate-fade-in-delay-video flex justify-center lg:justify-end">
-            <div class="hero-shots">
-              <!-- ===============================================================
-                   PLACEHOLDER — v2 app screenshots.
-                   Drop a screenshot into each .hero-shot, replacing the
-                   .hero-shot-ph div with:
-                     <img src="/hero-screen-1.png" alt="…" class="hero-shot-img" />
-                   (raw portrait screenshots — the .hero-shot frame rounds +
-                   shadows them. For pre-framed mockup PNGs with transparent
-                   corners, swap box-shadow for filter: drop-shadow in the CSS.)
-                   =============================================================== -->
-              <div class="hero-shot hero-shot--back" aria-hidden="true">
-                <div class="hero-shot-ph">Screenshot</div>
-              </div>
-              <div class="hero-shot hero-shot--front">
-                <div class="hero-shot-ph">Main screenshot</div>
-              </div>
-            </div>
-          </div>
+        <!-- App Store Download -->
+        <div class="animate-fade-in-delay-2 max-w-md mx-auto">
+          <a
+            href={appStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block transition-transform hover:scale-105"
+            aria-label="Download OurCouple on the App Store"
+            data-fast-goal="cta_hero_download"
+          >
+            <img
+              src="/app-store-badge.svg"
+              alt="Download on the App Store"
+              width="168"
+              height="56"
+              class="h-14 w-auto mx-auto"
+            />
+          </a>
+          <p class="text-neutral-500 text-sm mt-1">Start free — no credit card</p>
         </div>
-      </div>
-    </section>
 
-    <!-- Couple Card Spotlight -->
-    <section id="couple-card" class="py-24 bg-background overflow-hidden" data-fast-scroll="scroll_couple_card">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <!-- Copy -->
-          <div>
-            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-5">New in 2.0</span>
-            <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-text mb-5">
-              Get your couple card
-            </h2>
-            <p class="text-text-secondary text-lg mb-8">
-              Create, customise and share your own couple card - it grows with your relationship.
-            </p>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3 text-text">
-                <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Anniversary date &amp; days together, at a glance</span>
-              </li>
-              <li class="flex items-start gap-3 text-text">
-                <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Compatibility &amp; engagement scores, automatically updated</span>
-              </li>
-              <li class="flex items-start gap-3 text-text">
-                <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Your partner's love notes + your virtual pet</span>
-              </li>
-              <li class="flex items-start gap-3 text-text">
-                <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Make it yours: themes, colours, layout...</span>
-              </li>
-            </ul>
-            <a
-              href={appStoreUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-8 inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors"
-              aria-label="Create your couple card — download OurCouple on the App Store"
-              data-fast-goal="cta_couple_card_download"
+        <!-- Video/Image Preview -->
+        <div class="mt-10 min-h-[50vh] flex items-center justify-center animate-fade-in-delay-video">
+          <div class="inline-block rounded-3xl shadow-lg shadow-black/15">
+            <video
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="/mockup-screenshot.png"
+              width="669"
+              height="452"
+              class="mx-auto max-h-[50vh] w-auto h-auto rounded-3xl"
+              aria-label="OurCouple app demonstration showing daily messages and photo sharing between partners"
             >
-              Create our card now
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-
-          <!-- 3D interactive couple card -->
-          <div class="cc3d-scene">
-            <div class="cc3d-float">
-              <div class="cc3d-card" id="cc3d-card">
-                <img
-                  src="/couplecard.jpg"
-                  alt="The OurCouple couple card — names, days together, virtual pet and compatibility gauges"
-                  width="1249"
-                  height="850"
-                  class="cc3d-img"
-                  loading="lazy"
-                />
-                <div class="cc3d-glare" aria-hidden="true"></div>
-              </div>
-            </div>
+              <source src="/ProductDemoLaunch.webm" type="video/webm" />
+              <source src="/ProductDemoLaunch.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
+
+
       </div>
     </section>
 
@@ -257,60 +194,6 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
       </div>
     </section>
 
-    <!-- Quizzes & Games Section -->
-    <section id="games" class="py-24 bg-background" data-fast-scroll="scroll_games">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center max-w-2xl mx-auto mb-12">
-          <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-5">Quizzes &amp; games</span>
-          <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-text mb-4">
-            Learn more about each other
-          </h2>
-          <p class="text-text-secondary text-base md:text-lg">
-            Couple quizzes and playful games made for two. Answer together, compare your picks, and discover how in sync you really are — every game feeds your couple card's compatibility score.
-          </p>
-        </div>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div class="p-6 rounded-2xl bg-card border border-border">
-            <h3 class="font-semibold text-lg text-text mb-1">Couple quiz</h3>
-            <p class="text-text-secondary text-sm">How well do you really know your partner?</p>
-          </div>
-          <div class="p-6 rounded-2xl bg-card border border-border">
-            <h3 class="font-semibold text-lg text-text mb-1">Would you rather</h3>
-            <p class="text-text-secondary text-sm">Playful this-or-that prompts, just for two.</p>
-          </div>
-          <div class="p-6 rounded-2xl bg-card border border-border">
-            <h3 class="font-semibold text-lg text-text mb-1">Love language</h3>
-            <p class="text-text-secondary text-sm">Decode how you each give and feel love.</p>
-          </div>
-          <div class="p-6 rounded-2xl bg-card border border-border">
-            <h3 class="font-semibold text-lg text-text mb-1">36 questions to fall in love</h3>
-            <p class="text-text-secondary text-sm">The classic set that builds closeness fast.</p>
-          </div>
-          <div class="p-6 rounded-2xl bg-card border border-border">
-            <h3 class="font-semibold text-lg text-text mb-1">Truth or dare</h3>
-            <p class="text-text-secondary text-sm">Sweet, playful or spicy — your call.</p>
-          </div>
-          <div class="p-6 rounded-2xl bg-card border border-border">
-            <h3 class="font-semibold text-lg text-text mb-1">Attachment style</h3>
-            <p class="text-text-secondary text-sm">Understand your patterns, together.</p>
-          </div>
-        </div>
-
-        <div class="text-center mt-10">
-          <a
-            href="/tools"
-            class="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-semibold transition-colors"
-            data-fast-goal="cta_games_try_free"
-          >
-            Try a few free on the web
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <p class="text-text-light text-sm mt-1">All quizzes &amp; games are in the app.</p>
-        </div>
-      </div>
-    </section>
-
     <!-- Comparison Section -->
     <section id="why" class="py-24 bg-background" data-fast-scroll="scroll_comparison">
       <div class="max-w-4xl mx-auto px-6">
@@ -333,16 +216,10 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             </thead>
             <tbody class="text-text">
               <tr class="border-b border-border">
-                <td class="p-4 md:p-5 font-medium">Living couple card</td>
-                <td class="p-4 md:p-5 text-center bg-primary/5">✓</td>
-                <td class="p-4 md:p-5 text-center text-text-secondary">—</td>
-                <td class="p-4 md:p-5 text-center text-text-secondary">—</td>
-              </tr>
-              <tr class="border-b border-border">
-                <td class="p-4 md:p-5 font-medium">Couple quizzes &amp; games</td>
-                <td class="p-4 md:p-5 text-center bg-primary/5">✓</td>
-                <td class="p-4 md:p-5 text-center text-text-secondary">✓</td>
-                <td class="p-4 md:p-5 text-center text-text-secondary">—</td>
+                <td class="p-4 md:p-5 font-medium">Yearly price</td>
+                <td class="p-4 md:p-5 text-center bg-primary/5 font-semibold">$39.99</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">$69.99</td>
+                <td class="p-4 md:p-5 text-center text-text-secondary">Limited free</td>
               </tr>
               <tr class="border-b border-border">
                 <td class="p-4 md:p-5 font-medium">Daily ritual (message of the day)</td>
@@ -385,7 +262,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
         </div>
 
         <p class="text-text-light text-xs text-center mt-4">
-          Features as of May 2026 from publicly listed information.
+          Pricing & features as of April 2026 from publicly listed information.
         </p>
       </div>
     </section>
@@ -447,8 +324,8 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             </summary>
             <div class="px-6 pb-6 text-text-secondary">
               <p>Yes! OurCouple is free to download and use. The free plan includes unlimited daily messages, photos of the day, and love notes.
-
-                Plus 5 memory photos, 5 notes, and 5 events. <br/><br/>Premium unlocks unlimited storage, all quizzes &amp; games, couple card customisation and calendar sync — and a single plan (subscription or one-time lifetime purchase) covers both partners.</p>
+                
+                Plus 5 memory photos, 10 notes, and 5 events. <br/><br/>Premium unlocks unlimited storage, calendar sync, more customisation — one subscription covers both partners.</p>
             </div>
           </details>
 
@@ -500,33 +377,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
               </svg>
             </summary>
             <div class="px-6 pb-6 text-text-secondary">
-              <p>OurCouple is centered on your relationship, and helps you connect, engage, and learn more about each other. Your couple card shows your scores and how in sync you are. You keep your real memories, notes and plans in one place, and play quizzes and games made for you two to connect better. Just the two of you, getting closer.</p>
-            </div>
-          </details>
-
-          <!-- FAQ 6 -->
-          <details class="group bg-background border border-border rounded-2xl">
-            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-              <h3 class="font-semibold text-lg text-text">What is the couple card?</h3>
-              <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="m6 9 6 6 6-6"/>
-              </svg>
-            </summary>
-            <div class="px-6 pb-6 text-text-secondary">
-              <p>It's a living card that represents your relationship — your names, your virtual pet, the days you've been together, your streak, and how in sync you are. It updates automatically based on your engagement in the app (daily check-ins, quizzes, games...), and you can customise its theme, colours and layout.</p>
-            </div>
-          </details>
-
-          <!-- FAQ 7 -->
-          <details class="group bg-background border border-border rounded-2xl">
-            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-              <h3 class="font-semibold text-lg text-text">What are the quizzes and games?</h3>
-              <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="m6 9 6 6 6-6"/>
-              </svg>
-            </summary>
-            <div class="px-6 pb-6 text-text-secondary">
-              <p>Couple quizzes and games made to play together — couple quiz, would you rather, love language, 36 questions, truth or dare and more. You answer, compare your results, and your couple card's compatibility score updates. A few are free to try on the web; all of them are in the app.</p>
+              <p>Unlike messaging apps, OurCouple isn't for constant back-and-forth. It's a calm, organized space where you save what matters: your best photos (with captions), important notes, special dates... No pressure, no noise. Each day, you set one message and/or photo of the day for each other, and that keeps your streak alive.</p>
             </div>
           </details>
         </div>
@@ -591,171 +442,6 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
   </main>
 
   <Footer />
-
-  <style>
-    /* 3D interactive couple card */
-    .cc3d-scene {
-      display: flex;
-      justify-content: center;
-    }
-    .cc3d-float {
-      width: 100%;
-      max-width: 32rem;
-      animation: cc3d-float 6s ease-in-out infinite;
-    }
-    .cc3d-card {
-      position: relative;
-      border-radius: 1.5rem;
-      transition: transform 0.18s ease-out;
-      transform-style: preserve-3d;
-      will-change: transform;
-    }
-    .cc3d-img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 1.5rem;
-      box-shadow: 0 25px 55px -15px rgba(140, 40, 60, 0.5);
-    }
-    .cc3d-glare {
-      position: absolute;
-      inset: 0;
-      border-radius: 1.5rem;
-      opacity: 0;
-      transition: opacity 0.3s ease-out;
-      pointer-events: none;
-      mix-blend-mode: soft-light;
-    }
-    @keyframes cc3d-float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-14px); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .cc3d-float { animation: none; }
-      .cc3d-card { transition: none; }
-    }
-
-    /* Hero app screenshots */
-    .hero-shots {
-      position: relative;
-      width: 100%;
-      max-width: 24rem;
-      display: flex;
-      justify-content: center;
-    }
-    .hero-shot {
-      border-radius: 2rem;
-      overflow: hidden;
-    }
-    .hero-shot--front {
-      position: relative;
-      z-index: 2;
-      width: 15rem;
-      aspect-ratio: 1 / 2;
-      box-shadow: 0 30px 60px -18px rgba(140, 40, 60, 0.4);
-    }
-    .hero-shot--back {
-      position: absolute;
-      left: 0;
-      top: 50%;
-      z-index: 1;
-      width: 12.5rem;
-      aspect-ratio: 1 / 2;
-      transform: translateY(-50%) rotate(-10deg);
-      box-shadow: 0 24px 48px -20px rgba(140, 40, 60, 0.32);
-    }
-    .hero-shot-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: inherit;
-      display: block;
-    }
-    .hero-shot-ph {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 1rem;
-      border: 2px dashed rgba(199, 102, 116, 0.45);
-      border-radius: inherit;
-      background: #ffffff;
-      color: rgba(107, 63, 68, 0.55);
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    /* "Stay in Love" — gradient spans the whole line; "Stay in" stays solid */
-    .hero-love-line {
-      display: inline-block;
-      letter-spacing: -5px;
-      background-image: linear-gradient(to right, #BE7A7C, #FF0066);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-stayin {
-      color: #1B1B1B;
-      -webkit-text-fill-color: #1B1B1B;
-    }
-    /* heart.svg for the "o" — fixed size, independent of the headline size */
-    .love-heart {
-      display: inline-block;
-      height: 3.2rem;
-      width: auto;
-      vertical-align: middle;
-    }
-    /* Below the layout breakpoint — smaller headline, so smaller heart + tighter spacing */
-    @media (max-width: 767px) {
-      .hero-love-line { letter-spacing: -2px; }
-      .love-heart { height: 1.6rem; }
-    }
-  </style>
-
-  <!-- 3D couple card tilt -->
-  <script>
-    const cc3dCard = document.getElementById('cc3d-card');
-    const cc3dScene = cc3dCard?.closest('.cc3d-scene');
-    const cc3dFloat = cc3dScene?.querySelector('.cc3d-float');
-    const cc3dGlare = cc3dCard?.querySelector('.cc3d-glare');
-
-    if (
-      cc3dCard && cc3dScene && cc3dFloat &&
-      window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
-      !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    ) {
-      const MAX_DEG = 13;
-
-      cc3dScene.addEventListener('pointerenter', () => {
-        cc3dFloat.style.animationPlayState = 'paused';
-      });
-
-      cc3dScene.addEventListener('pointermove', (e) => {
-        const r = cc3dScene.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
-        cc3dCard.style.transform =
-          'perspective(1100px) rotateX(' + (-py * MAX_DEG * 2).toFixed(2) +
-          'deg) rotateY(' + (px * MAX_DEG * 2).toFixed(2) + 'deg)';
-        if (cc3dGlare) {
-          cc3dGlare.style.opacity = '1';
-          cc3dGlare.style.background =
-            'radial-gradient(circle at ' + ((px + 0.5) * 100).toFixed(1) + '% ' +
-            ((py + 0.5) * 100).toFixed(1) +
-            '%, rgba(255,255,255,0.55), rgba(255,255,255,0) 55%)';
-        }
-      });
-
-      cc3dScene.addEventListener('pointerleave', () => {
-        cc3dCard.style.transform = '';
-        cc3dFloat.style.animationPlayState = 'running';
-        if (cc3dGlare) cc3dGlare.style.opacity = '0';
-      });
-    }
-  </script>
 
   <!-- PostHog CTA tracking -->
   <script>
