@@ -29,9 +29,17 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
               <span class="block text-2xl md:text-4xl font-medium text-[#A9A9A9]">Stay close,</span>
               <span class="hero-love-line text-5xl md:text-[6rem] font-bold"><span class="hero-stayin">Stay in</span> L<span class="sr-only">o</span><img class="love-heart" src="/heart.svg" alt="" aria-hidden="true" />ve</span>
             </h1>
-            <p class="animate-fade-in-delay-1 text-lg md:text-xl text-text-secondary max-w-xl mx-auto lg:mx-0 mb-8">
-              Your private space for two to build your love streak &amp; learn more about each other.
+            <p class="animate-fade-in-delay-1 text-lg md:text-xl text-text-secondary max-w-xl mx-auto lg:mx-0 mb-6">
+              Your private space for two to grow your bond, save<br class="hidden lg:inline" />
+              your story &amp; learn more about each other.
             </p>
+
+            <!-- Social proof (above CTA — primes the user) -->
+            <div class="animate-fade-in-delay-1 flex items-center justify-center lg:justify-start gap-2 mb-5">
+              <span class="text-[#FFC107] text-base tracking-wider" aria-hidden="true">★★★★★</span>
+              <span class="text-text-secondary text-sm font-medium">By a couple, for couples</span>
+            </div>
+
             <div class="animate-fade-in-delay-2">
               <a
                 href={appStoreUrl}
@@ -49,26 +57,30 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
                   class="h-14 w-auto mx-auto lg:mx-0"
                 />
               </a>
+              <!-- Trust microcopy (below CTA — removes post-click anxiety) -->
+              <p class="text-text-light text-xs mt-3 text-center lg:text-left">
+                Start free  ·  No ads  ·  Encrypted
+              </p>
             </div>
           </div>
 
           <!-- Right: app screenshots -->
           <div class="animate-fade-in-delay-video flex justify-center lg:justify-end">
             <div class="hero-shots">
-              <!-- ===============================================================
-                   PLACEHOLDER — v2 app screenshots.
-                   Drop a screenshot into each .hero-shot, replacing the
-                   .hero-shot-ph div with:
-                     <img src="/hero-screen-1.png" alt="…" class="hero-shot-img" />
-                   (raw portrait screenshots — the .hero-shot frame rounds +
-                   shadows them. For pre-framed mockup PNGs with transparent
-                   corners, swap box-shadow for filter: drop-shadow in the CSS.)
-                   =============================================================== -->
-              <div class="hero-shot hero-shot--back" aria-hidden="true">
-                <div class="hero-shot-ph">Screenshot</div>
+              <div class="hero-shot hero-shot--left" aria-hidden="true">
+                <img src="/screenshotleft.png" alt="" class="hero-shot-img" loading="eager" />
               </div>
-              <div class="hero-shot hero-shot--front">
-                <div class="hero-shot-ph">Main screenshot</div>
+              <div class="hero-shot hero-shot--right" aria-hidden="true">
+                <img src="/screenshotright.png" alt="" class="hero-shot-img" loading="eager" />
+              </div>
+              <div class="hero-shot hero-shot--main">
+                <img
+                  src="/mainscreenshot.png"
+                  alt="OurCouple home screen — couple card with days together, compatibility and engagement scores, and today's ritual"
+                  class="hero-shot-img"
+                  loading="eager"
+                  fetchpriority="high"
+                />
               </div>
             </div>
           </div>
@@ -80,10 +92,18 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
     <section id="couple-card" class="py-24 bg-background overflow-hidden" data-fast-scroll="scroll_couple_card">
       <div class="max-w-6xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <!-- Copy -->
-          <div>
+          <!-- Mobile-only title (appears first on mobile, hidden on md+) -->
+          <div class="md:hidden">
             <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-5">New in 2.0</span>
-            <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-text mb-5">
+            <h2 class="tracking-tighter text-4xl font-bold text-text">
+              Get your couple card
+            </h2>
+          </div>
+
+          <!-- Copy (title hidden on mobile, shown on md+) -->
+          <div class="order-3 md:order-1">
+            <span class="hidden md:inline-block text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-5">New in 2.0</span>
+            <h2 class="hidden md:block tracking-tighter text-4xl md:text-5xl font-bold text-text mb-5">
               Get your couple card
             </h2>
             <p class="text-text-secondary text-lg mb-8">
@@ -121,18 +141,31 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
           </div>
 
           <!-- 3D interactive couple card -->
-          <div class="cc3d-scene">
+          <div class="cc3d-scene order-2 md:order-2">
             <div class="cc3d-float">
-              <div class="cc3d-card" id="cc3d-card">
-                <img
-                  src="/couplecard.jpg"
-                  alt="The OurCouple couple card — names, days together, virtual pet and compatibility gauges"
-                  width="1249"
-                  height="850"
-                  class="cc3d-img"
-                  loading="lazy"
-                />
-                <div class="cc3d-glare" aria-hidden="true"></div>
+              <div class="cc3d-stack">
+                <!-- Alt design card peeking behind, to hint at customisation -->
+                <div class="cc3d-card-alt" aria-hidden="true">
+                  <img
+                    src="/card2.png"
+                    alt=""
+                    width="782"
+                    height="516"
+                    class="cc3d-img cc3d-img--alt"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="cc3d-card" id="cc3d-card">
+                  <img
+                    src="/couplecard.jpg"
+                    alt="The OurCouple couple card — names, days together, virtual pet and compatibility gauges"
+                    width="1249"
+                    height="850"
+                    class="cc3d-img"
+                    loading="lazy"
+                  />
+                  <div class="cc3d-glare" aria-hidden="true"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -597,18 +630,37 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
     .cc3d-scene {
       display: flex;
       justify-content: center;
+      margin-top: 6rem;
     }
     .cc3d-float {
       width: 100%;
-      max-width: 32rem;
+      max-width: 26rem;
       animation: cc3d-float 6s ease-in-out infinite;
+    }
+    .cc3d-stack {
+      position: relative;
     }
     .cc3d-card {
       position: relative;
+      z-index: 2;
       border-radius: 1.5rem;
       transition: transform 0.18s ease-out;
       transform-style: preserve-3d;
       will-change: transform;
+    }
+    .cc3d-card-alt {
+      position: absolute;
+      top: -35%;
+      right: -8%;
+      width: 75%;
+      z-index: 1;
+      transform: rotate(6deg);
+    }
+    @media (max-width: 767px) {
+      .cc3d-card-alt {
+        top: -38%;
+        right: 4%;
+      }
     }
     .cc3d-img {
       display: block;
@@ -616,6 +668,10 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
       height: auto;
       border-radius: 1.5rem;
       box-shadow: 0 25px 55px -15px rgba(140, 40, 60, 0.5);
+    }
+    .cc3d-img--alt {
+      box-shadow: 0 20px 40px -16px rgba(140, 40, 60, 0.35);
+      opacity: 0.95;
     }
     .cc3d-glare {
       position: absolute;
@@ -635,11 +691,11 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
       .cc3d-card { transition: none; }
     }
 
-    /* Hero app screenshots */
+    /* Hero app screenshots — 3-phone composition (main center, left & right tilted) */
     .hero-shots {
       position: relative;
       width: 100%;
-      max-width: 24rem;
+      max-width: 30rem;
       display: flex;
       justify-content: center;
     }
@@ -647,22 +703,37 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
       border-radius: 2rem;
       overflow: hidden;
     }
-    .hero-shot--front {
+    .hero-shot--main {
       position: relative;
-      z-index: 2;
-      width: 15rem;
-      aspect-ratio: 1 / 2;
-      box-shadow: 0 30px 60px -18px rgba(140, 40, 60, 0.4);
+      z-index: 3;
+      width: 13rem;
+      aspect-ratio: 1284 / 2778;
     }
-    .hero-shot--back {
+    .hero-shot--left {
       position: absolute;
       left: 0;
       top: 50%;
       z-index: 1;
-      width: 12.5rem;
-      aspect-ratio: 1 / 2;
-      transform: translateY(-50%) rotate(-10deg);
-      box-shadow: 0 24px 48px -20px rgba(140, 40, 60, 0.32);
+      width: 10rem;
+      aspect-ratio: 1284 / 2778;
+      transform: translate(15%, -50%) rotate(-5deg);
+    }
+    .hero-shot--right {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      z-index: 2;
+      width: 10rem;
+      aspect-ratio: 1284 / 2778;
+      transform: translate(-15%, -50%) rotate(5deg);
+    }
+    @media (max-width: 767px) {
+      .hero-shots { max-width: 20rem; }
+      .hero-shot--main { width: 10.5rem; }
+      .hero-shot--left,
+      .hero-shot--right { width: 8rem; }
+      .hero-shot--left { transform: translate(10%, -50%) rotate(-4deg); }
+      .hero-shot--right { transform: translate(-10%, -50%) rotate(4deg); }
     }
     .hero-shot-img {
       width: 100%;
