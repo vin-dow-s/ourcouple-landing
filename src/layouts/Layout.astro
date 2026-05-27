@@ -1,4 +1,5 @@
 ---
+import { Font } from 'astro:assets';
 import Analytics from '../components/Analytics.astro';
 import '../styles/global.css';
 
@@ -231,18 +232,8 @@ const faqSchema = {
       <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
     )}
 
-    <!-- Fonts - non-blocking -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" />
-    </noscript>
+    <!-- Self-hosted DM Sans with metric-optimized fallback (no CLS on font swap) -->
+    <Font cssVariable="--font-dm-sans" preload />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="96x96" href="/logo-96.png" />

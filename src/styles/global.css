@@ -9,6 +9,7 @@
   --color-accent-light: #F5EBD9;
   --color-partner: #A5B8D4;
   --color-partner-light: #E4ECF2;
+  --color-partner-dark: #4F6FA0;
   --color-background: #FAF8F7;
   --color-card: #FFFFFF;
   --color-text: #1A1A1A;
@@ -16,7 +17,7 @@
   --color-text-light: #9A9A9A;
   --color-border: #EDE8E6;
   
-  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans);
 }
 
 @layer base {
