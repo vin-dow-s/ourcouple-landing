@@ -6,6 +6,3 @@ Allow: /
 
 # Sitemap
 Sitemap: https://ourcouple.app/sitemap-index.xml
-
-# Crawl-delay for politeness
-Crawl-delay: 1

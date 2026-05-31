@@ -1,0 +1,19 @@
+name: Ping IndexNow
+
+# Vercel posts deployment_status events to GitHub. We only ping IndexNow when a
+# Production deployment reaches "success" — pings on previews would waste quota
+# and could submit URLs Bing can't even reach.
+on:
+  deployment_status:
+
+jobs:
+  ping:
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Ping IndexNow with sitemap URLs
+        run: node scripts/ping-indexnow.mjs
