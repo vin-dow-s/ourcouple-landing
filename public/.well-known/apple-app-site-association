@@ -4,7 +4,11 @@
     "details": [
       {
         "appIDs": ["7R63B7WZ54.com.vynse.ourcouple"],
-        "paths": ["/join/*", "/open", "/open/*"]
+        "components": [
+          { "/": "/join/*", "comment": "Invite deep links — opens the app on the join screen" },
+          { "/": "/open", "comment": "Generic open-in-app link" },
+          { "/": "/open/*", "comment": "Generic open-in-app link" }
+        ]
       }
     ]
   }
