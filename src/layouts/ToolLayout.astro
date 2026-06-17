@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
 import RelatedTools from '../components/RelatedTools.astro';
+import StickyAppCta from '../components/StickyAppCta.astro';
 
 interface FaqItem {
   question: string;
@@ -200,6 +201,7 @@ const howToSchema = howTo ? {
               rel="noopener noreferrer"
               class="inline-block transition-transform hover:scale-105"
               aria-label="Download OurCouple on the App Store"
+              data-cta-location="tool_bottom"
               data-fast-goal="cta_tool_download"
             >
               <img
@@ -216,6 +218,7 @@ const howToSchema = howTo ? {
       <RelatedTools exclude={canonicalPath} />
     </main>
 
+    <StickyAppCta />
     <Footer />
   </body>
 </html>

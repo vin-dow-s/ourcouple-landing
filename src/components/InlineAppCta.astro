@@ -1,0 +1,30 @@
+---
+// Inline app-install CTA, designed to sit right after an interactive widget
+// (e.g. the anniversary/monthsary calculator) — the peak-intent moment where a
+// visitor has just gotten their answer. Drop it inside prose content.
+interface Props {
+  heading?: string;
+  copy?: string;
+}
+const {
+  heading = "Keep every milestone in one place",
+  copy = "Get reminders for your monthsary & anniversary, and save your story together — free on OurCouple.",
+} = Astro.props;
+const appStoreId = "6758024356";
+const appStoreUrl = `https://apps.apple.com/app/id${appStoreId}`;
+---
+<div class="not-prose my-8 rounded-2xl border border-primary/20 bg-primary/5 p-5 text-center">
+  <p class="font-semibold text-text mb-1">{heading}</p>
+  <p class="text-sm text-text-secondary mb-4">{copy}</p>
+  <a
+    href={appStoreUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center gap-2 px-5 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors"
+    aria-label="Get OurCouple free on the App Store"
+    data-cta-location="blog_inline"
+    data-fast-goal="cta_blog_inline_download"
+  >
+    Get OurCouple — free
+  </a>
+</div>

@@ -828,20 +828,9 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
     }
   </script>
 
-  <!-- PostHog CTA tracking -->
-  <script>
-    document.querySelectorAll('a[href*="apps.apple.com"]').forEach((link) => {
-      link.addEventListener('click', () => {
-        if (window.posthog) {
-          window.posthog.capture('website_cta_clicked', {
-            cta: 'app_store',
-            page: window.location.pathname,
-            section: link.closest('section')?.id || 'unknown',
-          });
-        }
-      });
-    });
-  </script>
+  <!-- App Store CTA tracking is now handled globally in Analytics.astro
+       (delegated listener → fires website_cta_clicked with the real page +
+       data-cta-location on every page, not just the homepage). -->
 
   <!-- Android waitlist form handling -->
   <script define:vars={{

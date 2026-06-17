@@ -46,4 +46,21 @@
   } else {
     setTimeout(loadAll, 3000);
   }
+
+  // Track every App Store CTA click site-wide (delegated → fires on EVERY page,
+  // not just the homepage). Records the real pathname + which CTA fired, so
+  // blog/tool CTAs are no longer invisible in PostHog. Replaces the old
+  // homepage-only listener that made `page` always "/".
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest && e.target.closest('a[href*="apps.apple.com"]');
+    if (!link) return;
+    loadAll(); // make sure analytics start loading even on first interaction
+    if (window.posthog) {
+      window.posthog.capture('website_cta_clicked', {
+        cta: 'app_store',
+        page: window.location.pathname,
+        location: link.dataset.ctaLocation || 'unknown',
+      });
+    }
+  }, { capture: true });
 </script>

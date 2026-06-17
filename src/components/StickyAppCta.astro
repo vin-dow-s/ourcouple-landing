@@ -1,0 +1,20 @@
+---
+// Sticky mobile-only "Get the app" bar for content pages (blog, tools).
+// 84% of organic traffic is mobile and the main CTA sits far below the fold,
+// so this floating pill keeps an app-install path always reachable.
+// Tracking: data-cta-location is read by the global listener in Analytics.astro
+// (PostHog website_cta_clicked) and data-fast-goal by DataFast.
+const appStoreId = "6758024356";
+const appStoreUrl = `https://apps.apple.com/app/id${appStoreId}`;
+---
+<a
+  href={appStoreUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="sm:hidden fixed bottom-3 inset-x-3 z-40 flex items-center justify-center gap-2 px-5 py-3.5 bg-primary text-white rounded-2xl font-semibold shadow-lg shadow-primary/30 active:scale-[0.98] transition-transform"
+  aria-label="Get OurCouple free on the App Store"
+  data-cta-location="sticky_mobile"
+  data-fast-goal="cta_sticky_download"
+>
+  💞 Get OurCouple — it's free
+</a>
