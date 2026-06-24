@@ -1,0 +1,92 @@
+---
+// Homepage-style hero, parameterized for reuse on persona (/for) pages.
+// Same composition as the landing: left pitch + social proof + App Store CTA,
+// right 3-phone screenshot fan, soft decorative blurs on a radial gradient.
+// `title` and `subtitle` accept HTML (set:html) so callers can use <br> etc.
+interface Props {
+  badge?: string;
+  title: string;
+  subtitle: string;
+  ctaGoal?: string;
+}
+const { badge, title, subtitle, ctaGoal = "cta_persona_hero_download" } = Astro.props;
+const appStoreUrl = "https://apps.apple.com/app/id6758024356";
+---
+<section class="relative flex items-center bg-gradient-radial overflow-hidden pt-10 md:pt-14 pb-16 md:pb-24" id="hero">
+  <!-- Decorative elements -->
+  <div class="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-20 right-10 w-80 h-80 bg-partner/10 rounded-full blur-3xl"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 py-8">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+      <!-- Left: pitch + CTA -->
+      <div class="text-center lg:text-left">
+        {badge && (
+          <span class="animate-fade-in inline-block px-4 py-1.5 bg-primary/10 text-primary-dark text-sm font-medium rounded-full mb-5">{badge}</span>
+        )}
+        <h1 class="animate-fade-in mb-5 tracking-tighter text-balance text-4xl md:text-5xl leading-[1.08] font-bold text-text" set:html={title}></h1>
+        <p class="animate-fade-in-delay-1 text-lg md:text-xl text-text-secondary max-w-xl mx-auto lg:mx-0 mb-6" set:html={subtitle}></p>
+
+        <!-- Social proof (above CTA — primes the user) -->
+        <div class="animate-fade-in-delay-1 flex items-center justify-center lg:justify-start gap-2 mb-5">
+          <span class="text-[#FFC107] text-base tracking-wider" aria-hidden="true">★★★★★</span>
+          <span class="text-text-secondary text-sm font-medium">By a couple, for couples</span>
+        </div>
+
+        <div class="animate-fade-in-delay-2">
+          <a
+            href={appStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block transition-transform hover:scale-105"
+            aria-label="Download OurCouple on the App Store"
+            data-cta-location="persona_hero"
+            data-fast-goal={ctaGoal}
+          >
+            <img src="/app-store-badge.svg" alt="Download on the App Store" width="168" height="56" class="h-14 w-auto mx-auto lg:mx-0" />
+          </a>
+          <p class="text-text-light text-xs mt-3 text-center lg:text-left">Start free  ·  No ads  ·  Encrypted</p>
+        </div>
+      </div>
+
+      <!-- Right: app screenshots -->
+      <div class="animate-fade-in-delay-video flex justify-center lg:justify-end">
+        <div class="hero-shots">
+          <div class="hero-shot hero-shot--left" aria-hidden="true">
+            <img src="/screenshotleft.png" alt="" class="hero-shot-img" loading="eager" />
+          </div>
+          <div class="hero-shot hero-shot--right" aria-hidden="true">
+            <img src="/screenshotright.png" alt="" class="hero-shot-img" loading="eager" />
+          </div>
+          <div class="hero-shot hero-shot--main">
+            <img
+              src="/mainscreenshot.png"
+              alt="OurCouple home screen — couple card with days together, compatibility and engagement scores, and today's ritual"
+              class="hero-shot-img"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Hero app screenshots — 3-phone composition (main center, left & right tilted) */
+  .hero-shots { position: relative; width: 100%; max-width: 30rem; display: flex; justify-content: center; }
+  .hero-shot { border-radius: 2rem; overflow: hidden; }
+  .hero-shot--main { position: relative; z-index: 3; width: 13rem; aspect-ratio: 1284 / 2778; }
+  .hero-shot--left { position: absolute; left: 0; top: 50%; z-index: 1; width: 10rem; aspect-ratio: 1284 / 2778; transform: translate(15%, -50%) rotate(-5deg); }
+  .hero-shot--right { position: absolute; right: 0; top: 50%; z-index: 2; width: 10rem; aspect-ratio: 1284 / 2778; transform: translate(-15%, -50%) rotate(5deg); }
+  @media (max-width: 767px) {
+    .hero-shots { max-width: 20rem; }
+    .hero-shot--main { width: 10.5rem; }
+    .hero-shot--left, .hero-shot--right { width: 8rem; }
+    .hero-shot--left { transform: translate(10%, -50%) rotate(-4deg); }
+    .hero-shot--right { transform: translate(-10%, -50%) rotate(4deg); }
+  }
+  .hero-shot-img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; display: block; }
+</style>

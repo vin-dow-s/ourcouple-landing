@@ -1,6 +1,8 @@
 ---
 import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
 import ShareButtons from '../../components/tools/ShareButtons.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
 import questions from '../../data/quiz-questions.json';
 ---
 
@@ -21,10 +23,8 @@ import questions from '../../data/quiz-questions.json';
   <div class="max-w-2xl mx-auto px-4">
     <!-- Hero -->
     <div class="text-center mb-8 animate-fade-in">
-      <div class="w-16 h-16 rounded-2xl bg-partner/10 flex items-center justify-center mx-auto mb-4">
-        <svg class="w-8 h-8 text-partner" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-        </svg>
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <Icon name="heart" class="w-8 h-8 text-primary" />
       </div>
       <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
         How Well Do You Know Your Partner?
@@ -240,6 +240,8 @@ import questions from '../../data/quiz-questions.json';
         </div>
       </div>
 
+      <ToolAppCta />
+
       <!-- Share Results -->
       <div class="text-center mb-6">
         <ShareButtons
@@ -258,8 +260,8 @@ import questions from '../../data/quiz-questions.json';
   </div>
 
   <!-- FAQ Section -->
-  <div class="max-w-2xl mx-auto px-4 mt-12">
-    <h2 class="text-xl font-semibold text-text text-center mb-6">Frequently Asked Questions</h2>
+  <div class="max-w-2xl mx-auto px-4 mt-20 md:mt-28">
+    <h2 class="text-xl font-semibold text-text text-center mb-8">Frequently Asked Questions</h2>
     <div class="space-y-3">
       <details class="group bg-card rounded-xl border border-border">
         <summary class="flex items-center justify-between p-4 cursor-pointer">

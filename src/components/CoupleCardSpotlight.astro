@@ -1,0 +1,153 @@
+---
+// "Couple card v2" spotlight — the exact section from the landing page, with its
+// 3D interactive card (floating, pointer tilt + glare). Identical on every page.
+const appStoreUrl = "https://apps.apple.com/app/id6758024356";
+---
+<section id="couple-card" class="py-24 bg-background overflow-hidden" data-fast-scroll="scroll_couple_card">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Mobile-only title (appears first on mobile, hidden on md+) -->
+      <div class="md:hidden">
+        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-5">New in 2.0</span>
+        <h2 class="tracking-tighter text-4xl font-bold text-text">
+          Get your couple card
+        </h2>
+      </div>
+
+      <!-- Copy (title hidden on mobile, shown on md+) -->
+      <div class="order-3 md:order-1">
+        <span class="hidden md:inline-block text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-5">New in 2.0</span>
+        <h2 class="hidden md:block tracking-tighter text-4xl md:text-5xl font-bold text-text mb-5">
+          Get your couple card
+        </h2>
+        <p class="text-text-secondary text-lg mb-8">
+          Create, customise and share your own couple card - it grows with your relationship.
+        </p>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3 text-text">
+            <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Anniversary date &amp; days together, at a glance</span>
+          </li>
+          <li class="flex items-start gap-3 text-text">
+            <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Compatibility &amp; engagement scores, automatically updated</span>
+          </li>
+          <li class="flex items-start gap-3 text-text">
+            <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Your partner's love notes + your virtual pet</span>
+          </li>
+          <li class="flex items-start gap-3 text-text">
+            <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Make it yours: themes, colours, layout...</span>
+          </li>
+        </ul>
+        <a
+          href={appStoreUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors"
+          aria-label="Create your couple card — download OurCouple on the App Store"
+          data-cta-location="couple_card"
+          data-fast-goal="cta_couple_card_download"
+        >
+          Create our card now
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- 3D interactive couple card -->
+      <div class="cc3d-scene order-2 md:order-2">
+        <div class="cc3d-float">
+          <div class="cc3d-stack">
+            <!-- Alt design card peeking behind, to hint at customisation -->
+            <div class="cc3d-card-alt" aria-hidden="true">
+              <img src="/card2.png" alt="" width="782" height="516" class="cc3d-img cc3d-img--alt" loading="lazy" />
+            </div>
+            <div class="cc3d-card" id="cc3d-card">
+              <img
+                src="/couplecard.jpg"
+                alt="The OurCouple couple card — names, days together, virtual pet and compatibility gauges"
+                width="1249"
+                height="850"
+                class="cc3d-img"
+                loading="lazy"
+              />
+              <div class="cc3d-glare" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* 3D interactive couple card */
+  .cc3d-scene { display: flex; justify-content: center; margin-top: 6rem; }
+  .cc3d-float { width: 100%; max-width: 26rem; animation: cc3d-float 6s ease-in-out infinite; }
+  .cc3d-stack { position: relative; }
+  .cc3d-card {
+    position: relative; z-index: 2; border-radius: 1.5rem;
+    transition: transform 0.18s ease-out; transform-style: preserve-3d; will-change: transform;
+  }
+  .cc3d-card-alt { position: absolute; top: -35%; right: -8%; width: 75%; z-index: 1; transform: rotate(6deg); }
+  @media (max-width: 767px) {
+    .cc3d-card-alt { top: -38%; right: 4%; }
+  }
+  .cc3d-img { display: block; width: 100%; height: auto; border-radius: 1.5rem; box-shadow: 0 25px 55px -15px rgba(140, 40, 60, 0.5); }
+  .cc3d-img--alt { box-shadow: 0 20px 40px -16px rgba(140, 40, 60, 0.35); opacity: 0.95; }
+  .cc3d-glare {
+    position: absolute; inset: 0; border-radius: 1.5rem; opacity: 0;
+    transition: opacity 0.3s ease-out; pointer-events: none; mix-blend-mode: soft-light;
+  }
+  @keyframes cc3d-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cc3d-float { animation: none; }
+    .cc3d-card { transition: none; }
+  }
+</style>
+
+<script>
+  const cc3dCard = document.getElementById('cc3d-card');
+  const cc3dScene = cc3dCard?.closest('.cc3d-scene');
+  const cc3dFloat = cc3dScene?.querySelector('.cc3d-float');
+  const cc3dGlare = cc3dCard?.querySelector('.cc3d-glare');
+
+  if (
+    cc3dCard && cc3dScene && cc3dFloat &&
+    window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) {
+    const MAX_DEG = 13;
+
+    cc3dScene.addEventListener('pointerenter', () => {
+      (cc3dFloat as HTMLElement).style.animationPlayState = 'paused';
+    });
+
+    cc3dScene.addEventListener('pointermove', (e) => {
+      const ev = e as PointerEvent;
+      const r = (cc3dScene as HTMLElement).getBoundingClientRect();
+      const px = (ev.clientX - r.left) / r.width - 0.5;
+      const py = (ev.clientY - r.top) / r.height - 0.5;
+      (cc3dCard as HTMLElement).style.transform =
+        'perspective(1100px) rotateX(' + (-py * MAX_DEG * 2).toFixed(2) +
+        'deg) rotateY(' + (px * MAX_DEG * 2).toFixed(2) + 'deg)';
+      if (cc3dGlare) {
+        (cc3dGlare as HTMLElement).style.opacity = '1';
+        (cc3dGlare as HTMLElement).style.background =
+          'radial-gradient(circle at ' + ((px + 0.5) * 100).toFixed(1) + '% ' +
+          ((py + 0.5) * 100).toFixed(1) +
+          '%, rgba(255,255,255,0.55), rgba(255,255,255,0) 55%)';
+      }
+    });
+
+    cc3dScene.addEventListener('pointerleave', () => {
+      (cc3dCard as HTMLElement).style.transform = '';
+      (cc3dFloat as HTMLElement).style.animationPlayState = 'running';
+      if (cc3dGlare) (cc3dGlare as HTMLElement).style.opacity = '0';
+    });
+  }
+</script>

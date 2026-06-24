@@ -1,6 +1,8 @@
 ---
 import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
 import ShareButtons from '../../components/tools/ShareButtons.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
 import questions from '../../data/love-language-questions.json';
 
 const loveLanguages = {
@@ -71,9 +73,7 @@ const loveLanguages = {
     <!-- Hero -->
     <div class="text-center mb-8 animate-fade-in">
       <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-        </svg>
+        <Icon name="languages" class="w-8 h-8 text-primary" />
       </div>
       <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
         Love Language Quiz
@@ -132,19 +132,18 @@ const loveLanguages = {
 
     <!-- Results -->
     <div id="results" class="hidden">
-      <!-- Primary Language -->
-      <div id="primary-result" class="bg-primary/5 rounded-2xl border border-primary/20 p-6 mb-6 text-center">
+      <!-- Primary + secondary in one card -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6 text-center shadow-sm">
         <p class="text-text-secondary text-sm mb-1">Your primary love language is</p>
         <div id="primary-emoji" class="text-5xl mb-2"></div>
         <h2 id="primary-name" class="text-2xl font-bold text-text mb-3"></h2>
         <p id="primary-description" class="text-text-secondary text-sm leading-relaxed"></p>
-      </div>
 
-      <!-- Secondary Language -->
-      <div id="secondary-result" class="bg-card rounded-2xl border border-border p-6 mb-6 text-center">
-        <p class="text-text-secondary text-sm mb-1">Your secondary love language is</p>
-        <div id="secondary-emoji" class="text-3xl mb-2"></div>
-        <h3 id="secondary-name" class="font-semibold text-lg text-text"></h3>
+        <div id="secondary-result" class="mt-6 pt-5 border-t border-border flex items-center justify-center gap-2">
+          <span class="text-text-secondary text-sm">Secondary:</span>
+          <span id="secondary-emoji" class="text-lg"></span>
+          <span id="secondary-name" class="font-semibold text-text text-sm"></span>
+        </div>
       </div>
 
       <!-- All Scores -->
@@ -165,6 +164,12 @@ const loveLanguages = {
           <!-- Populated by JS -->
         </ul>
       </div>
+
+      <ToolAppCta
+        kicker="Want to compare for real?"
+        heading="See how your love languages match"
+        copy="This is your love language. In the OurCouple app, you and your partner each find yours, compare them side by side, and keep your results saved in your private space for two."
+      />
 
       <!-- Share with Partner -->
       <div class="bg-partner/5 rounded-2xl border border-partner/20 p-6 mb-6 text-center">
@@ -187,8 +192,8 @@ const loveLanguages = {
   </div>
 
   <!-- FAQ Section -->
-  <div class="max-w-2xl mx-auto px-4 mt-12">
-    <h2 class="text-xl font-semibold text-text text-center mb-6">Frequently Asked Questions</h2>
+  <div class="max-w-2xl mx-auto px-4 mt-20 md:mt-28">
+    <h2 class="text-xl font-semibold text-text text-center mb-8">Frequently Asked Questions</h2>
     <div class="space-y-3">
       <details class="group bg-card rounded-xl border border-border">
         <summary class="flex items-center justify-between p-4 cursor-pointer">

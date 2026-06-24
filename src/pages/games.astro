@@ -1,19 +1,19 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import StickyAppCta from '../../components/StickyAppCta.astro';
-import Icon from '../../components/Icon.astro';
-import catalog from '../../data/catalog.json';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import StickyAppCta from '../components/StickyAppCta.astro';
+import Icon from '../components/Icon.astro';
+import catalog from '../data/catalog.json';
 
-const tools = catalog.tools;
+const games = catalog.games;
 const appStoreUrl = "https://apps.apple.com/app/id6758024356";
 ---
 
 <Layout
-  title="Free Tools for Couples — Calculators & Generators (2026)"
-  description="Free tools for couples: anniversary calculator, monthsary counter, date night generator, and bucket list generator. Celebrate milestones and plan dates. No signup."
-  canonicalPath="/tools"
+  title="Free Couple Games & Quizzes — Play Together (2026)"
+  description="Free games and quizzes for couples: Would You Rather, the couple quiz, Truth or Dare, 36 Questions, love language, attachment style, green flags and more. No signup."
+  canonicalPath="/games"
 >
   <Header />
 
@@ -22,18 +22,18 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
     <section class="pt-8 pb-6">
       <div class="max-w-4xl mx-auto px-6 text-center">
         <h1 class="text-4xl md:text-5xl font-bold text-text tracking-tighter mb-4">
-          Free Tools for Couples
+          Couple Games &amp; Quizzes
         </h1>
         <p class="text-text-secondary text-lg max-w-2xl mx-auto">
-          Calculators and generators to celebrate your milestones and plan your next date — free, no signup.
+          Fun, free games and quizzes for you and your partner. Play right here — no signup needed.
         </p>
       </div>
     </section>
 
     <!-- Grid -->
-    <div class="max-w-2xl mx-auto px-6">
-      <div class="grid sm:grid-cols-2 gap-4 py-4">
-        {tools.map(item => (
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 py-4">
+        {games.map(item => (
           <a
             href={item.href}
             class="group relative overflow-hidden rounded-2xl p-5 min-h-[156px] flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all"
@@ -56,7 +56,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
     <section class="py-24">
       <div class="max-w-3xl mx-auto px-6 text-center">
         <h2 class="tracking-tighter text-3xl md:text-4xl font-bold text-text mb-4">
-          These tools are just the start
+          These games are just the start
         </h2>
         <p class="text-base text-text-secondary mb-8 max-w-xl mx-auto">
           In the OurCouple app, you and your partner play together — building your Compatibility Score, saving your history, and growing one private space for two.
@@ -67,8 +67,8 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
           rel="noopener noreferrer"
           class="inline-block transition-transform hover:scale-105"
           aria-label="Download OurCouple on the App Store"
-          data-cta-location="tools_hub"
-          data-fast-goal="cta_tools_hub_download"
+          data-cta-location="games_hub"
+          data-fast-goal="cta_games_hub_download"
         >
           <img src="/app-store-badge.svg" alt="Download on the App Store" class="h-16 mx-auto" />
         </a>

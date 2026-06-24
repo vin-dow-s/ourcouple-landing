@@ -1,6 +1,8 @@
 ---
 import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
 import AnniversaryCalculatorWidget from '../../components/tools/AnniversaryCalculatorWidget.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
 ---
 
 <ToolLayout
@@ -21,9 +23,7 @@ import AnniversaryCalculatorWidget from '../../components/tools/AnniversaryCalcu
     <!-- Hero -->
     <div class="text-center mb-8 animate-fade-in">
       <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
+        <Icon name="calendar-heart" class="w-8 h-8 text-primary" />
       </div>
       <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tighter mb-3">
         Anniversary Calculator
@@ -35,9 +35,15 @@ import AnniversaryCalculatorWidget from '../../components/tools/AnniversaryCalcu
 
     <AnniversaryCalculatorWidget />
 
+    <ToolAppCta
+      kicker="Want it to count?"
+      heading="Save your milestones in the app"
+      copy="This shows today. In the OurCouple app, your days together are counted automatically — you both get reminded before every anniversary, and your whole story stays saved in one private space for two."
+    />
+
     <!-- FAQ -->
-    <div class="mt-12">
-      <h2 class="text-xl font-semibold text-text text-center mb-6">Frequently Asked Questions</h2>
+    <div class="mt-20 md:mt-28">
+      <h2 class="text-xl font-semibold text-text text-center mb-8">Frequently Asked Questions</h2>
       <div class="space-y-3">
         <details class="group bg-card rounded-xl border border-border">
           <summary class="flex items-center justify-between p-4 cursor-pointer">

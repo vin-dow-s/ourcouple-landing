@@ -1,0 +1,37 @@
+---
+// Strong contextual app CTA, designed to sit RIGHT AFTER an interactive tool
+// widget — the peak-intent moment the visitor just finished playing/calculating.
+// The hook: the web tool is a solo *preview*; the OurCouple app is where it
+// counts between partners (real Compatibility Score, saved history, two-player).
+// Defaults are written for the games/quizzes; pass props to retune per tool.
+interface Props {
+  kicker?: string;
+  heading?: string;
+  copy?: string;
+  button?: string;
+}
+const {
+  kicker = "Want it to count?",
+  heading = "In the app, it actually counts",
+  copy = "This score vanishes when you close the page. In the OurCouple app, every game you play together adds to your ongoing Compatibility Score — saved, private, and just for the two of you.",
+  button = "Get OurCouple — free for both of you",
+} = Astro.props;
+const appStoreUrl = "https://apps.apple.com/app/id6758024356";
+---
+<div class="not-prose my-10 rounded-2xl border border-primary/25 bg-gradient-to-br from-primary/10 to-partner/10 p-6 text-center">
+  <p class="text-xs font-semibold uppercase tracking-wide text-primary mb-2">{kicker}</p>
+  <p class="text-lg md:text-xl font-bold text-text mb-2">{heading}</p>
+  <p class="text-sm text-text-secondary mb-5 max-w-md mx-auto leading-relaxed">{copy}</p>
+  <a
+    href={appStoreUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-block transition-transform hover:scale-105"
+    aria-label="Download OurCouple on the App Store"
+    data-cta-location="tool_after_widget"
+    data-fast-goal="cta_tool_after_widget"
+  >
+    <img src="/app-store-badge.svg" alt="Download on the App Store" class="h-14 mx-auto" />
+  </a>
+  <p class="text-text-light text-xs mt-3">Free to play · your answers stay private (end-to-end encrypted)</p>
+</div>

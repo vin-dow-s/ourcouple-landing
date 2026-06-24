@@ -1,0 +1,72 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
+import QuizWidget from '../../components/tools/QuizWidget.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+import quiz from '../../data/green-flags.json';
+---
+
+<ToolLayout
+  title="What's Your Relationship's Green Flag? Free Couples Quiz"
+  description="Free green flags quiz for couples — answer 8 questions to find your relationship's biggest strength: communication, trust, playfulness, emotional safety, or growth."
+  canonicalPath="/tools/green-flags"
+  howTo={{
+    name: "How to find your relationship's green flag",
+    description: "A free 8-question green-flags quiz for couples.",
+    steps: [
+      { name: "Answer 8 questions", text: "Pick what feels truest about your relationship." },
+      { name: "Get your green flag", text: "See your couple's biggest strength — communication, trust, playfulness, emotional safety, or growth." },
+      { name: "Compare together", text: "Have your partner take it too, and compare your green flags in the OurCouple app." }
+    ]
+  }}
+  faqs={[
+    { question: "What are green flags in a relationship?", answer: "Green flags are the healthy signs a relationship is good for you: open communication, trust, respect, emotional safety, and mutual growth. They're the opposite of red flags." },
+    { question: "What are examples of green flags?", answer: "Feeling safe to be honest, a partner who doesn't keep score, laughing together through hard times, respecting each other's space, and celebrating each other's wins." },
+    { question: "What's the difference between green flags and red flags?", answer: "Red flags warn you that something's wrong; green flags confirm something's right. This quiz focuses on the green — your relationship's standout strength." }
+  ]}
+  ctaHeading="See your green flags together"
+  ctaCopy="In the OurCouple app, you and your partner compare answers, build your Compatibility Score, and keep your relationship's story saved in one private space for two."
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <Icon name="flag" class="w-8 h-8 text-primary" />
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+        What's Your Relationship's Green Flag?
+      </h1>
+      <p class="text-text-secondary">
+        Forget the red flags. 8 questions to find your couple's biggest strength.
+      </p>
+    </div>
+  </div>
+
+  <QuizWidget quizId="green-flags" intro={quiz.intro} questions={quiz.questions} results={quiz.results}>
+    <ToolAppCta
+      slot="cta"
+      kicker="Want to compare?"
+      heading="See your green flags together"
+      copy="This is your standout strength. In the OurCouple app you and your partner compare answers, build your Compatibility Score, and keep your story saved in one private space."
+    />
+    <ShareButtons
+      slot="share"
+      title="Share your result"
+      text="I found our relationship's biggest green flag. Take the quiz:"
+    />
+  </QuizWidget>
+
+  <div class="max-w-2xl mx-auto px-4 mt-12 prose prose-sm">
+    <h2>What counts as a green flag?</h2>
+    <p>
+      A green flag is a sign that a relationship is healthy and good for you — the quiet, everyday things that make you feel safe, respected and free to be yourself. The most common green flags couples share:
+    </p>
+    <ul>
+      <li><strong>Communication</strong> — you can say hard things and be heard.</li>
+      <li><strong>Trust</strong> — security without games or score-keeping.</li>
+      <li><strong>Playfulness</strong> — you laugh together, even through the rough patches.</li>
+      <li><strong>Emotional safety</strong> — you can be vulnerable without fear.</li>
+      <li><strong>Growth</strong> — you make each other better.</li>
+    </ul>
+  </div>
+</ToolLayout>

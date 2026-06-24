@@ -1,0 +1,247 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+---
+
+<ToolLayout
+  title="Monthsary Counter — How Many Months Have We Been Together?"
+  description="Free monthsary calculator: enter your start date to see which monthsary is next, the exact date, and a live countdown — plus every milestone from 1 month to 5 years."
+  canonicalPath="/tools/monthsary-counter"
+  howTo={{
+    name: "How to count your monthsary",
+    description: "Free monthsary counter for couples — find your next monthsary in seconds.",
+    steps: [
+      { name: "Enter the day you got together", text: "Pick your relationship's start date." },
+      { name: "See your next monthsary", text: "We show which monthsary is coming up, the exact date, and a countdown in days." },
+      { name: "Never miss one", text: "Get an automatic reminder before every monthsary in the OurCouple app." }
+    ]
+  }}
+  faqs={[
+    {
+      question: "What is a monthsary?",
+      answer: "A monthsary is the monthly anniversary of the day your relationship began. If you got together on the 6th, then every 6th of the month is a monthsary. Couples — especially in the Philippines and across Southeast Asia — celebrate monthsaries to mark each month they've been together, particularly in the first year."
+    },
+    {
+      question: "How do you calculate your monthsary?",
+      answer: "Count the number of whole months from your start date to today. If you got together on March 6, then April 6 is your 1st monthsary, May 6 is your 2nd, and so on. This free counter does the math for you and shows the exact date plus a countdown to your next one."
+    },
+    {
+      question: "Is it 'monthsary' or 'mensiversary'?",
+      answer: "'Monthsary' is the popular, widely used term, especially in the Philippines. 'Mensiversary' is technically more correct: in 'anniversary', the Latin 'annus' means year, while 'mensis' means month — so a monthly version would be a mensiversary. Both words mean the same thing: your monthly relationship milestone."
+    },
+    {
+      question: "Which monthsary is the most important?",
+      answer: "The 1st month, the 6th month (half a year), and the 12th month (your first anniversary) are the most celebrated. After the first year, many couples switch to yearly anniversaries, though plenty keep counting monthsaries for years."
+    },
+    {
+      question: "How can we remember every monthsary?",
+      answer: "The OurCouple app saves your start date and reminds both partners before each monthsary automatically, so no one forgets. It also keeps your milestones, messages and memories together in one private space for two."
+    }
+  ]}
+  ctaHeading="Never miss a monthsary again"
+  ctaCopy="OurCouple counts the months for you and reminds you both before every monthsary — so you can celebrate together, every single time."
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <!-- Hero -->
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <Icon name="calendar-clock" class="w-8 h-8 text-primary" />
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+        Monthsary Counter
+      </h1>
+      <p class="text-text-secondary">
+        How many months have you been together? Enter the day it all started.
+      </p>
+    </div>
+
+    <!-- Date input -->
+    <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+      <label for="start-date" class="block font-medium text-text mb-2">The day you got together</label>
+      <input
+        type="date"
+        id="start-date"
+        class="w-full px-4 py-3 rounded-xl border border-border bg-background text-text focus:border-primary focus:outline-none"
+      />
+    </div>
+
+    <!-- Results -->
+    <div id="ms-results" class="hidden">
+      <!-- Headline -->
+      <div class="bg-gradient-to-br from-primary/10 to-partner/10 rounded-2xl border border-primary/20 p-6 mb-5 text-center">
+        <p class="text-text-secondary text-sm mb-1">You've been together for</p>
+        <p id="ms-total" class="text-3xl font-bold text-text mb-1"></p>
+        <p id="ms-total-sub" class="text-text-secondary text-sm"></p>
+      </div>
+
+      <!-- Next monthsary -->
+      <div id="ms-next-card" class="bg-card rounded-2xl border border-border p-6 mb-5 text-center">
+        <p class="text-primary text-xs font-semibold uppercase tracking-wide mb-2">Your next monthsary</p>
+        <p id="ms-next-num" class="text-2xl font-bold text-text mb-1"></p>
+        <p id="ms-next-date" class="text-text-secondary mb-3"></p>
+        <div class="inline-flex items-baseline gap-2 px-4 py-2 rounded-xl bg-primary/5">
+          <span id="ms-countdown" class="text-2xl font-bold text-primary-dark"></span>
+          <span id="ms-countdown-label" class="text-text-secondary text-sm">days to go</span>
+        </div>
+      </div>
+
+      <!-- Milestones -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6">
+        <h2 class="font-semibold text-text mb-4">Your monthsary milestones</h2>
+        <div id="ms-milestones" class="divide-y divide-border"></div>
+      </div>
+
+      <ToolAppCta
+        kicker="Never miss one again"
+        heading="Get monthsary reminders in the app"
+        copy="This counts today only. In the OurCouple app your monthsary is tracked automatically — you both get a reminder before each one, and your whole story stays saved in one private space for two."
+      />
+
+      <div class="text-center mb-6">
+        <ShareButtons
+          title="Share your monthsary"
+          text="Look how long we've been together. Count your own monthsary:"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO / GEO content -->
+  <div class="max-w-2xl mx-auto px-4 mt-12 prose prose-sm">
+    <h2>What is a monthsary?</h2>
+    <p>
+      A <strong>monthsary</strong> is the monthly anniversary of the day a couple got together. If your relationship started on the 14th, then the 14th of every month is a monthsary. It's a way to celebrate each month you've spent together — most popular in the first year of a relationship, and especially loved by couples in the Philippines and across Southeast Asia.
+    </p>
+
+    <h2>How to count your monthsary</h2>
+    <p>
+      Counting is simple: the day-of-month stays the same, and the count goes up by one each month. Start on June 14, and July 14 is your <strong>1st monthsary</strong>, August 14 is your <strong>2nd</strong>, and so on. Twelve monthsaries make one year — your first anniversary. The counter above does this automatically and tells you exactly how many days until your next one.
+    </p>
+
+    <h2>The monthsary milestones couples celebrate</h2>
+    <ul>
+      <li><strong>1st monthsary</strong> — the very first month together.</li>
+      <li><strong>3rd monthsary</strong> — the early "we're really doing this" mark.</li>
+      <li><strong>6th monthsary</strong> — half a year; a big one for most couples.</li>
+      <li><strong>12th monthsary</strong> — one full year, your first anniversary.</li>
+      <li><strong>18th &amp; 24th</strong> — a year and a half, then two years.</li>
+      <li><strong>36th, 48th, 60th</strong> — three, four and five years together.</li>
+    </ul>
+
+    <h2>Monthsary or mensiversary?</h2>
+    <p>
+      You'll see both. <strong>Monthsary</strong> is the everyday word couples actually use. <strong>Mensiversary</strong> is the technically correct term — "anniversary" comes from the Latin <em>annus</em> (year), so the monthly version swaps in <em>mensis</em> (month). Either way, it means the same thing: a small milestone worth celebrating.
+    </p>
+  </div>
+
+  <script>
+    const startInput = document.getElementById('start-date');
+    const results = document.getElementById('ms-results');
+    const elTotal = document.getElementById('ms-total');
+    const elTotalSub = document.getElementById('ms-total-sub');
+    const nextCard = document.getElementById('ms-next-card');
+    const elNextNum = document.getElementById('ms-next-num');
+    const elNextDate = document.getElementById('ms-next-date');
+    const elCountdown = document.getElementById('ms-countdown');
+    const elCountdownLabel = document.getElementById('ms-countdown-label');
+    const elMilestones = document.getElementById('ms-milestones');
+
+    const DAY = 86400000;
+    const MILESTONES = [1, 3, 6, 9, 12, 18, 24, 36, 48, 60];
+    const LABELS = { 6: 'Half a year', 12: '1 year', 24: '2 years', 36: '3 years', 48: '4 years', 60: '5 years' };
+
+    function startOfDay(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+    function sameDay(a, b) { return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate(); }
+    function addMonths(date, n) {
+      const day = date.getDate();
+      const d = new Date(date.getFullYear(), date.getMonth() + n, 1);
+      const lastDay = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+      d.setDate(Math.min(day, lastDay));
+      return d;
+    }
+    function monthsBetween(start, end) {
+      let m = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+      if (end.getDate() < start.getDate()) m--;
+      return m;
+    }
+    function fmtDate(d) { return d.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }); }
+    function ordinal(n) { const s = ['th', 'st', 'nd', 'rd'], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); }
+
+    function compute() {
+      if (!startInput.value) { results.classList.add('hidden'); return; }
+      const parts = startInput.value.split('-').map(Number);
+      const start = new Date(parts[0], parts[1] - 1, parts[2]);
+      const today = startOfDay(new Date());
+      results.classList.remove('hidden');
+
+      if (start > today) {
+        elTotal.textContent = "That date is in the future";
+        elTotalSub.textContent = "Pick the day your relationship started.";
+        nextCard.classList.add('hidden');
+        elMilestones.innerHTML = '';
+        return;
+      }
+      nextCard.classList.remove('hidden');
+
+      const months = monthsBetween(start, today);
+      const lastMonthsaryDate = addMonths(start, months);
+
+      // Total headline
+      const years = Math.floor(months / 12), remM = months % 12;
+      let totalStr;
+      if (months < 1) {
+        totalStr = `${Math.max(0, Math.round((today - start) / DAY))} days`;
+      } else {
+        const bits = [];
+        if (years > 0) bits.push(`${years} year${years > 1 ? 's' : ''}`);
+        if (remM > 0) bits.push(`${remM} month${remM > 1 ? 's' : ''}`);
+        totalStr = bits.join(', ');
+      }
+      elTotal.textContent = totalStr;
+      elTotalSub.textContent = months >= 1
+        ? `That's ${months} monthsar${months > 1 ? 'ies' : 'y'} celebrated`
+        : `Your 1st monthsary is coming up`;
+
+      // Next monthsary
+      const isMonthsaryToday = months >= 1 && sameDay(lastMonthsaryDate, today);
+      let nextNum, nextDate;
+      if (isMonthsaryToday) {
+        nextNum = months; nextDate = today;
+        elNextNum.textContent = `Happy ${ordinal(months)} monthsary!`;
+        elNextDate.textContent = `Today — ${fmtDate(today)}`;
+        elCountdown.textContent = '0';
+        elCountdownLabel.textContent = 'days — it’s today';
+      } else {
+        nextNum = months + 1; nextDate = addMonths(start, nextNum);
+        const daysTo = Math.max(0, Math.round((nextDate - today) / DAY));
+        elNextNum.textContent = `Your ${ordinal(nextNum)} monthsary`;
+        elNextDate.textContent = fmtDate(nextDate);
+        elCountdown.textContent = String(daysTo);
+        elCountdownLabel.textContent = daysTo === 1 ? 'day to go' : 'days to go';
+      }
+
+      // Milestones
+      elMilestones.innerHTML = MILESTONES.map(m => {
+        const date = addMonths(start, m);
+        const isToday = sameDay(date, today);
+        const past = date < today && !isToday;
+        const isNext = !isMonthsaryToday && m === nextNum;
+        const label = LABELS[m] ? ` <span class="text-text-light">· ${LABELS[m]}</span>` : '';
+        let right, cls;
+        if (isToday) { right = 'Today'; cls = 'text-primary-dark font-semibold'; }
+        else if (past) { right = `✓ ${fmtDate(date)}`; cls = 'text-text-light'; }
+        else if (isNext) { right = `Next · ${fmtDate(date)}`; cls = 'text-primary-dark font-semibold'; }
+        else { right = fmtDate(date); cls = 'text-text-secondary'; }
+        return `<div class="flex items-center justify-between py-2.5 ${past ? 'opacity-70' : ''}">
+            <span class="text-text ${isNext || isToday ? 'font-semibold' : ''}">${m} month${m > 1 ? 's' : ''}${label}</span>
+            <span class="text-sm ${cls} whitespace-nowrap pl-3">${right}</span>
+          </div>`;
+      }).join('');
+    }
+
+    startInput.addEventListener('change', compute);
+    startInput.addEventListener('input', compute);
+  </script>
+</ToolLayout>

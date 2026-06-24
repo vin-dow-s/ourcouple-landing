@@ -1,0 +1,117 @@
+{
+  "intro": "Every couple has a vibe. Answer 8 quick questions to find out which kind of couple you two really are — from the Adventurers to the Lovebirds.",
+  "questions": [
+    {
+      "text": "Your ideal Friday night is…",
+      "options": [
+        { "label": "Out trying something brand new", "type": "adventurers" },
+        { "label": "Cozy on the couch with takeout", "type": "homebodies" },
+        { "label": "A nice dinner, planning the week ahead", "type": "powercouple" },
+        { "label": "Game night, laughing till late", "type": "bestfriends" },
+        { "label": "A candlelit dinner, just us two", "type": "lovebirds" }
+      ]
+    },
+    {
+      "text": "On a trip, you're the couple that…",
+      "options": [
+        { "label": "Books the bungee jump", "type": "adventurers" },
+        { "label": "Finds the comfiest café and stays", "type": "homebodies" },
+        { "label": "Has a colour-coded itinerary", "type": "powercouple" },
+        { "label": "Gets the giggles in a museum", "type": "bestfriends" },
+        { "label": "Holds hands the entire time", "type": "lovebirds" }
+      ]
+    },
+    {
+      "text": "Your shared camera roll is mostly…",
+      "options": [
+        { "label": "Mountains, cities, passports", "type": "adventurers" },
+        { "label": "The pet, the couch, dinners in", "type": "homebodies" },
+        { "label": "Vision boards and milestones", "type": "powercouple" },
+        { "label": "Unflattering candids and memes", "type": "bestfriends" },
+        { "label": "Selfies and kisses", "type": "lovebirds" }
+      ]
+    },
+    {
+      "text": "Your biggest strength as a couple is…",
+      "options": [
+        { "label": "We never get bored", "type": "adventurers" },
+        { "label": "We're each other's safe place", "type": "homebodies" },
+        { "label": "We build things together", "type": "powercouple" },
+        { "label": "We genuinely like each other", "type": "bestfriends" },
+        { "label": "We're still obsessed with each other", "type": "lovebirds" }
+      ]
+    },
+    {
+      "text": "A perfect weekend includes…",
+      "options": [
+        { "label": "A spontaneous road trip", "type": "adventurers" },
+        { "label": "Pyjamas and zero plans", "type": "homebodies" },
+        { "label": "Crossing things off the list", "type": "powercouple" },
+        { "label": "Friends, games, inside jokes", "type": "bestfriends" },
+        { "label": "Slow mornings and long cuddles", "type": "lovebirds" }
+      ]
+    },
+    {
+      "text": "Your love language as a duo is…",
+      "options": [
+        { "label": "Shared experiences", "type": "adventurers" },
+        { "label": "Quality time at home", "type": "homebodies" },
+        { "label": "Teamwork and acts of service", "type": "powercouple" },
+        { "label": "Laughter and banter", "type": "bestfriends" },
+        { "label": "Physical affection", "type": "lovebirds" }
+      ]
+    },
+    {
+      "text": "People say you two are…",
+      "options": [
+        { "label": "Always off somewhere", "type": "adventurers" },
+        { "label": "The cozy ones", "type": "homebodies" },
+        { "label": "Goals, literally", "type": "powercouple" },
+        { "label": "Basically best friends", "type": "bestfriends" },
+        { "label": "Adorably in love", "type": "lovebirds" }
+      ]
+    },
+    {
+      "text": "Growing old together looks like…",
+      "options": [
+        { "label": "Seeing the world, forever curious", "type": "adventurers" },
+        { "label": "A warm home and a garden", "type": "homebodies" },
+        { "label": "Building a legacy", "type": "powercouple" },
+        { "label": "Laughing in our rocking chairs", "type": "bestfriends" },
+        { "label": "Still holding hands at 80", "type": "lovebirds" }
+      ]
+    }
+  ],
+  "results": {
+    "adventurers": {
+      "title": "The Adventurers",
+      "emoji": "🌍",
+      "description": "Life with you two is a highlight reel — new places, new food, the next big plan already booked. You bond through shared experiences and you never, ever get bored.",
+      "tip": "Schedule the occasional do-nothing day; even adventurers need to recharge together."
+    },
+    "homebodies": {
+      "title": "The Homebodies",
+      "emoji": "🏡",
+      "description": "Your love language is a quiet night in. You're each other's safe place — comfiest on the couch, pet nearby, the rest of the world locked outside.",
+      "tip": "Plan one tiny adventure a month so the cozy never tips into a rut."
+    },
+    "powercouple": {
+      "title": "The Power Couple",
+      "emoji": "💼",
+      "description": "You're a team with a plan. Goals, growth, building something real together — you make each other more ambitious, and you actually get things done.",
+      "tip": "Protect time that has no agenda; you're partners, not just co-founders."
+    },
+    "bestfriends": {
+      "title": "The Best Friends",
+      "emoji": "😂",
+      "description": "You genuinely like each other. The inside jokes, the banter, the laughing till it hurts — you're partners in crime first and foremost.",
+      "tip": "Don't let the friendship crowd out the romance; flirt with your best friend."
+    },
+    "lovebirds": {
+      "title": "The Lovebirds",
+      "emoji": "💕",
+      "description": "Still obsessed, still holding hands, still a little googly-eyed. Affection is your default setting, and absolutely everyone can tell.",
+      "tip": "Keep building shared experiences too, so all that romance has a life to grow in."
+    }
+  }
+}

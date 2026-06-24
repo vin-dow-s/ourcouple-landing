@@ -1,79 +1,54 @@
 ---
+import catalog from '../data/catalog.json';
+import Icon from './Icon.astro';
+
 interface Props {
-  /** Current page path to exclude from the list (e.g. "/tools/36-questions") */
+  /** Current page path to exclude from the lists (e.g. "/tools/36-questions") */
   exclude?: string;
 }
-
 const { exclude } = Astro.props;
 
-const allTools = [
-  {
-    title: "Anniversary Calculator",
-    description: "How many days have you been together? Find out and discover upcoming milestones.",
-    href: "/tools/anniversary-calculator",
-    emoji: "📅"
-  },
-  {
-    title: "How Well Do You Know Your Partner?",
-    description: "Take the quiz, share it with your partner, and compare answers.",
-    href: "/tools/couple-quiz",
-    emoji: "💕"
-  },
-  {
-    title: "Love Language Quiz",
-    description: "Discover your love language in 2 minutes. Compare with your partner.",
-    href: "/tools/love-language",
-    emoji: "💬"
-  },
-  {
-    title: "36 Questions to Fall in Love",
-    description: "The famous study-backed questions designed to bring couples closer.",
-    href: "/tools/36-questions",
-    emoji: "❤️"
-  },
-  {
-    title: "Would You Rather — Couples Edition",
-    description: "40+ fun questions. Play together and see how well you match.",
-    href: "/tools/would-you-rather",
-    emoji: "🔀"
-  },
-  {
-    title: "Truth or Dare for Couples",
-    description: "145+ prompts across 3 levels — Sweet, Playful, Spicy.",
-    href: "/tools/truth-or-dare-couples",
-    emoji: "🔥"
-  },
-  {
-    title: "Bucket List Generator",
-    description: "Get personalized date ideas based on your interests and budget.",
-    href: "/tools/bucket-list",
-    emoji: "✨"
-  },
-  {
-    title: "Date Night Generator",
-    description: "Tap and get a random free date idea for tonight. No signup.",
-    href: "/tools/date-night-generator",
-    emoji: "🎯"
-  }
-];
+const games = catalog.games.filter(t => t.href !== exclude);
+const tools = catalog.tools.filter(t => t.href !== exclude);
 
-const tools = allTools.filter(t => t.href !== exclude);
+const groups = [
+  { label: "More games & quizzes", items: games.slice(0, 6), seeAll: "/games", seeAllLabel: "See all games" },
+  { label: "More tools", items: tools.slice(0, 6), seeAll: "/tools", seeAllLabel: "See all tools" },
+];
 ---
 
-<section class="py-12">
-  <div class="max-w-4xl mx-auto px-6">
-    <h2 class="text-xl font-semibold text-text text-center mb-6">Try More Free Tools for Couples</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {tools.map(tool => (
-        <a
-          href={tool.href}
-          class="group p-4 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors"
-        >
-          <span class="text-2xl mb-2 block">{tool.emoji}</span>
-          <h3 class="font-medium text-text group-hover:text-primary transition-colors text-sm mb-1">{tool.title}</h3>
-          <p class="text-text-secondary text-xs leading-relaxed">{tool.description}</p>
-        </a>
-      ))}
-    </div>
+<section class="mt-20 md:mt-28 pt-12 border-t border-border">
+  <div class="max-w-4xl mx-auto px-6 space-y-10">
+    {groups.map(group => group.items.length > 0 && (
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-semibold text-text">{group.label}</h2>
+          <a
+            href={group.seeAll}
+            class="text-sm font-medium text-primary hover:text-primary-dark transition-colors whitespace-nowrap"
+          >
+            {group.seeAllLabel} →
+          </a>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {group.items.map(item => (
+            <a
+              href={item.href}
+              class="group relative overflow-hidden rounded-2xl p-5 min-h-[140px] flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all"
+              style={`background-image: linear-gradient(135deg, ${item.gradient[0]}, ${item.gradient[1]})`}
+            >
+              <div class="absolute inset-0" style="background-image: linear-gradient(to top, rgba(0,0,0,0.34), rgba(0,0,0,0) 58%)"></div>
+              <div class="relative w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+                <Icon name={item.icon} class="w-5 h-5 text-white" />
+              </div>
+              <div class="relative mt-3">
+                <h3 class="font-semibold text-white text-sm mb-0.5">{item.title}</h3>
+                <p class="text-white/90 text-xs leading-relaxed">{item.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
   </div>
 </section>

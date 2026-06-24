@@ -1,0 +1,103 @@
+{
+  "intro": "Your attachment style shapes how you connect, argue, and feel loved. Answer 8 honest questions to discover yours — secure, anxious, avoidant, or fearful-avoidant.",
+  "questions": [
+    {
+      "text": "When your partner doesn't reply for a while, you…",
+      "options": [
+        { "label": "Assume they're busy and get on with your day", "type": "secure" },
+        { "label": "Start worrying something's wrong between you", "type": "anxious" },
+        { "label": "Barely notice — you're fine doing your own thing", "type": "avoidant" },
+        { "label": "Feel anxious, then tell yourself you don't care", "type": "fearful" }
+      ]
+    },
+    {
+      "text": "The idea of fully depending on a partner…",
+      "options": [
+        { "label": "Feels natural — that's what partners are for", "type": "secure" },
+        { "label": "Sounds wonderful; you wish you were closer", "type": "anxious" },
+        { "label": "Makes you uneasy; you'd rather rely on yourself", "type": "avoidant" },
+        { "label": "Both appeals to you and scares you", "type": "fearful" }
+      ]
+    },
+    {
+      "text": "After a disagreement, you tend to…",
+      "options": [
+        { "label": "Talk it through and move on", "type": "secure" },
+        { "label": "Need reassurance that you're still okay", "type": "anxious" },
+        { "label": "Want space and time alone", "type": "avoidant" },
+        { "label": "Swing between fixing it and shutting down", "type": "fearful" }
+      ]
+    },
+    {
+      "text": "When a relationship gets really close, you…",
+      "options": [
+        { "label": "Enjoy it and lean in", "type": "secure" },
+        { "label": "Feel happy but fear they'll leave", "type": "anxious" },
+        { "label": "Start to feel a little trapped", "type": "avoidant" },
+        { "label": "Want it but feel an urge to pull back", "type": "fearful" }
+      ]
+    },
+    {
+      "text": "Which feels most true about you in love?",
+      "options": [
+        { "label": "I'm worthy of love and can give it", "type": "secure" },
+        { "label": "I worry I'm 'too much' for people", "type": "anxious" },
+        { "label": "I'm better off not needing anyone", "type": "avoidant" },
+        { "label": "I'm not sure I can be loved the way I want", "type": "fearful" }
+      ]
+    },
+    {
+      "text": "When your partner needs space, you…",
+      "options": [
+        { "label": "Respect it without taking it personally", "type": "secure" },
+        { "label": "Feel rejected and want to close the gap", "type": "anxious" },
+        { "label": "Feel a little relieved, honestly", "type": "avoidant" },
+        { "label": "Feel hurt but act like it's fine", "type": "fearful" }
+      ]
+    },
+    {
+      "text": "Talking about your feelings…",
+      "options": [
+        { "label": "Comes fairly easily", "type": "secure" },
+        { "label": "You do it a lot, reaching for connection", "type": "anxious" },
+        { "label": "Feels uncomfortable; you'd rather not", "type": "avoidant" },
+        { "label": "You want to, but often freeze up", "type": "fearful" }
+      ]
+    },
+    {
+      "text": "Trusting a new partner…",
+      "options": [
+        { "label": "Comes naturally once they're consistent", "type": "secure" },
+        { "label": "Takes a lot of reassurance", "type": "anxious" },
+        { "label": "Is hard — you keep your guard up", "type": "avoidant" },
+        { "label": "Is a real struggle even when you want to", "type": "fearful" }
+      ]
+    }
+  ],
+  "results": {
+    "secure": {
+      "title": "Secure",
+      "emoji": "💚",
+      "description": "You're comfortable with closeness and independence in equal measure. You trust once someone is consistent, you say what you need, and you don't spiral when things go quiet.",
+      "tip": "Your steadiness is a gift — it helps an anxious or avoidant partner feel safe enough to meet you there."
+    },
+    "anxious": {
+      "title": "Anxious",
+      "emoji": "💛",
+      "description": "You love deeply and crave closeness, but a quiet phone or a distant mood can set off real worry. You give a lot, and you need reassurance back to feel secure.",
+      "tip": "Name what you need out loud — most partners want to give it, they just can't read your mind."
+    },
+    "avoidant": {
+      "title": "Avoidant",
+      "emoji": "💙",
+      "description": "You value your independence and handle things on your own. Too much closeness can feel like pressure, so you create space to breathe — sometimes more than your partner expects.",
+      "tip": "Letting someone in a little at a time isn't weakness — it's exactly how trust gets built."
+    },
+    "fearful": {
+      "title": "Fearful-Avoidant",
+      "emoji": "🤍",
+      "description": "You want closeness and fear it at the same time, so you can run hot then cold. Underneath the push-pull is a real longing to feel safe with someone.",
+      "tip": "Slow, consistent reassurance — from both of you — is what calms the push-pull over time."
+    }
+  }
+}

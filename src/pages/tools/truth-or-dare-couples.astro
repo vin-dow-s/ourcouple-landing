@@ -1,6 +1,8 @@
 ---
 import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
 import ShareButtons from '../../components/tools/ShareButtons.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
 import prompts from '../../data/truth-or-dare.json';
 
 // Counts for SEO copy
@@ -55,8 +57,8 @@ const totalCount = sweetCount + playfulCount + spicyCount;
   <div class="max-w-2xl mx-auto px-4">
     <!-- Hero -->
     <div class="text-center mb-8 animate-fade-in">
-      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 text-3xl">
-        🔥
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <Icon name="flame" class="w-8 h-8 text-primary" />
       </div>
       <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tighter mb-3">
         Truth or Dare for Couples
@@ -142,6 +144,12 @@ const totalCount = sweetCount + playfulCount + spicyCount;
         text="Play Truth or Dare with me — sweet, playful, or spicy. Free game for couples:"
       />
     </div>
+
+    <ToolAppCta
+      kicker="Loved this?"
+      heading="Get endless prompts in the app"
+      copy="Truth or dare for two — plus your messages, memories, daily questions and games, all saved in one private space, just for the two of you."
+    />
 
     <!-- Cross-sell -->
     <div class="bg-card rounded-2xl border border-border p-6 mb-12">

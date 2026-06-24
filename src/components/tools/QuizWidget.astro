@@ -1,0 +1,144 @@
+---
+// Reusable personality-quiz engine for couple quizzes (attachment style, what
+// kind of couple, green flags…). Pass an intro, a list of questions (each option
+// maps to a result "type"), and a results map. It handles the whole flow:
+// intro → one-question-at-a-time → tally the types → show the winning result →
+// app CTA + share. Ties break toward whichever result key is defined first.
+interface QuizOption { label: string; type: string; }
+interface QuizQuestion { text: string; options: QuizOption[]; }
+interface QuizResult { title: string; emoji: string; description: string; tip?: string; }
+interface Props {
+  quizId: string;
+  intro: string;
+  questions: QuizQuestion[];
+  results: Record<string, QuizResult>;
+}
+const { quizId, intro, questions, results } = Astro.props;
+---
+<div class="max-w-2xl mx-auto px-4" data-quiz={quizId}>
+  <!-- Start -->
+  <div id="q-start" class="bg-card rounded-2xl border border-border p-6 mb-6 text-center">
+    <p class="text-text-secondary mb-5 leading-relaxed">{intro}</p>
+    <button id="q-start-btn" class="px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors">
+      Start the quiz
+    </button>
+    <p class="text-text-light text-xs mt-3">{questions.length} questions · free · no signup</p>
+  </div>
+
+  <!-- Questions -->
+  <div id="q-quiz" class="hidden">
+    <div class="mb-6">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-sm text-text-secondary">Question <span id="q-num">1</span> of {questions.length}</span>
+      </div>
+      <div class="h-2 bg-border rounded-full overflow-hidden">
+        <div id="q-bar" class="h-full bg-primary rounded-full transition-all duration-300" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="bg-card rounded-2xl border border-border p-6 mb-4">
+      <p id="q-text" class="font-medium text-text text-lg mb-5"></p>
+      <div id="q-options" class="space-y-3"></div>
+    </div>
+    <button id="q-back" class="hidden text-text-secondary hover:text-primary text-sm transition-colors">← Previous</button>
+  </div>
+
+  <!-- Result -->
+  <div id="q-result" class="hidden">
+    <div class="bg-gradient-to-br from-primary/10 to-partner/10 rounded-2xl border border-primary/20 p-6 mb-5 text-center">
+      <div id="q-result-emoji" class="text-5xl mb-2"></div>
+      <p class="text-text-secondary text-sm mb-1">Your result</p>
+      <h2 id="q-result-title" class="text-2xl font-bold text-text mb-3"></h2>
+      <p id="q-result-desc" class="text-text-secondary leading-relaxed max-w-md mx-auto"></p>
+      <p id="q-result-tip" class="hidden text-text-secondary text-sm mt-4 px-4 py-3 rounded-xl bg-card/70 border border-border"></p>
+    </div>
+
+    <slot name="cta" />
+
+    <div class="text-center mb-4">
+      <slot name="share" />
+    </div>
+    <div class="text-center">
+      <button id="q-retake" class="text-text-secondary hover:text-primary text-sm transition-colors">Retake the quiz</button>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ quizId, questions, results }}>
+  const root = document.querySelector(`[data-quiz="${quizId}"]`);
+  const startEl = root.querySelector('#q-start');
+  const quizEl = root.querySelector('#q-quiz');
+  const resultEl = root.querySelector('#q-result');
+  const startBtn = root.querySelector('#q-start-btn');
+  const qNum = root.querySelector('#q-num');
+  const qBar = root.querySelector('#q-bar');
+  const qText = root.querySelector('#q-text');
+  const qOptions = root.querySelector('#q-options');
+  const qBack = root.querySelector('#q-back');
+  const retakeBtn = root.querySelector('#q-retake');
+  const rEmoji = root.querySelector('#q-result-emoji');
+  const rTitle = root.querySelector('#q-result-title');
+  const rDesc = root.querySelector('#q-result-desc');
+  const rTip = root.querySelector('#q-result-tip');
+
+  let idx = 0;
+  let answers = [];
+  let choices = [];
+
+  const show = el => el.classList.remove('hidden');
+  const hide = el => el.classList.add('hidden');
+
+  function render() {
+    const q = questions[idx];
+    qNum.textContent = String(idx + 1);
+    qBar.style.width = `${(idx / questions.length) * 100}%`;
+    qText.textContent = q.text;
+    qOptions.innerHTML = '';
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      const chosen = choices[idx] === i;
+      btn.className = 'w-full text-left p-4 rounded-xl border transition-all text-text ' +
+        (chosen ? 'border-primary bg-primary/10' : 'border-border hover:border-primary/40 hover:bg-primary/5');
+      btn.textContent = opt.label;
+      btn.addEventListener('click', () => choose(opt.type, i));
+      qOptions.appendChild(btn);
+    });
+    qBack.classList.toggle('hidden', idx === 0);
+  }
+
+  function choose(type, i) {
+    answers[idx] = type;
+    choices[idx] = i;
+    if (idx < questions.length - 1) { idx++; render(); }
+    else finish();
+  }
+
+  function finish() {
+    const tally = {};
+    answers.forEach(t => { if (t) tally[t] = (tally[t] || 0) + 1; });
+    let best = null, bestN = -1;
+    Object.keys(results).forEach(k => {
+      const n = tally[k] || 0;
+      if (n > bestN) { bestN = n; best = k; }
+    });
+    const r = results[best];
+    rEmoji.textContent = r.emoji || '';
+    rTitle.textContent = r.title;
+    rDesc.textContent = r.description;
+    if (r.tip) { rTip.textContent = r.tip; show(rTip); } else hide(rTip);
+    qBar.style.width = '100%';
+    hide(quizEl); show(resultEl);
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  startBtn.addEventListener('click', () => {
+    idx = 0; answers = []; choices = [];
+    hide(startEl); show(quizEl); render();
+  });
+  qBack.addEventListener('click', () => { if (idx > 0) { idx--; render(); } });
+  retakeBtn.addEventListener('click', () => {
+    idx = 0; answers = []; choices = [];
+    hide(resultEl); show(startEl);
+    qBar.style.width = '0%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>

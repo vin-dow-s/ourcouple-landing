@@ -1,0 +1,72 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
+import QuizWidget from '../../components/tools/QuizWidget.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+import quiz from '../../data/what-kind-of-couple.json';
+---
+
+<ToolLayout
+  title="What Kind of Couple Are You? Free Quiz (8 Questions)"
+  description="Free 'what kind of couple are you' quiz — answer 8 fun questions to find your couple type, from the Adventurers to the Lovebirds. Share your result. No signup."
+  canonicalPath="/tools/what-kind-of-couple"
+  howTo={{
+    name: "How to find out what kind of couple you are",
+    description: "A free, fun 8-question couple personality quiz.",
+    steps: [
+      { name: "Answer 8 quick questions", text: "Pick the option that sounds most like you two." },
+      { name: "Get your couple type", text: "Find out if you're the Adventurers, Homebodies, Power Couple, Best Friends, or Lovebirds." },
+      { name: "Compare with your partner", text: "Have them take it too, and see your match in the OurCouple app." }
+    ]
+  }}
+  faqs={[
+    { question: "What kinds of couples are there?", answer: "This quiz sorts you into one of five couple types: the Adventurers, the Homebodies, the Power Couple, the Best Friends, and the Lovebirds — based on how you spend time and connect." },
+    { question: "Is the quiz free?", answer: "Yes — 8 questions, instant result, no signup or email required." },
+    { question: "Can we take it together?", answer: "Take it each and compare your types, or answer it together for a fun debate. In the OurCouple app you both answer and it counts toward your shared couple profile." }
+  ]}
+  ctaHeading="Find your couple type together"
+  ctaCopy="In the OurCouple app, you and your partner both answer, get your couple type, and keep it in your private space — alongside your messages, memories and games."
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <Icon name="users" class="w-8 h-8 text-primary" />
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+        What Kind of Couple Are You?
+      </h1>
+      <p class="text-text-secondary">
+        Every couple has a vibe. 8 questions to find yours.
+      </p>
+    </div>
+  </div>
+
+  <QuizWidget quizId="what-kind-of-couple" intro={quiz.intro} questions={quiz.questions} results={quiz.results}>
+    <ToolAppCta
+      slot="cta"
+      kicker="Find out together"
+      heading="Get your couple type in the app"
+      copy="Here it's just for fun. In the OurCouple app you both answer, get your couple type, and it counts toward your Compatibility Score — saved, just for the two of you."
+    />
+    <ShareButtons
+      slot="share"
+      title="Share your result"
+      text="We took the 'what kind of couple are you' quiz! Take it too:"
+    />
+  </QuizWidget>
+
+  <div class="max-w-2xl mx-auto px-4 mt-12 prose prose-sm">
+    <h2>The five couple types</h2>
+    <ul>
+      <li><strong>The Adventurers</strong> — bonded by new experiences and the next big plan.</li>
+      <li><strong>The Homebodies</strong> — happiest cozy at home, each other's safe place.</li>
+      <li><strong>The Power Couple</strong> — ambitious teammates building something together.</li>
+      <li><strong>The Best Friends</strong> — inside jokes, banter, partners in crime.</li>
+      <li><strong>The Lovebirds</strong> — affectionate, romantic, still obsessed with each other.</li>
+    </ul>
+    <p>
+      There's no "best" type — every couple is a mix, and yours can shift over the years. The fun is in comparing: take it, then have your partner take it, and see if you land in the same place.
+    </p>
+  </div>
+</ToolLayout>

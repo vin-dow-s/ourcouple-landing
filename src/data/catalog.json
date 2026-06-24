@@ -1,0 +1,18 @@
+{
+  "games": [
+    { "title": "Would You Rather", "description": "40+ fun questions. Play together and see how well you match.", "href": "/tools/would-you-rather", "icon": "git-fork", "gradient": ["#6366F1", "#DB2777"] },
+    { "title": "How Well Do You Know Your Partner?", "description": "Take the quiz, share it, and compare your answers.", "href": "/tools/couple-quiz", "icon": "heart", "gradient": ["#FB7185", "#BE123C"] },
+    { "title": "Truth or Dare for Couples", "description": "145+ prompts across 3 levels — Sweet, Playful, Spicy.", "href": "/tools/truth-or-dare-couples", "icon": "flame", "gradient": ["#FB7A3C", "#C2150B"] },
+    { "title": "36 Questions to Fall in Love", "description": "The famous study-backed questions that bring couples closer.", "href": "/tools/36-questions", "icon": "book-heart", "gradient": ["#9D6BF0", "#5B21B6"] },
+    { "title": "Love Language Quiz", "description": "Discover your love language in 2 minutes. Then compare.", "href": "/tools/love-language", "icon": "languages", "gradient": ["#FF5FA2", "#B81B6A"] },
+    { "title": "Attachment Style Quiz", "description": "Secure, anxious, avoidant, or fearful? Find your style.", "href": "/tools/attachment-style", "icon": "anchor", "gradient": ["#38BDF8", "#1E40AF"] },
+    { "title": "What Kind of Couple Are You?", "description": "From Adventurers to Lovebirds — find your couple type.", "href": "/tools/what-kind-of-couple", "icon": "users", "gradient": ["#22D3EE", "#0E7490"] },
+    { "title": "Green Flags Quiz", "description": "Find your relationship's biggest strength.", "href": "/tools/green-flags", "icon": "flag", "gradient": ["#4ADE80", "#15803D"] }
+  ],
+  "tools": [
+    { "title": "Anniversary Calculator", "description": "How many days have you been together? See upcoming milestones.", "href": "/tools/anniversary-calculator", "icon": "calendar-heart", "gradient": ["#F472B6", "#9D174D"] },
+    { "title": "Monthsary Counter", "description": "How many months? Find your next monthsary + a countdown.", "href": "/tools/monthsary-counter", "icon": "calendar-clock", "gradient": ["#A78BFA", "#6D28D9"] },
+    { "title": "Date Night Generator", "description": "Tap and get a random free date idea for tonight.", "href": "/tools/date-night-generator", "icon": "moon", "gradient": ["#818CF8", "#3730A3"] },
+    { "title": "Bucket List Generator", "description": "Personalized date ideas based on your interests and budget.", "href": "/tools/bucket-list", "icon": "list-checks", "gradient": ["#34D399", "#065F46"] }
+  ]
+}

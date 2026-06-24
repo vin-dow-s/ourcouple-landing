@@ -1,0 +1,72 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
+import QuizWidget from '../../components/tools/QuizWidget.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+import quiz from '../../data/attachment-style.json';
+---
+
+<ToolLayout
+  title="What's Your Attachment Style? Free Quiz for Couples"
+  description="Free attachment style quiz — 8 questions to find out if you're secure, anxious, avoidant, or fearful-avoidant, and how it shapes your relationship. No signup."
+  canonicalPath="/tools/attachment-style"
+  howTo={{
+    name: "How to find your attachment style",
+    description: "A free 8-question attachment style quiz for couples.",
+    steps: [
+      { name: "Answer 8 honest questions", text: "Pick the response that feels most true about how you handle closeness and distance." },
+      { name: "Get your style", text: "See whether you lean secure, anxious, avoidant, or fearful-avoidant, and what it means." },
+      { name: "Compare together", text: "Have your partner take it too, and see how your styles fit in the OurCouple app." }
+    ]
+  }}
+  faqs={[
+    { question: "What are the four attachment styles?", answer: "The four attachment styles are secure, anxious (preoccupied), avoidant (dismissive), and fearful-avoidant (disorganized). They describe how you typically respond to closeness, conflict and distance in relationships." },
+    { question: "Is this attachment style quiz accurate?", answer: "It's a quick, free quiz based on attachment theory — a helpful indicator, not a clinical diagnosis. For most people it points clearly to one dominant style, with traits of the others mixed in." },
+    { question: "Can your attachment style change?", answer: "Yes. Attachment styles aren't fixed. With self-awareness and a consistent, secure partner, many people move toward a more secure style over time — often called 'earned security'." },
+    { question: "How do couples use attachment styles?", answer: "Knowing each other's style turns conflict into understanding. An anxious–avoidant pairing, for example, can stop taking the push-pull personally once they both see the pattern." }
+  ]}
+  ctaHeading="Find your styles together"
+  ctaCopy="In the OurCouple app, you and your partner each take the quiz, see how your attachment styles fit, and keep the result saved in your private space for two."
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <Icon name="anchor" class="w-8 h-8 text-primary" />
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+        What's Your Attachment Style?
+      </h1>
+      <p class="text-text-secondary">
+        8 questions to reveal how you connect, argue, and feel loved.
+      </p>
+    </div>
+  </div>
+
+  <QuizWidget quizId="attachment-style" intro={quiz.intro} questions={quiz.questions} results={quiz.results}>
+    <ToolAppCta
+      slot="cta"
+      kicker="Want to compare?"
+      heading="Discover your styles together"
+      copy="This is your style. In the OurCouple app, you and your partner each find yours, see exactly how they fit together, and keep it saved in your private space for two."
+    />
+    <ShareButtons
+      slot="share"
+      title="Share your result"
+      text="I just found my attachment style. Take the quiz and let's compare:"
+    />
+  </QuizWidget>
+
+  <div class="max-w-2xl mx-auto px-4 mt-12 prose prose-sm">
+    <h2>The four attachment styles, briefly</h2>
+    <ul>
+      <li><strong>Secure</strong> — comfortable with both closeness and independence; trusts and communicates easily.</li>
+      <li><strong>Anxious (preoccupied)</strong> — craves closeness and reassurance; fears being left.</li>
+      <li><strong>Avoidant (dismissive)</strong> — values independence; uncomfortable relying on others.</li>
+      <li><strong>Fearful-avoidant (disorganized)</strong> — wants closeness but fears it, leading to a push-pull.</li>
+    </ul>
+    <p>
+      Most people lean toward one dominant style with traces of the others. Your style isn't a label or a life sentence — it's a starting point for understanding yourself and your partner, and it can shift toward secure over time.
+    </p>
+  </div>
+</ToolLayout>

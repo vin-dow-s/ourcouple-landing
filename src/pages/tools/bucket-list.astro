@@ -1,6 +1,8 @@
 ---
 import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
 import ShareButtons from '../../components/tools/ShareButtons.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
 import ProgressBar from '../../components/tools/ProgressBar.astro';
 import dateIdeas from '../../data/bucket-list-ideas.json';
 
@@ -15,10 +17,8 @@ const steps = ["Interests", "Budget", "Location", "Results"];
   <div class="max-w-2xl mx-auto px-4">
     <!-- Hero -->
     <div class="text-center mb-8 animate-fade-in">
-      <div class="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-        </svg>
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <Icon name="list-checks" class="w-8 h-8 text-primary" />
       </div>
       <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
         Bucket List Generator
@@ -226,6 +226,12 @@ const steps = ["Interests", "Budget", "Location", "Results"];
           <!-- Populated by JS -->
         </div>
       </div>
+
+      <ToolAppCta
+        kicker="Loved these ideas?"
+        heading="Build your bucket list in the app"
+        copy="In the OurCouple app, you and your partner save your bucket list, tick things off together, and keep every memory in one private space for two."
+      />
 
       <!-- Share & Start Over -->
       <div class="text-center space-y-4">

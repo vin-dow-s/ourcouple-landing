@@ -1,6 +1,8 @@
 ---
 import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
 import ShareButtons from '../../components/tools/ShareButtons.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
 import questions from '../../data/would-you-rather.json';
 ---
 
@@ -44,9 +46,7 @@ import questions from '../../data/would-you-rather.json';
     <!-- Hero -->
     <div class="text-center mb-8 animate-fade-in">
       <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-        </svg>
+        <Icon name="git-fork" class="w-8 h-8 text-primary" />
       </div>
       <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
         Would You Rather — Couples Edition
@@ -232,6 +232,8 @@ import questions from '../../data/would-you-rather.json';
           <!-- Populated by JS -->
         </div>
       </div>
+
+      <ToolAppCta />
 
       <!-- Share -->
       <div class="text-center mb-6">

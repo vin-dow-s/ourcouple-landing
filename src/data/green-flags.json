@@ -1,0 +1,117 @@
+{
+  "intro": "Forget the red flags — what's the green flag your relationship is built on? Answer 8 questions to find your couple's biggest strength.",
+  "questions": [
+    {
+      "text": "The best thing about how you two argue is…",
+      "options": [
+        { "label": "We actually talk it out", "type": "communication" },
+        { "label": "Neither of us threatens to leave", "type": "trust" },
+        { "label": "We end up laughing mid-fight", "type": "playfulness" },
+        { "label": "I'm never afraid to be honest", "type": "safety" },
+        { "label": "We both try to do better after", "type": "growth" }
+      ]
+    },
+    {
+      "text": "When something's bothering you, you can…",
+      "options": [
+        { "label": "Say it plainly and be heard", "type": "communication" },
+        { "label": "Trust they won't hold it against you", "type": "trust" },
+        { "label": "Joke about it to break the ice", "type": "playfulness" },
+        { "label": "Be vulnerable without shame", "type": "safety" },
+        { "label": "Turn it into a lesson together", "type": "growth" }
+      ]
+    },
+    {
+      "text": "Around your partner, you feel free to…",
+      "options": [
+        { "label": "Share every thought", "type": "communication" },
+        { "label": "Have a whole life of your own too", "type": "trust" },
+        { "label": "Be your silliest self", "type": "playfulness" },
+        { "label": "Cry, fail, be a mess", "type": "safety" },
+        { "label": "Chase big, scary goals", "type": "growth" }
+      ]
+    },
+    {
+      "text": "Your partner celebrates when you…",
+      "options": [
+        { "label": "Open up about something hard", "type": "communication" },
+        { "label": "Spend time with your own friends", "type": "trust" },
+        { "label": "Do something completely ridiculous", "type": "playfulness" },
+        { "label": "Set a boundary", "type": "safety" },
+        { "label": "Win, even when they didn't", "type": "growth" }
+      ]
+    },
+    {
+      "text": "After a long day, they…",
+      "options": [
+        { "label": "Ask how you really are", "type": "communication" },
+        { "label": "Give you space if you need it", "type": "trust" },
+        { "label": "Make you laugh till it's better", "type": "playfulness" },
+        { "label": "Let you just be, no fixing", "type": "safety" },
+        { "label": "Remind you of the bigger picture", "type": "growth" }
+      ]
+    },
+    {
+      "text": "The thing friends envy most about you two is…",
+      "options": [
+        { "label": "How you two actually talk", "type": "communication" },
+        { "label": "How secure you both seem", "type": "trust" },
+        { "label": "How much fun you have", "type": "playfulness" },
+        { "label": "How safe you are together", "type": "safety" },
+        { "label": "How you push each other forward", "type": "growth" }
+      ]
+    },
+    {
+      "text": "When you mess up, your partner…",
+      "options": [
+        { "label": "Wants to understand why", "type": "communication" },
+        { "label": "Doesn't keep score", "type": "trust" },
+        { "label": "Teases you, then lets it go", "type": "playfulness" },
+        { "label": "Stays kind, never cruel", "type": "safety" },
+        { "label": "Helps you grow from it", "type": "growth" }
+      ]
+    },
+    {
+      "text": "What keeps you together is…",
+      "options": [
+        { "label": "We never stop talking", "type": "communication" },
+        { "label": "We just trust each other", "type": "trust" },
+        { "label": "We never stop laughing", "type": "playfulness" },
+        { "label": "We feel safe, fully", "type": "safety" },
+        { "label": "We keep becoming better", "type": "growth" }
+      ]
+    }
+  ],
+  "results": {
+    "communication": {
+      "title": "Communication",
+      "emoji": "🗣️",
+      "description": "Your biggest green flag is that you actually talk. Hard things get said, feelings get heard, and nothing festers in silence. That's far rarer than it should be.",
+      "tip": "Keep asking the question most couples skip: 'how are we doing, really?'"
+    },
+    "trust": {
+      "title": "Trust",
+      "emoji": "🔒",
+      "description": "Your relationship runs on rock-solid trust. No games, no score-keeping, no threats to walk away — just two people who feel genuinely secure.",
+      "tip": "Trust grows on kept promises; keep showing up in the small things."
+    },
+    "playfulness": {
+      "title": "Playfulness",
+      "emoji": "😄",
+      "description": "Your superpower is fun. You laugh through the hard stuff, tease without stinging, and keep things light even when life isn't.",
+      "tip": "Leave room for the occasional serious talk too — play and depth aren't enemies."
+    },
+    "safety": {
+      "title": "Emotional Safety",
+      "emoji": "🫶",
+      "description": "Your biggest green flag is safety. You can be a mess, set a boundary, or cry — and you'll be met with kindness every single time.",
+      "tip": "Protect this fiercely; emotional safety is the soil everything else grows in."
+    },
+    "growth": {
+      "title": "Growth",
+      "emoji": "🌱",
+      "description": "You make each other better. You celebrate each other's wins, push each other forward, and turn mistakes into lessons instead of grudges.",
+      "tip": "Make sure you also accept each other as-is; growth lands best on a bed of acceptance."
+    }
+  }
+}
