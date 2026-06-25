@@ -26,7 +26,6 @@ const {
   article
 } = Astro.props;
 
-const discordWebhook = import.meta.env.PUBLIC_DISCORD_WEBHOOK;
 const siteUrl = "https://ourcouple.app";
 const canonicalUrl = `${siteUrl}${canonicalPath}`;
 const ogImage = `${siteUrl}/og-image3.png`;
@@ -231,15 +230,6 @@ const faqSchema = {
     {articleSchema && (
       <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
     )}
-
-    <!-- FloorsJS feedback widget -->
-    <script
-      src="https://floorsjs.com/embed.js"
-      data-key="flr_37621a915684474491dca45f"
-      data-discord-webhook="https://discord.com/api/webhooks/1475789412087365664/4le9jOnGfywBEmtC4j7Fjkh9DcB-Ur0FNC-sO5AnfEPNop4eznbZPqa7lAFN5ozxBK0g"
-      data-pinned-message="A question? Need help? Leave a message!"
-      defer
-    ></script>
 
     <!-- Self-hosted DM Sans with metric-optimized fallback (no CLS on font swap) -->
     <Font cssVariable="--font-dm-sans" preload />
