@@ -14,7 +14,7 @@
   --color-card: #FFFFFF;
   --color-text: #1A1A1A;
   --color-text-secondary: #6B6B6B;
-  --color-text-light: #9A9A9A;
+  --color-text-light: #707070;
   --color-border: #EDE8E6;
   
   --font-sans: var(--font-dm-sans);
@@ -71,8 +71,12 @@
   opacity: 0;
 }
 
+/* Hero screenshot column. Kept a short delay so it still settles in after the
+   copy/CTA, but well under the LCP budget — the main screenshot is the LCP
+   element, so a long opacity:0 hold was directly inflating Largest Contentful
+   Paint. */
 .animate-fade-in-delay-video {
-  animation: fade-in 0.8s ease-out 1s forwards;
+  animation: fade-in 0.8s ease-out 0.4s forwards;
   opacity: 0;
 }
 
