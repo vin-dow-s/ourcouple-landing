@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #B8878C;
+  /* Brand palette — mirrors the OurCouple app (expo/constants/colors.ts).
+     Vivid pink primary + deep-pink primary-dark for checks/badges/icons. */
+  --color-primary: #DF3479;
+  /* kept the old soft tone — drives the page/hero background glow (bg-gradient-radial) */
   --color-primary-light: #F2E4E6;
-  --color-primary-dark: #9A6E73;
-  --color-primary-soft: #D4A5A9;
+  --color-primary-dark: #A72459;
+  --color-primary-soft: #E8C7CA;
   --color-accent: #C9A96E;
   --color-accent-light: #F5EBD9;
   --color-partner: #A5B8D4;
@@ -16,8 +19,30 @@
   --color-text-secondary: #6B6B6B;
   --color-text-light: #707070;
   --color-border: #EDE8E6;
-  
+
+  /* Primary CTA gradient — the app's PrimaryButton spec: vertical
+     #F53984 held to 14%, then down to #972352. */
+  --cta-pink: #F53984;
+  --cta-pink-shadow: #972352;
+
   --font-sans: var(--font-dm-sans);
+}
+
+/* Primary pink CTA — matches the app's PrimaryButton: vertical gradient
+   (#F53984 → #972352 at 14%→100%), 1px inner pink stroke, white label,
+   soft colored drop shadow. Apply to the main "get the app" / action buttons. */
+.btn-pink {
+  background-image: linear-gradient(180deg, var(--cta-pink) 0%, var(--cta-pink) 14%, var(--cta-pink-shadow) 100%);
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px var(--cta-pink), 0 10px 24px -10px rgba(151, 35, 82, 0.55);
+  transition: filter 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+}
+.btn-pink:hover {
+  filter: brightness(1.06) saturate(1.02);
+  box-shadow: inset 0 0 0 1px var(--cta-pink), 0 14px 30px -10px rgba(151, 35, 82, 0.6);
+}
+.btn-pink:active {
+  transform: translateY(1px);
 }
 
 @layer base {

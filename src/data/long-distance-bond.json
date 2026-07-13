@@ -1,0 +1,94 @@
+{
+  "intro": "Long distance is hard — but some bonds are built for it. Answer 7 honest questions for couples doing the distance and get an honest snapshot of your bond right now (a snapshot, never a verdict).",
+  "questions": [
+    {
+      "text": "Your daily contact feels…",
+      "options": [
+        { "label": "Like a ritual we never skip", "type": "unshakable" },
+        { "label": "Frequent and easy", "type": "thriving" },
+        { "label": "A bit irregular but improving", "type": "building" },
+        { "label": "Hard to keep up lately", "type": "stretched" }
+      ]
+    },
+    {
+      "text": "When something great happens, you…",
+      "options": [
+        { "label": "Call them before anyone else", "type": "unshakable" },
+        { "label": "Text them within minutes", "type": "thriving" },
+        { "label": "Tell them that evening", "type": "building" },
+        { "label": "Sometimes forget to share it", "type": "stretched" }
+      ]
+    },
+    {
+      "text": "The next time you'll see each other is…",
+      "options": [
+        { "label": "Booked, counted down, planned", "type": "unshakable" },
+        { "label": "Roughly agreed", "type": "thriving" },
+        { "label": "Talked about, not set", "type": "building" },
+        { "label": "Honestly unclear", "type": "stretched" }
+      ]
+    },
+    {
+      "text": "Time-zone and schedule friction:",
+      "options": [
+        { "label": "We've built around it — it barely bites", "type": "unshakable" },
+        { "label": "We handle it with some juggling", "type": "thriving" },
+        { "label": "It regularly eats our call time", "type": "building" },
+        { "label": "It's winning right now", "type": "stretched" }
+      ]
+    },
+    {
+      "text": "When jealousy or doubt shows up, you…",
+      "options": [
+        { "label": "Say it out loud early — it dissolves", "type": "unshakable" },
+        { "label": "Talk it through within a day or two", "type": "thriving" },
+        { "label": "Sit on it a while before raising it", "type": "building" },
+        { "label": "Mostly keep it inside", "type": "stretched" }
+      ]
+    },
+    {
+      "text": "Your shared rituals (a question, a photo, a show)…",
+      "options": [
+        { "label": "Several, daily, sacred", "type": "unshakable" },
+        { "label": "A couple we mostly keep", "type": "thriving" },
+        { "label": "One, when we remember", "type": "building" },
+        { "label": "We've let them slip", "type": "stretched" }
+      ]
+    },
+    {
+      "text": "The end of the distance is…",
+      "options": [
+        { "label": "A real plan with a date", "type": "unshakable" },
+        { "label": "A shared goal we talk about", "type": "thriving" },
+        { "label": "A someday we both want", "type": "building" },
+        { "label": "Something we avoid discussing", "type": "stretched" }
+      ]
+    }
+  ],
+  "results": {
+    "unshakable": {
+      "title": "Unshakable",
+      "emoji": "🔒",
+      "description": "Distance is just geography for you two — rituals, trust, and a plan hold it all together. You've turned the hard mode into your normal.",
+      "tip": "Protect the rituals; they're the whole engine. The day they slip is the day the distance starts to feel long."
+    },
+    "thriving": {
+      "title": "Thriving Apart",
+      "emoji": "🌟",
+      "description": "You've made the distance work with real habits and steady contact. The bond is strong and the effort shows.",
+      "tip": "One upgrade: put the next reunion date somewhere you both see daily. A countdown does quiet, powerful work."
+    },
+    "building": {
+      "title": "Building the Bridge",
+      "emoji": "🌱",
+      "description": "The love is clearly there; the systems are still catching up. You're closer than the logistics make it feel.",
+      "tip": "Pick ONE daily ritual — a message, a photo, a question — and guard it for 30 days. Consistency beats intensity."
+    },
+    "stretched": {
+      "title": "Stretched Thin",
+      "emoji": "🧵",
+      "description": "The distance is taking a toll right now — and that's a signal, not a sentence. Naming it is the first repair.",
+      "tip": "Talk about the ritual you miss most, and book the next reunion. A date on the calendar changes how the weeks feel."
+    }
+  }
+}

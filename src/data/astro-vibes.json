@@ -1,0 +1,85 @@
+{
+  "intro": "Forget birth charts — this is astrology for the vibes only. Answer 6 playful questions to find your relationship element: Fire, Earth, Air, or Water. Matching elements? Extra fun.",
+  "questions": [
+    {
+      "text": "Your role in the relationship:",
+      "options": [
+        { "label": "The spark — I start things", "type": "fire" },
+        { "label": "The anchor — I hold things", "type": "earth" },
+        { "label": "The ideas — I imagine things", "type": "air" },
+        { "label": "The radar — I feel things", "type": "water" }
+      ]
+    },
+    {
+      "text": "Perfect date energy:",
+      "options": [
+        { "label": "Concert, sweat, adrenaline", "type": "fire" },
+        { "label": "Farmers market + cooking together", "type": "earth" },
+        { "label": "A talk so good we forget to order", "type": "air" },
+        { "label": "Ocean at dusk, phones off", "type": "water" }
+      ]
+    },
+    {
+      "text": "You show you're upset by…",
+      "options": [
+        { "label": "Saying it. Immediately. Loudly.", "type": "fire" },
+        { "label": "Getting very quiet and practical", "type": "earth" },
+        { "label": "Over-explaining from six angles", "type": "air" },
+        { "label": "A look that says everything", "type": "water" }
+      ]
+    },
+    {
+      "text": "Your texts are mostly…",
+      "options": [
+        { "label": "CAPS, plans, 'omg come NOW'", "type": "fire" },
+        { "label": "Logistics, on time, with lists", "type": "earth" },
+        { "label": "Links, thoughts, seven threads", "type": "air" },
+        { "label": "Songs and 'this made me think of you'", "type": "water" }
+      ]
+    },
+    {
+      "text": "In a crisis, you're the one who…",
+      "options": [
+        { "label": "Acts before anyone finishes the sentence", "type": "fire" },
+        { "label": "Has water, cash, and a plan", "type": "earth" },
+        { "label": "Talks everyone down with perspective", "type": "air" },
+        { "label": "Notices who's not okay", "type": "water" }
+      ]
+    },
+    {
+      "text": "Your idea of romance:",
+      "options": [
+        { "label": "Passion you can't schedule", "type": "fire" },
+        { "label": "A home that feels safe", "type": "earth" },
+        { "label": "Being genuinely understood", "type": "air" },
+        { "label": "Being felt without words", "type": "water" }
+      ]
+    }
+  ],
+  "results": {
+    "fire": {
+      "title": "Fire",
+      "emoji": "🔥",
+      "description": "Bold, warm, first on the dance floor. You love loudly and decide fast — your partner never wonders how you feel about them.",
+      "tip": "Your heat is magnetic. Just leave a little room for a slower element to catch up — not everyone runs at your tempo."
+    },
+    "earth": {
+      "title": "Earth",
+      "emoji": "🌿",
+      "description": "Steady, sensory, the planner. You love through reliability — the charged phone, the packed snacks, the detail they mentioned once and you remembered.",
+      "tip": "Your consistency is deeply romantic (really). Say the feeling out loud sometimes too — they can't always read it in the logistics."
+    },
+    "air": {
+      "title": "Air",
+      "emoji": "🌬️",
+      "description": "Curious, chatty, three ideas at once. You love through conversation — the 2am talks are the relationship, as far as you're concerned.",
+      "tip": "Words are your love language. Pair them with presence — sometimes they just want you in the room, not a new angle."
+    },
+    "water": {
+      "title": "Water",
+      "emoji": "🌊",
+      "description": "Deep, intuitive, a little psychic. You love through attunement — you can feel their mood from across the world.",
+      "tip": "Your empathy is a superpower. Protect it — you're allowed to name your own feelings, not just sense everyone else's."
+    }
+  }
+}

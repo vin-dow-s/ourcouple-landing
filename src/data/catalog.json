@@ -7,7 +7,12 @@
     { "title": "Love Language Quiz", "description": "Discover your love language in 2 minutes. Then compare.", "href": "/tools/love-language", "icon": "languages", "gradient": ["#FF5FA2", "#B81B6A"] },
     { "title": "Attachment Style Quiz", "description": "Secure, anxious, avoidant, or fearful? Find your style.", "href": "/tools/attachment-style", "icon": "anchor", "gradient": ["#38BDF8", "#1E40AF"] },
     { "title": "What Kind of Couple Are You?", "description": "From Adventurers to Lovebirds — find your couple type.", "href": "/tools/what-kind-of-couple", "icon": "users", "gradient": ["#22D3EE", "#0E7490"] },
-    { "title": "Green Flags Quiz", "description": "Find your relationship's biggest strength.", "href": "/tools/green-flags", "icon": "flag", "gradient": ["#4ADE80", "#15803D"] }
+    { "title": "Green Flags Quiz", "description": "Find your relationship's biggest strength.", "href": "/tools/green-flags", "icon": "flag", "gradient": ["#4ADE80", "#15803D"] },
+    { "title": "This or That", "description": "12 rapid picks. See how often you two match.", "href": "/tools/this-or-that", "icon": "zap", "gradient": ["#FBBF24", "#F43F5E"] },
+    { "title": "Never Have I Ever", "description": "90 couple prompts — sweet, playful and spicy.", "href": "/tools/never-have-i-ever", "icon": "hand", "gradient": ["#F472B6", "#9D174D"] },
+    { "title": "Conflict Style Quiz", "description": "How you fight — and how you make up.", "href": "/tools/conflict-style", "icon": "heart-handshake", "gradient": ["#2DD4BF", "#0F766E"] },
+    { "title": "Long-Distance Bond Quiz", "description": "How strong is your long-distance bond?", "href": "/tools/long-distance-bond", "icon": "plane", "gradient": ["#60A5FA", "#6D28D9"] },
+    { "title": "Astro Vibes", "description": "Which element are you? No birth chart needed.", "href": "/tools/astro-vibes", "icon": "moon-star", "gradient": ["#A78BFA", "#312E81"] }
   ],
   "tools": [
     { "title": "Anniversary Calculator", "description": "How many days have you been together? See upcoming milestones.", "href": "/tools/anniversary-calculator", "icon": "calendar-heart", "gradient": ["#F472B6", "#9D174D"] },

@@ -1,0 +1,72 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
+import QuizWidget from '../../components/tools/QuizWidget.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+import quiz from '../../data/conflict-style.json';
+---
+
+<ToolLayout
+  title="What's Your Conflict Style? Free Quiz for Couples"
+  description="Free conflict style quiz — 6 questions to find out how you argue and repair as a couple: Talker, Pauser, Fixer, or Feeler. Kind by design, no signup."
+  canonicalPath="/tools/conflict-style"
+  howTo={{
+    name: "How to find your conflict style",
+    description: "A free 6-question conflict style quiz for couples.",
+    steps: [
+      { name: "Answer 6 honest questions", text: "Pick the response that's most true about how you handle a disagreement." },
+      { name: "Get your style", text: "See whether you're a Talker, Pauser, Fixer, or Feeler — and how to work with it." },
+      { name: "Compare together", text: "Have your partner take it too and see how your styles fit in the OurCouple app." }
+    ]
+  }}
+  faqs={[
+    { question: "What are the conflict styles?", answer: "This quiz uses four kind, workable styles: the Talker (solve it out loud, now), the Pauser (needs space to be fair), the Fixer (jumps to solutions), and the Feeler (leads with the emotion underneath). Every style can build a healthy relationship." },
+    { question: "Is one conflict style better than another?", answer: "No. Each style has a superpower and a watch-out. The goal isn't to change your style — it's to understand your partner's so a Pauser's silence stops feeling like rejection and a Fixer's advice stops feeling like dismissal." },
+    { question: "What if my partner and I have different styles?", answer: "That's the norm, and it's workable. A Talker paired with a Pauser, for example, just needs one agreement: 'I need an hour, then I'm back.' Naming the pattern takes the sting out of it." },
+    { question: "Is this quiz a diagnosis?", answer: "No — it's a quick, free reflection inspired by conflict and repair research (Gottman-style), not a clinical assessment. Use it as a conversation starter, not a label." }
+  ]}
+  ctaHeading="Understand each other's style"
+  ctaCopy="In the OurCouple app, you and your partner each find your conflict style, see how they fit, and keep it saved in your private space for two."
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <Icon name="heart-handshake" class="w-8 h-8 text-primary" />
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+        What's Your Conflict Style?
+      </h1>
+      <p class="text-text-secondary">
+        6 questions on how you fight — and how you repair. Every style can work.
+      </p>
+    </div>
+  </div>
+
+  <QuizWidget quizId="conflict-style" intro={quiz.intro} questions={quiz.questions} results={quiz.results}>
+    <ToolAppCta
+      slot="cta"
+      kicker="Want to compare?"
+      heading="Find your styles together"
+      copy="This is your style. In the OurCouple app, you and your partner each find yours, see exactly how they fit together, and keep it saved in your private space for two."
+    />
+    <ShareButtons
+      slot="share"
+      title="Share your result"
+      text="I just found my conflict style. Take the quiz and let's compare:"
+    />
+  </QuizWidget>
+
+  <div class="max-w-2xl mx-auto px-4 mt-12 prose prose-sm">
+    <h2>The four conflict styles, briefly</h2>
+    <ul>
+      <li><strong>The Talker 🗣️</strong> — processes out loud and wants it solved tonight; nothing festers.</li>
+      <li><strong>The Pauser 🌙</strong> — needs space before they can be fair; rarely says things they regret.</li>
+      <li><strong>The Fixer 🔧</strong> — jumps to solutions because they hate seeing you hurt; things actually change.</li>
+      <li><strong>The Feeler 💗</strong> — leads with the emotion under the argument; gets to the real issue fast.</li>
+    </ul>
+    <p>
+      Most people lean toward one style with a bit of the others mixed in. Your style isn't a flaw — it's information. The couples who fight well aren't the ones who never clash; they're the ones who know how the other person needs to be met.
+    </p>
+  </div>
+</ToolLayout>

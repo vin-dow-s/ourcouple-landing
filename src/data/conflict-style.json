@@ -1,0 +1,85 @@
+{
+  "intro": "How you argue — and how you repair — says a lot about your relationship. Answer 6 honest questions to find your conflict style. Every style can work; the point is understanding each other's.",
+  "questions": [
+    {
+      "text": "Mid-argument, your instinct is to…",
+      "options": [
+        { "label": "Keep talking until it's resolved", "type": "talker" },
+        { "label": "Step away and cool down first", "type": "pauser" },
+        { "label": "Propose a concrete fix right now", "type": "fixer" },
+        { "label": "Say how much this is hurting", "type": "feeler" }
+      ]
+    },
+    {
+      "text": "What you need most from your partner in a fight:",
+      "options": [
+        { "label": "Stay in the room with me", "type": "talker" },
+        { "label": "Give me an hour, I'll come back", "type": "pauser" },
+        { "label": "Agree on what we'll change", "type": "fixer" },
+        { "label": "Acknowledge my feelings first", "type": "feeler" }
+      ]
+    },
+    {
+      "text": "After a disagreement, you feel done when…",
+      "options": [
+        { "label": "We've said everything out loud", "type": "talker" },
+        { "label": "I've had quiet time and we've hugged", "type": "pauser" },
+        { "label": "There's a plan so it won't repeat", "type": "fixer" },
+        { "label": "I feel emotionally close again", "type": "feeler" }
+      ]
+    },
+    {
+      "text": "The hardest partner behavior for you is…",
+      "options": [
+        { "label": "The silent treatment", "type": "talker" },
+        { "label": "Being followed room to room", "type": "pauser" },
+        { "label": "Rehashing without deciding anything", "type": "fixer" },
+        { "label": "Cold logic while I'm upset", "type": "feeler" }
+      ]
+    },
+    {
+      "text": "A small annoyance (dishes, texts) — you…",
+      "options": [
+        { "label": "Mention it the same day, directly", "type": "talker" },
+        { "label": "Wait for a calm moment to bring it up", "type": "pauser" },
+        { "label": "Suggest a system so it stops happening", "type": "fixer" },
+        { "label": "Explain why it makes me feel unseen", "type": "feeler" }
+      ]
+    },
+    {
+      "text": "Your best repair move is…",
+      "options": [
+        { "label": "A real debrief once we're calm", "type": "talker" },
+        { "label": "Coming back softer, on my own", "type": "pauser" },
+        { "label": "Doing the thing differently, visibly", "type": "fixer" },
+        { "label": "A long hug and an honest 'I'm sorry'", "type": "feeler" }
+      ]
+    }
+  ],
+  "results": {
+    "talker": {
+      "title": "The Talker",
+      "emoji": "🗣️",
+      "description": "You process out loud and want it solved tonight. Nothing festers with you — you'd rather hash it out than let it sit.",
+      "tip": "Give a Pauser room to breathe before round two. Space isn't rejection; it's how they get fair."
+    },
+    "pauser": {
+      "title": "The Pauser",
+      "emoji": "🌙",
+      "description": "You need space before you can be fair. You rarely say things you regret, because you don't speak from the heat of the moment.",
+      "tip": "Tell your partner you're pausing, not leaving. A quick 'I need an hour, then I'm back' changes everything."
+    },
+    "fixer": {
+      "title": "The Fixer",
+      "emoji": "🔧",
+      "description": "You jump to solutions because you hate seeing them hurt. With you, things actually change — you close the loop.",
+      "tip": "Sometimes they need 10 minutes of 'that sucks' before they want the fix. Feel first, solve second."
+    },
+    "feeler": {
+      "title": "The Feeler",
+      "emoji": "💗",
+      "description": "You lead with the emotion under the argument, so you get to the real issue fast — past the dishes, to what actually hurt.",
+      "tip": "Name the feeling AND the ask. 'I felt unseen — could you check in next time?' lands better than either alone."
+    }
+  }
+}

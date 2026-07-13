@@ -1,0 +1,186 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
+import prompts from '../../data/never-have-i-ever.json';
+
+const totalCount = prompts.sweet.length + prompts.playful.length + prompts.spicy.length;
+---
+
+<ToolLayout
+  title="Never Have I Ever — Couples Edition (Free, Sweet to Spicy)"
+  description={`Play Never Have I Ever with your partner. ${totalCount}+ free couple prompts across three levels — Sweet, Playful, and Spicy. No signup, instant fun.`}
+  canonicalPath="/tools/never-have-i-ever"
+  ctaHeading="Keep the good ones"
+  ctaCopy="OurCouple lets you save the confessions and moments worth keeping — plus daily questions, memories and games, all in one private space for two."
+  howTo={{
+    name: "How to play Never Have I Ever for couples",
+    description: "Free Never Have I Ever game for couples — three levels from sweet to spicy.",
+    steps: [
+      { name: "Pick a level", text: "Choose Sweet, Playful, or Spicy depending on your mood." },
+      { name: "Tap for a prompt", text: "Read the statement aloud. You each answer 'I have' or 'never'." },
+      { name: "Take turns", text: "Tap again for the next one. No signup, no app to install." }
+    ]
+  }}
+  faqs={[
+    { question: "How do you play Never Have I Ever as a couple?", answer: "One of you taps for a statement and reads it aloud, then you both say whether you 'have' or 'never' — and tell the story behind it. It's a two-player, pass-and-play version made for couples, not a big party group." },
+    { question: "Is this game free?", answer: "Yes, 100% free. No signup, no email, no in-app purchases. All three levels (Sweet, Playful, Spicy) are unlocked from the start." },
+    { question: "What's in the Spicy level?", answer: "Spicy is flirtier and bolder — confessions about attraction, late nights, and the things you think but don't say. Still tasteful, just turned up for a night in together." },
+    { question: "Can we play long-distance?", answer: "Absolutely. Open the page on a video call, take turns tapping for a statement, and confess to each other. It's a great way to feel close across the distance." },
+    { question: `How many prompts are there?`, answer: `Over ${totalCount} couple prompts across three levels — ${prompts.sweet.length} sweet, ${prompts.playful.length} playful, and ${prompts.spicy.length} spicy. They're picked at random so the game feels fresh every time.` }
+  ]}
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <!-- Hero -->
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <Icon name="hand" class="w-8 h-8 text-primary" />
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tighter mb-3">
+        Never Have I Ever — Couples Edition
+      </h1>
+      <p class="text-text-secondary max-w-md mx-auto">
+        {totalCount}+ free prompts across three levels. Pick a vibe, take turns, no signup.
+      </p>
+    </div>
+
+    <!-- Level Selector -->
+    <div class="grid grid-cols-3 gap-2 mb-6" id="level-selector" role="tablist" aria-label="Choose intensity level">
+      <button type="button" class="level-btn px-3 py-3 rounded-xl border-2 border-primary bg-primary/10 text-text font-semibold text-sm transition-all" data-level="sweet" aria-pressed="true">
+        <span class="block text-xl mb-0.5">💖</span>
+        Sweet
+      </button>
+      <button type="button" class="level-btn px-3 py-3 rounded-xl border-2 border-border bg-card text-text font-semibold text-sm transition-all hover:border-primary/30" data-level="playful" aria-pressed="false">
+        <span class="block text-xl mb-0.5">😜</span>
+        Playful
+      </button>
+      <button type="button" class="level-btn px-3 py-3 rounded-xl border-2 border-border bg-card text-text font-semibold text-sm transition-all hover:border-primary/30" data-level="spicy" aria-pressed="false">
+        <span class="block text-xl mb-0.5">🔥</span>
+        Spicy
+      </button>
+    </div>
+
+    <!-- Card Display -->
+    <div class="relative mb-6">
+      <div id="prompt-card" class="bg-card rounded-3xl border border-border p-6 md:p-10 min-h-[180px] md:min-h-[240px] flex flex-col items-center justify-center text-center transition-all duration-300">
+        <p id="card-kicker" class="text-sm uppercase tracking-widest text-text-light mb-3 font-medium">
+          Never have I ever…
+        </p>
+        <p id="card-text" class="text-xl md:text-2xl font-semibold text-text leading-snug">
+          Tap below to start
+        </p>
+      </div>
+    </div>
+
+    <!-- Action Button -->
+    <button type="button" id="next-btn" class="w-full px-6 py-4 btn-pink rounded-2xl font-bold text-lg transition-all hover:scale-[1.01] active:scale-95 mb-6">
+      Next prompt →
+    </button>
+
+    <!-- Counter -->
+    <p id="counter" class="text-center text-text-secondary text-sm mb-8">
+      <span id="round-num">0</span> confessions played
+    </p>
+
+    <!-- Share -->
+    <div class="text-center mb-12">
+      <ShareButtons
+        title="Send this game to your partner"
+        text="Play Never Have I Ever with me — sweet, playful, or spicy. Free game for couples:"
+      />
+    </div>
+
+    <ToolAppCta
+      kicker="Loved this?"
+      heading="Get endless prompts in the app"
+      copy="Never Have I Ever for two — plus your messages, memories, daily questions and games, all saved in one private space, just for the two of you."
+    />
+
+    <!-- SEO Body Content -->
+    <article class="prose prose-sm max-w-none text-text-secondary mb-12 space-y-5 leading-relaxed mt-12">
+      <h2 class="text-xl font-semibold text-text tracking-tight">A Never Have I Ever built for two</h2>
+      <p>
+        Most Never Have I Ever lists are made for a room full of people and a stack of drinks. This one is made for couples — pass-and-play on one phone, prompts that lean into your history together, and confessions that actually teach you something new about each other. No signup, no ads, just tap and confess.
+      </p>
+      <h2 class="text-xl font-semibold text-text tracking-tight">Three levels for every mood</h2>
+      <ul class="space-y-2 list-disc pl-5">
+        <li><strong class="text-text">💖 Sweet</strong> — nostalgic and safe for anywhere. The little things you've secretly done because you're smitten.</li>
+        <li><strong class="text-text">😜 Playful</strong> — cheeky little confessions. The harmless stuff you'd only admit in a game.</li>
+        <li><strong class="text-text">🔥 Spicy</strong> — behind the door, for tonight. Flirtier and bolder, still tasteful.</li>
+      </ul>
+      <h2 class="text-xl font-semibold text-text tracking-tight">How to play</h2>
+      <p>
+        Sit next to your partner (or hop on a video call if you're long-distance). Pick a level and tap for a statement. Read it aloud — you both say whether you "have" or "never," and the fun part is the story that follows. Tap again for the next one. There's no scoring; the goal is to laugh and learn something you didn't know.
+      </p>
+    </article>
+  </div>
+
+  <script define:vars={{ prompts }}>
+    let currentLevel = 'sweet';
+    let lastIndex = { sweet: -1, playful: -1, spicy: -1 };
+    let rounds = 0;
+
+    const card = document.getElementById('prompt-card');
+    const cardText = document.getElementById('card-text');
+    const cardKicker = document.getElementById('card-kicker');
+    const nextBtn = document.getElementById('next-btn');
+    const roundNum = document.getElementById('round-num');
+    const levelButtons = document.querySelectorAll('.level-btn');
+
+    const levelStyle = {
+      sweet:   { classes: ['bg-primary/5', 'border-primary/30'],   kicker: 'text-primary' },
+      playful: { classes: ['bg-accent/10', 'border-accent/30'],    kicker: 'text-accent' },
+      spicy:   { classes: ['bg-partner/10', 'border-partner/30'],   kicker: 'text-partner' }
+    };
+
+    function nextPrompt() {
+      const pool = prompts[currentLevel];
+      let idx;
+      do {
+        idx = Math.floor(Math.random() * pool.length);
+      } while (pool.length > 1 && idx === lastIndex[currentLevel]);
+      lastIndex[currentLevel] = idx;
+
+      Object.values(levelStyle).forEach(s => s.classes.forEach(c => card.classList.remove(c)));
+      card.classList.add(...levelStyle[currentLevel].classes);
+      cardKicker.className = `text-sm uppercase tracking-widest mb-3 font-medium ${levelStyle[currentLevel].kicker}`;
+
+      card.style.transform = 'scale(0.97)';
+      cardText.style.opacity = '0.4';
+      setTimeout(() => {
+        // strip the shared "Never have I ever" lead so the kicker carries it
+        cardText.textContent = pool[idx].replace(/^Never have I ever\s*/i, '').replace(/^…/, '').trim();
+        card.style.transform = 'scale(1)';
+        cardText.style.opacity = '1';
+      }, 120);
+
+      rounds += 1;
+      roundNum.textContent = rounds;
+      if (window.posthog) {
+        window.posthog.capture('truth_or_dare_played', { game: 'never_have_i_ever', level: currentLevel });
+      }
+    }
+
+    nextBtn.addEventListener('click', nextPrompt);
+
+    levelButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const newLevel = btn.dataset.level;
+        if (newLevel === currentLevel) return;
+        currentLevel = newLevel;
+        levelButtons.forEach(b => {
+          const active = b.dataset.level === currentLevel;
+          b.classList.toggle('border-primary', active);
+          b.classList.toggle('bg-primary/10', active);
+          b.classList.toggle('border-border', !active);
+          b.classList.toggle('bg-card', !active);
+          b.setAttribute('aria-pressed', String(active));
+        });
+        if (window.posthog) {
+          window.posthog.capture('truth_or_dare_level_changed', { game: 'never_have_i_ever', level: currentLevel });
+        }
+      });
+    });
+  </script>
+</ToolLayout>

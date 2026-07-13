@@ -2,8 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import StickyAppCta from '../components/StickyAppCta.astro';
+import Icon from '../components/Icon.astro';
+import catalog from '../data/catalog.json';
 
 const appStoreUrl = "https://apps.apple.com/app/id6758024356";
+const games = catalog.games;
 ---
 
 <Layout
@@ -37,7 +41,8 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             <!-- Social proof (above CTA — primes the user) -->
             <div class="animate-fade-in-delay-1 flex items-center justify-center lg:justify-start gap-2 mb-5">
               <span class="text-[#FFC107] text-base tracking-wider" aria-hidden="true">★★★★★</span>
-              <span class="text-text-secondary text-sm font-medium">By a couple, for couples</span>
+              <span class="text-sm font-bold text-text">4.9/5</span>
+              <span class="text-text-secondary text-sm font-medium">· By a couple, for couples</span>
             </div>
 
             <div class="animate-fade-in-delay-2">
@@ -68,14 +73,14 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
           <div class="animate-fade-in-delay-video flex justify-center lg:justify-end">
             <div class="hero-shots">
               <div class="hero-shot hero-shot--left" aria-hidden="true">
-                <img src="/screenshotleft.webp" alt="OurCouple app — your couple card" class="hero-shot-img" loading="eager" />
+                <img src="/screenshot-left-2.webp" alt="OurCouple app — your couple card" class="hero-shot-img" loading="eager" />
               </div>
               <div class="hero-shot hero-shot--right" aria-hidden="true">
-                <img src="/screenshotright.webp" alt="OurCouple app — today's ritual" class="hero-shot-img" loading="eager" />
+                <img src="/screenshot-right-2.webp" alt="OurCouple app — today's ritual" class="hero-shot-img" loading="eager" />
               </div>
               <div class="hero-shot hero-shot--main">
                 <img
-                  src="/mainscreenshot.webp"
+                  src="/screenshot-center-2.webp"
                   alt="OurCouple home screen — couple card with days together, compatibility and engagement scores, and today's ritual"
                   class="hero-shot-img"
                   loading="eager"
@@ -94,7 +99,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
         <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
           <!-- Mobile-only title (appears first on mobile, hidden on md+) -->
           <div class="md:hidden">
-            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-5">New in 2.0</span>
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary-dark bg-primary/10 px-3 py-1 rounded-full mb-5">New in 2.0</span>
             <h2 class="tracking-tighter text-4xl font-bold text-text">
               Get your couple card
             </h2>
@@ -102,7 +107,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
 
           <!-- Copy (title hidden on mobile, shown on md+) -->
           <div class="order-3 md:order-1">
-            <span class="hidden md:inline-block text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-5">New in 2.0</span>
+            <span class="hidden md:inline-block text-xs font-semibold uppercase tracking-wider text-primary-dark bg-primary/10 px-3 py-1 rounded-full mb-5">New in 2.0</span>
             <h2 class="hidden md:block tracking-tighter text-4xl md:text-5xl font-bold text-text mb-5">
               Get your couple card
             </h2>
@@ -111,19 +116,19 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             </p>
             <ul class="space-y-3">
               <li class="flex items-start gap-3 text-text">
-                <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg class="w-5 h-5 text-primary-dark shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 <span>Anniversary date &amp; days together, at a glance</span>
               </li>
               <li class="flex items-start gap-3 text-text">
-                <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg class="w-5 h-5 text-primary-dark shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 <span>Compatibility &amp; engagement scores, automatically updated</span>
               </li>
               <li class="flex items-start gap-3 text-text">
-                <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg class="w-5 h-5 text-primary-dark shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 <span>Your partner's love notes + your virtual pet</span>
               </li>
               <li class="flex items-start gap-3 text-text">
-                <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <svg class="w-5 h-5 text-primary-dark shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 <span>Make it yours: themes, colours, layout...</span>
               </li>
             </ul>
@@ -131,7 +136,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
               href={appStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-8 inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors"
+              class="btn-pink mt-8 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold"
               aria-label="Create your couple card — download OurCouple on the App Store"
               data-fast-goal="cta_couple_card_download"
             >
@@ -187,8 +192,8 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
         <div class="grid md:grid-cols-3 gap-8">
           <!-- Feature 1: Daily Check-ins -->
           <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
-            <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-              <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+              <svg class="w-5 h-5 text-primary-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
               </svg>
             </div>
@@ -196,35 +201,29 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             <p class="text-text-secondary mb-3">
               A message, a photo, or a question of the day — your tiny ritual together. Builds a streak that's actually worth keeping.
             </p>
-            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Daily check-ins</span>
+            <span class="inline-block text-xs font-medium text-primary-dark bg-primary/10 px-2 py-1 rounded-full">Daily check-ins</span>
           </article>
 
           <!-- Feature 2: Love Notes -->
           <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
-            <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-              <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="4"/>
-                <path d="M12 2v2"/>
-                <path d="M12 20v2"/>
-                <path d="m4.93 4.93 1.41 1.41"/>
-                <path d="m17.66 17.66 1.41 1.41"/>
-                <path d="M2 12h2"/>
-                <path d="M20 12h2"/>
-                <path d="m6.34 17.66-1.41 1.41"/>
-                <path d="m19.07 4.93-1.41 1.41"/>
+            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+              <svg class="w-5 h-5 text-primary-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                <path d="M18.4 21.6a2.14 2.14 0 0 0 3.02-3.02L18 15.15l-3.42 3.43a2.14 2.14 0 0 0 3.02 3.02Z"/>
               </svg>
             </div>
             <h3 class="font-semibold text-xl text-text mb-3">Surprise them with love notes</h3>
             <p class="text-text-secondary mb-3">
               Drop sweet notes into a shared pool. Each day, one shows up to your partner — unexpected, theirs alone.
             </p>
-            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Love notes</span>
+            <span class="inline-block text-xs font-medium text-primary-dark bg-primary/10 px-2 py-1 rounded-full">Love notes</span>
           </article>
 
           <!-- Feature 3: Memory Album -->
           <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
-            <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-              <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+              <svg class="w-5 h-5 text-primary-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
                 <circle cx="9" cy="9" r="2"/>
                 <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
@@ -234,13 +233,13 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             <p class="text-text-secondary mb-3">
               Save your favorite photos and the story behind each one. Not lost in a camera roll, not buried in a chat.
             </p>
-            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Memory album</span>
+            <span class="inline-block text-xs font-medium text-primary-dark bg-primary/10 px-2 py-1 rounded-full">Memory album</span>
           </article>
 
           <!-- Feature 4: Shared Notes -->
           <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
-            <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-              <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+              <svg class="w-5 h-5 text-primary-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
                 <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
                 <path d="M10 9H8"/>
@@ -252,13 +251,13 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             <p class="text-text-secondary mb-3">
               Plan a trip, list movies to watch, write your thoughts. You both edit live, and only the two of you see it.
             </p>
-            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Shared notes</span>
+            <span class="inline-block text-xs font-medium text-primary-dark bg-primary/10 px-2 py-1 rounded-full">Shared notes</span>
           </article>
 
           <!-- Feature 5: Events & Dates -->
           <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
-            <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-              <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+              <svg class="w-5 h-5 text-primary-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M8 2v4"/>
                 <path d="M16 2v4"/>
                 <rect width="18" height="18" x="3" y="4" rx="2"/>
@@ -269,13 +268,13 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             <p class="text-text-secondary mb-3">
               Anniversaries, dates, the concert in 4 months — kept in one place. Syncs with your Apple and Google calendars.
             </p>
-            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Events & ideas</span>
+            <span class="inline-block text-xs font-medium text-primary-dark bg-primary/10 px-2 py-1 rounded-full">Events & ideas</span>
           </article>
 
           <!-- Feature 6: Private & Secure -->
           <article class="p-8 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
-            <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-              <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+              <svg class="w-5 h-5 text-primary-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
               </svg>
@@ -284,9 +283,34 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             <p class="text-text-secondary mb-3">
               End-to-end encrypted. No ads, no tracking, nothing shared with anyone. Just the two of you, for real.
             </p>
-            <span class="inline-block text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">Private & secure</span>
+            <span class="inline-block text-xs font-medium text-primary-dark bg-primary/10 px-2 py-1 rounded-full">Private & secure</span>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- Widgets Section — deliberately vertical & centered to break the
+         grid-after-grid rhythm of Features and Games around it. -->
+    <section id="widgets" class="py-24 bg-gradient-radial overflow-hidden" data-fast-scroll="scroll_widgets">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary-dark bg-primary/10 px-3 py-1 rounded-full mb-5">Widgets</span>
+        <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-text mb-4">
+          Your love, right on your home screen
+        </h2>
+        <p class="text-text-secondary text-base md:text-lg max-w-2xl mx-auto">
+          Keep each other close without opening the app. Widgets put your couple card, love streak and photo of the day on your home &amp; lock screen — a love note envelope appears when a note is waiting, and countdowns tick toward your anniversary or your next reunion.
+        </p>
+      </div>
+      <div class="max-w-2xl mx-auto px-6 mt-12">
+        <img
+          src="/widgets-opt.webp"
+          alt="OurCouple home-screen widgets — couple card, love streak, photo of the day, love note envelope and anniversary countdown"
+          width="1400"
+          height="1236"
+          class="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </section>
 
@@ -294,7 +318,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
     <section id="games" class="py-24 bg-background" data-fast-scroll="scroll_games">
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center max-w-2xl mx-auto mb-12">
-          <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-5">Quizzes &amp; games</span>
+          <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary-dark bg-primary/10 px-3 py-1 rounded-full mb-5">Quizzes &amp; games</span>
           <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-text mb-4">
             Learn more about each other
           </h2>
@@ -303,31 +327,23 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
           </p>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div class="p-6 rounded-2xl bg-card border border-border">
-            <h3 class="font-semibold text-lg text-text mb-1">Couple quiz</h3>
-            <p class="text-text-secondary text-sm">How well do you really know your partner?</p>
-          </div>
-          <div class="p-6 rounded-2xl bg-card border border-border">
-            <h3 class="font-semibold text-lg text-text mb-1">Would you rather</h3>
-            <p class="text-text-secondary text-sm">Playful this-or-that prompts, just for two.</p>
-          </div>
-          <div class="p-6 rounded-2xl bg-card border border-border">
-            <h3 class="font-semibold text-lg text-text mb-1">Love language</h3>
-            <p class="text-text-secondary text-sm">Decode how you each give and feel love.</p>
-          </div>
-          <div class="p-6 rounded-2xl bg-card border border-border">
-            <h3 class="font-semibold text-lg text-text mb-1">36 questions to fall in love</h3>
-            <p class="text-text-secondary text-sm">The classic set that builds closeness fast.</p>
-          </div>
-          <div class="p-6 rounded-2xl bg-card border border-border">
-            <h3 class="font-semibold text-lg text-text mb-1">Truth or dare</h3>
-            <p class="text-text-secondary text-sm">Sweet, playful or spicy — your call.</p>
-          </div>
-          <div class="p-6 rounded-2xl bg-card border border-border">
-            <h3 class="font-semibold text-lg text-text mb-1">Attachment style</h3>
-            <p class="text-text-secondary text-sm">Understand your patterns, together.</p>
-          </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {games.map(item => (
+            <a
+              href={item.href}
+              class="group relative overflow-hidden rounded-2xl p-5 min-h-[132px] flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all"
+              style={`background-image: linear-gradient(135deg, ${item.gradient[0]}, ${item.gradient[1]})`}
+            >
+              <div class="absolute inset-0" style="background-image: linear-gradient(to top, rgba(0,0,0,0.34), rgba(0,0,0,0) 58%)"></div>
+              <div class="relative w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+                <Icon name={item.icon} class="w-5 h-5 text-white" />
+              </div>
+              <div class="relative mt-3">
+                <h3 class="font-semibold text-base text-white mb-0.5">{item.title}</h3>
+                <p class="text-white/90 text-xs leading-relaxed">{item.description}</p>
+              </div>
+            </a>
+          ))}
         </div>
 
         <div class="text-center mt-10">
@@ -340,6 +356,33 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <p class="text-text-light text-sm mt-1">All quizzes &amp; games are in the app.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-card" data-fast-scroll="scroll_testimonials">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex items-center justify-center gap-2 mb-3">
+          <span class="text-[#FFC107] text-lg tracking-wider" aria-hidden="true">★★★★★</span>
+          <span class="text-text-secondary text-sm font-medium">Loved by couples</span>
+        </div>
+        <h2 class="tracking-tighter text-3xl md:text-4xl font-bold text-center text-text mb-10">
+          What couples are saying
+        </h2>
+        <div class="grid sm:grid-cols-3 gap-5">
+          <figure class="p-6 rounded-2xl bg-background border border-border flex flex-col">
+            <blockquote class="text-text leading-relaxed flex-1">"Thanks for making a great platform that my partner and I can use. It's very cute and creative."</blockquote>
+            <figcaption class="text-primary-dark text-sm mt-4 font-semibold">— A&amp;N</figcaption>
+          </figure>
+          <figure class="p-6 rounded-2xl bg-background border border-border flex flex-col">
+            <blockquote class="text-text leading-relaxed flex-1">"Me and my wife are enjoying the app. We love the games!"</blockquote>
+            <figcaption class="text-primary-dark text-sm mt-4 font-semibold">— J&amp;V</figcaption>
+          </figure>
+          <figure class="p-6 rounded-2xl bg-background border border-border flex flex-col">
+            <blockquote class="text-text leading-relaxed flex-1 text-xl font-semibold">"We love it!"</blockquote>
+            <figcaption class="text-primary-dark text-sm mt-4 font-semibold">— I&amp;D</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -436,21 +479,21 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
         <div class="grid md:grid-cols-3 gap-8 text-center">
           <div>
             <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl font-bold text-primary">1</span>
+              <span class="text-2xl font-bold text-primary-dark">1</span>
             </div>
             <h3 class="font-semibold text-lg text-text mb-2">Download & Sign Up</h3>
             <p class="text-text-secondary">Create your account with just your email and name</p>
           </div>
           <div>
             <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl font-bold text-primary">2</span>
+              <span class="text-2xl font-bold text-primary-dark">2</span>
             </div>
             <h3 class="font-semibold text-lg text-text mb-2">Share Your Code</h3>
             <p class="text-text-secondary">Get a unique invite code and share it with your partner</p>
           </div>
           <div>
             <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl font-bold text-primary">3</span>
+              <span class="text-2xl font-bold text-primary-dark">3</span>
             </div>
             <h3 class="font-semibold text-lg text-text mb-2">Connect Together</h3>
             <p class="text-text-secondary">Your private couple space is ready. Start growing your love streak!</p>
@@ -520,7 +563,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
               </svg>
             </summary>
             <div class="px-6 pb-6 text-text-secondary">
-              <p>Yes! OurCouple is available on iOS and Android. The Android version is in early access — sign up with your email below to get it.</p>
+              <p>Yes! OurCouple is available on iOS and Android. The Android version is in free beta — join the tester group at the bottom of this page and install it from the Play Store in under a minute.</p>
             </div>
           </details>
 
@@ -595,25 +638,34 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
         </a>
         <p class="text-text-secondary text-sm mt-2 mb-8">Free to start • Upgrade anytime</p>
 
-        <!-- Android Early Access -->
+        <!-- Android Beta (direct join — replaced the email waitlist, which converted at ~3/mo) -->
         <div class="max-w-lg mx-auto mt-16 p-6 bg-card/50 rounded-2xl border border-border">
           <p class="font-semibold text-text mb-1">OurCouple for Android</p>
-          <p class="text-text-secondary text-sm mb-4">Sign up to get early access to the app.</p>
-          <form class="flex flex-col sm:flex-row gap-3" id="android-waitlist-form">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              required
-              class="flex-1 px-5 py-3 rounded-xl border border-border bg-card text-text placeholder:text-text-light focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-            />
-            <button
-              type="submit"
-              class="px-6 py-3 bg-partner-dark text-white rounded-xl font-semibold hover:bg-partner-dark/90 transition-colors whitespace-nowrap cursor-pointer"
+          <p class="text-text-secondary text-sm mb-4">The Android app is in free beta — join in two quick steps:</p>
+          <ol class="text-left text-sm text-text-secondary space-y-2 mb-5 max-w-sm mx-auto">
+            <li><span class="font-semibold text-text">1.</span> Join the tester group (one click with your Google account)</li>
+            <li><span class="font-semibold text-text">2.</span> Install the app from the Play Store beta link</li>
+          </ol>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href="https://groups.google.com/g/ourcouple---android-test"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 bg-partner-dark text-white rounded-xl font-semibold hover:bg-partner-dark/90 transition-colors whitespace-nowrap"
               data-fast-goal="cta_android_early_access"
             >
-              Get it on Android
-            </button>
-          </form>
+              1. Join the beta group
+            </a>
+            <a
+              href="https://play.google.com/apps/testing/com.vynse.ourcouple"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 border border-partner-dark/40 text-partner-dark rounded-xl font-semibold hover:bg-partner-dark/5 transition-colors whitespace-nowrap"
+              data-fast-goal="cta_android_play_install"
+            >
+              2. Get it on Play Store
+            </a>
+          </div>
         </div>
 
         <p class="text-text-secondary mt-8">
@@ -624,6 +676,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
   </main>
 
   <Footer />
+  <StickyAppCta />
 
   <style>
     /* 3D interactive couple card */
@@ -707,7 +760,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
       position: relative;
       z-index: 3;
       width: 13rem;
-      aspect-ratio: 1284 / 2778;
+      aspect-ratio: 1221 / 2518;
     }
     .hero-shot--left {
       position: absolute;
@@ -715,7 +768,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
       top: 50%;
       z-index: 1;
       width: 10rem;
-      aspect-ratio: 1284 / 2778;
+      aspect-ratio: 1221 / 2518;
       transform: translate(15%, -50%) rotate(-5deg);
     }
     .hero-shot--right {
@@ -724,7 +777,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
       top: 50%;
       z-index: 2;
       width: 10rem;
-      aspect-ratio: 1284 / 2778;
+      aspect-ratio: 1221 / 2518;
       transform: translate(-15%, -50%) rotate(5deg);
     }
     @media (max-width: 767px) {
@@ -832,77 +885,4 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
        (delegated listener → fires website_cta_clicked with the real page +
        data-cta-location on every page, not just the homepage). -->
 
-  <!-- Android waitlist form handling -->
-  <script define:vars={{
-    SUPABASE_URL: import.meta.env.PUBLIC_SUPABASE_URL,
-    SUPABASE_ANON_KEY: import.meta.env.PUBLIC_SUPABASE_ANON_KEY
-  }}>
-    const androidForm = document.getElementById('android-waitlist-form');
-    if (androidForm) {
-      androidForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const emailInput = androidForm.querySelector('input[type="email"]');
-        const submitBtn = androidForm.querySelector('button[type="submit"]');
-        const email = emailInput.value.trim().toLowerCase();
-
-        emailInput.disabled = true;
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Joining...';
-
-        try {
-          const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'apikey': SUPABASE_ANON_KEY,
-              'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-              'Prefer': 'return=minimal'
-            },
-            body: JSON.stringify({ email, source: 'android-waitlist' })
-          });
-
-          if (response.ok) {
-            if (window.posthog) {
-              window.posthog.capture('website_android_waitlist', { email });
-            }
-            emailInput.value = '';
-            submitBtn.textContent = "You're in!";
-            submitBtn.classList.remove('bg-partner', 'hover:bg-partner/90');
-            submitBtn.classList.add('bg-green-500');
-
-            setTimeout(() => {
-              submitBtn.textContent = 'Notify Me';
-              submitBtn.classList.remove('bg-green-500');
-              submitBtn.classList.add('bg-partner', 'hover:bg-partner/90');
-              emailInput.disabled = false;
-              submitBtn.disabled = false;
-            }, 3000);
-          } else if (response.status === 409) {
-            submitBtn.textContent = 'Already joined!';
-            setTimeout(() => {
-              submitBtn.textContent = 'Notify Me';
-              emailInput.disabled = false;
-              submitBtn.disabled = false;
-            }, 2000);
-          } else {
-            throw new Error('Failed to join');
-          }
-        } catch (error) {
-          console.error('Waitlist error:', error);
-          submitBtn.textContent = 'Error, retry';
-          submitBtn.classList.remove('bg-partner');
-          submitBtn.classList.add('bg-red-500');
-
-          setTimeout(() => {
-            submitBtn.textContent = 'Notify Me';
-            submitBtn.classList.remove('bg-red-500');
-            submitBtn.classList.add('bg-partner');
-            emailInput.disabled = false;
-            submitBtn.disabled = false;
-          }, 2000);
-        }
-      });
-    }
-  </script>
 </Layout>

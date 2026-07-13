@@ -1,0 +1,72 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
+import QuizWidget from '../../components/tools/QuizWidget.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+import quiz from '../../data/long-distance-bond.json';
+---
+
+<ToolLayout
+  title="How Strong Is Your Long-Distance Relationship? Free Quiz"
+  description="Free long-distance relationship quiz — 7 honest questions to see how strong your LDR bond really is, plus one nudge to make it stronger. No signup."
+  canonicalPath="/tools/long-distance-bond"
+  howTo={{
+    name: "How to test your long-distance bond",
+    description: "A free 7-question quiz for long-distance couples.",
+    steps: [
+      { name: "Answer 7 honest questions", text: "Rate how your daily contact, rituals, and reunion plans really feel right now." },
+      { name: "Get your snapshot", text: "See your bond tier — from Unshakable to Stretched Thin — plus one concrete nudge." },
+      { name: "Compare together", text: "Have your partner take it too and close the gap in the OurCouple app." }
+    ]
+  }}
+  faqs={[
+    { question: "What makes a long-distance relationship strong?", answer: "Three things show up again and again: consistent daily rituals (a message, a photo, a question), open communication about doubts before they grow, and a concrete plan with a date for closing the distance. This quiz checks all three." },
+    { question: "Is my long-distance relationship going to make it?", answer: "No quiz can predict that — and this one won't try. It gives you an honest snapshot of where your bond is right now and one thing to work on. A 'Stretched Thin' result is a signal to talk, not a verdict." },
+    { question: "How often should long-distance couples talk?", answer: "There's no magic number — consistency beats volume. One small ritual you never skip (a good-morning text, a nightly voice note, a shared show) does more for the bond than sporadic marathon calls." },
+    { question: "How do we handle the distance better?", answer: "Pick one daily ritual and guard it for 30 days, put your next reunion date somewhere you both see daily, and say the hard feelings early. The OurCouple app is built for exactly this — shared rituals, reunion countdowns, and a private space for two." }
+  ]}
+  ctaHeading="Close the distance together"
+  ctaCopy="OurCouple gives long-distance couples daily rituals, reunion countdowns, and a private shared space — so the miles feel shorter every day."
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <Icon name="plane" class="w-8 h-8 text-primary" />
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+        How Strong Is Your Long-Distance Bond?
+      </h1>
+      <p class="text-text-secondary">
+        7 honest questions for couples doing the distance. A snapshot, never a verdict.
+      </p>
+    </div>
+  </div>
+
+  <QuizWidget quizId="long-distance-bond" intro={quiz.intro} questions={quiz.questions} results={quiz.results}>
+    <ToolAppCta
+      slot="cta"
+      kicker="Made for the distance"
+      heading="Do the distance, together"
+      copy="This is your snapshot. In the OurCouple app you get daily rituals, a reunion countdown, and a private space for two — the tools that keep a long-distance bond strong."
+    />
+    <ShareButtons
+      slot="share"
+      title="Share your result"
+      text="I just took the long-distance bond quiz. Take it too so we can compare:"
+    />
+  </QuizWidget>
+
+  <div class="max-w-2xl mx-auto px-4 mt-12 prose prose-sm">
+    <h2>What the result tiers mean</h2>
+    <ul>
+      <li><strong>🔒 Unshakable</strong> — rituals, trust and a plan; distance is just geography for you two.</li>
+      <li><strong>🌟 Thriving apart</strong> — real habits keep you close; add a visible reunion countdown.</li>
+      <li><strong>🌱 Building the bridge</strong> — the love is there, the systems are catching up.</li>
+      <li><strong>🧵 Stretched thin</strong> — the distance is taking a toll; a signal to talk, not a sentence.</li>
+    </ul>
+    <p>
+      Long distance isn't a weaker version of a relationship — it's the same love on hard mode. The couples who thrive protect their small rituals and always know when they'll next be in the same room. If that's slipped lately, this is your nudge to fix one thing this week.
+    </p>
+  </div>
+</ToolLayout>

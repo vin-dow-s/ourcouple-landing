@@ -1,0 +1,103 @@
+{
+  "intro": "12 rapid picks, one after another — no overthinking. Answer for yourself, then send it to your partner and see how often you two land on the same side.",
+  "questions": [
+    {
+      "text": "Date night:",
+      "options": [
+        { "label": "Night out somewhere new", "type": "spark" },
+        { "label": "Movie night at home", "type": "cozy" }
+      ]
+    },
+    {
+      "text": "Morning:",
+      "options": [
+        { "label": "Up early, seize the day", "type": "spark" },
+        { "label": "Sleep in, slow start", "type": "cozy" }
+      ]
+    },
+    {
+      "text": "Vacation:",
+      "options": [
+        { "label": "A city we've never seen", "type": "spark" },
+        { "label": "Beach and zero plans", "type": "cozy" }
+      ]
+    },
+    {
+      "text": "Dinner:",
+      "options": [
+        { "label": "Try the weird new place", "type": "spark" },
+        { "label": "Order the usual we love", "type": "cozy" }
+      ]
+    },
+    {
+      "text": "Weekend:",
+      "options": [
+        { "label": "Say yes to the party", "type": "spark" },
+        { "label": "Cancel everything, just us", "type": "cozy" }
+      ]
+    },
+    {
+      "text": "Music in the car:",
+      "options": [
+        { "label": "Loud, windows down", "type": "spark" },
+        { "label": "Soft, talking over it", "type": "cozy" }
+      ]
+    },
+    {
+      "text": "Gifts:",
+      "options": [
+        { "label": "A surprise experience", "type": "spark" },
+        { "label": "Something cozy I'll use daily", "type": "cozy" }
+      ]
+    },
+    {
+      "text": "Texting style:",
+      "options": [
+        { "label": "Voice notes and chaos", "type": "spark" },
+        { "label": "Full sentences, on time", "type": "cozy" }
+      ]
+    },
+    {
+      "text": "Rainy Sunday:",
+      "options": [
+        { "label": "Museum / arcade / anywhere", "type": "spark" },
+        { "label": "Blanket fort and snacks", "type": "cozy" }
+      ]
+    },
+    {
+      "text": "Celebrating a win:",
+      "options": [
+        { "label": "Tell everyone, big dinner", "type": "spark" },
+        { "label": "Quiet toast, just us two", "type": "cozy" }
+      ]
+    },
+    {
+      "text": "Future home:",
+      "options": [
+        { "label": "Downtown, alive at midnight", "type": "spark" },
+        { "label": "Quiet street, big kitchen", "type": "cozy" }
+      ]
+    },
+    {
+      "text": "Love looks like:",
+      "options": [
+        { "label": "Grand gestures", "type": "spark" },
+        { "label": "A thousand small ones", "type": "cozy" }
+      ]
+    }
+  ],
+  "results": {
+    "spark": {
+      "title": "Spark Chaser",
+      "emoji": "⚡",
+      "description": "Novelty is your fuel — new places, loud nights, yes-energy. You keep the relationship moving and surprising.",
+      "tip": "Send this to your partner and check your match %. Where you differ is where date night gets interesting."
+    },
+    "cozy": {
+      "title": "Cozy Heart",
+      "emoji": "🫶",
+      "description": "Comfort is your love language — rituals, blankets, the usual order that never gets old. You make 'ordinary' feel safe and warm.",
+      "tip": "Send this to your partner and check your match %. Where you differ is where date night gets interesting."
+    }
+  }
+}

@@ -1,0 +1,69 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
+import QuizWidget from '../../components/tools/QuizWidget.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+import quiz from '../../data/this-or-that.json';
+---
+
+<ToolLayout
+  title="This or That — Couples Edition (Free Game, No Signup)"
+  description="Free This or That game for couples — 12 rapid this-or-that picks. Answer fast, share it, and see how often you and your partner match. No signup."
+  canonicalPath="/tools/this-or-that"
+  howTo={{
+    name: "How to play This or That for couples",
+    description: "A free 12-round This or That game for couples.",
+    steps: [
+      { name: "Make 12 quick picks", text: "Tap the option that feels most like you — no overthinking, gut answers only." },
+      { name: "Get your lean", text: "See whether you lean Spark Chaser or Cozy Heart." },
+      { name: "Compare together", text: "Have your partner play too and see your match % in the OurCouple app." }
+    ]
+  }}
+  faqs={[
+    { question: "How do you play This or That with your partner?", answer: "It's the fastest couple game there is: you each make 12 rapid this-or-that picks (night out or movie night, sleep in or seize the day, and so on), then compare. The fun is seeing where you instantly agree — and where you're hilariously opposite." },
+    { question: "Is This or That free?", answer: "Yes, completely free — no signup, no email, no app required to play the web version. Just start tapping." },
+    { question: "What does my result mean?", answer: "Your picks lean one of two ways: Spark Chaser (novelty, energy, yes to the new) or Cozy Heart (rituals, comfort, the usual you love). It's a light read on your date-night energy, not a personality test." },
+    { question: "Can we see our match percentage?", answer: "On the web you can compare answers side by side. In the OurCouple app, you each play and it calculates your real match % automatically — feeding your couple's Compatibility Score over time." }
+  ]}
+  ctaHeading="See your real match %"
+  ctaCopy="In the OurCouple app you both play, and your match % is calculated automatically — building your Compatibility Score and saved in your private space for two."
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <Icon name="zap" class="w-8 h-8 text-primary" />
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+        This or That — Couples Edition
+      </h1>
+      <p class="text-text-secondary">
+        12 rapid picks. Answer fast, then see how often you two land on the same side.
+      </p>
+    </div>
+  </div>
+
+  <QuizWidget quizId="this-or-that" intro={quiz.intro} questions={quiz.questions} results={quiz.results}>
+    <ToolAppCta
+      slot="cta"
+      kicker="Want your match %?"
+      heading="Play it together"
+      copy="You got your lean. In the OurCouple app you both play and see your real match % — plus 20+ more quizzes & games, all in your private space for two."
+    />
+    <ShareButtons
+      slot="share"
+      title="Share the game"
+      text="Play This or That with me — 12 rapid picks, let's see our match %:"
+    />
+  </QuizWidget>
+
+  <div class="max-w-2xl mx-auto px-4 mt-12 prose prose-sm">
+    <h2>Why couples love This or That</h2>
+    <p>
+      It's the lowest-effort, highest-fun couple game there is: no rules to learn, no scoring to track, just twelve gut-instinct picks. The magic is in the reveal — the places you instantly match feel like proof you're in sync, and the places you're opposite become the funniest conversation of the night.
+    </p>
+    <p>
+      Play it on a first date, on a long drive, or across a video call if you're long-distance. When you want the real match percentage (and 20+ deeper games), that lives in the OurCouple app — free to start, one plan for both of you.
+    </p>
+  </div>
+</ToolLayout>

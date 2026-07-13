@@ -74,12 +74,19 @@ import questions from '../../data/quiz-questions.json';
 
         <button
           id="start-quiz"
-          class="w-full px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          class="w-full px-6 py-3 btn-pink rounded-xl font-semibold hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           disabled
         >
           Start the Quiz
         </button>
       </div>
+
+      <!-- Cross-link to the long-form article (two-way link with the blog post
+           that targets the "questions" intent — the quiz targets "quiz") -->
+      <p class="text-center text-text-secondary text-sm mb-6">
+        Prefer asking face-to-face? Get our list of
+        <a href="/blog/how-well-do-you-know-your-partner" class="text-primary hover:underline">100+ how-well-do-you-know-your-partner questions</a>.
+      </p>
     </div>
 
     <!-- Mode: Questions (answering about partner) -->
@@ -113,7 +120,7 @@ import questions from '../../data/quiz-questions.json';
           </button>
           <button
             id="next-btn"
-            class="flex-1 px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            class="flex-1 px-6 py-3 btn-pink rounded-xl font-semibold hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             disabled
           >
             Next
@@ -142,7 +149,7 @@ import questions from '../../data/quiz-questions.json';
           />
           <button
             id="copy-link"
-            class="px-4 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark transition-colors"
+            class="px-4 py-3 btn-pink rounded-xl font-medium hover:bg-primary-dark transition-colors"
           >
             Copy
           </button>

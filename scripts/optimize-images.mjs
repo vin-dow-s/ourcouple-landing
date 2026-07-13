@@ -19,12 +19,13 @@ const pub = join(root, 'public');
 // × 3 (high-DPR mobile); withoutEnlargement caps each at its true source width,
 // so requesting more than the source simply yields the full-resolution source.
 const jobs = [
-  ['mainscreenshot.png', 'mainscreenshot.webp', 540], // hero center phone (~168px css mobile -> 3x)
-  ['screenshotleft.png', 'screenshotleft.webp', 440], // hero left phone   (~128px css mobile -> 3x)
-  ['screenshotright.png', 'screenshotright.webp', 440], // hero right phone (~128px css mobile -> 3x)
+  ['screenshot-center-2.png', 'screenshot-center-2.webp', 540], // hero center phone (~168px css mobile -> 3x)
+  ['screenshot-left-2.png', 'screenshot-left-2.webp', 440], // hero left phone   (~128px css mobile -> 3x)
+  ['screenshot-right-2.png', 'screenshot-right-2.webp', 440], // hero right phone (~128px css mobile -> 3x)
   ['couplecard.jpg', 'couplecard.webp', 1400], // 3D couple card (~364px css mobile -> capped to source)
   ['card2.png', 'card2.webp', 1600], // alt card peeking behind (capped to source)
   ['logo-512.png', 'logo-192.webp', 192], // header/footer logo (40-48px css -> 4x)
+  ['widgets.webp', 'widgets-opt.webp', 1400], // homepage widgets section (~640px css -> 2x+)
 ];
 
 const kb = (p) => (statSync(p).size / 1024).toFixed(0);

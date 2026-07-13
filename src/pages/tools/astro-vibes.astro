@@ -1,0 +1,72 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import Icon from '../../components/Icon.astro';
+import QuizWidget from '../../components/tools/QuizWidget.astro';
+import ToolAppCta from '../../components/ToolAppCta.astro';
+import ShareButtons from '../../components/tools/ShareButtons.astro';
+import quiz from '../../data/astro-vibes.json';
+---
+
+<ToolLayout
+  title="What's Your Relationship Element? Free Astro Vibes Quiz"
+  description="Free 'which element are you' quiz for couples — Fire, Earth, Air, or Water. Playful astrology vibes, no birth chart required. Take it, compare, no signup."
+  canonicalPath="/tools/astro-vibes"
+  howTo={{
+    name: "How to find your relationship element",
+    description: "A free 6-question elemental vibe quiz for couples.",
+    steps: [
+      { name: "Answer 6 playful questions", text: "Pick the option that sounds most like you in the relationship." },
+      { name: "Get your element", text: "Discover whether you're Fire, Earth, Air, or Water — and what it says about how you love." },
+      { name: "Compare together", text: "Have your partner take it too and see how your elements mix in the OurCouple app." }
+    ]
+  }}
+  faqs={[
+    { question: "Do I need my birth chart or sign?", answer: "Nope. This is astrology for the vibes only — no birthday, no chart, no sign required. Your answers to six playful questions decide your element: Fire, Earth, Air, or Water." },
+    { question: "What do the four elements mean?", answer: "Fire is bold and fast-loving, Earth is steady and reliable, Air is curious and conversational, and Water is deep and intuitive. Each describes a way of showing love, not a personality box." },
+    { question: "What if my partner and I are different elements?", answer: "Different elements often balance each other beautifully — a Water reads the room a Fire fills, an Earth grounds an Air's ideas. Matching elements just means extra shared energy. There's no bad combination." },
+    { question: "Is this quiz serious?", answer: "Not even slightly — it's a fun, two-minute way to learn something about each other and get a laugh. Take it, compare, screenshot your results, and move on to a deeper one when you're ready." }
+  ]}
+  ctaHeading="Find your elements together"
+  ctaCopy="In the OurCouple app, you and your partner each find your element, see how they mix, and unlock 20+ more quizzes & games — for both of you."
+>
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+        <Icon name="moon-star" class="w-8 h-8 text-primary" />
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tight mb-3">
+        What's Your Relationship Element?
+      </h1>
+      <p class="text-text-secondary">
+        Fire, Earth, Air, or Water? Playful vibes only — no birth chart required.
+      </p>
+    </div>
+  </div>
+
+  <QuizWidget quizId="astro-vibes" intro={quiz.intro} questions={quiz.questions} results={quiz.results}>
+    <ToolAppCta
+      slot="cta"
+      kicker="More sparks?"
+      heading="Play everything together"
+      copy="You got your element. In the OurCouple app you and your partner unlock 20+ quizzes & games made to play together — one plan covers both of you."
+    />
+    <ShareButtons
+      slot="share"
+      title="Share your element"
+      text="I just found my relationship element. What's yours? Take it:"
+    />
+  </QuizWidget>
+
+  <div class="max-w-2xl mx-auto px-4 mt-12 prose prose-sm">
+    <h2>The four elements, in love</h2>
+    <ul>
+      <li><strong>🔥 Fire</strong> — bold, warm, decides fast; your partner never wonders how you feel.</li>
+      <li><strong>🌿 Earth</strong> — steady and reliable; you love through the remembered detail and the packed snacks.</li>
+      <li><strong>🌬️ Air</strong> — curious and chatty; the 2am conversations are the whole relationship.</li>
+      <li><strong>🌊 Water</strong> — deep and intuitive; you feel their mood from across the world.</li>
+    </ul>
+    <p>
+      There's no "best" element and no bad match — the fun is seeing how your two energies mix. Take it together, compare, and let it start a conversation about how you each like to give and get love.
+    </p>
+  </div>
+</ToolLayout>
