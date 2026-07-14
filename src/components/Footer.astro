@@ -112,5 +112,153 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356";
     <p class="text-text-light text-sm text-center pt-6 border-t border-border">
       &copy; 2026 OurCouple. Made with love
     </p>
+
+    <!-- Launch / directory badges. All normalized to a 32px row height. -->
+    <div class="flex flex-wrap items-center justify-center gap-2.5 mt-5">
+      <a
+        href="https://startupfa.me/s/ourcouple?utm_source=ourcouple.app"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://startupfa.me/badges/featured-badge-small.webp"
+          alt="OurCouple — Featured on Startup Fame"
+          width="224"
+          height="36"
+          class="h-8 w-auto"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+
+      <a
+        href="https://findyoursaas.com/tool/ourcouple-the-cozy-couple-app-for-daily-connection-free"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="fys-badge"
+      >
+        <img
+          src="https://findyoursaas.com/fys-logo.png"
+          alt=""
+          width="18"
+          height="18"
+          loading="lazy"
+          decoding="async"
+        />
+        <span>Featured on FYS</span>
+      </a>
+
+      <a href="https://fazier.com/launches/ourcouple.app" target="_blank" rel="noopener noreferrer">
+        <img
+          src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=neutral"
+          alt="OurCouple — Launched on Fazier"
+          width="120"
+          height="32"
+          class="h-8 w-auto"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+
+      <a
+        href="https://www.tinystartups.com/startup/ourcouple"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ts-badge"
+        aria-label="OurCouple — Launched on Tiny Startups"
+      >
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <defs>
+            <linearGradient id="ts-grad" x1=".1" y1="0" x2=".9" y2="1">
+              <stop offset="0%" stop-color="#3525E6" />
+              <stop offset="55%" stop-color="#D81FE0" />
+              <stop offset="100%" stop-color="#22B8F0" />
+            </linearGradient>
+          </defs>
+          <path d="M50 6C52 32 68 48 94 50C68 52 52 68 50 94C48 68 32 52 6 50C32 48 48 32 50 6Z" fill="url(#ts-grad)" />
+        </svg>
+        <span class="ts-text">
+          <span class="ts-kicker">Launched on</span>
+          <span class="ts-title">Tiny Startups</span>
+        </span>
+      </a>
+    </div>
   </div>
 </footer>
+
+<style>
+  /* FYS + Tiny Startups ship as raw inline-styled HTML; rebuilt here as scoped
+     CSS and scaled to the same 32px height as the image badges. */
+  .fys-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 32px;
+    padding: 0 10px;
+    border-radius: 6px;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 0.05);
+    color: #1f2937;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .fys-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 10px -2px rgb(0 0 0 / 0.05), 0 3px 6px -2px rgb(0 0 0 / 0.05);
+  }
+  .fys-badge img {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .ts-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 32px;
+    padding: 0 10px 0 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #0e0b1f;
+    line-height: 1;
+    background:
+      linear-gradient(#fff, #fff) padding-box,
+      linear-gradient(90deg, #3525e6, #d81fe0, #22b8f0) border-box;
+    border: 1.5px solid transparent;
+    transition: transform 0.2s ease;
+  }
+  .ts-badge:hover {
+    transform: translateY(-1px);
+  }
+  .ts-badge svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    flex-shrink: 0;
+  }
+  .ts-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .ts-kicker {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 7px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #6a6585;
+  }
+  .ts-title {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+</style>
