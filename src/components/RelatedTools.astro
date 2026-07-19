@@ -8,8 +8,24 @@ interface Props {
 }
 const { exclude } = Astro.props;
 
-const games = catalog.games.filter(t => t.href !== exclude);
-const tools = catalog.tools.filter(t => t.href !== exclude);
+// Rotate the catalog by a per-page seed so every page surfaces a DIFFERENT set
+// of 6 games/tools. Without this, slice(0,6) always showed the first 6 games and
+// the newer games (this-or-that, never-have-i-ever, conflict-style, long-distance-
+// bond, astro-vibes) never got any internal links.
+function seedFrom(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
+  return Math.abs(h);
+}
+function rotate<T>(arr: T[], n: number): T[] {
+  if (arr.length === 0) return arr;
+  const k = n % arr.length;
+  return [...arr.slice(k), ...arr.slice(0, k)];
+}
+const seed = seedFrom(exclude ?? 'ourcouple');
+
+const games = rotate(catalog.games.filter(t => t.href !== exclude), seed);
+const tools = rotate(catalog.tools.filter(t => t.href !== exclude), seed);
 
 const groups = [
   { label: "More games & quizzes", items: games.slice(0, 6), seeAll: "/games", seeAllLabel: "See all games" },
