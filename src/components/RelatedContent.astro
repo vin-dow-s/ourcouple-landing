@@ -1,4 +1,7 @@
 ---
+import catalog from '../data/catalog.json';
+import Icon from './Icon.astro';
+
 interface Props {
   /** Current blog post path to exclude */
   exclude?: string;
@@ -15,7 +18,7 @@ const blogPosts = [
   },
   {
     title: "Best Couples Apps in 2026",
-    description: "Free, iPhone picks, and honest reviews.",
+    description: "iPhone picks and honest reviews.",
     href: "/blog/best-couples-apps-2026",
     category: "App Guides"
   },
@@ -44,8 +47,8 @@ const blogPosts = [
     category: "Date Ideas"
   },
   {
-    title: "How Long Have We Been Dating?",
-    description: "Calculate your relationship length and discover every milestone worth celebrating.",
+    title: "Relationship Milestones Worth Celebrating",
+    description: "Every milestone from 100 days to 50 years, and how to mark it.",
     href: "/blog/how-long-have-we-been-dating",
     category: "Connection"
   },
@@ -75,88 +78,14 @@ const blogPosts = [
   }
 ];
 
-const allTools = [
-  {
-    title: "Anniversary Calculator",
-    description: "Find out how many days you've been together.",
-    href: "/tools/anniversary-calculator",
-    emoji: "📅"
-  },
-  {
-    title: "Monthsary Counter",
-    description: "See your next monthsary date and a live countdown.",
-    href: "/tools/monthsary-counter",
-    emoji: "🗓️"
-  },
-  {
-    title: "36 Questions to Fall in Love",
-    description: "The famous questions that bring couples closer.",
-    href: "/tools/36-questions",
-    emoji: "❤️"
-  },
-  {
-    title: "Love Language Quiz",
-    description: "Discover your love language in 2 minutes.",
-    href: "/tools/love-language",
-    emoji: "💬"
-  },
-  {
-    title: "Would You Rather — Couples Edition",
-    description: "40+ fun questions to play with your partner.",
-    href: "/tools/would-you-rather",
-    emoji: "🎲"
-  },
-  {
-    title: "How Well Do You Know Your Partner Quiz",
-    description: "12 questions to compare with your partner.",
-    href: "/tools/couple-quiz",
-    emoji: "🧠"
-  },
-  {
-    title: "Couple Bucket List",
-    description: "Build your shared list of dreams and dates.",
-    href: "/tools/bucket-list",
-    emoji: "✨"
-  },
-  {
-    title: "Date Night Generator",
-    description: "Tap and get a random free date idea for tonight.",
-    href: "/tools/date-night-generator",
-    emoji: "🎯"
-  },
-  {
-    title: "This or That — Couples Edition",
-    description: "12 rapid picks. See how often you match.",
-    href: "/tools/this-or-that",
-    emoji: "⚡"
-  },
-  {
-    title: "Never Have I Ever",
-    description: "90 couple prompts — sweet, playful, spicy.",
-    href: "/tools/never-have-i-ever",
-    emoji: "✋"
-  },
-  {
-    title: "Conflict Style Quiz",
-    description: "How you fight — and how you make up.",
-    href: "/tools/conflict-style",
-    emoji: "🤝"
-  },
-  {
-    title: "Long-Distance Bond Quiz",
-    description: "How strong is your long-distance bond?",
-    href: "/tools/long-distance-bond",
-    emoji: "✈️"
-  },
-  {
-    title: "Astro Vibes",
-    description: "Which element are you? No birth chart needed.",
-    href: "/tools/astro-vibes",
-    emoji: "🌙"
-  }
-];
+// Tools/games come straight from the catalog so the icons, gradients and copy
+// match each tool's own page exactly (single source of truth — no mismatched
+// emojis, uniform gradient cards everywhere on the site).
+const catalogTools = [...catalog.games, ...catalog.tools];
+const byHref = Object.fromEntries(catalogTools.map(t => [t.href, t]));
 
-// Pick tools that contextually match the current article
+// Contextually match tools to the current article; anything not prioritized
+// fills the rest in catalog order.
 const toolPriorityByPath: Record<string, string[]> = {
   '/blog/how-long-have-we-been-dating': ['/tools/anniversary-calculator', '/tools/monthsary-counter', '/tools/couple-quiz'],
   '/blog/how-well-do-you-know-your-partner': ['/tools/couple-quiz', '/tools/this-or-that', '/tools/never-have-i-ever'],
@@ -164,7 +93,7 @@ const toolPriorityByPath: Record<string, string[]> = {
   '/blog/free-date-night-ideas': ['/tools/date-night-generator', '/tools/bucket-list', '/tools/would-you-rather'],
   '/blog/best-couples-journal-apps': ['/tools/anniversary-calculator', '/tools/couple-quiz', '/tools/love-language'],
   '/blog/relationship-data-encryption': ['/tools/love-language', '/tools/anniversary-calculator', '/tools/36-questions'],
-  '/blog/ourcouple-vs-paired': ['/tools/couple-quiz', '/tools/anniversary-calculator', '/tools/36-questions'],
+  '/blog/ourcouple-vs-paired': ['/tools/couple-quiz', '/tools/anniversary-calculator', '/tools/conflict-style'],
   '/blog/best-couples-apps-2026': ['/tools/anniversary-calculator', '/tools/couple-quiz', '/tools/date-night-generator'],
   '/blog/relationship-rules-explained': ['/tools/conflict-style', '/tools/36-questions', '/tools/couple-quiz'],
   '/blog/how-to-count-months-in-a-relationship': ['/tools/monthsary-counter', '/tools/anniversary-calculator', '/tools/couple-quiz'],
@@ -172,11 +101,10 @@ const toolPriorityByPath: Record<string, string[]> = {
 };
 
 const priorityHrefs = (exclude && toolPriorityByPath[exclude]) ?? [];
-const sortedTools = [
-  ...priorityHrefs.map(href => allTools.find(t => t.href === href)).filter((t): t is typeof allTools[number] => Boolean(t)),
-  ...allTools.filter(t => !priorityHrefs.includes(t.href))
-];
-const relatedTools = sortedTools.slice(0, 3);
+const relatedTools = [
+  ...priorityHrefs.map(h => byHref[h]).filter(Boolean),
+  ...catalogTools.filter(t => !priorityHrefs.includes(t.href)),
+].slice(0, 3);
 
 const posts = blogPosts.filter(p => p.href !== exclude).slice(0, 3);
 ---
@@ -188,21 +116,30 @@ const posts = blogPosts.filter(p => p.href !== exclude).slice(0, 3);
     <div class="grid sm:grid-cols-3 gap-4 mb-10">
       {posts.map(post => (
         <a href={post.href} class="group p-4 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors">
-          <span class="text-xs font-medium text-primary">{post.category}</span>
+          <span class="text-xs font-medium text-primary-dark">{post.category}</span>
           <h3 class="font-medium text-text group-hover:text-primary transition-colors text-sm mt-1 mb-1">{post.title}</h3>
           <p class="text-text-secondary text-xs leading-relaxed">{post.description}</p>
         </a>
       ))}
     </div>
 
-    <!-- Related tools -->
+    <!-- Related tools — same gradient cards + lucide icons as the tool pages -->
     <h2 class="text-xl font-semibold text-text mb-6">Free Tools for Couples</h2>
     <div class="grid sm:grid-cols-3 gap-4">
       {relatedTools.map(tool => (
-        <a href={tool.href} class="group p-4 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors">
-          <span class="text-2xl mb-2 block">{tool.emoji}</span>
-          <h3 class="font-medium text-text group-hover:text-primary transition-colors text-sm mb-1">{tool.title}</h3>
-          <p class="text-text-secondary text-xs leading-relaxed">{tool.description}</p>
+        <a
+          href={tool.href}
+          class="group relative overflow-hidden rounded-2xl p-5 min-h-[128px] flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all"
+          style={`background-image: linear-gradient(135deg, ${tool.gradient[0]}, ${tool.gradient[1]})`}
+        >
+          <div class="absolute inset-0" style="background-image: linear-gradient(to top, rgba(0,0,0,0.34), rgba(0,0,0,0) 58%)"></div>
+          <div class="relative w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+            <Icon name={tool.icon} class="w-5 h-5 text-white" />
+          </div>
+          <div class="relative mt-3">
+            <h3 class="font-semibold text-white text-sm mb-0.5">{tool.title}</h3>
+            <p class="text-white/90 text-xs leading-relaxed">{tool.description}</p>
+          </div>
         </a>
       ))}
     </div>
