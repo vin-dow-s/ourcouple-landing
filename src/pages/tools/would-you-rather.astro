@@ -175,6 +175,16 @@ import questions from '../../data/would-you-rather.json';
         </p>
       </div>
 
+      <!-- Peak-intent CTA: they just played and are waiting on their partner.
+           The results CTA is gated behind the partner finishing. -->
+      <ToolAppCta
+        placement="tool_share_moment"
+        kicker="While you wait"
+        heading="Skip the link — play it together in the app"
+        copy="No link to send, no waiting. In the OurCouple app you both answer from your own phone, and every round adds to your real Compatibility Score — saved in one private space for two."
+        footnote="Free 7-day trial · one plan covers both of you"
+      />
+
       <button
         id="back-to-pass-btn"
         class="w-full px-6 py-3 border border-border rounded-xl font-medium hover:border-primary/30 transition-colors"
@@ -233,7 +243,7 @@ import questions from '../../data/would-you-rather.json';
         </div>
       </div>
 
-      <ToolAppCta />
+      <ToolAppCta placement="tool_results" />
 
       <!-- Share -->
       <div class="text-center mb-6">

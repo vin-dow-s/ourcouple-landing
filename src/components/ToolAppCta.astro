@@ -9,14 +9,21 @@ interface Props {
   heading?: string;
   copy?: string;
   button?: string;
+  /** Placement id — drives the DataFast goal and the Apple `ct=` campaign token,
+   *  so the "waiting for your partner" moment can be measured separately from
+   *  the final-results one. */
+  placement?: string;
+  footnote?: string;
 }
 const {
   kicker = "Want it to count?",
   heading = "In the app, it actually counts",
   copy = "This score vanishes when you close the page. In the OurCouple app, every game you play together adds to your ongoing Compatibility Score — saved, private, and just for the two of you.",
   button = "Get OurCouple — free for both of you",
+  placement = "tool_after_widget",
+  footnote = "Free to play · your answers stay private (end-to-end encrypted)",
 } = Astro.props;
-const appStoreUrl = "https://apps.apple.com/app/id6758024356?ct=web_tool_result";
+const appStoreUrl = `https://apps.apple.com/app/id6758024356?ct=web_${placement}`;
 ---
 <div class="not-prose my-10 rounded-2xl border border-primary/25 bg-gradient-to-br from-primary/10 to-partner/10 p-6 text-center">
   <p class="text-xs font-semibold uppercase tracking-wide text-primary mb-2">{kicker}</p>
@@ -28,10 +35,10 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356?ct=web_tool_result"
     rel="noopener noreferrer"
     class="inline-block transition-transform hover:scale-105"
     aria-label="Download OurCouple on the App Store"
-    data-cta-location="tool_after_widget"
-    data-fast-goal="cta_tool_after_widget"
+    data-cta-location={placement}
+    data-fast-goal={`cta_${placement}`}
   >
     <img src="/app-store-badge.svg" alt="Download on the App Store" class="h-14 mx-auto" />
   </a>
-  <p class="text-text-light text-xs mt-3">Free to play · your answers stay private (end-to-end encrypted)</p>
+  <p class="text-text-light text-xs mt-3">{footnote}</p>
 </div>

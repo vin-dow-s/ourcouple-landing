@@ -182,6 +182,17 @@ import questions from '../../data/quiz-questions.json';
       <p class="text-text-secondary text-sm text-center">
         Once your partner completes the quiz, you'll both see the comparison results!
       </p>
+
+      <!-- Peak-intent CTA: they just answered 12 questions and are waiting on
+           their partner. The final-results CTA is gated behind the partner
+           finishing, so most visitors never reach it — this is the moment. -->
+      <ToolAppCta
+        placement="tool_share_moment"
+        kicker="While you wait"
+        heading="Skip the link — play it together in the app"
+        copy="No link to send, no waiting. In the OurCouple app you both answer from your own phone, and every quiz you play adds to your real Compatibility Score — saved in one private space for two."
+        footnote="Free 7-day trial · one plan covers both of you"
+      />
     </div>
 
     <!-- Mode: Partner (answering about self) -->
@@ -247,7 +258,7 @@ import questions from '../../data/quiz-questions.json';
         </div>
       </div>
 
-      <ToolAppCta />
+      <ToolAppCta placement="tool_results" />
 
       <!-- Share Results -->
       <div class="text-center mb-6">
