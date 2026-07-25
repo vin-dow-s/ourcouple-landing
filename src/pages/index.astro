@@ -46,7 +46,7 @@ const games = catalog.games;
 
             <div class="animate-fade-in-delay-2">
               <a
-                href={appStoreUrl}
+                href={`${appStoreUrl}?ct=web_hero`}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="inline-block transition-transform hover:scale-105"
@@ -132,7 +132,7 @@ const games = catalog.games;
               </li>
             </ul>
             <a
-              href={appStoreUrl}
+              href={`${appStoreUrl}?ct=web_couple_card`}
               target="_blank"
               rel="noopener noreferrer"
               class="btn-pink mt-8 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold"
@@ -174,6 +174,85 @@ const games = catalog.games;
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Mid-page CTA — placed right after the couple-card differentiator,
+         where most visitors still are (the bottom CTA got ~1 click/month). -->
+    <section class="py-16 bg-card" data-fast-scroll="scroll_midpage_cta">
+      <div class="max-w-2xl mx-auto px-6 text-center">
+        <h2 class="tracking-tighter text-3xl md:text-4xl font-bold text-text mb-3">
+          Start your couple space today
+        </h2>
+        <p class="text-text-secondary text-base mb-6">
+          Your couple card, daily rituals, memories and games — one private space for two. Free for 7 days.
+        </p>
+        <a
+          href={`${appStoreUrl}?ct=web_midpage`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block transition-transform hover:scale-105"
+          aria-label="Download OurCouple on the App Store"
+          data-cta-location="midpage"
+          data-fast-goal="cta_midpage_download"
+        >
+          <img src="/app-store-badge.svg" alt="Download on the App Store" width="192" height="64" class="h-14 w-auto mx-auto" />
+        </a>
+        <div class="flex items-center justify-center gap-2 mt-3">
+          <span class="text-[#FFC107] text-sm tracking-wider" aria-hidden="true">★★★★★</span>
+          <span class="text-text-light text-xs">4.9/5 · Free 7-day trial · No ads · Encrypted</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials (moved up — social proof early) -->
+    <section class="py-20 bg-background" data-fast-scroll="scroll_testimonials">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex items-center justify-center gap-2 mb-3">
+          <span class="text-[#FFC107] text-lg tracking-wider" aria-hidden="true">★★★★★</span>
+          <span class="text-text-secondary text-sm font-medium">Loved by couples</span>
+        </div>
+        <h2 class="tracking-tighter text-3xl md:text-4xl font-bold text-center text-text mb-10">
+          What couples are saying
+        </h2>
+        <div class="grid sm:grid-cols-3 gap-5">
+          <figure class="p-6 rounded-2xl bg-card border border-border flex flex-col">
+            <blockquote class="text-text leading-relaxed flex-1">"Thanks for making a great platform that my partner and I can use. It's very cute and creative."</blockquote>
+            <figcaption class="text-primary-dark text-sm mt-4 font-semibold">— A&amp;N</figcaption>
+          </figure>
+          <figure class="p-6 rounded-2xl bg-card border border-border flex flex-col">
+            <blockquote class="text-text leading-relaxed flex-1">"Me and my wife are enjoying the app. We love the games!"</blockquote>
+            <figcaption class="text-primary-dark text-sm mt-4 font-semibold">— J&amp;V</figcaption>
+          </figure>
+          <figure class="p-6 rounded-2xl bg-card border border-border flex flex-col">
+            <blockquote class="text-text leading-relaxed flex-1">"I’m in a LDR and it helps ease some of the distance. It’s so appreciated that the developer asks for and executes feedback."</blockquote>
+            <figcaption class="text-primary-dark text-sm mt-4 font-semibold">— ★★★★★ App Store review</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Widgets Section — vertical & centered to break the grid rhythm. -->
+    <section id="widgets" class="py-24 bg-gradient-radial overflow-hidden" data-fast-scroll="scroll_widgets">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary-dark bg-primary/10 px-3 py-1 rounded-full mb-5">Widgets</span>
+        <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-text mb-4">
+          Your love, right on your home screen
+        </h2>
+        <p class="text-text-secondary text-base md:text-lg max-w-2xl mx-auto">
+          Keep each other close without opening the app. Widgets put your couple card, love streak and photo of the day on your home &amp; lock screen — a love note envelope appears when a note is waiting, and countdowns tick toward your anniversary or your next reunion.
+        </p>
+      </div>
+      <div class="max-w-2xl mx-auto px-6 mt-12">
+        <img
+          src="/widgets-opt.webp"
+          alt="OurCouple home-screen widgets — couple card, love streak, photo of the day, love note envelope and anniversary countdown"
+          width="1400"
+          height="1236"
+          class="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </section>
 
@@ -288,31 +367,6 @@ const games = catalog.games;
       </div>
     </section>
 
-    <!-- Widgets Section — deliberately vertical & centered to break the
-         grid-after-grid rhythm of Features and Games around it. -->
-    <section id="widgets" class="py-24 bg-gradient-radial overflow-hidden" data-fast-scroll="scroll_widgets">
-      <div class="max-w-3xl mx-auto px-6 text-center">
-        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary-dark bg-primary/10 px-3 py-1 rounded-full mb-5">Widgets</span>
-        <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-text mb-4">
-          Your love, right on your home screen
-        </h2>
-        <p class="text-text-secondary text-base md:text-lg max-w-2xl mx-auto">
-          Keep each other close without opening the app. Widgets put your couple card, love streak and photo of the day on your home &amp; lock screen — a love note envelope appears when a note is waiting, and countdowns tick toward your anniversary or your next reunion.
-        </p>
-      </div>
-      <div class="max-w-2xl mx-auto px-6 mt-12">
-        <img
-          src="/widgets-opt.webp"
-          alt="OurCouple home-screen widgets — couple card, love streak, photo of the day, love note envelope and anniversary countdown"
-          width="1400"
-          height="1236"
-          class="w-full h-auto"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-    </section>
-
     <!-- Quizzes & Games Section -->
     <section id="games" class="py-24 bg-background" data-fast-scroll="scroll_games">
       <div class="max-w-6xl mx-auto px-6">
@@ -355,33 +409,6 @@ const games = catalog.games;
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <p class="text-text-light text-sm mt-1">All quizzes &amp; games are in the app.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="py-20 bg-card" data-fast-scroll="scroll_testimonials">
-      <div class="max-w-5xl mx-auto px-6">
-        <div class="flex items-center justify-center gap-2 mb-3">
-          <span class="text-[#FFC107] text-lg tracking-wider" aria-hidden="true">★★★★★</span>
-          <span class="text-text-secondary text-sm font-medium">Loved by couples</span>
-        </div>
-        <h2 class="tracking-tighter text-3xl md:text-4xl font-bold text-center text-text mb-10">
-          What couples are saying
-        </h2>
-        <div class="grid sm:grid-cols-3 gap-5">
-          <figure class="p-6 rounded-2xl bg-background border border-border flex flex-col">
-            <blockquote class="text-text leading-relaxed flex-1">"Thanks for making a great platform that my partner and I can use. It's very cute and creative."</blockquote>
-            <figcaption class="text-primary-dark text-sm mt-4 font-semibold">— A&amp;N</figcaption>
-          </figure>
-          <figure class="p-6 rounded-2xl bg-background border border-border flex flex-col">
-            <blockquote class="text-text leading-relaxed flex-1">"Me and my wife are enjoying the app. We love the games!"</blockquote>
-            <figcaption class="text-primary-dark text-sm mt-4 font-semibold">— J&amp;V</figcaption>
-          </figure>
-          <figure class="p-6 rounded-2xl bg-background border border-border flex flex-col">
-            <blockquote class="text-text leading-relaxed flex-1">"I’m in a LDR and it helps ease some of the distance. It’s so appreciated that the developer asks for and executes feedback."</blockquote>
-            <figcaption class="text-primary-dark text-sm mt-4 font-semibold">— ★★★★★ App Store review</figcaption>
-          </figure>
         </div>
       </div>
     </section>
@@ -618,7 +645,7 @@ const games = catalog.games;
 
         <!-- App Store Download -->
         <a
-          href={appStoreUrl}
+          href={`${appStoreUrl}?ct=web_bottom`}
           target="_blank"
           rel="noopener noreferrer"
           class="inline-block transition-transform hover:scale-105"
