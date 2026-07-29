@@ -4,13 +4,12 @@
 // so this floating pill keeps an app-install path always reachable.
 // Tracking: data-cta-location is read by the global listener in Analytics.astro
 // (PostHog website_cta_clicked) and data-fast-goal by DataFast.
-const appStoreId = "6758024356";
-const appStoreUrl = `https://apps.apple.com/app/id${appStoreId}?ct=web_sticky`;
+// Points at /download (both stores) — an Android visitor tapping this used to
+// land on an iOS-only App Store page.
+const downloadUrl = "/download";
 ---
 <a
-  href={appStoreUrl}
-  target="_blank"
-  rel="noopener noreferrer"
+  href={downloadUrl}
   class="btn-pink sm:hidden fixed bottom-3 inset-x-3 z-40 flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl font-semibold active:scale-[0.98]"
   aria-label="Get OurCouple free on the App Store"
   data-cta-location="sticky_mobile"

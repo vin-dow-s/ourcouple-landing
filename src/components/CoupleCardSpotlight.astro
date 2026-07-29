@@ -1,7 +1,8 @@
 ---
 // "Couple card v2" spotlight — the exact section from the landing page, with its
 // 3D interactive card (floating, pointer tilt + glare). Identical on every page.
-const appStoreUrl = "https://apps.apple.com/app/id6758024356?ct=web_couple_card";
+// Text CTA → /download (both stores) instead of a direct App Store link.
+const downloadUrl = "/download";
 ---
 <section id="couple-card" class="py-24 bg-background overflow-hidden" data-fast-scroll="scroll_couple_card">
   <div class="max-w-6xl mx-auto px-6">
@@ -42,11 +43,9 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356?ct=web_couple_card"
           </li>
         </ul>
         <a
-          href={appStoreUrl}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={downloadUrl}
           class="btn-pink mt-8 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold"
-          aria-label="Create your couple card — download OurCouple on the App Store"
+          aria-label="Create your couple card — get OurCouple on iPhone or Android"
           data-cta-location="couple_card"
           data-fast-goal="cta_couple_card_download"
         >

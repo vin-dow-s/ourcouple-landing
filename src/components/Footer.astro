@@ -1,5 +1,5 @@
 ---
-const appStoreUrl = "https://apps.apple.com/app/id6758024356?ct=web_footer";
+import StoreButtons from './StoreButtons.astro';
 ---
 
 <footer class="bg-card border-t border-border py-12">
@@ -18,22 +18,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356?ct=web_footer";
           </div>
         </div>
         <p class="text-text-secondary text-sm max-w-xs mt-4">One shared space for you and your partner to save everything and learn more about each other.</p>
-        <a
-          href={appStoreUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-4 inline-block transition-transform hover:scale-105 w-fit"
-          aria-label="Download OurCouple on the App Store"
-        >
-          <img
-            src="/app-store-badge.svg"
-            alt="Download on the App Store"
-            width="144"
-            height="48"
-            class="h-12 w-auto"
-            loading="lazy"
-          />
-        </a>
+        <StoreButtons placement="footer" size="sm" align="start" class="mt-4" />
       </div>
 
       <div class="flex flex-col max-sm:mt-12 sm:flex-row sm:flex-wrap gap-8 sm:gap-12">

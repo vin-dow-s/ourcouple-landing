@@ -1,6 +1,7 @@
 ---
 import { Font } from 'astro:assets';
 import Analytics from '../components/Analytics.astro';
+import { APP_STORE_ID, CANONICAL_APP_STORE_URL, CANONICAL_PLAY_STORE_URL } from '../data/app-links';
 import '../styles/global.css';
 
 interface ArticleSchemaInput {
@@ -29,8 +30,8 @@ const {
 const siteUrl = "https://ourcouple.app";
 const canonicalUrl = `${siteUrl}${canonicalPath}`;
 const ogImage = `${siteUrl}/og-image4.png`;
-const appStoreId = "6758024356";
-const appStoreUrl = `https://apps.apple.com/app/id${appStoreId}`;
+const appStoreId = APP_STORE_ID;
+const appStoreUrl = CANONICAL_APP_STORE_URL;
 
 // Structured Data - Organization
 const organizationSchema = {
@@ -66,7 +67,7 @@ const appSchema = {
   "@context": "https://schema.org",
   "@type": "MobileApplication",
   "name": "OurCouple - Your Shared Space",
-  "operatingSystem": "iOS",
+  "operatingSystem": "iOS, Android",
   "applicationCategory": "LifestyleApplication",
   "description": "Your private shared space for couples. Like Notion, but just for the two of you. Daily messages, memories, notes, and important dates — all in one place.",
   "url": siteUrl,
@@ -87,8 +88,8 @@ const appSchema = {
     "Daily inspirational messages",
     "Private and secure"
   ],
-  "downloadUrl": appStoreUrl,
-  "installUrl": appStoreUrl
+  "downloadUrl": [CANONICAL_APP_STORE_URL, CANONICAL_PLAY_STORE_URL],
+  "installUrl": [CANONICAL_APP_STORE_URL, CANONICAL_PLAY_STORE_URL]
 };
 
 // Structured Data - Article (optional, for blog posts)
@@ -152,7 +153,7 @@ const faqSchema = {
       "name": "Is OurCouple available on Android?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes! OurCouple is available on iOS and Android. The Android version is in free beta — join the tester group on the website and install it from the Play Store in under a minute."
+        "text": "Yes — OurCouple is available on both the App Store and Google Play. And because it works on both, it doesn't matter if one of you is on iPhone and the other on Android: you share the same private space, and one plan still covers you both."
       }
     },
     {

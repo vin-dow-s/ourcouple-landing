@@ -1,0 +1,76 @@
+---
+// The two store badges, side by side. Used everywhere the visitor is meant to
+// convert directly (hero, mid-page CTA, bottom CTA, footer, /download).
+//
+// Tracking: each badge carries its own DataFast goal + PostHog cta location and
+// a store-specific campaign token derived from `placement`, so iOS and Android
+// installs are attributable to the same CTA slot across both consoles.
+import { appStoreUrl, playStoreUrl } from '../data/app-links';
+
+interface Props {
+  /** CTA slot id, e.g. "hero" — drives goals and campaign tokens. */
+  placement: string;
+  /** Badge height utility class. */
+  size?: 'sm' | 'md' | 'lg';
+  /** Horizontal alignment of the pair. */
+  align?: 'center' | 'start';
+  class?: string;
+}
+const { placement, size = 'md', align = 'center', class: className = '' } = Astro.props;
+
+// Responsive by design: at 56px tall the pair is ~369px wide, which overflows
+// every common phone (312–327px usable) and wraps into two stacked rows —
+// pushing the hero CTA below the fold on the 80% of traffic that is mobile.
+// Smaller on phones keeps them side by side; full size from `sm` up.
+const heights = {
+  sm: 'h-10 sm:h-11',
+  md: 'h-11 sm:h-14',
+  lg: 'h-11 sm:h-16',
+} as const;
+const h = heights[size];
+const justify = align === 'start' ? 'justify-center lg:justify-start' : 'justify-center';
+---
+
+<div class={`flex flex-wrap items-center gap-2.5 sm:gap-3 ${justify} ${className}`}>
+  <a
+    href={appStoreUrl(placement)}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-block transition-transform hover:scale-105"
+    aria-label="Download OurCouple on the App Store"
+    data-cta-location={placement}
+    data-cta-store="ios"
+    data-fast-goal={`cta_${placement}_ios`}
+  >
+    <img
+      src="/app-store-badge.svg"
+      alt="Download on the App Store"
+      width="120"
+      height="40"
+      class={`${h} w-auto`}
+      loading="lazy"
+      decoding="async"
+    />
+  </a>
+
+  <a
+    href={playStoreUrl(placement)}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-block transition-transform hover:scale-105"
+    aria-label="Get OurCouple on Google Play"
+    data-cta-location={placement}
+    data-cta-store="android"
+    data-fast-goal={`cta_${placement}_android`}
+  >
+    <img
+      src="/play-store-badge.svg"
+      alt="Get it on Google Play"
+      width="135"
+      height="40"
+      class={`${h} w-auto`}
+      loading="lazy"
+      decoding="async"
+    />
+  </a>
+</div>

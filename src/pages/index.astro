@@ -3,9 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
+import StoreButtons from '../components/StoreButtons.astro';
 import catalog from '../data/catalog.json';
 
-const appStoreUrl = "https://apps.apple.com/app/id6758024356";
 const games = catalog.games;
 ---
 
@@ -45,22 +45,7 @@ const games = catalog.games;
             </div>
 
             <div class="animate-fade-in-delay-2">
-              <a
-                href={`${appStoreUrl}?ct=web_hero`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block transition-transform hover:scale-105"
-                aria-label="Download OurCouple on the App Store"
-                data-fast-goal="cta_hero_download"
-              >
-                <img
-                  src="/app-store-badge.svg"
-                  alt="Download on the App Store"
-                  width="168"
-                  height="56"
-                  class="h-14 w-auto mx-auto lg:mx-0"
-                />
-              </a>
+              <StoreButtons placement="hero" align="start" />
               <!-- Trust microcopy (below CTA — removes post-click anxiety) -->
               <p class="text-text-light text-xs mt-3 text-center lg:text-left">
                 Free 7-day trial  ·  No ads  ·  Encrypted
@@ -132,11 +117,9 @@ const games = catalog.games;
               </li>
             </ul>
             <a
-              href={`${appStoreUrl}?ct=web_couple_card`}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/download"
               class="btn-pink mt-8 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold"
-              aria-label="Create your couple card — download OurCouple on the App Store"
+              aria-label="Create your couple card — get OurCouple on iPhone or Android"
               data-fast-goal="cta_couple_card_download"
             >
               Create our card now
@@ -187,20 +170,10 @@ const games = catalog.games;
         <p class="text-text-secondary text-base mb-6">
           Your couple card, daily rituals, memories and games — one private space for two. Free for 7 days.
         </p>
-        <a
-          href={`${appStoreUrl}?ct=web_midpage`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block transition-transform hover:scale-105"
-          aria-label="Download OurCouple on the App Store"
-          data-cta-location="midpage"
-          data-fast-goal="cta_midpage_download"
-        >
-          <img src="/app-store-badge.svg" alt="Download on the App Store" width="192" height="64" class="h-14 w-auto mx-auto" />
-        </a>
-        <div class="flex items-center justify-center gap-2 mt-3">
+        <StoreButtons placement="midpage" />
+        <div class="flex items-center justify-center gap-2 mt-4">
           <span class="text-[#FFC107] text-sm tracking-wider" aria-hidden="true">★★★★★</span>
-          <span class="text-text-light text-xs">4.9/5 · Free 7-day trial · No ads · Encrypted</span>
+          <span class="text-text-light text-xs">4.9/5</span>
         </div>
       </div>
     </section>
@@ -208,25 +181,31 @@ const games = catalog.games;
     <!-- Testimonials (moved up — social proof early) -->
     <section class="py-20 bg-background" data-fast-scroll="scroll_testimonials">
       <div class="max-w-5xl mx-auto px-6">
-        <div class="flex items-center justify-center gap-2 mb-3">
-          <span class="text-[#FFC107] text-lg tracking-wider" aria-hidden="true">★★★★★</span>
-          <span class="text-text-secondary text-sm font-medium">Loved by couples</span>
-        </div>
         <h2 class="tracking-tighter text-3xl md:text-4xl font-bold text-center text-text mb-10">
-          What couples are saying
+          Loved by couples worldwide
         </h2>
         <div class="grid sm:grid-cols-3 gap-5">
           <figure class="p-6 rounded-2xl bg-card border border-border flex flex-col">
-            <blockquote class="text-text leading-relaxed flex-1">"Thanks for making a great platform that my partner and I can use. It's very cute and creative."</blockquote>
-            <figcaption class="text-primary-dark text-sm mt-4 font-semibold">— A&amp;N</figcaption>
+            <blockquote class="text-text leading-relaxed flex-1">"A good balance of serious and fun question categories. The layout is simple and not overwhelming — and I love the 'see history' option to revisit our previous answers."</blockquote>
+            <figcaption class="mt-4">
+              <span class="text-[#FFC107] text-sm tracking-wider block mb-1" aria-hidden="true">★★★★★</span>
+              <span class="text-primary-dark text-sm font-semibold">M&amp;K</span>
+            </figcaption>
           </figure>
           <figure class="p-6 rounded-2xl bg-card border border-border flex flex-col">
             <blockquote class="text-text leading-relaxed flex-1">"Me and my wife are enjoying the app. We love the games!"</blockquote>
-            <figcaption class="text-primary-dark text-sm mt-4 font-semibold">— J&amp;V</figcaption>
+            <figcaption class="mt-4">
+              <span class="text-[#FFC107] text-sm tracking-wider block mb-1" aria-hidden="true">★★★★★</span>
+              <span class="text-primary-dark text-sm font-semibold">J&amp;V</span>
+            </figcaption>
           </figure>
           <figure class="p-6 rounded-2xl bg-card border border-border flex flex-col">
             <blockquote class="text-text leading-relaxed flex-1">"I’m in a LDR and it helps ease some of the distance. It’s so appreciated that the developer asks for and executes feedback."</blockquote>
-            <figcaption class="text-primary-dark text-sm mt-4 font-semibold">— ★★★★★ App Store review</figcaption>
+            <figcaption class="mt-4">
+              <span class="text-[#FFC107] text-sm tracking-wider block mb-1" aria-hidden="true">★★★★★</span>
+              <span class="text-primary-dark text-sm font-semibold">A&amp;N</span>
+              <span class="text-text-light text-xs block mt-0.5">App Store review</span>
+            </figcaption>
           </figure>
         </div>
       </div>
@@ -587,7 +566,7 @@ const games = catalog.games;
               </svg>
             </summary>
             <div class="px-6 pb-6 text-text-secondary">
-              <p>Yes! OurCouple is available on iOS and Android. The Android version is in free beta — join the tester group at the bottom of this page and install it from the Play Store in under a minute.</p>
+              <p>Yes — OurCouple is available on both the App Store and Google Play. And because it works on both, it doesn't matter if one of you is on iPhone and the other on Android: you share the same private space, and one plan still covers you both.</p>
             </div>
           </details>
 
@@ -643,54 +622,9 @@ const games = catalog.games;
           Download OurCouple and connect with your partner in seconds.
         </p>
 
-        <!-- App Store Download -->
-        <a
-          href={`${appStoreUrl}?ct=web_bottom`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block transition-transform hover:scale-105"
-          aria-label="Download OurCouple on the App Store"
-          data-fast-goal="cta_bottom_download"
-        >
-          <img
-            src="/app-store-badge.svg"
-            alt="Download on the App Store"
-            width="192"
-            height="64"
-            class="h-16 w-auto mx-auto"
-          />
-        </a>
-        <p class="text-text-secondary text-sm mt-2 mb-8">Free 7-day trial • One plan covers you both</p>
-
-        <!-- Android Beta (direct join — replaced the email waitlist, which converted at ~3/mo) -->
-        <div class="max-w-lg mx-auto mt-16 p-6 bg-card/50 rounded-2xl border border-border">
-          <p class="font-semibold text-text mb-1">OurCouple for Android</p>
-          <p class="text-text-secondary text-sm mb-4">The Android app is in free beta — join in two quick steps:</p>
-          <ol class="text-left text-sm text-text-secondary space-y-2 mb-5 max-w-sm mx-auto">
-            <li><span class="font-semibold text-text">1.</span> Join the tester group (one click with your Google account)</li>
-            <li><span class="font-semibold text-text">2.</span> Install the app from the Play Store beta link</li>
-          </ol>
-          <div class="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href="https://groups.google.com/g/ourcouple---android-test"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="px-6 py-3 bg-partner-dark text-white rounded-xl font-semibold hover:bg-partner-dark/90 transition-colors whitespace-nowrap"
-              data-fast-goal="cta_android_early_access"
-            >
-              1. Join the beta group
-            </a>
-            <a
-              href="https://play.google.com/apps/testing/com.vynse.ourcouple"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="px-6 py-3 border border-partner-dark/40 text-partner-dark rounded-xl font-semibold hover:bg-partner-dark/5 transition-colors whitespace-nowrap"
-              data-fast-goal="cta_android_play_install"
-            >
-              2. Get it on Play Store
-            </a>
-          </div>
-        </div>
+        <!-- Both stores, side by side -->
+        <StoreButtons placement="bottom" size="lg" />
+        <p class="text-text-secondary text-sm mt-4">iPhone &amp; Android • Free 7-day trial • One plan covers you both</p>
 
         <p class="text-text-secondary mt-8">
           Questions? <a href="mailto:vincent@ourcouple.app" class="text-primary hover:text-primary-dark transition-colors font-medium">Contact us</a>

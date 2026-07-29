@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import StoreButtons from '../components/StoreButtons.astro';
+---
+
+<Layout
+  title="Download OurCouple — Free on iPhone & Android"
+  description="Get OurCouple on iOS and Android. Your couple card, daily rituals, memories, notes and couple games — one private space for two. Free 7-day trial, one plan covers both partners."
+  canonicalPath="/download"
+>
+  <Header />
+
+  <main class="flex-1 bg-gradient-radial">
+    <section class="pt-32 pb-28">
+      <div class="max-w-2xl mx-auto px-6 text-center">
+        <h1 class="tracking-tighter text-4xl md:text-5xl font-bold text-text mb-4">
+          Get OurCouple
+        </h1>
+        <p class="text-text-secondary text-lg mb-8 max-w-xl mx-auto">
+          Your couple card, daily rituals, memories and games — one private space for two.
+          Available on iPhone and Android.
+        </p>
+
+        <StoreButtons placement="download_page" size="lg" />
+
+        <div class="flex items-center justify-center gap-2 mt-5">
+          <span class="text-[#FFC107] text-sm tracking-wider" aria-hidden="true">★★★★★</span>
+          <span class="text-text-light text-xs">4.9/5 · Free 7-day trial · No ads · End-to-end encrypted</span>
+        </div>
+
+        <p class="text-text-secondary text-sm mt-6">
+          One plan covers <strong class="text-text">both partners</strong> — your partner never pays.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>

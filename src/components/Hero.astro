@@ -1,16 +1,19 @@
 ---
 // Homepage-style hero, parameterized for reuse on persona (/for) pages.
-// Same composition as the landing: left pitch + social proof + App Store CTA,
+// Same composition as the landing: left pitch + social proof + both store CTAs,
 // right 3-phone screenshot fan, soft decorative blurs on a radial gradient.
 // `title` and `subtitle` accept HTML (set:html) so callers can use <br> etc.
+import StoreButtons from './StoreButtons.astro';
+
 interface Props {
   badge?: string;
   title: string;
   subtitle: string;
+  /** Deprecated — StoreButtons derives per-store goals from `placement`. */
   ctaGoal?: string;
+  placement?: string;
 }
-const { badge, title, subtitle, ctaGoal = "cta_persona_hero_download" } = Astro.props;
-const appStoreUrl = "https://apps.apple.com/app/id6758024356?ct=web_persona_hero";
+const { badge, title, subtitle, placement = "persona_hero" } = Astro.props;
 ---
 <section class="relative flex items-center bg-gradient-radial overflow-hidden pt-10 md:pt-14 pb-16 md:pb-24" id="hero">
   <!-- Decorative elements -->
@@ -36,17 +39,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356?ct=web_persona_hero
         </div>
 
         <div class="animate-fade-in-delay-2">
-          <a
-            href={appStoreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block transition-transform hover:scale-105"
-            aria-label="Download OurCouple on the App Store"
-            data-cta-location="persona_hero"
-            data-fast-goal={ctaGoal}
-          >
-            <img src="/app-store-badge.svg" alt="Download on the App Store" width="168" height="56" class="h-14 w-auto mx-auto lg:mx-0" />
-          </a>
+          <StoreButtons placement={placement} align="start" />
           <p class="text-text-light text-xs mt-3 text-center lg:text-left">Free 7-day trial  ·  No ads  ·  Encrypted</p>
         </div>
       </div>

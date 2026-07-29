@@ -4,10 +4,10 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import StickyAppCta from '../components/StickyAppCta.astro';
 import Icon from '../components/Icon.astro';
+import StoreButtons from '../components/StoreButtons.astro';
 import catalog from '../data/catalog.json';
 
 const games = catalog.games;
-const appStoreUrl = "https://apps.apple.com/app/id6758024356?ct=web_games";
 ---
 
 <Layout
@@ -61,18 +61,8 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356?ct=web_games";
         <p class="text-base text-text-secondary mb-8 max-w-xl mx-auto">
           In the OurCouple app, you and your partner play together — building your Compatibility Score, saving your history, and growing one private space for two.
         </p>
-        <a
-          href={appStoreUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block transition-transform hover:scale-105"
-          aria-label="Download OurCouple on the App Store"
-          data-cta-location="games_hub"
-          data-fast-goal="cta_games_hub_download"
-        >
-          <img src="/app-store-badge.svg" alt="Download on the App Store" class="h-16 mx-auto" />
-        </a>
-        <p class="text-text-secondary text-sm mt-3">Free 7-day trial · one plan covers both of you</p>
+        <StoreButtons placement="games_hub" size="lg" />
+        <p class="text-text-secondary text-sm mt-4">iPhone &amp; Android · Free 7-day trial · one plan covers both of you</p>
       </div>
     </section>
   </main>

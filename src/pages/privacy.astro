@@ -10,7 +10,7 @@ import Layout from '../layouts/Layout.astro';
   <main class="flex-1 pt-32 pb-20">
     <div class="max-w-3xl mx-auto px-6">
       <h1 class="text-4xl md:text-5xl font-bold text-text mb-8">Privacy Policy</h1>
-      <p class="text-text-secondary mb-8">Last updated: May 22, 2026</p>
+      <p class="text-text-secondary mb-8">Last updated: July 29, 2026</p>
 
       <div class="prose prose-lg max-w-none">
         <section class="mb-10">
@@ -42,13 +42,28 @@ import Layout from '../layouts/Layout.astro';
             <li>Events and dates</li>
             <li>Daily question answers</li>
             <li>Shared bucket list</li>
+            <li>Your live location and "Home" place, if you turn those on (see Location below)</li>
           </ul>
+
+          <h3 class="font-semibold text-lg text-text mb-3 mt-6">Location (optional)</h3>
+          <p class="text-text-secondary mb-2">Location features are off until you turn them on, and you choose what to share:</p>
+          <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
+            <li><strong>Your city</strong> — if you set it, your partner can see it, along with the distance between you and their local time. Stored as a city name and approximate coordinates.</li>
+            <li><strong>Your time zone</strong> — used so daily questions and countdowns line up for both of you.</li>
+            <li><strong>Live location</strong> — off by default. When you turn on location sharing on the couple map, your precise point is encrypted on your device before it's stored, and only your partner can decrypt it. Your battery level and charging status travel inside that same encrypted payload.</li>
+            <li><strong>A "Home" place</strong> — optional, encrypted the same way, used to show your partner when you're home.</li>
+            <li><strong>Photo locations</strong> — if a photo you add carries location data, or you set a place yourself, it's encrypted and used to place that memory on your map.</li>
+          </ul>
+          <p class="text-text-secondary mt-2">
+            You can turn any of this off, or clear it, at any time in the app.
+          </p>
 
           <h3 class="font-semibold text-lg text-text mb-3 mt-6">App Usage Data</h3>
           <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
             <li>Virtual pet progress (name, level, experience)</li>
             <li>Couple streak data</li>
             <li>Quiz and game results and history</li>
+            <li>Likes on photos and moments (which item you liked, never its content)</li>
             <li>Couple card theme and customisation</li>
             <li>Push notification tokens</li>
             <li>App preferences and settings</li>
@@ -73,6 +88,7 @@ import Layout from '../layouts/Layout.astro';
           <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
             <li>Camera and photo library (to share photos with your partner)</li>
             <li>Notifications (to receive messages from your partner)</li>
+            <li>Location (to show your city, distance, and — if you turn it on — your live location on the couple map)</li>
             <li>Calendar (to sync couple events to your device calendar — Premium only)</li>
           </ul>
 
@@ -85,17 +101,19 @@ import Layout from '../layouts/Layout.astro';
         <section class="mb-10">
           <h2 class="text-2xl font-semibold text-text mb-4">Encryption</h2>
           <p class="text-text-secondary mb-4">
-            All your personal content is automatically encrypted on your device before being sent to our servers. Only you and your partner have the keys to decrypt it.
+            Your personal content is automatically encrypted on your device before being sent to our servers. Only you and your partner have the keys to decrypt it.
           </p>
           <p class="text-text-secondary mb-4">
             This means:
           </p>
           <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
-            <li>Your messages, photos, and notes are encrypted by default</li>
-            <li>Only encrypted data is stored on our servers</li>
-            <li>Only you and your partner can decrypt your content</li>
+            <li>Your messages, photos, notes, and shared locations are encrypted by default</li>
             <li><strong>We cannot read your content</strong></li>
+            <li>Only you and your partner can decrypt it</li>
           </ul>
+          <p class="text-text-secondary mt-4">
+            Some data is necessarily stored unencrypted so the app can work: your account details, your city name and time zone, your streak, quiz results, likes, and app settings. Everything in "Your Content" above stays encrypted.
+          </p>
         </section>
 
         <section class="mb-10">
@@ -110,6 +128,10 @@ import Layout from '../layouts/Layout.astro';
             <li><strong>Expo</strong> — Push notification delivery. Receives your device push token to deliver notifications.</li>
             <li><strong>PostHog</strong> — Product analytics (website & app). Collects anonymous usage data (page views, feature usage, funnels) to help us improve the product. Data is hosted in the EU. Does not access your encrypted content.</li>
             <li><strong>DataFast</strong> — Lightweight website analytics. Collects anonymous page view data on our website only.</li>
+            <li><strong>Loops</strong> — Email delivery. Receives your email address and first name to send product updates and account emails.</li>
+            <li><strong>Apple Maps / Google Maps</strong> — Map display on the couple map and memories map.</li>
+            <li><strong>Open-Meteo</strong> — Weather. Receives approximate coordinates to return your partner's local weather. No account or identifier is sent.</li>
+            <li><strong>OpenStreetMap (Nominatim)</strong> — Place lookup when you search for a city.</li>
             <li><strong>Apple / Google</strong> — Authentication (Sign in with Apple or Google). Receives only the data necessary to verify your identity.</li>
           </ul>
           <p class="text-text-secondary mt-4">
@@ -123,6 +145,7 @@ import Layout from '../layouts/Layout.astro';
             <li>Provide and maintain the app</li>
             <li>Sync your data between your devices</li>
             <li>Share your content with your connected partner</li>
+            <li>Show distance, local time, and weather between you and your partner</li>
             <li>Send push notifications (with your permission)</li>
             <li>Sync events to your device calendar (with your permission)</li>
             <li>Monitor app stability and fix crashes</li>
@@ -141,7 +164,7 @@ import Layout from '../layouts/Layout.astro';
             <li>We don't show you ads</li>
             <li>We don't share your data with third parties for marketing</li>
             <li>We don't use your content for AI training or analytics</li>
-            <li>We don't track your location</li>
+            <li>We don't track your location in the background — location is only read while you're using the app, only if you turned it on, and it's only ever shared with your partner</li>
           </ul>
         </section>
 
@@ -158,6 +181,8 @@ import Layout from '../layouts/Layout.astro';
             <li>Quiz and game results</li>
             <li>Virtual pet progress</li>
             <li>Couple streak</li>
+            <li>Your city, local time, and distance between you</li>
+            <li>Your live location, battery level, and "Home" place — only if you turn location sharing on</li>
           </ul>
           <p class="text-text-secondary mt-4">
             By inviting or accepting a partner, you consent to sharing this content with them. You can disconnect at any time in the app settings.

@@ -3,8 +3,10 @@
 // With the app installed, iOS/Android open it directly (AASA / assetlinks)
 // and this page is never seen. Without the app: store redirect, keeping the
 // code visible so the partner can enter it manually after installing.
-const APP_STORE_URL =
-  "https://apps.apple.com/us/app/ourcouple-your-shared-space/id6758024356";
+import { appStoreUrl, playStoreUrl } from '../data/app-links';
+
+const APP_STORE_URL = appStoreUrl('invite');
+const PLAY_STORE_URL = playStoreUrl('invite');
 ---
 
 <!doctype html>
@@ -57,6 +59,9 @@ const APP_STORE_URL =
         padding: 16px 32px;
       }
       .hint { font-size: 13px; color: #a8757b; margin-top: 16px; }
+      .stores { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+      .stores a { text-decoration: none; }
+      .stores img { height: 48px; width: auto; display: block; }
     </style>
   </head>
   <body>
@@ -64,7 +69,15 @@ const APP_STORE_URL =
     <h1>Your partner invited you on OurCouple</h1>
     <p>Download the app, then enter this invite code to join your shared space:</p>
     <div class="code" id="invite-code">······</div>
-    <a class="cta" href={APP_STORE_URL} id="store-link">Download OurCouple</a>
+    <!-- Both stores; the visitor's platform is promoted to a single CTA below. -->
+    <div class="stores" id="stores">
+      <a href={APP_STORE_URL} data-store="ios">
+        <img src="/app-store-badge.svg" alt="Download on the App Store" width="120" height="40" />
+      </a>
+      <a href={PLAY_STORE_URL} data-store="android">
+        <img src="/play-store-badge.svg" alt="Get it on Google Play" width="135" height="40" />
+      </a>
+    </div>
     <p class="hint">Already installed? Open the app and tap "Join here" with the code above.</p>
     <script>
       // The code is the last path segment (/join/ABC123 — rewritten to this
@@ -74,6 +87,21 @@ const APP_STORE_URL =
         document.getElementById("invite-code").textContent = seg.toUpperCase();
       } else {
         document.getElementById("invite-code")?.remove();
+      }
+
+      // Promote the visitor's own store so an invited partner isn't sent to the
+      // wrong one. Unknown platforms keep both badges.
+      const ua = navigator.userAgent || "";
+      const isAndroid = /android/i.test(ua);
+      const isIOS = /iPad|iPhone|iPod/.test(ua) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      if (isAndroid || isIOS) {
+        const keep = isAndroid ? "android" : "ios";
+        document
+          .querySelectorAll('#stores a[data-store]')
+          .forEach((a) => {
+            if (a.getAttribute("data-store") !== keep) a.remove();
+          });
       }
     </script>
   </body>

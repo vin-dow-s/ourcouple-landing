@@ -4,6 +4,8 @@
 // The hook: the web tool is a solo *preview*; the OurCouple app is where it
 // counts between partners (real Compatibility Score, saved history, two-player).
 // Defaults are written for the games/quizzes; pass props to retune per tool.
+import StoreButtons from './StoreButtons.astro';
+
 interface Props {
   kicker?: string;
   heading?: string;
@@ -23,22 +25,11 @@ const {
   placement = "tool_after_widget",
   footnote = "Free to play · your answers stay private (end-to-end encrypted)",
 } = Astro.props;
-const appStoreUrl = `https://apps.apple.com/app/id6758024356?ct=web_${placement}`;
 ---
 <div class="not-prose my-10 rounded-2xl border border-primary/25 bg-gradient-to-br from-primary/10 to-partner/10 p-6 text-center">
   <p class="text-xs font-semibold uppercase tracking-wide text-primary mb-2">{kicker}</p>
   <p class="text-lg md:text-xl font-bold text-text mb-2">{heading}</p>
   <p class="text-sm text-text-secondary mb-5 max-w-md mx-auto leading-relaxed">{copy}</p>
-  <a
-    href={appStoreUrl}
-    target="_blank"
-    rel="noopener noreferrer"
-    class="inline-block transition-transform hover:scale-105"
-    aria-label="Download OurCouple on the App Store"
-    data-cta-location={placement}
-    data-fast-goal={`cta_${placement}`}
-  >
-    <img src="/app-store-badge.svg" alt="Download on the App Store" class="h-14 mx-auto" />
-  </a>
+  <StoreButtons placement={placement} />
   <p class="text-text-light text-xs mt-3">{footnote}</p>
 </div>

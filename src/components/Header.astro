@@ -1,5 +1,7 @@
 ---
-const appStoreUrl = "https://apps.apple.com/app/id6758024356?ct=web_header";
+// Header CTA points at /download (both stores) rather than straight to the
+// App Store, so Android visitors aren't dead-ended.
+const downloadUrl = "/download";
 ---
 
 <nav class="fixed top-0 left-0 right-0 z-50 bg-gradient-radial">
@@ -21,9 +23,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6758024356?ct=web_header";
 
       <!-- Download CTA (always visible) -->
       <a
-        href={appStoreUrl}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={downloadUrl}
         class="btn-pink px-4 py-2 rounded-xl font-medium text-sm"
         data-cta-location="header"
         data-fast-goal="cta_header_download"
