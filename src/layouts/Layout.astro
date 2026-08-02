@@ -18,13 +18,16 @@ interface Props {
   description?: string;
   canonicalPath?: string;
   article?: ArticleSchemaInput;
+  /** Utility pages (e.g. /open) — emits noindex and skips crawl hints. */
+  noindex?: boolean;
 }
 
 const {
   title,
   description = "A private app for two. Daily messages, memories, notes & rituals — kept between you and your partner. Free 7-day trial, end-to-end encrypted.",
   canonicalPath = "",
-  article
+  article,
+  noindex = false
 } = Astro.props;
 
 const siteUrl = "https://ourcouple.app";
@@ -180,7 +183,7 @@ const faqSchema = {
     <meta name="description" content={description} />
     <meta name="keywords" content="couple app, relationship app, couples app, private messaging, shared photos, anniversary tracker, date tracker, couples journal, relationship goals, love app, encrypted messaging, private couple space, daily affirmations couples" />
     <meta name="author" content="OurCouple" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
     <meta name="theme-color" content="#DF3479" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />

@@ -1,0 +1,79 @@
+---
+// Universal-link fallback (/open and /open/*).
+//
+// The AASA and assetlinks.json already declare /open + /open/* as app links,
+// so when the app IS installed the OS intercepts the URL and this page never
+// renders. This page is the missing fallback for every other case: app not
+// installed, other phone, desktop, or an in-app browser that ignored the
+// universal link. One URL to put in emails, notifications and support.
+//
+// Behavior: try the ourcouple:// custom scheme once (mobile only, forwarding
+// the subpath so in-app routing still works), while ALWAYS showing a useful
+// page underneath — logo, a manual "Open the app" button, both store badges.
+// No redirect loops, no blank screen. /open/* is rewritten to this page by
+// vercel.json.
+import Layout from '../layouts/Layout.astro';
+import StoreButtons from '../components/StoreButtons.astro';
+---
+
+<Layout
+  title="Opening OurCouple…"
+  description="Open OurCouple — or get the app free for iPhone and Android."
+  canonicalPath="/open"
+  noindex
+>
+  <main class="flex-1 flex items-center justify-center bg-gradient-radial px-6 py-16">
+    <div class="max-w-md w-full text-center">
+      <picture>
+        <source srcset="/logo-192.webp" type="image/webp" />
+        <img
+          src="/logo-96.png"
+          alt="OurCouple"
+          width="96"
+          height="96"
+          class="w-20 h-20 rounded-2xl mx-auto mb-6 shadow-lg shadow-primary/20"
+        />
+      </picture>
+
+      <h1 class="text-3xl md:text-4xl font-bold text-text tracking-tighter mb-3">
+        Opening OurCouple…
+      </h1>
+      <p class="text-text-secondary mb-8">
+        If nothing happens, the app may not be installed on this device — grab it below
+        and pick up right where your link left off.
+      </p>
+
+      <a
+        id="open-app-btn"
+        href="ourcouple://open"
+        class="btn-pink inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold mb-8"
+      >
+        Open the app
+      </a>
+
+      <StoreButtons placement="open" />
+
+      <p class="text-text-light text-xs mt-8">
+        <a href="/" class="hover:text-primary transition-colors">← ourcouple.app</a>
+      </p>
+    </div>
+  </main>
+
+  <script>
+    // Forward the full path + query into the custom scheme so deep links keep
+    // working (/open/foo?x=1 -> ourcouple://open/foo?x=1). The scheme attempt
+    // is best-effort: one try, mobile only, page stays visible regardless.
+    const target = 'ourcouple://' + location.pathname.replace(/^\//, '') + location.search;
+
+    const btn = document.getElementById('open-app-btn') as HTMLAnchorElement | null;
+    if (btn) btn.href = target;
+
+    const isMobile = /android|iphone|ipad|ipod/i.test(navigator.userAgent);
+    if (isMobile && !document.hidden) {
+      // Small delay so the fallback paints first — never a blank screen.
+      setTimeout(() => {
+        if (!document.hidden) location.href = target;
+      }, 400);
+    }
+  </script>
+</Layout>

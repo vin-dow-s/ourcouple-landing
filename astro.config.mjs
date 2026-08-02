@@ -24,6 +24,8 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       lastmod: new Date(),
+      // Utility pages: app-open fallback + invite landing (both noindex)
+      filter: (page) => !page.includes('/open') && !page.includes('/join'),
       serialize(item) {
         // Normalize: keep "/" on root, strip trailing slash everywhere else
         // (must match canonical URLs and Vercel's trailingSlash:false)

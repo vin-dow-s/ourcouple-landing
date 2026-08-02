@@ -30,6 +30,7 @@
     }
   ],
   "rewrites": [
-    { "source": "/join/:code", "destination": "/join" }
+    { "source": "/join/:code", "destination": "/join" },
+    { "source": "/open/:path*", "destination": "/open" }
   ]
 }
