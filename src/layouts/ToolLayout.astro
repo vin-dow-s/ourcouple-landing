@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
 import RelatedTools from '../components/RelatedTools.astro';
 import StickyAppCta from '../components/StickyAppCta.astro';
+import StoreButtons from '../components/StoreButtons.astro';
 
 interface FaqItem {
   question: string;
@@ -195,20 +196,8 @@ const howToSchema = howTo ? {
             <p class="text-text-secondary text-base mb-6 max-w-xl mx-auto">
               {ctaCopy}
             </p>
-            <a
-              href="/download"
-              class="inline-block transition-transform hover:scale-105"
-              aria-label="Get OurCouple — free on iPhone and Android"
-              data-cta-location="tool_bottom"
-              data-fast-goal="cta_tool_download"
-            >
-              <img
-                src="/app-store-badge.svg"
-                alt="Download on the App Store"
-                class="h-14 mx-auto"
-              />
-            </a>
-            <p class="text-text-light text-xs mt-3">Free 7-day trial · one plan covers both of you</p>
+            <StoreButtons placement="tool_bottom" />
+            <p class="text-text-light text-xs mt-3">iPhone &amp; Android · Free 7-day trial · one plan covers both of you</p>
           </div>
         </section>
       )}

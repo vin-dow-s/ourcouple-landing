@@ -2,6 +2,13 @@
 // Inline app-install CTA, designed to sit right after an interactive widget
 // (e.g. the anniversary/monthsary calculator) — the peak-intent moment where a
 // visitor has just gotten their answer. Drop it inside prose content.
+// Store badges rather than a text button: this component renders inside blog
+// prose, and the project's custom `.prose a` rule (global.css) recolors and
+// underlines any link in it — `.not-prose` is a no-op here because that prose
+// styling is hand-written, not the Tailwind typography plugin. Badges are
+// images, so they're immune.
+import StoreButtons from './StoreButtons.astro';
+
 interface Props {
   heading?: string;
   copy?: string;
@@ -10,19 +17,9 @@ const {
   heading = "Keep every milestone in one place",
   copy = "Get reminders for your monthsary & anniversary, and save your story together — free on OurCouple.",
 } = Astro.props;
-// Both-stores landing rather than a direct App Store link.
-const downloadUrl = "/download";
 ---
 <div class="not-prose my-8 rounded-2xl border border-primary/20 bg-primary/5 p-5 text-center">
   <p class="font-semibold text-text mb-1">{heading}</p>
   <p class="text-sm text-text-secondary mb-4">{copy}</p>
-  <a
-    href={downloadUrl}
-    class="btn-pink inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold"
-    aria-label="Get OurCouple — free on iPhone and Android"
-    data-cta-location="blog_inline"
-    data-fast-goal="cta_blog_inline_download"
-  >
-    Get OurCouple — free
-  </a>
+  <StoreButtons placement="blog_inline" size="sm" />
 </div>

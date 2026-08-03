@@ -183,6 +183,15 @@
   color: var(--color-primary);
 }
 
+/* `.prose` here is hand-written CSS, not the Tailwind typography plugin, so
+   Tailwind's `.not-prose` escape hatch has no effect on its own. This makes it
+   work for links, so embedded components (store badges, CTA cards) don't
+   inherit prose link colouring/underlines. */
+.prose .not-prose a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .prose strong {
   font-weight: 600;
 }

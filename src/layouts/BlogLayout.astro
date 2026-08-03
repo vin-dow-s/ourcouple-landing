@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
 import RelatedContent from '../components/RelatedContent.astro';
 import StickyAppCta from '../components/StickyAppCta.astro';
+import StoreButtons from '../components/StoreButtons.astro';
 
 interface RelatedTool {
   href: string;
@@ -211,23 +212,10 @@ const articleSchema = {
             Try OurCouple Free
           </h2>
           <p class="text-base text-text-secondary mb-10">
-            Your private shared space for daily messages, memories, notes, and events. One subscription covers both partners.
+            Your private shared space for your daily ritual, memories, notes, and events. One plan covers both partners.
           </p>
-          <a
-            href="/download"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block transition-transform hover:scale-105"
-            data-cta-location="blog_bottom"
-            data-fast-goal="cta_blog_download"
-          >
-            <img
-              src="/app-store-badge.svg"
-              alt="Download on the App Store"
-              class="h-16 mx-auto"
-            />
-          </a>
-          <p class="text-text-secondary text-sm mt-2">Free 7-day trial · Cancel anytime</p>
+          <StoreButtons placement="blog_bottom" size="lg" />
+          <p class="text-text-secondary text-sm mt-4">iPhone &amp; Android · Free 7-day trial · Cancel anytime</p>
         </div>
       </section>
     </main>
