@@ -52,12 +52,17 @@
   // blog/tool CTAs are no longer invisible in PostHog. Replaces the old
   // homepage-only listener that made `page` always "/".
   document.addEventListener('click', (e) => {
-    const link = e.target.closest && e.target.closest('a[href*="apps.apple.com"]');
+    // Match BOTH stores — this used to be App Store only, so every Google Play
+    // click was invisible in PostHog once Android shipped.
+    const link = e.target.closest &&
+      e.target.closest('a[href*="apps.apple.com"], a[href*="play.google.com"]');
     if (!link) return;
     loadAll(); // make sure analytics start loading even on first interaction
+    const isPlay = link.href.includes('play.google.com');
     if (window.posthog) {
       window.posthog.capture('website_cta_clicked', {
-        cta: 'app_store',
+        cta: isPlay ? 'play_store' : 'app_store',
+        store: link.dataset.ctaStore || (isPlay ? 'android' : 'ios'),
         page: window.location.pathname,
         location: link.dataset.ctaLocation || 'unknown',
       });
