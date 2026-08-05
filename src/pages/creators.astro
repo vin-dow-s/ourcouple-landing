@@ -402,7 +402,12 @@ const tiers = [
             rate: Number(selected.rate),
           }),
         });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        if (!res.ok) {
+          // Surface PostgREST's actual message — a bare status hides the cause
+          // (constraint violation, RLS denial, trigger exception…).
+          const detail = await res.text().catch(() => '');
+          throw new Error(`HTTP ${res.status} ${detail}`);
+        }
 
         if (window.posthog) {
           window.posthog.capture('creator_application_submitted', {
