@@ -89,9 +89,10 @@ function nativeStoreUrl(httpsUrl: string, isAndroid: boolean): string {
  * Minimal, self-contained tap-to-continue page. Inline styles only: it must
  * render instantly and can't depend on the site's CSS bundle.
  *
- * No auto-redirect here on purpose: a failed automatic navigation leaves some
- * in-app webviews in a stuck state where the button tap is then ignored too.
- * The tap IS the mechanism.
+ * Auto-redirect is Android-only, and deliberately so: the Chrome-based webview
+ * there follows `market://` straight away (verified in the Instagram app), while
+ * on iOS the same attempt is blocked AND leaves the webview in a stuck state
+ * where the button tap is then ignored too. On iOS the tap IS the mechanism.
  */
 function inAppBrowserPage(target: string, isAndroid: boolean): Response {
   const store = isAndroid ? 'Google Play' : 'the App Store';
@@ -127,6 +128,10 @@ function inAppBrowserPage(target: string, isAndroid: boolean): Response {
   <a class="cta" href="${nativeHref}">Open ${store}</a>
   <a class="alt" href="${webHref}" target="_blank" rel="noopener">Not working? Open in your browser</a>
   <small>Or tap the ••• menu above and choose “Open in browser”.</small>
+${isAndroid ? `  <script>
+    // Android webviews follow this immediately; iOS ones don't (see above).
+    setTimeout(function () { window.location.href = ${JSON.stringify(nativeStoreUrl(target, true))}; }, 250);
+  </script>` : ''}
 </body>
 </html>`;
   return new Response(html, {
