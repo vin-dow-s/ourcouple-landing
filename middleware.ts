@@ -73,12 +73,31 @@ function isInAppBrowser(ua: string): boolean {
 }
 
 /**
+ * Native store scheme for the same target. In a social webview an https store
+ * URL relies on universal-link handling, which Instagram/Facebook don't honour
+ * — the tap silently does nothing. `itms-apps://` / `market://` hand off to the
+ * OS directly and survive that. Campaign params are preserved either way.
+ */
+function nativeStoreUrl(httpsUrl: string, isAndroid: boolean): string {
+  const u = new URL(httpsUrl);
+  return isAndroid
+    ? `market://details${u.search}`
+    : `itms-apps://apps.apple.com${u.pathname}${u.search}`;
+}
+
+/**
  * Minimal, self-contained tap-to-continue page. Inline styles only: it must
  * render instantly and can't depend on the site's CSS bundle.
+ *
+ * No auto-redirect here on purpose: a failed automatic navigation leaves some
+ * in-app webviews in a stuck state where the button tap is then ignored too.
+ * The tap IS the mechanism.
  */
 function inAppBrowserPage(target: string, isAndroid: boolean): Response {
   const store = isAndroid ? 'Google Play' : 'the App Store';
-  const escaped = target.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+  const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+  const nativeHref = esc(nativeStoreUrl(target, isAndroid));
+  const webHref = esc(target);
   const html = `<!doctype html>
 <html lang="en">
 <head>
@@ -97,20 +116,17 @@ function inAppBrowserPage(target: string, isAndroid: boolean): Response {
         font-size:17px;font-weight:600;color:#fff;
         background:linear-gradient(180deg,#F53984 0%,#F53984 14%,#972352 100%);
         box-shadow:0 10px 24px -10px rgba(151,35,82,.55)}
-  small{color:#9A9A9A;font-size:12px;margin-top:6px}
+  a.alt{color:#A72459;font-size:14px;font-weight:500;text-decoration:underline;margin-top:4px}
+  small{color:#9A9A9A;font-size:12px;margin-top:2px}
 </style>
 </head>
 <body>
   <img src="/logo-192.webp" alt="OurCouple">
   <h1>Get OurCouple</h1>
   <p>Tap below to open ${store} and install the app.</p>
-  <a class="cta" id="go" href="${escaped}">Open ${store}</a>
-  <small>If nothing happens, tap the ••• menu and choose “Open in browser”.</small>
-  <script>
-    // Best-effort: some in-app browsers do allow this. Harmless where they don't
-    // — the button above stays the reliable path.
-    setTimeout(function(){ try { window.location.href = document.getElementById('go').href; } catch (e) {} }, 350);
-  </script>
+  <a class="cta" href="${nativeHref}">Open ${store}</a>
+  <a class="alt" href="${webHref}" target="_blank" rel="noopener">Not working? Open in your browser</a>
+  <small>Or tap the ••• menu above and choose “Open in browser”.</small>
 </body>
 </html>`;
   return new Response(html, {
