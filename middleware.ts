@@ -50,11 +50,72 @@ function handleGet(request: Request): Response | null {
       ? appStoreUrl(placement)
       : new URL('/download', url.origin).toString();
 
+  // In-app browsers (Instagram, Facebook, TikTok…) swallow an automatic
+  // navigation to a store URL — the page just hangs on a loading spinner.
+  // They DO honour a user-initiated tap, so serve a one-button interstitial
+  // instead of a redirect. This is the path most bio-link traffic takes.
+  if ((isIOS || isAndroid) && isInAppBrowser(ua)) {
+    return inAppBrowserPage(target, isAndroid);
+  }
+
   // 302: the destination depends on the request, so it must never be cached
   // as a permanent redirect by a browser or CDN.
   return new Response(null, {
     status: 302,
     headers: { Location: target, 'Cache-Control': 'no-store' },
+  });
+}
+
+/** Webviews embedded in social apps, which block automatic store handoff. */
+function isInAppBrowser(ua: string): boolean {
+  return /Instagram|FBAN|FBAV|FB_IAB|FBIOS|Messenger|TikTok|BytedanceWebview|musical_ly|Snapchat|LinkedInApp|Pinterest|Line\/|Twitter|X11.*Mobile/i
+    .test(ua);
+}
+
+/**
+ * Minimal, self-contained tap-to-continue page. Inline styles only: it must
+ * render instantly and can't depend on the site's CSS bundle.
+ */
+function inAppBrowserPage(target: string, isAndroid: boolean): Response {
+  const store = isAndroid ? 'Google Play' : 'the App Store';
+  const escaped = target.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+  const html = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Get OurCouple</title>
+<style>
+  body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+       gap:14px;padding:24px;text-align:center;background:#FAF8F7;color:#1A1A1A;
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  img{width:72px;height:72px;border-radius:18px}
+  h1{font-size:22px;margin:4px 0 0}
+  p{color:#6B6B6B;margin:0;font-size:15px;line-height:1.5;max-width:20rem}
+  a.cta{display:block;margin-top:8px;padding:16px 32px;border-radius:16px;text-decoration:none;
+        font-size:17px;font-weight:600;color:#fff;
+        background:linear-gradient(180deg,#F53984 0%,#F53984 14%,#972352 100%);
+        box-shadow:0 10px 24px -10px rgba(151,35,82,.55)}
+  small{color:#9A9A9A;font-size:12px;margin-top:6px}
+</style>
+</head>
+<body>
+  <img src="/logo-192.webp" alt="OurCouple">
+  <h1>Get OurCouple</h1>
+  <p>Tap below to open ${store} and install the app.</p>
+  <a class="cta" id="go" href="${escaped}">Open ${store}</a>
+  <small>If nothing happens, tap the ••• menu and choose “Open in browser”.</small>
+  <script>
+    // Best-effort: some in-app browsers do allow this. Harmless where they don't
+    // — the button above stays the reliable path.
+    setTimeout(function(){ try { window.location.href = document.getElementById('go').href; } catch (e) {} }, 350);
+  </script>
+</body>
+</html>`;
+  return new Response(html, {
+    status: 200,
+    headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' },
   });
 }
 
