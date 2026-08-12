@@ -32,5 +32,12 @@
   "rewrites": [
     { "source": "/join/:code", "destination": "/join" },
     { "source": "/open/:path*", "destination": "/open" }
+  ],
+  "redirects": [
+    {
+      "source": "/tools/spicy-truth-or-dare",
+      "destination": "/tools/truth-or-dare-couples#spicy",
+      "permanent": true
+    }
   ]
 }
