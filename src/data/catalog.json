@@ -3,6 +3,7 @@
     { "title": "Would You Rather", "description": "40+ fun questions. Play together and see how well you match.", "href": "/tools/would-you-rather", "icon": "git-fork", "gradient": ["#6366F1", "#DB2777"] },
     { "title": "How Well Do You Know Your Partner?", "description": "Take the quiz, share it, and compare your answers.", "href": "/tools/couple-quiz", "icon": "heart", "gradient": ["#FB7185", "#BE123C"] },
     { "title": "Truth or Dare for Couples", "description": "145+ prompts across 3 levels — Sweet, Playful, Spicy.", "href": "/tools/truth-or-dare-couples", "icon": "flame", "gradient": ["#FB7A3C", "#C2150B"] },
+    { "title": "Spicy Truth or Dare (18+)", "description": "A bolder deck for a night in. Warm, Hot, Fire.", "href": "/tools/spicy-truth-or-dare", "icon": "flame", "gradient": ["#F43F5E", "#7F1D1D"] },
     { "title": "36 Questions to Fall in Love", "description": "The famous study-backed questions that bring couples closer.", "href": "/tools/36-questions", "icon": "book-heart", "gradient": ["#9D6BF0", "#5B21B6"] },
     { "title": "Love Language Quiz", "description": "Discover your love language in 2 minutes. Then compare.", "href": "/tools/love-language", "icon": "languages", "gradient": ["#FF5FA2", "#B81B6A"] },
     { "title": "Attachment Style Quiz", "description": "Secure, anxious, avoidant, or fearful? Find your style.", "href": "/tools/attachment-style", "icon": "anchor", "gradient": ["#38BDF8", "#1E40AF"] },

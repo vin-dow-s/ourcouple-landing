@@ -1,10 +1,22 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
+
+// Title deliberately leads with QUESTIONS, not "How Well Do You Know Your
+// Partner?". This page and /tools/couple-quiz both used to open with that exact
+// phrase, and Google resolved the duplicate by swapping which one it ranked:
+// over the 7 days to 9 Aug 2026 the tool fell 8.00 -> 11.23 while this post rose
+// 11.41 -> 8.13 and absorbed its impressions (724 -> 1885/week).
+//
+// That trade costs clicks, because the tool converts far better on the same
+// query (11.45% CTR vs 4.46% here). Splitting the intents — the tool owns
+// "…partner quiz", this post owns "how well do you know me QUESTIONS" — lets the
+// interactive page win back the head term while this one keeps the list-intent
+// long tail it genuinely serves ("…partner questions", 401 impressions).
 ---
 
 <BlogLayout
-  title="How Well Do You Know Your Partner? 100+ Questions"
-  description="How well do you really know your partner? 100+ deep, fun, and revealing questions to ask each other — plus a quick quiz to compare your answers. No signup."
+  title="100+ How Well Do You Know Me Questions for Couples"
+  description="100+ deep, fun and revealing questions to ask your partner — sorted by theme, from silly to serious. Free conversation starters, no signup."
   canonicalPath="/blog/how-well-do-you-know-your-partner"
   publishDate="2026-02-10"
   dateModified="2026-04-29"

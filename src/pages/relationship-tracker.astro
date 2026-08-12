@@ -1,0 +1,275 @@
+---
+import PersonaLayout from '../layouts/PersonaLayout.astro';
+import Hero from '../components/Hero.astro';
+import CoupleCardSpotlight from '../components/CoupleCardSpotlight.astro';
+import StoreButtons from '../components/StoreButtons.astro';
+
+// Targets "relationship tracker" and its variants — a query the site already
+// surfaces for (93 impressions, average position 49.4 in the 3 months to
+// 9 Aug 2026) with no page actually addressing it. Everything ranking at that
+// depth comes from pages about something else, so a direct answer should move
+// quickly. Sibling long-tail: "relationship tracker app", "app to track
+// relationship", "couple tracker", "track how long we've been together".
+//
+// Deliberately a product page rather than a tool: the query is a
+// what-should-I-install query, not a give-me-an-answer-now query, and the
+// existing free calculators already own the latter.
+
+const tracked = [
+  {
+    title: 'Days together',
+    description:
+      'Your counter starts the day you set your anniversary and never stops. Days, months, and every milestone worth marking — no spreadsheet, no reminders to set.',
+    icon: `<svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>
+    </svg>`,
+  },
+  {
+    title: 'Your streak',
+    description:
+      'A shared streak that only grows when both of you show up. It is the one number in the app neither partner can move alone — which is exactly what makes it mean something.',
+    icon: `<svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+    </svg>`,
+  },
+  {
+    title: 'Compatibility score',
+    description:
+      'Built from the quizzes and games you actually play together, not a personality test you took once. It moves as you learn more about each other.',
+    icon: `<svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+    </svg>`,
+  },
+  {
+    title: 'Engagement score',
+    description:
+      'A quiet, honest read on how much attention the two of you have been giving each other lately. Not a leaderboard — a nudge, on the weeks you need one.',
+    icon: `<svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/>
+    </svg>`,
+  },
+  {
+    title: 'Milestones and dates',
+    description:
+      'Anniversaries, monthsaries, birthdays, first-met dates and anything else you want counted. Both of you get the reminder, so neither of you is the one who remembers everything.',
+    icon: `<svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+    </svg>`,
+  },
+  {
+    title: 'Memories as they happen',
+    description:
+      'Photos, love notes and daily messages saved to one shared timeline. A year in, it is the part couples say they would miss most.',
+    icon: `<svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+    </svg>`,
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is a relationship tracker?',
+    answer:
+      'A relationship tracker is an app that keeps a running record of your relationship — how long you have been together, upcoming anniversaries and milestones, and some measure of how connected the two of you have been lately. The useful ones are shared between both partners rather than kept by one person.',
+  },
+  {
+    question: 'Is there a free relationship tracker app?',
+    answer:
+      'OurCouple is free to download and comes with a 7-day free trial of the full app, then one plan that covers both partners rather than charging each of you separately. If you only want a date counter, our free anniversary calculator and monthsary counter work in the browser with no signup at all.',
+  },
+  {
+    question: 'Does it work on both iPhone and Android?',
+    answer:
+      'Yes. OurCouple is on the App Store and Google Play, and it does not matter which of you is on which — one partner can be on iPhone and the other on Android.',
+  },
+  {
+    question: 'Can my partner see everything I track?',
+    answer:
+      'Your shared space is shared by design: the counter, the streak, the scores and the memories belong to both of you. It is end-to-end encrypted, so nobody outside the two of you can read any of it — including us.',
+  },
+  {
+    question: 'What happens if we stop using it for a while?',
+    answer:
+      'Nothing is lost. Your counters keep running, your memories stay where you left them, and your streak simply starts again when you come back. The app is not built to punish you for a quiet month.',
+  },
+  {
+    question: 'Do I need a tracker if we already have a shared calendar?',
+    answer:
+      'A calendar tells you what is coming up. A relationship tracker also keeps the running history — how long it has been, what you have saved, and how much attention you have actually been giving each other. Most couples find the second part is what a calendar never covers.',
+  },
+];
+---
+
+<PersonaLayout
+  title="Relationship Tracker App for Couples — Free on iPhone & Android"
+  description="Track your days together, streak, milestones and memories in one private app for two. Free 7-day trial, one plan for both partners, end-to-end encrypted."
+  canonicalPath="/relationship-tracker"
+  persona="Couples"
+>
+  <Hero
+    badge="Relationship Tracker"
+    title="A Relationship Tracker Built for Two"
+    subtitle="Your days together, your streak, your milestones and your memories — kept in one private space that both of you can see. Free on iPhone and Android."
+    placement="tracker_hero"
+  />
+
+  <CoupleCardSpotlight />
+
+  <!-- What it tracks -->
+  <section class="py-20 bg-background" data-fast-scroll="tracker_scroll_features">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-text tracking-tighter mb-4">
+          What it actually tracks
+        </h2>
+        <p class="text-text-secondary max-w-xl mx-auto">
+          Six things, updated by the two of you rather than typed in by one of you.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {tracked.map((item) => (
+          <div class="bg-card rounded-2xl border border-border p-6">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+              <Fragment set:html={item.icon} />
+            </div>
+            <h3 class="text-lg font-bold text-text mb-2">{item.title}</h3>
+            <p class="text-text-secondary text-sm leading-relaxed">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why shared beats solo -->
+  <section class="py-16 bg-card" data-fast-scroll="tracker_scroll_why">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="bg-background rounded-2xl border border-border p-8 md:p-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-text tracking-tighter mb-4 text-center">
+          A tracker only one of you opens<br />isn't tracking your relationship
+        </h2>
+        <p class="text-text-secondary leading-relaxed mb-4">
+          Most people who go looking for a relationship tracker end up with a
+          notes app, a calendar reminder, or a widget on one phone. It works, in
+          the sense that the date is written down somewhere. But it makes one
+          person the keeper of the relationship's memory — the one who remembers
+          the anniversary, saves the photos, and notices when it's been a quiet
+          few weeks.
+        </p>
+        <p class="text-text-secondary leading-relaxed">
+          OurCouple is built the other way round. Everything lives in a space
+          that belongs to both of you, the streak only moves when you both show
+          up, and the reminders reach both phones. Nobody has to be the one who
+          keeps track.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free tools cross-link -->
+  <section class="py-16 bg-background">
+    <div class="max-w-2xl mx-auto px-6 space-y-4">
+      <p class="text-center text-text-secondary text-sm mb-6">
+        Just want the numbers? These are free in your browser, no signup:
+      </p>
+      <a
+        href="/tools/anniversary-calculator"
+        class="group block rounded-2xl border border-border bg-card p-6 hover:border-primary/40 transition-colors"
+        data-fast-goal="tracker_anniversary_click"
+      >
+        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary-dark bg-primary/10 px-3 py-1 rounded-full mb-3">Free · no signup</span>
+        <h2 class="text-xl md:text-2xl font-bold text-text mb-1 group-hover:text-primary transition-colors">
+          How long have you been together?
+        </h2>
+        <p class="text-text-secondary text-sm">
+          Enter your start date and get your exact days, months and next milestones instantly →
+        </p>
+      </a>
+      <a
+        href="/tools/monthsary-counter"
+        class="group block rounded-2xl border border-border bg-card p-6 hover:border-primary/40 transition-colors"
+        data-fast-goal="tracker_monthsary_click"
+      >
+        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary-dark bg-primary/10 px-3 py-1 rounded-full mb-3">Free · no signup</span>
+        <h2 class="text-xl md:text-2xl font-bold text-text mb-1 group-hover:text-primary transition-colors">
+          When is your next monthsary?
+        </h2>
+        <p class="text-text-secondary text-sm">
+          Count the months and get a live countdown to the next one →
+        </p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="py-20 bg-card" data-fast-scroll="tracker_scroll_testimonial">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <div class="bg-background rounded-2xl border border-border p-8 md:p-12">
+        <svg class="w-10 h-10 text-primary/30 mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+        </svg>
+        <blockquote class="text-xl md:text-2xl text-text font-medium mb-6">
+          "Love the app. I’m in a LDR and it helps ease some of the distance. The recent updates are great and it’s so appreciated that the developer asks for and executes feedback. Thank you Vincent!"
+        </blockquote>
+        <p class="text-text-secondary">— “Awesome!”, ★★★★★ App Store review</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-background" data-fast-scroll="tracker_scroll_faq">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-text tracking-tighter mb-4">
+          Relationship Tracker FAQ
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group bg-card border border-border rounded-2xl">
+            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+              <h3 class="font-semibold text-text pr-4">{faq.question}</h3>
+              <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-text-secondary">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 bg-gradient-radial" data-fast-scroll="tracker_scroll_cta">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="tracking-tighter text-4xl md:text-5xl font-bold text-text mb-6">
+        Start Counting Together
+      </h2>
+      <p class="text-base text-text-secondary mb-10">
+        Set your date, invite your partner, and everything else starts keeping itself.
+      </p>
+
+      <StoreButtons placement="tracker_bottom" size="lg" />
+      <p class="text-text-secondary text-sm mt-4">
+        Free 7-day trial • one plan covers both of you • iPhone &amp; Android
+      </p>
+    </div>
+  </section>
+
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      })),
+    })}
+  />
+</PersonaLayout>
