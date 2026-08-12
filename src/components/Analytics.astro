@@ -1,23 +1,41 @@
 ---
-// Shared analytics scripts: DataFast + PostHog
-// Loaded lazily after the page is idle (or on first user interaction)
-// to keep them off the critical path and protect Core Web Vitals.
+// Shared analytics scripts: DataFast + PostHog.
+//
+// DataFast loads IMMEDIATELY; PostHog stays lazy. This split is deliberate.
+//
+// Both used to sit behind requestIdleCallback(…, {timeout: 4000}), which meant
+// the pageview only fired once the browser went idle — up to 4s after paint,
+// plus the script download on top. With a ~79% mobile bounce rate most visitors
+// were gone before that, and DataFast was recording ~40% of the traffic GSC
+// reported (1030 visitors vs 2518 Google clicks over the same 28 days).
+//
+// Worse than the volume loss: the surviving sample was BIASED toward visitors
+// who stayed 4+ seconds, so every conversion rate measured off it read high.
+//
+// DataFast's script is ~1KB and already `defer`, so it never blocks parsing or
+// rendering — there is no Core Web Vitals reason to delay it. PostHog is the
+// heavy one (bundled dependency, session recording surface), so it keeps the
+// idle/interaction gate.
 ---
 
 <script>
   // @ts-nocheck
-  let loaded = false;
-
-  const loadDataFast = () => {
+  // --- DataFast: immediate. `defer` keeps it off the critical path already. ---
+  {
     const s = document.createElement('script');
     s.defer = true;
     s.dataset.websiteId = 'dfid_qI4dBMANAwmiNsJvVpicO';
     s.dataset.domain = 'ourcouple.app';
     s.src = 'https://datafa.st/js/script.js';
     document.head.appendChild(s);
-  };
+  }
 
-  const loadPostHog = async () => {
+  // --- PostHog: lazy (heavy bundle, not needed for the pageview count). ---
+  let loaded = false;
+
+  const loadAll = async () => {
+    if (loaded) return;
+    loaded = true;
     const { default: posthog } = await import('posthog-js');
     posthog.init('phc_2ZAsUSvL9xkYDQjpB430ApXZ0HLkW7rbRf5PLFdBYGp', {
       api_host: 'https://eu.i.posthog.com',
@@ -25,13 +43,6 @@
       capture_pageview: true,
     });
     window.posthog = posthog;
-  };
-
-  const loadAll = () => {
-    if (loaded) return;
-    loaded = true;
-    loadDataFast();
-    loadPostHog();
   };
 
   const events = ['pointerdown', 'keydown', 'scroll', 'touchstart'];
@@ -57,15 +68,21 @@
     const link = e.target.closest &&
       e.target.closest('a[href*="apps.apple.com"], a[href*="play.google.com"]');
     if (!link) return;
-    loadAll(); // make sure analytics start loading even on first interaction
     const isPlay = link.href.includes('play.google.com');
+    const props = {
+      cta: isPlay ? 'play_store' : 'app_store',
+      store: link.dataset.ctaStore || (isPlay ? 'android' : 'ios'),
+      page: window.location.pathname,
+      location: link.dataset.ctaLocation || 'unknown',
+    };
+    // A CTA click can BE the first interaction, in which case PostHog hasn't
+    // loaded yet and a bare `if (window.posthog)` silently dropped the event —
+    // exactly the highest-value clicks. Await the loader, then capture.
+    // (DataFast needs nothing here: it loads on paint and reads data-fast-goal.)
     if (window.posthog) {
-      window.posthog.capture('website_cta_clicked', {
-        cta: isPlay ? 'play_store' : 'app_store',
-        store: link.dataset.ctaStore || (isPlay ? 'android' : 'ios'),
-        page: window.location.pathname,
-        location: link.dataset.ctaLocation || 'unknown',
-      });
+      window.posthog.capture('website_cta_clicked', props);
+    } else {
+      loadAll().then(() => window.posthog?.capture('website_cta_clicked', props));
     }
   }, { capture: true });
 </script>

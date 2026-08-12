@@ -3,6 +3,7 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
 import Icon from '../../components/Icon.astro';
 import ShareButtons from '../../components/tools/ShareButtons.astro';
 import ToolAppCta from '../../components/ToolAppCta.astro';
+import StoreButtons from '../../components/StoreButtons.astro';
 import prompts from '../../data/truth-or-dare.json';
 
 // Counts for SEO copy
@@ -137,6 +138,29 @@ const totalCount = sweetCount + playfulCount + spicyCount;
       <span id="round-num">0</span> rounds played · Tap again for a new prompt
     </p>
 
+    <!--
+      In-game CTA, revealed after ROUNDS_BEFORE_CTA rounds.
+
+      This page is the site's #1 entry (597 visitors/30d) but the game loop is a
+      trap for conversion: players tap Truth/Dare in place and never scroll, so
+      the ToolAppCta further down is simply never seen. Surfacing a CTA right
+      under the buttons — where the eye already is, once they're clearly enjoying
+      it — is the only slot on this page that reaches an engaged player.
+      Deliberately gated on rounds so it can't compete with the first play.
+    -->
+    <div
+      id="in-game-cta"
+      hidden
+      class="mb-10 rounded-2xl border border-primary/25 bg-gradient-to-br from-primary/10 to-partner/10 p-5 text-center"
+    >
+      <p class="text-base md:text-lg font-bold text-text mb-1">Still going? There are {totalCount - 12} more where that came from.</p>
+      <p class="text-sm text-text-secondary mb-4 max-w-sm mx-auto leading-relaxed">
+        The app has the full deck plus daily questions, private messages and
+        memories — one shared space for the two of you.
+      </p>
+      <StoreButtons placement="tool_in_game" size="sm" />
+    </div>
+
     <!-- Share -->
     <div class="text-center mb-12">
       <ShareButtons
@@ -230,6 +254,11 @@ const totalCount = sweetCount + playfulCount + spicyCount;
     let lastIndices = { sweet: { truth: -1, dare: -1 }, playful: { truth: -1, dare: -1 }, spicy: { truth: -1, dare: -1 } };
     let rounds = 0;
 
+    // Enough rounds to prove real engagement, few enough that most engaged
+    // players reach it in the same session.
+    const ROUNDS_BEFORE_CTA = 8;
+
+    const inGameCta = document.getElementById('in-game-cta');
     const card = document.getElementById('prompt-card');
     const cardType = document.getElementById('card-type');
     const cardText = document.getElementById('card-text');
@@ -271,6 +300,14 @@ const totalCount = sweetCount + playfulCount + spicyCount;
 
       rounds += 1;
       roundNum.textContent = rounds;
+
+      // Reveal the in-game CTA once the player is clearly engaged. Fires once.
+      if (rounds === ROUNDS_BEFORE_CTA && inGameCta) {
+        inGameCta.hidden = false;
+        if (window.posthog) {
+          window.posthog.capture('truth_or_dare_cta_shown', { rounds });
+        }
+      }
 
       // Track event for analytics
       if (window.posthog) {
