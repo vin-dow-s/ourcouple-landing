@@ -41,6 +41,22 @@
       api_host: 'https://eu.i.posthog.com',
       person_profiles: 'identified_only',
       capture_pageview: true,
+      // Session replay off. It was enabled project-side (not in this config), so
+      // it had to be turned off HERE to leave the mobile app's own PostHog
+      // untouched — every recording in the project was `snapshot_source: web`,
+      // i.e. all of it came from this site.
+      //
+      // Sampled 20 recordings over 30 days on 2026-08-18: `viewed: false` on
+      // every one. Nothing was ever watched, so the only thing replay bought us
+      // was console-error visibility.
+      //
+      // CAVEAT: that visibility is now gone and NOT replaced. Error tracking is
+      // empty for this project (exceptions aren't captured), so the console
+      // errors replay was showing — 77, 51 and 34 in single sessions on
+      // /tools/truth-or-dare-couples — are no longer observable anywhere.
+      // Adding `capture_exceptions: true` would restore it for a tiny fraction
+      // of replay's cost; left off here because it wasn't asked for.
+      disable_session_recording: true,
     });
     window.posthog = posthog;
   };
