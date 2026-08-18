@@ -14,7 +14,7 @@
 //
 // DataFast's script is ~1KB and already `defer`, so it never blocks parsing or
 // rendering — there is no Core Web Vitals reason to delay it. PostHog is the
-// heavy one (bundled dependency, session recording surface), so it keeps the
+// heavy one (bundled dependency), so it keeps the
 // idle/interaction gate.
 ---
 
@@ -41,21 +41,28 @@
       api_host: 'https://eu.i.posthog.com',
       person_profiles: 'identified_only',
       capture_pageview: true,
-      // Session replay off. It was enabled project-side (not in this config), so
-      // it had to be turned off HERE to leave the mobile app's own PostHog
-      // untouched — every recording in the project was `snapshot_source: web`,
-      // i.e. all of it came from this site.
+      // Session replay is off in TWO places, deliberately.
       //
-      // Sampled 20 recordings over 30 days on 2026-08-18: `viewed: false` on
-      // every one. Nothing was ever watched, so the only thing replay bought us
-      // was console-error visibility.
+      // 1. Project side (PostHog settings, 2026-08-18): session_recording_opt_in,
+      //    capture_console_log_opt_in and capture_performance_opt_in all set to
+      //    false, so the remote config now serves sessionRecording: false and no
+      //    client is told to record. Safe to do project-wide: the mobile app
+      //    calls `new PostHog(key, { host })` with no enableSessionReplay, and
+      //    every recording in the project was snapshot_source: web.
       //
-      // CAVEAT: that visibility is now gone and NOT replaced. Error tracking is
-      // empty for this project (exceptions aren't captured), so the console
-      // errors replay was showing — 77, 51 and 34 in single sessions on
-      // /tools/truth-or-dare-couples — are no longer observable anywhere.
-      // Adding `capture_exceptions: true` would restore it for a tiny fraction
-      // of replay's cost; left off here because it wasn't asked for.
+      // 2. Here, as a belt: even if the project setting is ever flipped back on,
+      //    this site will not record.
+      //
+      // Why it went: over 30 days, 20 sampled recordings all had `viewed: false`.
+      // None had ever been watched. Replay also produced no rows in the events
+      // table — `$snapshot` isn't in the project taxonomy — so it was never the
+      // event-volume driver it was assumed to be. That is $autocapture (~69% of
+      // web events), which this does NOT touch.
+      //
+      // CAVEAT: error tracking is empty for this project, so replay was the only
+      // place console errors were visible, and they were not rare (77, 51 and 34
+      // in single sessions on /tools/truth-or-dare-couples). That signal is now
+      // unobservable. `capture_exceptions: true` would restore it cheaply.
       disable_session_recording: true,
     });
     window.posthog = posthog;
