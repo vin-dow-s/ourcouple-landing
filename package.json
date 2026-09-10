@@ -16,7 +16,7 @@
     "@datafast/ai-crawl": "^1.0.5",
     "@tailwindcss/vite": "^4.1.18",
     "@vercel/functions": "^3.7.2",
-    "astro": "^7.1.4",
+    "astro": "^7.2.8",
     "posthog-js": "^1.407.3",
     "tailwindcss": "^4.1.18",
     "vite": "^8.1.5"
