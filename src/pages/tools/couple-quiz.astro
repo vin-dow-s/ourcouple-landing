@@ -180,7 +180,7 @@ import questions from '../../data/quiz-questions.json';
       </div>
 
       <p class="text-text-secondary text-sm text-center">
-        Once your partner completes the quiz, you'll both see the comparison results!
+        When your partner finishes, they'll see your score and can send it straight back to you.
       </p>
 
       <!-- Peak-intent CTA: they just answered 12 questions and are waiting on
@@ -250,6 +250,56 @@ import questions from '../../data/quiz-questions.json';
         <p id="score-message" class="text-text-secondary"></p>
       </div>
 
+      <!-- Only the partner ever reaches this screen: the quiz has no backend, so
+           the person who MADE the quiz never sees the score unless it is sent
+           back. Sending it is the natural next move, and the message carries the
+           app link, so the most invested person of the couple gets the invite. -->
+      <div class="bg-card rounded-2xl border border-border p-6 mb-6 text-center">
+        <h3 class="font-semibold text-text mb-1">Send <span class="results-creator-name"></span> your score</h3>
+        <p class="text-text-secondary text-sm mb-4">
+          <span class="results-creator-name"></span> made this quiz and can't see how they did. Send them the result, with the app to play the next round together.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a
+            id="score-whatsapp"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#25D366] text-white hover:bg-[#20BD5A] transition-colors"
+            data-score-channel="whatsapp"
+            data-fast-goal="quiz_score_sent_whatsapp"
+          >
+            WhatsApp
+          </a>
+          <a
+            id="score-sms"
+            href="#"
+            class="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#34C759] text-white hover:bg-[#2DB84D] transition-colors"
+            data-score-channel="sms"
+            data-fast-goal="quiz_score_sent_sms"
+          >
+            SMS
+          </a>
+          <button
+            id="score-copy"
+            type="button"
+            class="flex items-center gap-2 px-4 py-2 rounded-xl border border-border bg-card hover:border-primary/30 transition-colors text-sm text-text"
+            data-score-channel="copy"
+            data-fast-goal="quiz_score_sent_copy"
+          >
+            Copy message
+          </button>
+        </div>
+      </div>
+
+      <ToolAppCta
+        placement="tool_results"
+        kicker="Next round"
+        heading="Play the next one together in the app"
+        copy="In OurCouple you both answer from your own phone, a new couple question lands every day, and your score is saved for the two of you."
+        footnote="Free 7-day trial · one plan covers both of you"
+      />
+
       <!-- Answers Comparison -->
       <div class="bg-card rounded-2xl border border-border p-6 mb-6">
         <h3 class="font-semibold text-text mb-4">Your Answers Compared</h3>
@@ -257,8 +307,6 @@ import questions from '../../data/quiz-questions.json';
           <!-- Populated by JS -->
         </div>
       </div>
-
-      <ToolAppCta placement="tool_results" />
 
       <!-- Share Results -->
       <div class="text-center mb-6">
@@ -826,6 +874,29 @@ import questions from '../../data/quiz-questions.json';
           ${c.isMatch ? '<p class="text-green-600 text-sm mt-2 font-medium">✓ Match!</p>' : ''}
         </div>
       `).join('');
+
+      // "Send <name> your score": textContent only, the name comes from the URL.
+      document.querySelectorAll('.results-creator-name').forEach((el) => {
+        el.textContent = partnerData.name;
+      });
+      const scoreText = `I took your couple quiz 💕 You know me ${score}%! Let's play the next round together on OurCouple, a new question for us every day: ${window.location.origin}/get?s=quiz_score`;
+      document.getElementById('score-whatsapp').href = `https://wa.me/?text=${encodeURIComponent(scoreText)}`;
+      document.getElementById('score-sms').href = `sms:?body=${encodeURIComponent(scoreText)}`;
+      document.getElementById('score-copy').onclick = async (e) => {
+        const btn = e.currentTarget;
+        try {
+          await navigator.clipboard.writeText(scoreText);
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Copy message'; }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      };
+      document.querySelectorAll('[data-score-channel]').forEach((el) => {
+        el.addEventListener('click', () => {
+          window.posthog?.capture('quiz_score_sent', { channel: el.dataset.scoreChannel, score });
+        });
+      });
 
       showMode('results');
     }
