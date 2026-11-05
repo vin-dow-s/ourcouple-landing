@@ -3,11 +3,19 @@ import ToolLayout from '../../layouts/ToolLayout.astro';
 import Icon from '../../components/Icon.astro';
 import AnniversaryCalculatorWidget from '../../components/tools/AnniversaryCalculatorWidget.astro';
 import ToolAppCta from '../../components/ToolAppCta.astro';
+
+// Title says TOGETHER, like the H1. It said "Dating" from July 2026, when the
+// blog post at /blog/how-long-have-we-been-dating moved to the milestones
+// intent and this tool took over its queries. Search Console, Aug–Oct 2026:
+// the "together" phrasings are the ones that rank here ("how long have we been
+// together" 1,905 impressions, "…together calculator" 1,128, "how long we been
+// together" 646) against 391 for "how long have we been dating", and the page
+// ran at 1.2% CTR from position 6. "Dating" stays in the description and copy.
 ---
 
 <ToolLayout
-  title="How Long Have We Been Dating? Free Days & Months Calculator"
-  description="Enter the day you got together and see exactly how long it's been in days, weeks and months, plus your next milestone. Free, instant, no signup."
+  title="How Long Have We Been Together? Free Days & Months Calculator"
+  description="How long have you been together or dating? Enter the day you got together to see it in days, weeks and months, plus your next milestone. Free, no signup."
   canonicalPath="/tools/anniversary-calculator"
   howTo={{
     name: "How to calculate how long you've been together",
@@ -29,7 +37,7 @@ import ToolAppCta from '../../components/ToolAppCta.astro';
         How Long Have We Been Together?
       </h1>
       <p class="text-text-secondary">
-        Free anniversary calculator — enter your date to see your exact days, weeks and months together, plus every upcoming milestone.
+        Enter the day you and your partner got together to see exactly how long you've been dating, in days, weeks and months, plus every upcoming milestone.
       </p>
     </div>
 
