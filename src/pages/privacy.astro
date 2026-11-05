@@ -4,19 +4,19 @@ import Header from '../components/Header.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Privacy Policy - OurCouple" description="OurCouple Privacy Policy: Your data is encrypted. We can't read your messages, photos, or notes. No ads, no data selling, no third-party sharing." canonicalPath="/privacy">
+<Layout title="Privacy Policy - OurCouple" description="OurCouple Privacy Policy: your messages, photos and notes are encrypted before they leave your phone. No ads, no data selling, no third-party sharing." canonicalPath="/privacy">
   <Header />
 
   <main class="flex-1 pt-32 pb-20">
     <div class="max-w-3xl mx-auto px-6">
       <h1 class="text-4xl md:text-5xl font-bold text-text mb-8">Privacy Policy</h1>
-      <p class="text-text-secondary mb-8">Last updated: October 27, 2026</p>
+      <p class="text-text-secondary mb-8">Last updated: November 4, 2026</p>
 
       <div class="prose prose-lg max-w-none">
         <section class="mb-10">
           <h2 class="text-2xl font-semibold text-text mb-4">Your Privacy Matters</h2>
           <p class="text-text-secondary mb-4">
-            OurCouple is built with privacy at its core. Your content is encrypted by default, which means <strong>only you and your partner can see it</strong>. Not even we can read your messages, photos, or notes.
+            OurCouple is built with privacy at its core. Your messages, photos and notes are encrypted on your device before they reach our servers, and <strong>in the app, only you and your partner can see them</strong>. We never sell your data or use it for ads.
           </p>
           <p class="text-text-secondary mb-4">
             This policy applies to our website, waitlist, and mobile application.
@@ -50,7 +50,7 @@ import Layout from '../layouts/Layout.astro';
           <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
             <li><strong>Your city</strong> — if you set it, your partner can see it, along with the distance between you and their local time. Stored as a city name and approximate coordinates.</li>
             <li><strong>Your time zone</strong> — used so daily questions and countdowns line up for both of you.</li>
-            <li><strong>Live location</strong> — off by default. When you turn on location sharing on the couple map, your precise point is encrypted on your device before it's stored, and only your partner can decrypt it. Your battery level and charging status travel inside that same encrypted payload.</li>
+            <li><strong>Live location</strong> — off by default. When you turn on location sharing on the couple map, your precise point is encrypted on your device before it's stored, and only your partner sees it in the app. Your battery level and charging status travel inside that same encrypted payload.</li>
             <li><strong>A "Home" place</strong> — optional, encrypted the same way, used to show your partner when you're home.</li>
             <li><strong>Photo locations</strong> — if a photo you add carries location data, or you set a place yourself, it's encrypted and used to place that memory on your map.</li>
           </ul>
@@ -101,16 +101,18 @@ import Layout from '../layouts/Layout.astro';
         <section class="mb-10">
           <h2 class="text-2xl font-semibold text-text mb-4">Encryption</h2>
           <p class="text-text-secondary mb-4">
-            Your personal content is automatically encrypted on your device before being sent to our servers. Only you and your partner have the keys to decrypt it.
+            Your personal content is automatically encrypted on your device (AES-256) before being sent to our servers, and it is stored encrypted. This protects it in our storage and backups, and if files were ever exposed.
           </p>
           <p class="text-text-secondary mb-4">
             This means:
           </p>
           <ul class="list-disc list-inside text-text-secondary space-y-2 ml-4">
             <li>Your messages, photos, notes, and shared locations are encrypted by default</li>
-            <li><strong>We cannot read your content</strong></li>
-            <li>Only you and your partner can decrypt it</li>
+            <li>They are never stored in readable form on our servers</li>
           </ul>
+          <p class="text-text-secondary mt-4">
+            Our encryption is not end-to-end: the keys are derived from information stored with your couple space, so we could technically decrypt your content. We don't access it, except to help with a support request you send us or when the law requires it.
+          </p>
           <p class="text-text-secondary mt-4">
             Some data is necessarily stored unencrypted so the app can work: your account details, your city name and time zone, your streak, quiz results, likes, and app settings. Everything in "Your Content" above stays encrypted.
           </p>
@@ -136,7 +138,7 @@ import Layout from '../layouts/Layout.astro';
             <li><strong>Apple / Google</strong> — Authentication (Sign in with Apple or Google). Receives only the data necessary to verify your identity.</li>
           </ul>
           <p class="text-text-secondary mt-4">
-            None of these services can access your encrypted content. Messages you send to our support chat are not encrypted content.
+            Your messages, photos and notes only reach these services in encrypted form. Messages you send to our support chat are not encrypted content.
           </p>
         </section>
 
